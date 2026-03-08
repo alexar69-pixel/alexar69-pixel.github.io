@@ -1,0 +1,8 @@
+# robots.txt — alexanderarmentia.com
+# Alexander Armentia · Reliability & Resilience Manager · Madrid
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://alexanderarmentia.com/sitemap.xml
