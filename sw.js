@@ -1,4 +1,4 @@
-const CACHE_NAME = 'alexander-armentia-v1';
+const CACHE_NAME = 'alexander-armentia-v2';
 const ASSETS = [
   '/',
   '/index.html',
