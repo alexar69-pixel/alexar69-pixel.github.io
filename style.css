@@ -977,6 +977,122 @@ ul {
   padding-right: 0
 }
 
+/* V-Card / Digital Identity */
+.vcard-card {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(129, 140, 248, 0.15);
+  background: linear-gradient(135deg, rgba(20, 20, 42, 0.4), rgba(10, 10, 24, 0.7));
+}
+
+.v-header {
+  font-size: 0.7rem;
+  color: var(--v);
+  margin-bottom: 1rem;
+}
+
+.v-body {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.v-qr {
+  background: #fff;
+  padding: 5px;
+  border-radius: 8px;
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+}
+
+.v-qr img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.v-info strong {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+  color: var(--cyan);
+}
+
+.v-info p {
+  font-size: 0.8rem;
+  color: var(--tm);
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.btn-sm {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.75rem;
+}
+
+.btn-outline {
+  border: 1px solid var(--v);
+  color: var(--v);
+}
+
+.btn-outline:hover {
+  background: var(--v);
+  color: var(--bg);
+}
+
+@media (max-width: 500px) {
+  .v-body {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Crisis Animation */
+.crisis-flicker {
+  animation: flicker 0.15s 2;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.4;
+    filter: contrast(1.5) brightness(1.5);
+  }
+
+  50% {
+    opacity: 1;
+    filter: none;
+  }
+
+  100% {
+    opacity: 0.4;
+    filter: hue-rotate(90deg);
+  }
+}
+
+.incident-resolved-msg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  font-family: var(--mono);
+  background: var(--bg);
+  color: var(--mint);
+  padding: 2rem 3rem;
+  border: 4px solid var(--mint);
+  text-align: center;
+  box-shadow: 0 0 100px rgba(52, 211, 153, 0.3);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.incident-resolved-msg.active {
+  opacity: 1;
+}
+
 /* ─── SECTION BASE ─── */
 .section {
   position: relative;
@@ -2629,7 +2745,48 @@ ul {
 .noc-topbar-right {
   display: flex;
   align-items: center;
-  gap: .75rem;
+  gap: 1.25rem;
+}
+
+/* Resolve Button */
+.noc-btn-resolve {
+  background: var(--a);
+  color: var(--bg);
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 0.7rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 4px;
+  cursor: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.9);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 0 15px var(--ag);
+  animation: pulseResolve 1.5s infinite;
+}
+
+.noc-btn-resolve.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: scale(1);
+}
+
+@keyframes pulseResolve {
+  0% {
+    box-shadow: 0 0 10px var(--ag);
+  }
+
+  50% {
+    box-shadow: 0 0 25px var(--a);
+  }
+
+  100% {
+    box-shadow: 0 0 10px var(--ag);
+  }
 }
 
 .noc-pill {
@@ -2998,8 +3155,14 @@ ul {
   font-size: 1.8rem;
 }
 
-.recruiter-fab.active .fab-icon { display: none; }
-.recruiter-fab.active .fab-close { display: block; }
+.recruiter-fab.active .fab-icon {
+  display: none;
+}
+
+.recruiter-fab.active .fab-close {
+  display: block;
+}
+
 .recruiter-fab.active .fab-main {
   transform: rotate(90deg);
   background: var(--bg3);
@@ -3050,7 +3213,9 @@ ul {
   color: var(--cyan);
 }
 
-.fi-icon { font-size: 1.1rem; }
+.fi-icon {
+  font-size: 1.1rem;
+}
 
 /* ─── TECH ICONS ─── */
 .sk-icon {
@@ -3062,7 +3227,9 @@ ul {
   transition: opacity .3s;
 }
 
-.sk-pill:hover .sk-icon { opacity: 1; }
+.sk-pill:hover .sk-icon {
+  opacity: 1;
+}
 
 .sk-pill img.sk-icon {
   filter: brightness(0) invert(1);

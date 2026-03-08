@@ -650,6 +650,9 @@
                     <span class="mono noc-title-text">NOC_MONITOR.exe &mdash; Reliability Dashboard</span>
                 </div>
                 <div class="noc-topbar-right">
+                    <button class="noc-btn-resolve" id="nocBtnResolve" aria-label="Resolver incidente P1">
+                        <span class="btn-icon">&#x26A1;</span> RESOLVER INCIDENTE
+                    </button>
                     <span class="noc-global-status" id="nocGlobalStatus">&#x25CF; ALL_SYSTEMS_OPERATIONAL</span>
                     <span class="mono noc-clock" id="nocClock">00:00:00</span>
                 </div>
@@ -998,6 +1001,24 @@
                         </div>
                     </div>
 
+                    <!-- DIGITAL IDENTITY CARD (vCard) -->
+                    <div class="vcard-card glass-card reveal-up">
+                        <div class="v-header mono">identity.export()</div>
+                        <div class="v-body">
+                            <div class="v-qr">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://alexanderarmentia.com/alexander-armentia.vcf"
+                                    alt="QR Contacto" loading="lazy">
+                            </div>
+                            <div class="v-info">
+                                <strong>Tarjeta Digital</strong>
+                                <p>Escanea para guardar mi contacto o descarga mi vCard.</p>
+                                <a href="alexander-armentia.vcf" class="btn btn-outline btn-sm mag-btn" download>
+                                    <span>Descargar .VCF</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="cw-list">
                         <a href="mailto:alexar69@hotmail.com" class="cw-item glass-card" id="link-email"
                             aria-label="Enviar email a Alexander">
@@ -1057,6 +1078,10 @@
                 class="fab-item mag-btn" title="Ver LinkedIn">
                 <span class="fi-label">LinkedIn</span>
                 <span class="fi-icon">&#x1F517;</span>
+            </a>
+            <a href="alexander-armentia.vcf" class="fab-item mag-btn" id="fab-vcard" title="Guardar contacto" download>
+                <span class="fi-label">vCard / QR</span>
+                <span class="fi-icon">&#x1F4F1;</span>
             </a>
             <a href="#contacto" class="fab-item mag-btn" id="fab-cv" title="Obtener CV">
                 <span class="fi-label">Descargar CV</span>

@@ -892,30 +892,54 @@ function nowStr() {
   return [d.getHours(), d.getMinutes(), d.getSeconds()].map(n => String(n).padStart(2, '0')).join(':');
 }
 
+let incidentTimer;
+let currentResolveSvc = null;
+
 function scheduleNocIncident() {
-  setTimeout(() => {
+  incidentTimer = setTimeout(() => {
     const svc = NOC_SERVICES[Math.floor(Math.random() * NOC_SERVICES.length)];
+    currentResolveSvc = svc;
+
     // warn phase
     svc.status = 'warn';
     updateNocRow(svc);
     addNocLog({ time: nowStr(), type: 'warn', svc: svc.id, msg: 'Anomaly detected — escalating...' });
+
     // P1 phase after 3.5s
-    setTimeout(() => {
+    incidentTimer = setTimeout(() => {
       svc.status = 'p1';
       updateNocRow(svc);
       updateNocGlobal();
       addNocLog({ time: nowStr(), type: 'p1', svc: svc.id, msg: 'P1 declared — war room iniciada' });
-      // Resolution after 6–13s
-      const ttrS = 6 + Math.floor(Math.random() * 8);
-      setTimeout(() => {
-        svc.status = 'ok';
-        updateNocRow(svc);
-        updateNocGlobal();
-        addNocLog({ time: nowStr(), type: 'ok', svc: svc.id, msg: 'Incident resolved — RCA en progreso', ttr: ttrS + 's' });
-        scheduleNocIncident();
+
+      const btn = document.getElementById('nocBtnResolve');
+      if (btn) btn.classList.add('active');
+
+      // Manual or Auto resolution
+      const ttrS = 8 + Math.floor(Math.random() * 8);
+      incidentTimer = setTimeout(() => {
+        resolveIncident(svc, ttrS, 'AUTO');
       }, ttrS * 1000);
     }, 3500);
   }, 18000 + Math.random() * 22000);
+}
+
+function resolveIncident(svc, ttrS, mode = 'AUTO') {
+  if (svc.status === 'ok') return;
+
+  svc.status = 'ok';
+  updateNocRow(svc);
+  updateNocGlobal();
+
+  const btn = document.getElementById('nocBtnResolve');
+  if (btn) btn.classList.remove('active');
+
+  const msg = mode === 'MANUAL' ? 'Manual fix applied — Master Incident Manager in action' : 'Incident resolved — RCA en progreso';
+  addNocLog({ time: nowStr(), type: 'ok', svc: svc.id, msg: msg, ttr: ttrS + 's' });
+
+  clearTimeout(incidentTimer);
+  currentResolveSvc = null;
+  scheduleNocIncident();
 }
 
 function initNOC() {
@@ -937,6 +961,37 @@ function initNOC() {
     });
   }, 2000);
   scheduleNocIncident();
+
+  // Resolution Button Interaction
+  const btn = document.getElementById('nocBtnResolve');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      if (currentResolveSvc) {
+        // Visual feedback
+        document.body.classList.add('crisis-flicker');
+        setTimeout(() => document.body.classList.remove('crisis-flicker'), 300);
+
+        // Success Toast
+        showNocToast('INCIDENT_RESOLVED // Resiliencia restablecida al 100%');
+
+        // Logic
+        resolveIncident(currentResolveSvc, 2, 'MANUAL');
+      }
+    });
+  }
+}
+
+function showNocToast(text) {
+  let toast = document.getElementById('nocToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'nocToast';
+    toast.className = 'incident-resolved-msg';
+    document.body.appendChild(toast);
+  }
+  toast.innerHTML = `<span style="display:block; font-size:0.8rem; opacity:0.7">&gt; AL3X_OS.fix_complete()</span>${text}`;
+  toast.classList.add('active');
+  setTimeout(() => toast.classList.remove('active'), 3000);
 }
 
 initNOC();

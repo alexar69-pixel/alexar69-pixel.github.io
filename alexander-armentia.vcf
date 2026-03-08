@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Alexander Armentia
+N:Armentia;Alexander;;;
+TITLE:Reliability & Resilience Manager
+ORG:BBVA
+EMAIL;TYPE=INTERNET,WORK:alexar69@hotmail.com
+URL:https://alexanderarmentia.com
+URL;TYPE=LinkedIn:https://www.linkedin.com/in/alexander-armentia-bravo-30205515/
+ADR;TYPE=WORK,POSTAL:;;Madrid;Comunidad de Madrid;;España
+NOTE:Expert in Major Incident Management, SRE, and System Resilience. Awarded with the Gold Medal for Merit at Work (2018).
+END:VCARD
