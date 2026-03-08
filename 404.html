@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Incident Detected | Alexander Armentia</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #0d0d14;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .error-container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 3rem;
+            background: rgba(13, 13, 20, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 4px;
+        }
+
+        .glitch-large {
+            font-size: 8rem;
+            font-weight: 800;
+            margin: 0;
+            color: #ff5f57;
+            text-shadow: 2px 2px #00d4ff;
+        }
+
+        .error-code {
+            font-family: 'JetBrains Mono', monospace;
+            color: #00d4ff;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            color: #0d0d14;
+            background: #00d4ff;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: transform 0.2s;
+        }
+
+        .btn-back:hover {
+            transform: scale(1.05);
+        }
+
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="matrix" class="matrix-bg"></canvas>
+
+    <div class="error-container">
+        <span class="error-code">CODE: ERR_SECTION_NOT_FOUND</span>
+        <h1 class="glitch-large">404</h1>
+        <h2>INCIDENT DETECTED</h2>
+        <p>La ruta solicitada no responde. <br>Es probable que el sistema haya sido desfragmentado.</p>
+        <a href="/" class="btn-back">VOLVER AL NODO PRINCIPAL</a>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()*&^%";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function draw() {
+            ctx.fillStyle = "rgba(13, 13, 20, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#00d4ff";
+            ctx.font = fontSize + "px monospace";
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        setInterval(draw, 33);
+    </script>
+</body>
+
+</html>

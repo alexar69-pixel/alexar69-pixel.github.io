@@ -1,0 +1,6 @@
+Contact: mailto:alexar69@hotmail.com
+Expires: 2027-03-08T22:00:00.000Z
+Preferred-Languages: es, en
+Canonical: https://alexanderarmentia.com/.well-known/security.txt
+Policy: https://alexanderarmentia.com/security-policy.html
+Hiring: https://alexanderarmentia.com/#contacto

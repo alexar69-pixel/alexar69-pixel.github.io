@@ -924,20 +924,25 @@
 
             <div class="contacto-layout">
                 <div class="msg-wrap glass-card reveal-up">
-                    <form class="msg-form" id="contact-form" novalidate>
+                    <form class="msg-form" action="https://formspree.io/f/mqaeewne" method="POST" id="contact-form">
                         <div class="form-header mono">&gt; nuevo_mensaje.init()</div>
                         <div class="fg">
                             <label for="c-name">¿Cómo te llamas?</label>
-                            <input type="text" id="c-name" placeholder="Tu nombre o alias..." required />
+                            <input type="text" name="name" id="c-name" placeholder="Tu nombre o alias..." required />
                         </div>
                         <div class="fg">
                             <label for="c-email">Tu email</label>
-                            <input type="email" id="c-email" placeholder="para poder responderte" required />
+                            <input type="email" name="email" id="c-email" placeholder="para poder responderte"
+                                required />
                         </div>
                         <div class="fg">
                             <label for="c-msg">¿Qué me cuentas?</label>
-                            <textarea id="c-msg" rows="5" placeholder="Una idea, un saludo, lo que sea..."
-                                required></textarea>
+                            <textarea name="message" id="c-msg" rows="5"
+                                placeholder="Una idea, un saludo, lo que sea..." required></textarea>
+                        </div>
+                        <!-- Honey-pot para spam -->
+                        <div style="display:none;">
+                            <label>Honeypot <input name="_gotcha"></label>
                         </div>
                         <button type="submit" class="btn btn-primary btn-full mag-btn" id="btn-enviar">
                             <span class="btn-text">Enviar mensaje &#x1F680;</span>
