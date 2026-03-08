@@ -457,18 +457,46 @@ setInterval(applyNocJitter, 3500);
 const form = document.getElementById('contact-form');
 const success = document.getElementById('form-success');
 if (form) {
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
+    const btnText = btn.querySelector('.btn-text');
+    const originalText = btnText.textContent;
+
+    // UI Feedback
     btn.disabled = true;
-    btn.querySelector('.btn-text').textContent = 'Enviando... 📡';
-    setTimeout(() => {
-      form.reset();
-      btn.disabled = false;
-      btn.querySelector('.btn-text').textContent = 'Enviar mensaje 🚀';
+    btnText.textContent = 'Enviando... 📡';
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        form.reset();
+        success.textContent = '¡Recibido! Te respondo pronto 😊';
+        success.classList.add('show');
+        setTimeout(() => success.classList.remove('show'), 5000);
+      } else {
+        const data = await response.json();
+        throw new Error(data.error || 'Error en el servidor');
+      }
+    } catch (err) {
+      console.error('Form Submission Error:', err);
+      success.textContent = 'Hubo un error. Inténtalo de nuevo.';
+      success.style.color = '#ff5f57'; // Error color
       success.classList.add('show');
       setTimeout(() => success.classList.remove('show'), 5000);
-    }, 1400);
+    } finally {
+      btn.disabled = false;
+      btnText.textContent = originalText;
+    }
   });
 }
 
