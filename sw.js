@@ -1,9 +1,9 @@
-const CACHE_NAME = 'alexander-armentia-v6';
+const CACHE_NAME = 'alexander-armentia-v7';
 const ASSETS = [
   '/',
   '/index.html',
   '/style.css',
-  '/alx_v6.js',
+  '/alx_v7.js',
   '/favicon.png',
   '/og-image.png',
   '/manifest.json'
