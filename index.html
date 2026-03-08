@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alexander Armentia — Alexar69</title>
+    <meta name="description"
+        content="Reliability &amp; Resilience Manager en BBVA, locutor de radio, organizador de Campus Party y miembro fundador de Cibervoluntarios. Madrid, España." />
+    <meta name="author" content="Alexander Armentia" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Caveat:wght@400;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- OVERLAYS -->
+    <div class="noise-overlay"></div>
+    <div class="grid-overlay"></div>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- CURSOR -->
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+    <canvas class="cursor-trail" id="trailCanvas"></canvas>
+
+    <!-- BG CANVAS -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- PARALLAX LAYERS -->
+    <div class="parallax-layer" id="pLayer1">
+        <div class="geo geo-circle"></div>
+        <div class="geo geo-ring"></div>
+        <div class="geo geo-plus"></div>
+    </div>
+    <div class="parallax-layer" id="pLayer2">
+        <div class="geo geo-square"></div>
+        <div class="geo geo-tri"></div>
+        <div class="geo geo-dot-grid"></div>
+    </div>
+
+    <!-- NAV -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#top" class="nav-logo" id="nav-logo">
+                <span class="logo-bracket">[</span>
+                <span class="logo-text" data-scramble="ALEX">ALEX</span>
+                <span class="logo-bracket">]</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#yo" class="nav-link"><span class="nl-num">01.</span> Yo</a></li>
+                <li><a href="#skills" class="nav-link"><span class="nl-num">02.</span> Skills</a></li>
+                <li><a href="#vida" class="nav-link"><span class="nl-num">03.</span> Historia</a></li>
+                <li><a href="#gustos" class="nav-link"><span class="nl-num">04.</span> Intereses</a></li>
+                <li><a href="#contacto" class="nav-link"><span class="nl-num">05.</span> Contacto</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="top">
+        <div class="aurora">
+            <div class="aurora-blob ab1"></div>
+            <div class="aurora-blob ab2"></div>
+            <div class="aurora-blob ab3"></div>
+        </div>
+
+        <div class="hero-inner" id="heroInner">
+            <div class="hero-left">
+
+                <div class="terminal-bar">
+                    <span class="term-dot td-red"></span>
+                    <span class="term-dot td-yellow"></span>
+                    <span class="term-dot td-green"></span>
+                    <code class="term-text">
+            <span class="term-prefix">~</span>/alex <span class="term-cmd" id="termCmd">&#9611;</span>
+          </code>
+                </div>
+
+                <h1 class="hero-title">
+                    <span class="ht-hello reveal-word">Hola, soy</span>
+                    <span class="ht-name" id="heroName" data-text="Alexander">Alexander</span>
+                    <span class="ht-last glitch-text" data-text="Armentia">Armentia</span>
+                </h1>
+
+                <p class="hero-desc reveal-fade">
+                    Reliability &amp; Resilience Manager en <span class="hl">BBVA</span> &middot; Madrid
+                    &#x1F1EA;&#x1F1F8;<br>
+                    Experto en sistemas, locutor de radio y fundador de comunidades tech.
+                    Esta es mi esquina de internet.
+                </p>
+
+                <div class="hero-tags reveal-fade">
+                    <span class="htag mag-btn">&#x1F3AE; Gamer</span>
+                    <span class="htag mag-btn">&#x1F6B9; Red Bull</span>
+                    <span class="htag mag-btn">&#x1F4FB; Radio 03&ndash;07</span>
+                    <span class="htag mag-btn">&#x1F3AA; Campus Party 01&ndash;09</span>
+                    <span class="htag mag-btn">&#x1F492; NochesDBoda</span>
+                    <span class="htag mag-btn">&#x1F310; Cibervoluntarios</span>
+                </div>
+
+                <div class="hero-ctas reveal-fade">
+                    <a href="#yo" class="btn btn-primary mag-btn" id="btn-conoceme">Conóceme</a>
+                    <a href="#contacto" class="btn btn-ghost mag-btn" id="btn-hablemos">Hablemos &#x1F4AC;</a>
+                    <button class="btn btn-ghost mag-btn sys-override-btn" id="btn-os">
+                        <span class="mono" style="color:var(--v)">[ Iniciar AL3X_OS ]</span>
+                    </button>
+                </div>
+
+                <div class="hud-stats reveal-fade">
+                    <div class="hud-item">
+                        <span class="hud-val" data-target="25">0</span><span class="hud-unit">+</span>
+                        <span class="hud-label">años tech</span>
+                    </div>
+                    <div class="hud-sep"></div>
+                    <div class="hud-item">
+                        <span class="hud-val" data-target="300">0</span><span class="hud-unit">+</span>
+                        <span class="hud-label">P1s gestionados</span>
+                    </div>
+                    <div class="hud-sep"></div>
+                    <div class="hud-item">
+                        <div class="hud-num-wrap">
+                            <span class="hud-pre">&lt;</span>
+                            <span class="hud-val" data-target="15">0</span>
+                            <span class="hud-unit">min</span>
+                        </div>
+                        <span class="hud-label">MTTR promedio</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="hologram-card">
+                    <div class="holo-inner">
+                        <div class="holo-rings">
+                            <div class="holo-ring hr1"></div>
+                            <div class="holo-ring hr2"></div>
+                            <div class="holo-ring hr3"></div>
+                        </div>
+                        <div class="holo-avatar">
+                            <span class="ha-emoji">&#x1F60E;</span>
+                            <div class="ha-scan"></div>
+                        </div>
+                        <div class="holo-info">
+                            <div class="hi-row"><span class="hi-key">NAME</span><span class="hi-val">A. Armentia</span>
+                            </div>
+                            <div class="hi-row"><span class="hi-key">ALIAS</span><span class="hi-val">Alexar69</span>
+                            </div>
+                            <div class="hi-row"><span class="hi-key">LOC </span><span class="hi-val">Madrid, ES</span>
+                            </div>
+                            <div class="hi-row"><span class="hi-key">JOB </span><span class="hi-val">R&amp;R Mgr @
+                                    BBVA</span></div>
+                            <div class="hi-row"><span class="hi-key">MODE</span><span class="hi-val hi-active">ONLINE
+                                    &#x25CF;</span></div>
+                        </div>
+                    </div>
+                    <div class="holo-shine"></div>
+                </div>
+
+                <div class="fbadge fb1 reveal-fade">&#x1F4FB; Radio Digital</div>
+                <div class="fbadge fb2 reveal-fade">&#x1F3AA; Campus Party</div>
+                <div class="fbadge fb3 reveal-fade">&#x1F310; Cibervoluntarios</div>
+            </div>
+        </div>
+
+        <div class="scroll-down" id="scrollDown">
+            <div class="sd-line"></div>
+            <code class="sd-text">scroll</code>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-band">
+        <div class="marquee-track">
+            <span>ALEXAR69 &#x3008; MADRID &#x3008; RELIABILITY & RESILIENCE MANAGER &#x3008; BBVA &#x3008; MAJOR
+                INCIDENT MANAGER &#x3008; BBVA NEXT TECHNOLOGIES &#x3008; BBVA
+                SPAIN &#x3008; HP CDS
+                &#x3008; LA SALLE &#x3008; CAMPUS PARTY 2001-2009 &#x3008; RADIO EMISION DIGITAL 03-07 &#x3008; RADIOGU
+                &#x3008; CIBERVOLUNTARIOS FUNDADOR &#x3008; EVENTDAY &#x3008; NOCHESDBODA OFICIANTE
+                &#x3008; &#x1F947; MEDALLA DE ORO AL MERITO EN EL TRABAJO 2018 &#x3008;&nbsp;</span>
+            <span aria-hidden="true">ALEXAR69 &#x3008; MADRID &#x3008; RELIABILITY & RESILIENCE MANAGER &#x3008; BBVA
+                &#x3008; MAJOR INCIDENT MANAGER &#x3008; BBVA NEXT
+                TECHNOLOGIES &#x3008; BBVA SPAIN &#x3008; HP CDS
+                &#x3008; LA SALLE &#x3008; CAMPUS PARTY 2001-2009 &#x3008; RADIO EMISION DIGITAL 03-07
+                &#x3008; RADIOGU &#x3008; CIBERVOLUNTARIOS FUNDADOR &#x3008; EVENTDAY &#x3008; NOCHESDBODA OFICIANTE
+                &#x3008; &#x1F947; MEDALLA DE ORO AL MERITO EN EL TRABAJO 2018 &#x3008;&nbsp;</span>
+        </div>
+    </div>
+
+    <!-- ========== SOBRE MI ========== -->
+    <section class="section yo-section" id="yo">
+        <div class="section-inner">
+            <div class="section-eyebrow">
+                <span class="mono">// 01</span> Sobre mi
+            </div>
+            <h2 class="section-title">¿Quién es Alex?</h2>
+
+            <div class="yo-grid">
+                <div class="yo-text">
+                    <p class="reveal-up">
+                        Soy <strong>Alexander Armentia</strong>, conocido en internet como
+                        <span class="hl">Alexar69</span>. Reliability &amp; Resilience Manager en <strong>BBVA</strong>,
+                        experto en sistemas y resiliencia, locutor de radio digital y organizador de eventos tech desde
+                        más de dos décadas. La tecnología no es solo mi trabajo &mdash;
+                        es lo que soy desde siempre.
+                    </p>
+                    <p class="reveal-up delay-1">
+                        Formado en <strong>La Salle</strong> (1998&ndash;2000), fui locutor de radio digital
+                        en <strong>Emision Digital</strong> y <strong>RadioGu</strong> de 2003 a 2007.
+                        De <strong>2001 a 2009</strong> organicé <strong>Campus Party</strong> &mdash;
+                        uno de los eventos tech más grandes de España. También soy miembro
+                        <strong>fundador de Cibervoluntarios</strong>, donde he sido formador y ponente,
+                        y fundador de <strong>EventDay</strong> y <strong>NochesDBoda</strong>.
+                    </p>
+                    <p class="reveal-up delay-2">
+                        En diciembre de 2018 recibí la <strong>&#x1F947; Medalla de Oro al Mérito en el Trabajo</strong>
+                        &mdash; reconocimiento de la <strong>Asociación Europea de Economía y Competitividad</strong>
+                        a más de dos décadas de contribución al sector tecnológico.
+                    </p>
+                    <p class="reveal-up delay-2">
+                        Si tuviese que describirme en una frase:
+                    </p>
+                    <blockquote class="callout reveal-up delay-3">
+                        <span class="caveat">"Técnico, locutor, organizador y fundador &mdash; toda la vida en el
+                            epicentro de la tecnología y la comunicación"</span>
+                    </blockquote>
+                </div>
+
+                <div class="fun-facts glass-card reveal-up">
+                    <div class="ff-header">
+                        <span class="mono ff-tag">alexar69.json</span>
+                        <span class="ff-dots"><span></span><span></span><span></span></span>
+                    </div>
+                    <ul class="ff-list">
+                        <li class="ff-item"><span class="ff-key">"alias"</span><span class="ff-colon">:</span><span
+                                class="ff-val">"Alexar69 &mdash; identidad digital desde los 2000s"</span></li>
+                        <li class="ff-item"><span class="ff-key">"work"</span><span class="ff-colon">:</span><span
+                                class="ff-val">"Reliability &amp; Resilience Manager @ BBVA &#x1F3E6;"</span></li>
+                        <li class="ff-item"><span class="ff-key">"prev"</span><span class="ff-colon">:</span><span
+                                class="ff-val">"Major Incident Manager @ BBVA Next Technologies"</span></li>
+                        <li class="ff-item"><span class="ff-key">"radio"</span><span class="ff-colon">:</span><span
+                                class="ff-val">"locutor @ Emisión Digital + RadioGu (2003-2007) &#x1F4FB;"</span></li>
+                        <li class="ff-item"><span class="ff-key">"campus"</span><span class="ff-colon">:</span><span
+                                class="ff-val">"organizador Campus Party (2001-2009) &#x1F3AA;"</span></li>
+                        <li class="ff-item"><span class="ff-key">"cibervol"</span><span class="ff-colon">:</span><span
+                                class="ff-val">"miembro fundador + formador (2000-2008) &#x1F310;"</span></li>
+                        <li class="ff-item"><span class="ff-key">"award"</span><span class="ff-colon">:</span><span
+                                class="ff-val">"&#x1F947; Medalla de Oro al Merito en el Trabajo (2018)"</span></li>
+                        <li class="ff-item"><span class="ff-key">"loc"</span><span class="ff-colon">:</span><span
+                                class="ff-val">"Madrid, España &#x1F1EA;&#x1F1F8;"</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="big-quote reveal-up">
+                <div class="bq-line"></div>
+                <p class="bq-text caveat">"La tecnología es mi idioma, pero las personas son mi razón."</p>
+                <span class="bq-author mono">&mdash; Alexander Armentia</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SKILLS ========== -->
+    <section class="section skills-section" id="skills">
+        <div class="section-inner">
+            <div class="section-eyebrow"><span class="mono">// 02</span> Skills</div>
+            <h2 class="section-title">Stack & Habilidades</h2>
+
+            <div class="skills-layout">
+
+                <!-- Columna izquierda: barras de progreso -->
+                <div class="skills-bars">
+
+                    <div class="skill-category reveal-up">
+                        <h3 class="sk-cat-title"><span class="sk-cat-icon">🖥️</span> Sistemas & OS</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <div class="sk-meta">
+                                    <span class="sk-name">Windows Server</span>
+                                    <span class="sk-pct mono">95%</span>
+                                </div>
+                                <div class="sk-bar-wrap">
+                                    <div class="sk-bar" data-pct="95" style="--c:var(--a)"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="sk-meta">
+                                    <span class="sk-name">Linux / Unix</span>
+                                    <span class="sk-pct mono">85%</span>
+                                </div>
+                                <div class="sk-bar-wrap">
+                                    <div class="sk-bar" data-pct="85" style="--c:var(--a)"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="sk-meta">
+                                    <span class="sk-name">VMware / Hyper-V</span>
+                                    <span class="sk-pct mono">88%</span>
+                                </div>
+                                <div class="sk-bar-wrap">
+                                    <div class="sk-bar" data-pct="88" style="--c:var(--v)"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="sk-meta">
+                                    <span class="sk-name">Active Directory</span>
+                                    <span class="sk-pct mono">90%</span>
+                                </div>
+                                <div class="sk-bar-wrap">
+                                    <div class="sk-bar" data-pct="90" style="--c:var(--v)"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category reveal-up delay-1">
+                        <h3 class="sk-cat-title"><span class="sk-cat-icon">🌐</span> Redes & Infraestructura</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <div class="sk-meta">
+                                    <span class="sk-name">TCP/IP & Routing</span>
+                                    <span class="sk-pct mono">90%</span>
+                                </div>
+                                <div class="sk-bar-wrap">
+                                    <div class="sk-bar" data-pct="90" style="--c:var(--cyan)"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="sk-meta">
+                                    <span class="sk-name">Incident Management (P1)</span>
+                                    <span class="sk-pct mono">98%</span>
+                                </div>
+                                <div class="sk-bar-wrap">
+                                    <div class="sk-bar" data-pct="98" style="--c:var(--cyan)"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="sk-meta">
+                                    <span class="sk-name">Storage & SAN</span>
+                                    <span class="sk-pct mono">80%</span>
+                                </div>
+                                <div class="sk-bar-wrap">
+                                    <div class="sk-bar" data-pct="80" style="--c:var(--cyan)"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="sk-meta">
+                                    <span class="sk-name">Scripting (PS / Bash)</span>
+                                    <span class="sk-pct mono">75%</span>
+                                </div>
+                                <div class="sk-bar-wrap">
+                                    <div class="sk-bar" data-pct="75" style="--c:var(--mint)"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Columna derecha: tech pills + radar soft skills -->
+                <div class="skills-right reveal-up delay-2">
+
+                    <div class="sk-pills-card glass-card">
+                        <div class="sk-pills-header">
+                            <span class="mono sk-pills-tag">&gt; tech_stack.list()</span>
+                        </div>
+                        <div class="sk-pills-grid">
+                            <span class="sk-pill" style="--pc:var(--a)">HP CDS</span>
+                            <span class="sk-pill" style="--pc:var(--a)">ITIL</span>
+                            <span class="sk-pill" style="--pc:var(--v)">ServiceNow</span>
+                            <span class="sk-pill" style="--pc:var(--v)">SCOM</span>
+                            <span class="sk-pill" style="--pc:var(--cyan)">BGP / OSPF</span>
+                            <span class="sk-pill" style="--pc:var(--cyan)">VLAN</span>
+                            <span class="sk-pill" style="--pc:var(--mint)">PowerShell</span>
+                            <span class="sk-pill" style="--pc:var(--mint)">Bash</span>
+                            <span class="sk-pill" style="--pc:var(--a)">SAN / NAS</span>
+                            <span class="sk-pill" style="--pc:var(--v)">Azure AD</span>
+                            <span class="sk-pill" style="--pc:var(--cyan)">DNS / DHCP</span>
+                            <span class="sk-pill" style="--pc:var(--mint)">Git</span>
+                        </div>
+                    </div>
+
+                    <div class="sk-radar-card glass-card">
+                        <div class="sk-pills-header">
+                            <span class="mono sk-pills-tag">&gt; soft_skills.exe</span>
+                        </div>
+                        <div class="sk-radar-list">
+                            <div class="skr-item">
+                                <span class="skr-label">Comunicación</span>
+                                <div class="skr-dots">
+                                    <span class="skr-dot active"></span><span class="skr-dot active"></span><span
+                                        class="skr-dot active"></span><span class="skr-dot active"></span><span
+                                        class="skr-dot active"></span>
+                                </div>
+                            </div>
+                            <div class="skr-item">
+                                <span class="skr-label">Liderazgo en Crisis</span>
+                                <div class="skr-dots">
+                                    <span class="skr-dot active"></span><span class="skr-dot active"></span><span
+                                        class="skr-dot active"></span><span class="skr-dot active"></span><span
+                                        class="skr-dot active"></span>
+                                </div>
+                            </div>
+                            <div class="skr-item">
+                                <span class="skr-label">Gestión de Equipos</span>
+                                <div class="skr-dots">
+                                    <span class="skr-dot active"></span><span class="skr-dot active"></span><span
+                                        class="skr-dot active"></span><span class="skr-dot active"></span><span
+                                        class="skr-dot"></span>
+                                </div>
+                            </div>
+                            <div class="skr-item">
+                                <span class="skr-label">Organización de Eventos</span>
+                                <div class="skr-dots">
+                                    <span class="skr-dot active"></span><span class="skr-dot active"></span><span
+                                        class="skr-dot active"></span><span class="skr-dot active"></span><span
+                                        class="skr-dot active"></span>
+                                </div>
+                            </div>
+                            <div class="skr-item">
+                                <span class="skr-label">Docencia & Ponencias</span>
+                                <div class="skr-dots">
+                                    <span class="skr-dot active"></span><span class="skr-dot active"></span><span
+                                        class="skr-dot active"></span><span class="skr-dot active"></span><span
+                                        class="skr-dot"></span>
+                                </div>
+                            </div>
+                            <div class="skr-item">
+                                <span class="skr-label">Resiliencia bajo presión</span>
+                                <div class="skr-dots">
+                                    <span class="skr-dot active" style="--dc:var(--a)"></span><span
+                                        class="skr-dot active" style="--dc:var(--a)"></span><span class="skr-dot active"
+                                        style="--dc:var(--a)"></span><span class="skr-dot active"
+                                        style="--dc:var(--a)"></span><span class="skr-dot active"
+                                        style="--dc:var(--a)"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== NOC DASHBOARD ========== -->
+    <div class="noc-band">
+        <div class="section-inner">
+            <div class="noc-topbar">
+                <div class="noc-topbar-left">
+                    <span class="noc-pill noc-live">&#x25CF; LIVE</span>
+                    <span class="mono noc-title-text">NOC_MONITOR.exe &mdash; Reliability Dashboard</span>
+                </div>
+                <div class="noc-topbar-right">
+                    <span class="noc-global-status" id="nocGlobalStatus">&#x25CF; ALL_SYSTEMS_OPERATIONAL</span>
+                    <span class="mono noc-clock" id="nocClock">00:00:00</span>
+                </div>
+            </div>
+            <div class="noc-body">
+                <div class="noc-services-wrap glass-card">
+                    <div class="noc-panel-hdr">
+                        <span class="mono">$ services.status()</span>
+                        <span class="mono noc-refresh">auto-refresh &#x21AA;</span>
+                    </div>
+                    <div class="noc-svc-list" id="nocServicesList"></div>
+                </div>
+                <div class="noc-kpis-wrap">
+                    <div class="noc-kpi-card glass-card" id="noc-kpi-p1">
+                        <span class="noc-kpi-num" id="nocActiveP1s">0</span>
+                        <span class="noc-kpi-lbl mono">ACTIVE_P1</span>
+                        <span class="noc-kpi-sub">en este momento</span>
+                    </div>
+                    <div class="noc-kpi-card glass-card">
+                        <span class="noc-kpi-num">13<em>min</em></span>
+                        <span class="noc-kpi-lbl mono">MTTR_AVG</span>
+                        <span class="noc-kpi-sub">&uacute;ltimos 30 d&iacute;as</span>
+                    </div>
+                    <div class="noc-kpi-card glass-card">
+                        <span class="noc-kpi-num">99.9<em>%</em></span>
+                        <span class="noc-kpi-lbl mono">SLA_TARGET</span>
+                        <span class="noc-kpi-sub">cumplimiento YTD</span>
+                    </div>
+                    <div class="noc-kpi-card glass-card">
+                        <span class="noc-kpi-num" id="nocUptimePct">100.0<em>%</em></span>
+                        <span class="noc-kpi-lbl mono">UPTIME_24H</span>
+                        <span class="noc-kpi-sub">tiempo activo hoy</span>
+                    </div>
+                </div>
+            </div>
+            <div class="noc-log-wrap glass-card">
+                <div class="noc-panel-hdr">
+                    <span class="mono">$ tail -f incident.log</span>
+                    <span class="mono noc-log-count" id="nocLogCount">0 eventos</span>
+                </div>
+                <div class="noc-log-body" id="nocLogBody"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== HISTORIA ========== -->
+    <section class="section vida-section" id="vida">
+        <div class="section-inner">
+            <div class="section-eyebrow"><span class="mono">// 03</span> Historia</div>
+            <h2 class="section-title">Algunos capítulos</h2>
+
+            <div class="timeline">
+                <div class="tl-line"></div>
+
+                <!-- La Salle -->
+                <div class="tl-item reveal-up" data-side="left">
+                    <div class="tl-dot">
+                        <div class="tl-dot-inner"></div>
+                    </div>
+                    <div class="tl-card glass-card">
+                        <span class="tl-emoji">&#x1F393;</span>
+                        <span class="tl-year mono">// 1998 &ndash; 2000</span>
+                        <h3>La Salle &mdash; Informática de Gestión</h3>
+                        <p>Formación técnica donde el hobby se convirtió en profesión. El arranque de todo lo que vino
+                            después: sistemas, redes, y una carrera construida pieza a pieza.</p>
+                    </div>
+                </div>
+
+                <!-- Radio -->
+                <div class="tl-item reveal-up delay-1" data-side="right">
+                    <div class="tl-dot">
+                        <div class="tl-dot-inner"></div>
+                    </div>
+                    <div class="tl-card glass-card">
+                        <span class="tl-emoji">&#x1F4FB;</span>
+                        <span class="tl-year mono">// 2003 &ndash; 2007</span>
+                        <h3>Locutor de Radio Digital</h3>
+                        <p>Voz en <strong>Emisión Digital</strong> y <strong>RadioGu</strong> durante cuatro años.
+                            Micrófono, ondas y tecnología &mdash; cuando la radio digital en España aún era territorio
+                            por explorar.</p>
+                    </div>
+                </div>
+
+                <!-- Campus Party -->
+                <div class="tl-item reveal-up delay-2" data-side="left">
+                    <div class="tl-dot">
+                        <div class="tl-dot-inner"></div>
+                    </div>
+                    <div class="tl-card glass-card">
+                        <span class="tl-emoji">&#x1F3AA;</span>
+                        <span class="tl-year mono">// 2001 &ndash; 2009</span>
+                        <h3>Organizador &mdash; Campus Party</h3>
+                        <p>No fui a Campus Party: lo monté. Ocho años consecutivos organizando uno de los eventos
+                            tecnológicos más grandes de España &mdash; edición tras edición, miles de campuseros, y la
+                            misma pasión desde el primer día.</p>
+                    </div>
+                </div>
+
+                <!-- Cibervoluntarios -->
+                <div class="tl-item reveal-up delay-3" data-side="right">
+                    <div class="tl-dot">
+                        <div class="tl-dot-inner"></div>
+                    </div>
+                    <div class="tl-card glass-card">
+                        <span class="tl-emoji">&#x1F310;</span>
+                        <span class="tl-year mono">// feb 2000 &mdash; ago 2008 &middot; 8 a&ntilde;os</span>
+                        <h3>Cibervoluntarios &mdash; Formador &amp; Locutor de Radio</h3>
+                        <p>Miembro <strong>fundador</strong> de Cibervoluntarios. Formando a miles de personas en toda
+                            España en el uso de las nuevas tecnologías para eliminar la brecha digital. Locutor en
+                            <strong>RadioGU</strong> y <strong>Emisión Digital</strong> &mdash; otra forma de hacer
+                            comunidad.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Medalla de Oro -->
+                <div class="tl-item reveal-up" data-side="left" style="transition-delay:.35s">
+                    <div class="tl-dot" style="border-color:#f59e0b; background:rgba(245,158,11,.12)">
+                        <div class="tl-dot-inner" style="background:#f59e0b; box-shadow:0 0 10px #f59e0b"></div>
+                    </div>
+                    <div class="tl-card glass-card" style="border-color:rgba(245,158,11,.2)">
+                        <span class="tl-emoji">&#x1F947;</span>
+                        <span class="tl-year mono" style="color:#f59e0b">// diciembre 2018</span>
+                        <h3>Medalla de Oro al Mérito en el Trabajo</h3>
+                        <p>Reconocimiento de la <strong>Asociación Europea de Economía y Competitividad</strong> a una
+                            trayectoria de más de dos décadas de contribución al sector tecnológico y al voluntariado
+                            digital en España.</p>
+                    </div>
+                </div>
+
+                <!-- HP CDS -->
+                <div class="tl-item reveal-up" data-side="left" style="transition-delay:.4s">
+                    <div class="tl-dot">
+                        <div class="tl-dot-inner"></div>
+                    </div>
+                    <div class="tl-card glass-card">
+                        <span class="tl-emoji">&#x1F5A5;&#xFE0F;</span>
+                        <span class="tl-year mono">// HP CDS</span>
+                        <h3>Incident &amp; Reliability Manager &mdash; HP CDS</h3>
+                        <p>Madrid. Sistemas, redes e infraestructura a gran escala. El sitio donde la gestión de
+                            incidentes críticos se convirtió en una second nature &mdash; litros de Red Bull incluidos.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- BBVA Spain -->
+                <div class="tl-item reveal-up delay-1" data-side="right" style="transition-delay:.5s">
+                    <div class="tl-dot">
+                        <div class="tl-dot-inner"></div>
+                    </div>
+                    <div class="tl-card glass-card">
+                        <span class="tl-emoji">&#x1F3E6;</span>
+                        <span class="tl-year mono">// BBVA Spain</span>
+                        <h3>Reliability &amp; Resilience Manager &mdash; BBVA Spain</h3>
+                        <p>De los servidores a la banca. Gestionando la resiliencia y fiabilidad de sistemas críticos en
+                            uno de los mayores bancos de Europa. Cero downtime, máxima presión.</p>
+                    </div>
+                </div>
+
+                <!-- BBVA Next Technologies (pasado) -->
+                <div class="tl-item reveal-up" data-side="left" style="transition-delay:.6s">
+                    <div class="tl-dot">
+                        <div class="tl-dot-inner"></div>
+                    </div>
+                    <div class="tl-card glass-card">
+                        <span class="tl-emoji">&#x26A1;</span>
+                        <span class="tl-year mono">// nov 2023 &mdash; dic 2024</span>
+                        <h3>Major Incident Manager &mdash; BBVA Next Technologies</h3>
+                        <p>Liderando la gestión de incidentes mayores en la capa tecnológica de BBVA a nivel europeo.
+                            War rooms, coordinación multidisciplinar y resoluciones en tiempo récord.</p>
+                    </div>
+                </div>
+
+                <!-- BBVA — Rol actual -->
+                <div class="tl-item reveal-up delay-1" data-side="right" style="transition-delay:.7s">
+                    <div class="tl-dot" style="border-color:var(--mint); background:rgba(52,211,153,.15)">
+                        <div class="tl-dot-inner" style="background:var(--mint); box-shadow: 0 0 10px var(--mint)">
+                        </div>
+                    </div>
+                    <div class="tl-card glass-card" style="border-color:rgba(52,211,153,.2)">
+                        <span class="tl-emoji">&#x1F6E1;&#xFE0F;</span>
+                        <span class="tl-year mono" style="color:var(--mint)">// dic 2024 &mdash; presente &middot; 1
+                            a&ntilde;o 4 meses</span>
+                        <h3>Reliability &amp; Resilience Manager &mdash; BBVA</h3>
+                        <p>Madrid. Garantizando la resiliencia y fiabilidad de los sistemas críticos de BBVA en Europa.
+                            El punto donde la experiencia acumulada de años en incidentes se convierte en arquitectura
+                            de continuidad.</p>
+                        <div class="tl-active-badge">&#x25CF; ACTIVO</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== INTERESES ========== -->
+    <section class="section gustos-section" id="gustos">
+        <div class="section-inner">
+            <div class="section-eyebrow"><span class="mono">// 04</span> Intereses</div>
+            <h2 class="section-title">Cosas que me molan</h2>
+
+            <div class="gustos-grid">
+
+                <div class="gusto-card gc-wide glass-card reveal-up tilt-card" id="gusto-ia">
+                    <div class="gc-glow"></div>
+                    <div class="gc-emoji">&#x1F916;</div>
+                    <h3>AI Agents &amp; Automatización</h3>
+                    <p>Me apasiona cómo los agentes de IA están redefiniendo la automatización. Llevo tiempo probando y
+                        compartiendo herramientas de IA, desde antes de que todo el mundo hablara de ChatGPT. Especial
+                        interés en aplicarlos a ITSM y operaciones.</p>
+                    <div class="gc-tags"><span>AI
+                            Agents</span><span>LLMs</span><span>Automatización</span><span>ITSM</span></div>
+                    <div class="gc-corner">// AI</div>
+                </div>
+
+                <div class="gusto-card glass-card reveal-up delay-1 tilt-card" id="gusto-musica">
+                    <div class="gc-glow"></div>
+                    <div class="gc-emoji">&#x1F3B1;</div>
+                    <h3>Música Remember 90s</h3>
+                    <p>La época dorada. Me tira muchísimo la música remember española de los 90, el house, la makina...
+                        Rutas, vinilos y temazos que ya son himnos. ¡Flying Free!</p>
+                    <div class="gc-corner">// 90s</div>
+                </div>
+
+                <div class="gusto-card glass-card reveal-up delay-2 tilt-card" id="gusto-radio">
+                    <div class="gc-glow"></div>
+                    <div class="gc-emoji">&#x1F4FB;</div>
+                    <h3>Radio &amp; Comunicación</h3>
+                    <p>Locutor en Emisión Digital y RadioGu. Hay algo mágico en conectar con gente a través de las
+                        ondas. La voz como herramienta de comunidad.</p>
+                    <div class="gc-corner">// radio</div>
+                </div>
+
+                <div class="gusto-card glass-card reveal-up delay-1 tilt-card" id="gusto-eventos">
+                    <div class="gc-glow"></div>
+                    <div class="gc-emoji">&#x1F3AA;</div>
+                    <h3>Eventos Tech</h3>
+                    <p>4 años organizando Campus Party (2001&ndash;2005). Ver cómo la tecnología une a miles de personas
+                        en un
+                        mismo espacio es una de las mejores sensaciones.</p>
+                    <div class="gc-corner">// events</div>
+                </div>
+
+                <div class="gusto-card glass-card reveal-up delay-2 tilt-card" id="gusto-redbull">
+                    <div class="gc-glow"></div>
+                    <div class="gc-emoji">&#x26A1;</div>
+                    <h3>Red Bull &amp; Adrenalina</h3>
+                    <p>Las mejores ideas nacen bajo presión. Prefiero el Red Bull y la adrenalina del estrés. Me encanta
+                        vivir a mil revoluciones y rodearme de gente con la misma energía.</p>
+                    <div class="gc-corner">// energy</div>
+                </div>
+
+                <div class="gusto-card gc-wide glass-card reveal-up tilt-card" id="gusto-comunidad">
+                    <div class="gc-glow"></div>
+                    <div class="gc-emoji">&#x1F310;</div>
+                    <h3>Comunidad &amp; Voluntariado Tech</h3>
+                    <p>Miembro fundador de Cibervoluntarios. Creo que la tecnología debe ser accesible para todo el
+                        mundo, y trabajar para que eso sea realidad es algo que me llena.</p>
+                    <div class="gc-tags"><span>Ponente</span><span>Formador</span><span>Fundador</span></div>
+                    <div class="gc-corner">// community</div>
+                </div>
+
+                <div class="gusto-card glass-card reveal-up delay-1 tilt-card" id="gusto-ciber">
+                    <div class="gc-glow"></div>
+                    <div class="gc-emoji">&#x1F512;</div>
+                    <h3>Ciberseguridad</h3>
+                    <p>La seguridad es parte del ADN de cualquier entorno crítico. Me interesa la ciberseguridad
+                        aplicada a infraestructuras bancarias, automatización defensiva y scripting (Bash / PowerShell).
+                    </p>
+                    <div class="gc-corner">// sec</div>
+                </div>
+
+            </div>
+
+            <!-- Vibe bar -->
+            <div class="vibe-bar glass-card reveal-up">
+                <div class="vb-left">
+                    <span class="vb-icon">&#x1F3A7;</span>
+                    <div class="vb-eq">
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+                <div class="vb-center">
+                    <span class="vb-label mono">now_playing.mp3</span>
+                    <span class="vb-track" id="vibeTrack">Cargando...</span>
+                </div>
+                <div class="vb-prog">
+                    <div class="vb-bar">
+                        <div class="vb-fill" id="vibeBar"></div>
+                    </div>
+                    <span class="vb-time mono" id="vibeTime">0:00</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACTO ========== -->
+    <section class="section contacto-section" id="contacto">
+        <div class="contact-glow"></div>
+        <div class="section-inner">
+            <div class="section-eyebrow"><span class="mono">// 05</span> Contacto</div>
+            <h2 class="section-title">¿Hablamos?</h2>
+            <p class="contact-sub reveal-up">
+                Sin formalismos. Si quieres contarme algo, tienes una idea, o simplemente
+                quieres saludar &mdash; escríbeme. &#x1F44B;
+            </p>
+
+            <div class="contacto-layout">
+                <div class="msg-wrap glass-card reveal-up">
+                    <form class="msg-form" id="contact-form" novalidate>
+                        <div class="form-header mono">&gt; nuevo_mensaje.init()</div>
+                        <div class="fg">
+                            <label for="c-name">¿Cómo te llamas?</label>
+                            <input type="text" id="c-name" placeholder="Tu nombre o alias..." required />
+                        </div>
+                        <div class="fg">
+                            <label for="c-email">Tu email</label>
+                            <input type="email" id="c-email" placeholder="para poder responderte" required />
+                        </div>
+                        <div class="fg">
+                            <label for="c-msg">¿Qué me cuentas?</label>
+                            <textarea id="c-msg" rows="5" placeholder="Una idea, un saludo, lo que sea..."
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full mag-btn" id="btn-enviar">
+                            <span class="btn-text">Enviar mensaje &#x1F680;</span>
+                        </button>
+                        <p class="form-success" id="form-success">¡Recibido! Te respondo pronto &#x1F60A;</p>
+                    </form>
+                </div>
+
+                <div class="contacto-side reveal-up delay-1">
+                    <div class="avail-card glass-card">
+                        <div class="av-header mono">status.check()</div>
+                        <div class="av-body">
+                            <div class="av-pulse-wrap">
+                                <div class="av-pulse"></div>
+                                <span class="av-online">ONLINE</span>
+                            </div>
+                            <p>Disponible para proyectos y colaboraciones. Suelo responder en &lt; 24h.</p>
+                        </div>
+                    </div>
+
+                    <div class="cw-list">
+                        <a href="mailto:alexar69@hotmail.com" class="cw-item glass-card" id="link-email">
+                            <span class="cw-em">&#x1F4E7;</span>
+                            <div><span class="cw-n">Email</span><span class="cw-v">alexar69@hotmail.com</span></div>
+                            <span class="cw-arr">&#x2192;</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/alexander-armentia-bravo-30205515/" target="_blank"
+                            rel="noopener" class="cw-item glass-card" id="link-linkedin">
+                            <span class="cw-em">&#x1F4BC;</span>
+                            <div><span class="cw-n">LinkedIn</span><span class="cw-v">+1k seguidores &middot; perfil
+                                    completo</span></div>
+                            <span class="cw-arr">&#x2192;</span>
+                        </a>
+                        <a href="https://www.youtube.com/@alexar69" target="_blank" rel="noopener"
+                            class="cw-item glass-card" id="link-youtube">
+                            <span class="cw-em">&#x25B6;&#xFE0F;</span>
+                            <div><span class="cw-n">YouTube</span><span class="cw-v">@alexar69 &middot; desde
+                                    2009</span></div>
+                            <span class="cw-arr">&#x2192;</span>
+                        </a>
+                        <a href="https://www.cibervoluntarios.org" target="_blank" rel="noopener"
+                            class="cw-item glass-card" id="link-cibervol">
+                            <span class="cw-em">&#x1F310;</span>
+                            <div><span class="cw-n">Cibervoluntarios</span><span class="cw-v">Miembro fundador</span>
+                            </div>
+                            <span class="cw-arr">&#x2192;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="mono footer-copy">// alexander.armentia &middot; alexar69 &middot; madrid &middot; 2026
+                &#x26A1;</span>
+            <a href="#top" class="back-top mono" id="back-to-top">&#x2191; [top]</a>
+        </div>
+    </footer>
+
+    <!-- ALEX_OS OVERLAY -->
+    <div class="alex-os-overlay" id="osOverlay">
+        <div class="os-scanline"></div>
+        <div class="os-close" id="osClose">&times;</div>
+        <div class="os-window glass-card">
+            <div class="os-header mono">
+                <span>> root@alexar69:~</span>
+                <span class="os-blinker">&#9611;</span>
+            </div>
+            <div class="os-body" id="osBody">
+                <!-- Chat / Terminal lines go here -->
+            </div>
+            <div class="os-footer">
+                <div class="os-actions fade-in-up" id="osActions" style="opacity:0; pointer-events:none;">
+                    <button class="os-btn mono" data-cmd="cv">./ejecutar_cv.sh</button>
+                    <button class="os-btn mono" data-cmd="skills">cat skills.txt</button>
+                    <button class="os-btn mono" data-cmd="monitor">sudo infra_monitor</button>
+                    <button class="os-btn mono" data-cmd="incident"
+                        style="color:#ff5f57; border-color: rgba(255,95,87,0.3); background: rgba(255,95,87,0.1);">sudo
+                        resolve_P1</button>
+                    <button class="os-btn mono" data-cmd="matrix" style="color:var(--mint)">sudo matrix_mode</button>
+                </div>
+            </div>
+        </div>
+        <canvas class="matrix-canvas" id="matrixCanvas"></canvas>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
