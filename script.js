@@ -940,3 +940,32 @@ function initNOC() {
 }
 
 initNOC();
+
+// ══════════════════════════════════════════════════
+//  RECRUITER FAB INTERACTION
+// ══════════════════════════════════════════════════
+(function () {
+  const fab = document.getElementById('recruiterFab');
+  const fabMain = document.getElementById('fabMain');
+
+  if (fab && fabMain) {
+    fabMain.addEventListener('click', (e) => {
+      e.stopPropagation();
+      fab.classList.toggle('active');
+    });
+
+    // Cerrar al hacer clic fuera
+    document.addEventListener('click', (e) => {
+      if (fab.classList.contains('active') && !fab.contains(e.target)) {
+        fab.classList.remove('active');
+      }
+    });
+
+    // Cerrar al hacer scroll rápido (opcional, para menos intrusión)
+    window.addEventListener('scroll', () => {
+      if (fab.classList.contains('active')) {
+        fab.classList.remove('active');
+      }
+    }, { passive: true });
+  }
+})();

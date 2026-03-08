@@ -2963,3 +2963,132 @@ ul {
     gap: .5rem;
   }
 }
+
+/* ─── RECRUITER FAB ─── */
+.recruiter-fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 998;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.fab-main {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--bg2);
+  border: 1px solid var(--cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--cyan);
+  box-shadow: 0 4px 20px rgba(34, 211, 238, 0.25);
+  transition: all var(--tr);
+  position: relative;
+  z-index: 2;
+}
+
+.fab-main .fab-close {
+  display: none;
+  font-size: 1.8rem;
+}
+
+.recruiter-fab.active .fab-icon { display: none; }
+.recruiter-fab.active .fab-close { display: block; }
+.recruiter-fab.active .fab-main {
+  transform: rotate(90deg);
+  background: var(--bg3);
+  box-shadow: 0 0 30px var(--cg);
+}
+
+.fab-menu {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  align-items: flex-end;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px) scale(0.9);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.recruiter-fab.active .fab-menu {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0) scale(1);
+}
+
+.fab-item {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  background: rgba(10, 10, 24, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(34, 211, 238, 0.2);
+  padding: .6rem 1.2rem;
+  border-radius: 100px;
+  color: var(--t);
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all var(--tr);
+}
+
+.fab-item:hover {
+  border-color: var(--cyan);
+  background: var(--bg3);
+  transform: translateX(-5px);
+}
+
+.fi-label {
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--cyan);
+}
+
+.fi-icon { font-size: 1.1rem; }
+
+/* ─── TECH ICONS ─── */
+.sk-icon {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  margin-right: 6px;
+  opacity: 0.85;
+  transition: opacity .3s;
+}
+
+.sk-pill:hover .sk-icon { opacity: 1; }
+
+.sk-pill img.sk-icon {
+  filter: brightness(0) invert(1);
+}
+
+/* ─── ACCESSIBILITY ─── */
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 4px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 600px) {
+  .recruiter-fab {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+}
