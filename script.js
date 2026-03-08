@@ -463,36 +463,29 @@ if (form) {
     const btnText = btn.querySelector('.btn-text');
     const originalText = btnText.textContent;
 
-    // UI Feedback
     btn.disabled = true;
     btnText.textContent = 'Enviando... 📡';
 
-    const formData = new FormData(form);
-
     try {
       const response = await fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
       });
 
       if (response.ok) {
         form.reset();
         success.textContent = '¡Recibido! Te respondo pronto 😊';
+        success.style.color = 'var(--mint)';
         success.classList.add('show');
         setTimeout(() => success.classList.remove('show'), 5000);
       } else {
-        const data = await response.json();
-        throw new Error(data.error || 'Error en el servidor');
+        throw new Error('Formspree error');
       }
     } catch (err) {
-      console.error('Form Submission Error:', err);
-      success.textContent = 'Hubo un error. Inténtalo de nuevo.';
-      success.style.color = '#ff5f57'; // Error color
-      success.classList.add('show');
-      setTimeout(() => success.classList.remove('show'), 5000);
+      console.error('Submission Error:', err);
+      // Fallback: If AJax fails, try standard submission (reliability first)
+      form.submit();
     } finally {
       btn.disabled = false;
       btnText.textContent = originalText;
