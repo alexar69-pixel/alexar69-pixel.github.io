@@ -1,0 +1,122 @@
+{
+    "basics": {
+        "name": "Alexander Armentia",
+        "label": "Reliability & Resilience Manager",
+        "image": "https://alexanderarmentia.com/og-image.png",
+        "email": "alexar69@hotmail.com",
+        "url": "https://alexanderarmentia.com",
+        "summary": "Experto en Reliability & Resilience Management con más de 25 años en el sector tecnológico. Especialista en gestión de incidentes críticos (Major Incident Management), resiliencia de infraestructuras críticas y continuidad de negocio en el sector bancario (BBVA). Ex-organizador de Campus Party y locutor de radio digital.",
+        "location": {
+            "city": "Madrid",
+            "countryCode": "ES",
+            "region": "Comunidad de Madrid"
+        },
+        "profiles": [
+            {
+                "network": "LinkedIn",
+                "username": "alexander-armentia-bravo-30205515",
+                "url": "https://www.linkedin.com/in/alexander-armentia-bravo-30205515/"
+            },
+            {
+                "network": "GitHub",
+                "username": "alexar69-pixel",
+                "url": "https://github.com/alexar69-pixel"
+            }
+        ]
+    },
+    "work": [
+        {
+            "name": "BBVA",
+            "position": "Reliability & Resilience Manager",
+            "url": "https://www.bbva.es",
+            "startDate": "2024-12-01",
+            "summary": "Garantizando la resiliencia y fiabilidad de sistemas críticos en el entorno bancario europeo."
+        },
+        {
+            "name": "BBVA Next Technologies",
+            "position": "Major Incident Manager",
+            "startDate": "2023-11-01",
+            "endDate": "2024-11-30",
+            "summary": "Liderazgo en la resolución de incidentes tecnológicos de alto impacto (P1) y coordinación de War Rooms multidispositivos."
+        },
+        {
+            "name": "Hewlett Packard CDS",
+            "position": "Incident & Reliability Manager",
+            "summary": "Gestión de infraestructura crítica, sistemas SAN/NAS y redes en entornos de alta disponibilidad."
+        },
+        {
+            "name": "Campus Party",
+            "position": "Organizador",
+            "startDate": "2001-01-01",
+            "endDate": "2009-12-31",
+            "summary": "Organización de 8 ediciones del evento tecnológico más grande de España."
+        }
+    ],
+    "education": [
+        {
+            "institution": "La Salle",
+            "area": "Informática de Gestión",
+            "studyType": "FP Superior",
+            "startDate": "1998-01-01",
+            "endDate": "2000-12-31"
+        }
+    ],
+    "skills": [
+        {
+            "name": "Sistemas",
+            "level": "Master",
+            "keywords": [
+                "Windows Server",
+                "Linux",
+                "Unix",
+                "VMware",
+                "Active Directory"
+            ]
+        },
+        {
+            "name": "Reliability",
+            "level": "Expert",
+            "keywords": [
+                "Incident Management",
+                "SRE",
+                "ITIL",
+                "Resilience",
+                "Disaster Recovery"
+            ]
+        },
+        {
+            "name": "Infraestructura",
+            "level": "Expert",
+            "keywords": [
+                "TCP/IP",
+                "SAN",
+                "Storage",
+                "BGP",
+                "PowerShell",
+                "Bash"
+            ]
+        }
+    ],
+    "languages": [
+        {
+            "language": "Español",
+            "fluency": "Nativo"
+        }
+    ],
+    "interests": [
+        {
+            "name": "AI Agents",
+            "keywords": [
+                "Automación",
+                "LLMs"
+            ]
+        },
+        {
+            "name": "Radio Digital",
+            "keywords": [
+                "Locución",
+                "Podcasting"
+            ]
+        }
+    ]
+}

@@ -1,6 +1,16 @@
 'use strict';
 
 // ══════════════════════════════════════════════════
+//  SERVICE WORKER REGISTRATION (PWA)
+// ══════════════════════════════════════════════════
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .catch(err => console.log('SW Registration failed: ', err));
+  });
+}
+
+// ══════════════════════════════════════════════════
 //  CURSOR — ring + dot + trail canvas
 // ══════════════════════════════════════════════════
 const ring = document.getElementById('cursorRing');
@@ -409,6 +419,37 @@ if (vibeTime) {
     vibeTime.textContent = `${mins}:${String(secs).padStart(2, '0')}`;
   }, 1000);
 }
+
+// ══════════════════════════════════════════════════
+//  NOC CLOCK & SYSTEM SYNC
+// ══════════════════════════════════════════════════
+function updateNocClock() {
+  const clockEl = document.getElementById('nocClock');
+  if (!clockEl) return;
+  const now = new Date();
+  clockEl.textContent = now.toLocaleTimeString('es-ES', {
+    hour12: false,
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+  });
+}
+setInterval(updateNocClock, 1000);
+updateNocClock();
+
+// Simulation Jitter for NOC Stats
+function applyNocJitter() {
+  const rttEls = document.querySelectorAll('.noc-svc-rtt');
+  rttEls.forEach(el => {
+    const base = parseInt(el.textContent);
+    if (!isNaN(base)) {
+      const jitter = (Math.random() * 4 - 2); // -2ms to +2ms
+      const newVal = Math.max(1, Math.round(base + jitter));
+      el.textContent = newVal + 'ms';
+    }
+  });
+}
+setInterval(applyNocJitter, 3500);
 
 // ══════════════════════════════════════════════════
 //  CONTACT FORM
