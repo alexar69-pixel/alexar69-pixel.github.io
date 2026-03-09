@@ -473,7 +473,7 @@ if (form) {
     btnText.textContent = 'Enviando... 📡';
 
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 12000); // 12s for formsubmit
+    const timeoutId = setTimeout(() => controller.abort(), 12000);
 
     try {
       const formData = new FormData(form);
@@ -491,7 +491,7 @@ if (form) {
       if (response.ok && data.success === 'true') {
         form.reset();
         if (success) {
-          success.textContent = '¡Recibido! Te respondo pronto 😊';
+          success.textContent = '¡Mensaje enviado! Te respondo pronto 😊';
           success.classList.add('show');
           setTimeout(() => success.classList.remove('show'), 7000);
         }
@@ -500,11 +500,10 @@ if (form) {
       }
     } catch (err) {
       clearTimeout(timeoutId);
-      console.warn('Form AJAX failed:', err.message);
-      // Show inline error with email fallback
+      console.warn('Form submission failed:', err.message);
       if (formError) {
         formError.classList.add('show');
-        setTimeout(() => formError.classList.remove('show'), 10000);
+        setTimeout(() => formError.classList.remove('show'), 12000);
       }
     } finally {
       btn.disabled = false;
