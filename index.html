@@ -962,9 +962,15 @@
 
             <div class="contacto-layout">
                 <div class="msg-wrap glass-card reveal-up">
-                    <form class="msg-form" action="https://formspree.io/f/alexar69@hotmail.com" method="POST"
+                    <form class="msg-form" action="https://formsubmit.co/alexar69@hotmail.com" method="POST"
                         id="contact-form-v3">
+                        <!-- Formsubmit config -->
                         <input type="hidden" name="_subject" value="Nuevo contacto desde AlexanderArmentia.com">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_next" value="https://alexanderarmentia.com/#contacto">
+                        <!-- Honeypot anti-spam -->
+                        <input type="text" name="_honey" style="display:none">
                         <div class="form-header mono">&gt; nuevo_mensaje.init()</div>
                         <div class="fg">
                             <label for="c-name">¿Cómo te llamas?</label>
@@ -980,15 +986,12 @@
                             <textarea name="message" id="c-msg" rows="5"
                                 placeholder="Una idea, un saludo, lo que sea..." required></textarea>
                         </div>
-                        <!-- Honey-pot para spam -->
-                        <div style="display:none;">
-                            <label>Honeypot <input name="_gotcha"></label>
-                        </div>
                         <button type="submit" class="btn btn-primary btn-full mag-btn" id="btn-enviar">
                             <span class="btn-text">Enviar mensaje &#x1F680;</span>
                         </button>
-                        <input type="hidden" name="_next" value="https://alexanderarmentia.com/">
                         <p class="form-success" id="form-success">¡Recibido! Te respondo pronto &#x1F60A;</p>
+                        <p class="form-error" id="form-error">Error al enviar. Escríbeme directamente a <a
+                                href="mailto:alexar69@hotmail.com">alexar69@hotmail.com</a> &#x1F4E7;</p>
                     </form>
                 </div>
 

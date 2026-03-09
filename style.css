@@ -1804,6 +1804,29 @@ ul {
   display: block
 }
 
+.form-error {
+  display: none;
+  text-align: center;
+  font-size: .875rem;
+  font-weight: 600;
+  color: #ff6b6b;
+  padding: .75rem;
+  background: rgba(255, 107, 107, .08);
+  border: 1px solid rgba(255, 107, 107, .2);
+  border-radius: var(--r);
+  animation: fadeIn .4s ease;
+  line-height: 1.5;
+}
+
+.form-error.show {
+  display: block
+}
+
+.form-error a {
+  color: var(--a);
+  text-decoration: underline;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0

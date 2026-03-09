@@ -452,10 +452,12 @@ function applyNocJitter() {
 setInterval(applyNocJitter, 3500);
 
 // ══════════════════════════════════════════════════
-//  CONTACT FORM
+//  CONTACT FORM — Formsubmit.co
 // ══════════════════════════════════════════════════
 const form = document.getElementById('contact-form-v3');
 const success = document.getElementById('form-success');
+const formError = document.getElementById('form-error');
+
 if (form) {
   form.addEventListener('submit', async e => {
     e.preventDefault();
@@ -463,37 +465,47 @@ if (form) {
     const btnText = btn.querySelector('.btn-text');
     const originalText = btnText.textContent;
 
+    // Hide any previous messages
+    if (success) success.classList.remove('show');
+    if (formError) formError.classList.remove('show');
+
     btn.disabled = true;
     btnText.textContent = 'Enviando... 📡';
 
-    // NUCLEAR RESILIENCE: AbortController for 4s timeout
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 4000);
+    const timeoutId = setTimeout(() => controller.abort(), 12000); // 12s for formsubmit
 
     try {
-      const response = await fetch(form.action, {
+      const formData = new FormData(form);
+
+      const response = await fetch('https://formsubmit.co/ajax/alexar69@hotmail.com', {
         method: 'POST',
-        body: new FormData(form),
+        body: formData,
         headers: { 'Accept': 'application/json' },
         signal: controller.signal
       });
 
       clearTimeout(timeoutId);
+      const data = await response.json();
 
-      if (response.ok) {
+      if (response.ok && data.success === 'true') {
         form.reset();
-        success.textContent = '¡Recibido! Te respondo pronto 😊';
-        success.style.color = 'var(--mint)';
-        success.classList.add('show');
-        setTimeout(() => success.classList.remove('show'), 5000);
+        if (success) {
+          success.textContent = '¡Recibido! Te respondo pronto 😊';
+          success.classList.add('show');
+          setTimeout(() => success.classList.remove('show'), 7000);
+        }
       } else {
-        throw new Error('Server reject');
+        throw new Error(data.message || 'Server error');
       }
     } catch (err) {
-      console.warn('AJAX failed, falling back to standard submit:', err);
       clearTimeout(timeoutId);
-      // SILENT FALLBACK: No error message, just work.
-      form.submit();
+      console.warn('Form AJAX failed:', err.message);
+      // Show inline error with email fallback
+      if (formError) {
+        formError.classList.add('show');
+        setTimeout(() => formError.classList.remove('show'), 10000);
+      }
     } finally {
       btn.disabled = false;
       btnText.textContent = originalText;
