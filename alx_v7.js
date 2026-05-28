@@ -590,9 +590,9 @@ document.querySelectorAll('.os-btn').forEach(btn => {
       const resp = [
         { t: 'Extrayendo datos de carrera...', c: 'sys-msg', d: 400 },
         { t: '■ 1998-2000: La Salle (Informática de Gestión)', c: 'ai-msg', d: 200 },
-        { t: '■ 2009-2023: Emprendimiento Tecnológico (EventDay, NochesDBoda)', c: 'ai-msg', d: 200 },
-        { t: '■ 2023-2024: Major Incident Manager en BBVA Next Technologies', c: 'ai-msg', d: 200 },
-        { t: '■ 2024-Presente: Reliability & Resilience Manager en BBVA', c: 'ai-msg', d: 200 },
+        { t: '■ 2009-2019: Emprendimiento Tecnológico (EventDay, NochesDBoda)', c: 'ai-msg', d: 200 },
+        { t: '■ 2019-2024: Major Incident Manager en BBVA Tech', c: 'ai-msg', d: 200 },
+        { t: '■ 2024-Presente: Reliability Manager en BBVA', c: 'ai-msg', d: 200 },
         { t: '■ Histórico: Miembro co-fundador de Cibervoluntarios, Campus Party y Radio', c: 'ai-msg', d: 300 },
         { t: 'Fin de la transmisión [EOF]', c: 'sys-msg', d: 100 }
       ];
