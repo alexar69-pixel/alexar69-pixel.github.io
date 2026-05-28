@@ -94,10 +94,39 @@ foreach ($post in $posts) {
     } else {
         $html = $html.Replace($targetArticle, $replacementArticle)
     }
+
+    # 5. Reemplazar el panel de compartir dinámico por uno 100% estático
+    $postUrlEncoded = [Uri]::EscapeDataString("https://alexanderarmentia.com/blog/posts/$slug.html")
+    $postTitleString = "$($post.title) - por Alexander Armentia"
+    $postTitleEncoded = [Uri]::EscapeDataString($postTitleString)
     
+    $staticSharePanel = @"
+                <div class="share-panel">
+                    <span class="mono share-hdr">// compartir_articulo.sh</span>
+                    <div class="share-btns">
+                        <a id="share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=$postUrlEncoded" class="btn btn-ghost mag-btn" target="_blank" rel="noopener">
+                            <span>LinkedIn</span>
+                        </a>
+                        <a id="share-twitter" href="https://twitter.com/intent/tweet?url=$postUrlEncoded&text=$postTitleEncoded" class="btn btn-ghost mag-btn" target="_blank" rel="noopener">
+                            <span>Compartir en X</span>
+                        </a>
+                        <button id="share-copy" class="btn btn-ghost mag-btn" onclick="navigator.clipboard.writeText(window.location.href); document.getElementById('copy-btn-text').textContent='Copiar Enlace'; alert('Enlace copiado al portapapeles');">
+                            <span id="copy-btn-text">Copiar Enlace</span>
+                        </button>
+                    </div>
+                </div>
+"@
+
+    $targetSharePanelRegex = '(?s)<div class="share-panel">.*?</div>\s*</div>\s*</div>\s*</section>'
+    $replacementSharePanel = "$staticSharePanel`n            </div>`n        </div>`n    </section>"
+    $html = [regex]::Replace($html, $targetSharePanelRegex, $replacementSharePanel)
+
+    # 6. Eliminar la inclusión de post.js
+    $html = $html.Replace('<script src="/blog/post.js" defer></script>', '<!-- Script dinámico removido para renderizado estático nativo -->')
+
     # Escribir el archivo final en UTF-8 sin BOM
     [System.IO.File]::WriteAllText($destFile, $html, $utf8)
-    Write-Output "Generado: $destFile"
+    Write-Output "Generado estático: $destFile"
 }
 
-Write-Output "¡Compilación de blog completada con éxito!"
+Write-Output "Compilacion de blog completada con exito"
