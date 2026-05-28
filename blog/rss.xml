@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>Blog de Alexander Armentia</title>
+    <link>https://alexanderarmentia.com/blog/</link>
+    <description>Resiliencia, tecnología y liderazgo técnico</description>
+    <language>es-es</language>
+    <lastBuildDate>Thu, 28 May 2026 08:30:00 +0200</lastBuildDate>
+    <item>
+      <title>Bienvenido al blog</title>
+      <link>https://alexanderarmentia.com/blog/post.html?slug=bienvenida-al-blog</link>
+      <guid>https://alexanderarmentia.com/blog/post.html?slug=bienvenida-al-blog</guid>
+      <pubDate>Thu, 28 May 2026 08:30:00 +0200</pubDate>
+      <description>Arranco este espacio para compartir ideas sobre resiliencia, tecnología y aprendizajes reales.</description>
+    </item>
+  </channel>
+</rss>
