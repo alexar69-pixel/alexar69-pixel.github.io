@@ -18,7 +18,7 @@ async function loadPosts() {
     .map((post) => {
       const tags = (post.tags || []).map((t) => `<span>${t}</span>`).join('');
       return `
-        <a class="gusto-card glass-card reveal-up tilt-card mag-btn" href="/blog/post.html?slug=${encodeURIComponent(post.slug)}">
+        <a class="gusto-card glass-card reveal-up tilt-card mag-btn" href="/blog/posts/${encodeURIComponent(post.slug)}.html">
           <div class="gc-glow"></div>
           <div class="gc-emoji">📝</div>
           <div class="gc-corner">// post</div>

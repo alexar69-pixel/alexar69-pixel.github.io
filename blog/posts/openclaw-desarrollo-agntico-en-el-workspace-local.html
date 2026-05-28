@@ -1,4 +1,92 @@
-<p><img src="/blog/assets/openclaw-infografia.jpg" alt="OpenClaw - Desarrollo Agéntico en el Workspace Local" loading="lazy" /></p>
+﻿<!DOCTYPE html>
+<html lang="es" prefix="og: https://ogp.me/ns#">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OpenClaw: Desarrollo agéntico en el workspace local | Blog | Alexander Armentia</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Caveat:wght@400;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+
+    <!-- Style sheets -->
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/blog/blog.css" />
+    <meta name="theme-color" content="#0d0d14" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="description" content="Cómo los agentes autónomos de IA integrados en el workspace redefinen la velocidad de desarrollo y la fiabilidad del código." />
+    <link rel="canonical" href="https://alexanderarmentia.com/blog/posts/openclaw-desarrollo-agntico-en-el-workspace-local.html" />
+    <meta property="og:title" content="OpenClaw: Desarrollo agéntico en el workspace local" />
+    <meta property="og:description" content="Cómo los agentes autónomos de IA integrados en el workspace redefinen la velocidad de desarrollo y la fiabilidad del código." />
+    <meta property="og:image" content="https://alexanderarmentia.com/blog/assets/openclaw-infografia.jpg" />
+    <meta property="og:url" content="https://alexanderarmentia.com/blog/posts/openclaw-desarrollo-agntico-en-el-workspace-local.html" />
+    <meta property="og:type" content="article" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="OpenClaw: Desarrollo agéntico en el workspace local" />
+    <meta name="twitter:description" content="Cómo los agentes autónomos de IA integrados en el workspace redefinen la velocidad de desarrollo y la fiabilidad del código." />
+    <meta name="twitter:image" content="https://alexanderarmentia.com/blog/assets/openclaw-infografia.jpg" />
+</head>
+
+<body>
+    <!-- OVERLAYS -->
+    <div class="noise-overlay"></div>
+    <div class="grid-overlay"></div>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- CURSOR -->
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+    <canvas class="cursor-trail" id="trailCanvas"></canvas>
+
+    <!-- BG CANVAS -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- NAV -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo" id="nav-logo">
+                <span class="logo-bracket">[</span>
+                <span class="logo-text" data-scramble="ALEX">ALEX</span>
+                <span class="logo-bracket">]</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="/#yo" class="nav-link"><span class="nl-num">01.</span> Yo</a></li>
+                <li><a href="/#skills" class="nav-link"><span class="nl-num">02.</span> Skills</a></li>
+                <li><a href="/#vida" class="nav-link"><span class="nl-num">03.</span> Historia</a></li>
+                <li><a href="/#gustos" class="nav-link"><span class="nl-num">04.</span> Intereses</a></li>
+                <li><a href="/blog/" class="nav-link"><span class="nl-num">05.</span> Blog</a></li>
+                <li><a href="/#contacto" class="nav-link"><span class="nl-num">06.</span> Contacto</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ========== POST SECTION ========== -->
+    <section class="section post-section" id="post-section">
+        <div class="section-inner">
+            <a class="home mono reveal-up" href="/blog/" style="color: var(--a); font-size: 0.8rem; display: inline-block; margin-bottom: 2rem;">&larr; [ volver_al_blog.sh ]</a>
+
+            <div class="glass-card post-card reveal-up">
+                <!-- Terminal Header -->
+                <div class="terminal-bar" style="margin-bottom: 2rem;">
+                    <span class="term-dot td-red"></span>
+                    <span class="term-dot td-yellow"></span>
+                    <span class="term-dot td-green"></span>
+                    <code class="term-text">
+                        <span class="term-prefix">~</span>/blog/posts/<span class='term-cmd' id='terminal-post-slug'>openclaw-desarrollo-agntico-en-el-workspace-local.md</span>
+                    </code>
+                </div>
+
+                <!-- Injected Article Content -->
+                <article id="post" class="post"><span class="mono" style="color: var(--a); font-size: 0.8rem; display: block; margin-bottom: 0.5rem;">// Publicado el 28 de mayo de 2026</span>
+                    <h1 class="post-title" style="margin-top: 0.25rem; margin-bottom: 1.5rem; color: var(--t); font-weight: 800; font-size: clamp(1.8rem, 3.5vw, 2.8rem); line-height: 1.15;">OpenClaw: Desarrollo agéntico en el workspace local</h1>
+                    <div class="content"><p><img src="/blog/assets/openclaw-infografia.jpg" alt="OpenClaw - Desarrollo Agéntico en el Workspace Local" loading="lazy" /></p>
 <p>Cuando hablo de OpenClaw, no lo planteo como “otro chatbot”. Lo estoy usando como una capa operativa para avanzar trabajo real dentro de mi workspace local.</p>
 <p>En mi caso, me está ayudando en cuatro frentes concretos:</p>
 <ul>
@@ -10,3 +98,38 @@
 <p>Un ejemplo práctico: en este blog, para publicar un artículo hay que ajustar el contenido, actualizar metadatos, revisar feed y desplegar. Con OpenClaw, ese proceso deja de ser una cadena manual larga y pasa a ser una ejecución asistida y verificable.</p>
 <p>Mi opinión personal es clara: el valor no está en que la IA “hable bonito”, sino en que te quite fricción real sin quitarte control.</p>
 <p>Ahí es donde creo que OpenClaw tiene más potencial de impacto en productividad diaria.</p>
+</div></article>
+
+                <!-- Sharing Panel -->
+                <div class="share-panel">
+                    <span class="mono share-hdr">// compartir_articulo.sh</span>
+                    <div class="share-btns">
+                        <a id="share-linkedin" class="btn btn-ghost mag-btn" target="_blank" rel="noopener">
+                            <span>LinkedIn</span>
+                        </a>
+                        <a id="share-twitter" class="btn btn-ghost mag-btn" target="_blank" rel="noopener">
+                            <span>Compartir en X</span>
+                        </a>
+                        <button id="share-copy" class="btn btn-ghost mag-btn">
+                            <span id="copy-btn-text">Copiar Enlace</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-inner">
+            <span class="mono" style="font-size: 0.8rem; color: var(--td);">// alexander.armentia &middot; alexar69 &middot; madrid &middot; 2026 &middot; blog &nbsp;⚡</span>
+            <a href="/blog/" class="back-top mono" style="font-size: 0.8rem; color: var(--a);">&larr; [blog]</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/blog/post.js" defer></script>
+    <script src="/alx_v7.js" defer></script>
+</body>
+
+</html>

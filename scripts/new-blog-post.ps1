@@ -46,8 +46,8 @@ foreach ($p in $updated) {
   $pDate = [DateTime]::Parse($p.date).ToString("r")
   $xmlItems += "    <item>`n"
   $xmlItems += "      <title>$($p.title)</title>`n"
-  $xmlItems += "      <link>https://alexanderarmentia.com/blog/post.html?slug=$($p.slug)</link>`n"
-  $xmlItems += "      <guid>https://alexanderarmentia.com/blog/post.html?slug=$($p.slug)</guid>`n"
+  $xmlItems += "      <link>https://alexanderarmentia.com/blog/posts/$($p.slug).html</link>`n"
+  $xmlItems += "      <guid>https://alexanderarmentia.com/blog/posts/$($p.slug).html</guid>`n"
   $xmlItems += "      <pubDate>$pDate</pubDate>`n"
   $xmlItems += "      <description>$($p.excerpt)</description>`n"
   $xmlItems += "    </item>`n"

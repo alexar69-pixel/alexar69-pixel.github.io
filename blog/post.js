@@ -8,6 +8,11 @@ async function renderPost() {
   const slug = getSlug();
 
   if (!slug) {
+    const titleEl = document.querySelector('.post-title');
+    if (titleEl) {
+      setupSharePanel(titleEl.textContent);
+      return;
+    }
     postEl.innerHTML = '<h1 style="color: var(--t);">Entrada no encontrada</h1>';
     return;
   }
