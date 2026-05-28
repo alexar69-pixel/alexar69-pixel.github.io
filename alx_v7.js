@@ -590,10 +590,10 @@ document.querySelectorAll('.os-btn').forEach(btn => {
       const resp = [
         { t: 'Extrayendo datos de carrera...', c: 'sys-msg', d: 400 },
         { t: '■ 1998-2000: La Salle (Informática de Gestión)', c: 'ai-msg', d: 200 },
-        { t: '■ 2001-2009: Organización Campus Party (8 ediciones)', c: 'ai-msg', d: 200 },
-        { t: '■ 2003-2007: Locutor Radio Digital (Emisión Digital, RadioGu)', c: 'ai-msg', d: 200 },
-        { t: '■ Experiencia en Emprendimiento: EventDay (Eventos) y NochesDBoda (Bodas)', c: 'ai-msg', d: 200 },
-        { t: '■ Actualidad: Técnico de Sistemas en Hewlett Packard CDS (Madrid)', c: 'ai-msg', d: 400 },
+        { t: '■ 2009-2023: Emprendimiento Tecnológico (EventDay, NochesDBoda)', c: 'ai-msg', d: 200 },
+        { t: '■ 2023-2024: Major Incident Manager en BBVA Next Technologies', c: 'ai-msg', d: 200 },
+        { t: '■ 2024-Presente: Reliability & Resilience Manager en BBVA', c: 'ai-msg', d: 200 },
+        { t: '■ Histórico: Miembro co-fundador de Cibervoluntarios, Campus Party y Radio', c: 'ai-msg', d: 300 },
         { t: 'Fin de la transmisión [EOF]', c: 'sys-msg', d: 100 }
       ];
       typeLines(resp, 0, () => {
@@ -604,11 +604,11 @@ document.querySelectorAll('.os-btn').forEach(btn => {
     else if (cmd === 'skills') {
       appendLine('> cat skills.txt', '');
       const resp = [
-        { t: 'Leyendo archivos de habilidades...', c: 'sys-msg', d: 500 },
-        { t: '=> SISTEMAS: Windows Server, Linux, Redes, Hardware, Virtualización', c: 'ai-msg', d: 200 },
-        { t: '=> COMUNICACIÓN: Locución, Presentaciones, Oratoria (NochesDBoda)', c: 'ai-msg', d: 200 },
-        { t: '=> GESTIÓN: Organización de grandes eventos (Campus Party, EventDay)', c: 'ai-msg', d: 200 },
-        { t: '=> EXTRA: Energía inagotable por cafeína/taurina (Red Bull)', c: 'ai-msg', d: 200 }
+        { t: 'Leyendo base de datos de habilidades...', c: 'sys-msg', d: 500 },
+        { t: '=> RELIABILITY & SRE: Incident Management (P1), Observabilidad, Resiliencia de Sistemas', c: 'ai-msg', d: 200 },
+        { t: '=> INFRAESTRUCTURA: Linux, Windows Server, Virtualización, Redes Complejas', c: 'ai-msg', d: 200 },
+        { t: '=> EMPRENDIMIENTO: Gestión de Proyectos, Innovación Digital, Oratoria', c: 'ai-msg', d: 200 },
+        { t: '=> VALORES: Liderazgo en situaciones críticas, resiliencia bajo presión', c: 'ai-msg', d: 200 }
       ];
       typeLines(resp, 0, () => {
         osActions.style.opacity = '1';
