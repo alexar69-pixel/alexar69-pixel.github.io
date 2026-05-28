@@ -3,9 +3,16 @@
   <channel>
     <title>Blog de Alexander Armentia</title>
     <link>https://alexanderarmentia.com/blog/</link>
-    <description>Resiliencia, tecnología y liderazgo técnico</description>
+    <description>Resiliencia, tecnologÃ­a y liderazgo tÃ©cnico</description>
     <language>es-es</language>
-    <lastBuildDate>Thu, 28 May 2026 07:48:15 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2026 07:51:58 GMT</lastBuildDate>
+    <item>
+      <title>OpenClaw: Desarrollo agéntico en el workspace local</title>
+      <link>https://alexanderarmentia.com/blog/post.html?slug=openclaw-desarrollo-agntico-en-el-workspace-local</link>
+      <guid>https://alexanderarmentia.com/blog/post.html?slug=openclaw-desarrollo-agntico-en-el-workspace-local</guid>
+      <pubDate>Thu, 28 May 2026 00:00:00 GMT</pubDate>
+      <description>Cómo los agentes autónomos de IA integrados en el workspace redefinen la velocidad de desarrollo y la fiabilidad del código.</description>
+    </item>
     <item>
       <title>ChatGPT en mayo de 2026: mÃ¡s contexto y utilidad real</title>
       <link>https://alexanderarmentia.com/blog/post.html?slug=chatgpt-mayo-2026</link>
