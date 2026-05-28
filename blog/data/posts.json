@@ -1,96 +1,96 @@
-﻿[
-    {
-        "slug":  "openclaw-desarrollo-agntico-en-el-workspace-local",
-        "title":  "OpenClaw: Desarrollo agéntico en el workspace local",
-        "excerpt":  "Cómo los agentes autónomos de IA integrados en el workspace redefinen la velocidad de desarrollo y la fiabilidad del código.",
-        "date":  "2026-05-28",
-        "tags":  [
-                     "openclaw",
-                     "ia",
-                     "desarrollo"
-                 ]
-    },
-    {
-        "slug":  "chatgpt-mayo-2026",
-        "title":  "ChatGPT en mayo de 2026: mÃ¡s contexto y utilidad real",
-        "excerpt":  "Mi lectura sobre las Ãºltimas mejoras de ChatGPT y su impacto en trabajo real.",
-        "date":  "2026-05-28",
-        "tags":  [
-                     "chatgpt",
-                     "openai",
-                     "ia",
-                     "productividad"
-                 ]
-    },
-    {
-        "slug":  "gemini-mayo-2026",
-        "title":  "Gemini en mayo de 2026: la etapa agentic acelera",
-        "excerpt":  "AnÃ¡lisis de la evoluciÃ³n de Gemini hacia un asistente mÃ¡s proactivo.",
-        "date":  "2026-05-27",
-        "tags":  [
-                     "gemini",
-                     "google",
-                     "ia",
-                     "agentes"
-                 ]
-    },
-    {
-        "slug":  "claude-mayo-2026",
-        "title":  "Claude en 2026: mÃ¡s ejecuciÃ³n y expansiÃ³n de producto",
-        "excerpt":  "OpiniÃ³n sobre el rumbo de Claude y su foco en calidad operativa.",
-        "date":  "2026-05-26",
-        "tags":  [
-                     "claude",
-                     "anthropic",
-                     "ia",
-                     "enterprise"
-                 ]
-    },
-    {
-        "slug":  "copilot-mayo-2026",
-        "title":  "Copilot en 2026: automatizaciÃ³n real con gobernanza",
-        "excerpt":  "Por quÃ© Copilot apunta a procesos reales mÃ¡s que al chat aislado.",
-        "date":  "2026-05-25",
-        "tags":  [
-                     "copilot",
-                     "microsoft",
-                     "ia",
-                     "automatizacion"
-                 ]
-    },
-    {
-        "slug":  "meta-ai-mayo-2026",
-        "title":  "Meta AI en 2026: distribuciÃ³n masiva como ventaja",
-        "excerpt":  "Lectura estratÃ©gica sobre Muse Spark y el despliegue en ecosistema Meta.",
-        "date":  "2026-05-24",
-        "tags":  [
-                     "meta ai",
-                     "muse spark",
-                     "ia",
-                     "estrategia"
-                 ]
-    },
-    {
-        "slug":  "mistral-mayo-2026",
-        "title":  "Mistral 3: apertura y rendimiento en producciÃ³n",
-        "excerpt":  "ReflexiÃ³n sobre la apuesta open de Mistral y su valor empresarial.",
-        "date":  "2026-05-23",
-        "tags":  [
-                     "mistral",
-                     "open models",
-                     "ia",
-                     "innovacion"
-                 ]
-    },
-    {
-        "slug":  "bienvenida-al-blog",
-        "title":  "Bienvenido al blog",
-        "excerpt":  "Arranco este espacio para compartir ideas sobre resiliencia, tecnologÃ­a y aprendizajes reales.",
-        "date":  "2026-05-21",
-        "tags":  [
-                     "resiliencia",
-                     "tecnologia",
-                     "liderazgo"
-                 ]
-    }
+[
+  {
+    "slug": "openclaw-desarrollo-agntico-en-el-workspace-local",
+    "title": "OpenClaw: Desarrollo agéntico en el workspace local",
+    "excerpt": "Cómo los agentes autónomos de IA integrados en el workspace redefinen la velocidad de desarrollo y la fiabilidad del código.",
+    "date": "2026-05-28",
+    "tags": [
+      "openclaw",
+      "ia",
+      "desarrollo"
+    ]
+  },
+  {
+    "slug": "chatgpt-mayo-2026",
+    "title": "ChatGPT en mayo de 2026: más contexto y utilidad real",
+    "excerpt": "Mi lectura sobre las últimas mejoras de ChatGPT y su impacto en trabajo real.",
+    "date": "2026-05-28",
+    "tags": [
+      "chatgpt",
+      "openai",
+      "ia",
+      "productividad"
+    ]
+  },
+  {
+    "slug": "gemini-mayo-2026",
+    "title": "Gemini en mayo de 2026: la etapa agentic acelera",
+    "excerpt": "Análisis de la evolución de Gemini hacia un asistente más proactivo.",
+    "date": "2026-05-27",
+    "tags": [
+      "gemini",
+      "google",
+      "ia",
+      "agentes"
+    ]
+  },
+  {
+    "slug": "claude-mayo-2026",
+    "title": "Claude en 2026: más ejecución y expansión de producto",
+    "excerpt": "Opinión sobre el rumbo de Claude y su foco en calidad operativa.",
+    "date": "2026-05-26",
+    "tags": [
+      "claude",
+      "anthropic",
+      "ia",
+      "enterprise"
+    ]
+  },
+  {
+    "slug": "copilot-mayo-2026",
+    "title": "Copilot en 2026: automatización real con gobernanza",
+    "excerpt": "Por qué Copilot apunta a procesos reales más que al chat aislado.",
+    "date": "2026-05-25",
+    "tags": [
+      "copilot",
+      "microsoft",
+      "ia",
+      "automatizacion"
+    ]
+  },
+  {
+    "slug": "meta-ai-mayo-2026",
+    "title": "Meta AI en 2026: distribución masiva como ventaja",
+    "excerpt": "Lectura estratégica sobre Muse Spark y el despliegue en ecosistema Meta.",
+    "date": "2026-05-24",
+    "tags": [
+      "meta ai",
+      "muse spark",
+      "ia",
+      "estrategia"
+    ]
+  },
+  {
+    "slug": "mistral-mayo-2026",
+    "title": "Mistral 3: apertura y rendimiento en producción",
+    "excerpt": "Reflexión sobre la apuesta open de Mistral y su valor empresarial.",
+    "date": "2026-05-23",
+    "tags": [
+      "mistral",
+      "open models",
+      "ia",
+      "innovacion"
+    ]
+  },
+  {
+    "slug": "bienvenida-al-blog",
+    "title": "Bienvenido al blog",
+    "excerpt": "Arranco este espacio para compartir ideas sobre resiliencia, tecnología y aprendizajes reales.",
+    "date": "2026-05-21",
+    "tags": [
+      "resiliencia",
+      "tecnologia",
+      "liderazgo"
+    ]
+  }
 ]
