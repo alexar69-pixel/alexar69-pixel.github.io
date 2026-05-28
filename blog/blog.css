@@ -1,9 +1,195 @@
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#f7f8fc;color:#131722;line-height:1.5}
-.wrap{max-width:860px;margin:0 auto;padding:24px 16px 64px}
-.head h1{margin:.3rem 0;font-size:2rem}.head p{margin:0;color:#4f5b78}
-.home{display:inline-block;margin-bottom:12px;color:#1248d6;text-decoration:none;font-weight:600}
-.list{display:grid;gap:14px;margin-top:20px}
-.card{display:block;padding:16px 18px;border:1px solid #dce2f0;border-radius:14px;background:#fff;text-decoration:none;color:inherit;transition:transform .12s ease,box-shadow .12s ease}
-.card:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(0,0,0,.06)}
-.meta{font-size:.92rem;color:#667293}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.tag{font-size:.8rem;padding:2px 8px;border-radius:999px;background:#eaf0ff;color:#2140a8}
-.post h1{margin:.2rem 0 0;font-size:2rem}.post .content{margin-top:18px;font-size:1.03rem}
+/* =====================================================
+   ALEXANDER ARMENTIA — Blog Adaptation Stylesheet
+   Adapts core theme variables to the blog namespace.
+   ===================================================== */
+
+/* Grilla del Listado de Artículos */
+#post-list.gustos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  #post-list.gustos-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Contenedor del Post Individual */
+.post-card {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 3.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .post-card {
+    padding: 1.75rem;
+    border-radius: var(--r);
+  }
+}
+
+/* Cabecera del Navegador en Post */
+.post-section .home:hover {
+  opacity: 0.8;
+  transform: translateX(-3px);
+}
+
+/* Formateo de Contenido del Artículo */
+.post .content {
+  margin-top: 2rem;
+  color: var(--tm);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.post .content p {
+  margin-bottom: 1.5rem;
+}
+
+.post .content h2 {
+  font-size: 1.55rem;
+  color: var(--t);
+  margin-top: 2.75rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  border-left: 3px solid var(--a);
+  padding-left: 0.85rem;
+}
+
+.post .content h3 {
+  font-size: 1.25rem;
+  color: var(--t);
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+/* Citas Destacadas (Blockquotes) */
+.post .content blockquote {
+  padding: 1.15rem 1.5rem;
+  background: rgba(249, 115, 22, 0.04);
+  border-left: 3px solid var(--a);
+  border-radius: 0 var(--r) var(--r) 0;
+  font-family: var(--hand);
+  font-size: 1.35rem;
+  color: var(--a2);
+  margin: 2.25rem 0;
+  line-height: 1.5;
+}
+
+/* Listas */
+.post .content ul,
+.post .content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.post .content li {
+  margin-bottom: 0.5rem;
+  color: var(--tm);
+}
+
+.post .content ul li {
+  list-style: none;
+  position: relative;
+}
+
+.post .content ul li::before {
+  content: "■";
+  color: var(--a);
+  font-size: 0.6rem;
+  position: absolute;
+  left: -1.2rem;
+  top: 0.1rem;
+  opacity: 0.85;
+}
+
+/* Código en Línea y Bloques de Código */
+.post .content code {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--cyan);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.post .content pre {
+  background: #030308;
+  border: 1px solid rgba(249, 115, 22, 0.12);
+  border-radius: var(--r);
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin: 2.25rem 0;
+}
+
+.post .content pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--tm);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  display: block;
+}
+
+/* Panel de Compartición Social */
+.share-panel {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.share-hdr {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--td);
+  margin-bottom: 1.25rem;
+}
+
+.share-btns {
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.share-btns .btn {
+  padding: 0.55rem 1.35rem;
+  font-size: 0.82rem;
+}
+
+#share-linkedin {
+  border-color: rgba(129, 140, 248, 0.25);
+  color: var(--v);
+}
+
+#share-linkedin:hover {
+  background: rgba(129, 140, 248, 0.08);
+  border-color: var(--v);
+}
+
+#share-twitter {
+  border-color: rgba(249, 115, 22, 0.25);
+  color: var(--a);
+}
+
+#share-twitter:hover {
+  background: rgba(249, 115, 22, 0.08);
+  border-color: var(--a);
+}
+
+#share-copy {
+  border-color: rgba(34, 211, 238, 0.25);
+  color: var(--cyan);
+}
+
+#share-copy:hover {
+  background: rgba(34, 211, 238, 0.08);
+  border-color: var(--cyan);
+}

@@ -1,24 +1,94 @@
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Blog | Alexander Armentia</title>
-  <meta name="description" content="Blog de Alexander Armentia sobre resiliencia, tecnología y liderazgo.">
-  <link rel="canonical" href="https://alexanderarmentia.com/blog/">
-  <link rel="alternate" type="application/rss+xml" title="Blog de Alexander Armentia" href="https://alexanderarmentia.com/blog/rss.xml">
-  <link rel="stylesheet" href="/blog/blog.css">
-</head>
-<body>
-  <main class="wrap">
-    <header class="head">
-      <a class="home" href="/">← Volver a la web</a>
-      <h1>Blog</h1>
-      <p>Notas sobre resiliencia, tecnología y ejecución real.</p>
-    </header>
+<!DOCTYPE html>
+<html lang="es" prefix="og: https://ogp.me/ns#">
 
-    <section id="post-list" class="list" aria-live="polite"></section>
-  </main>
-  <script src="/blog/blog.js" defer></script>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog · Alexander Armentia (Alexar69) · Resilience & Technology</title>
+    <meta name="description"
+        content="Notas, aprendizajes prácticos sobre resiliencia, operaciones críticas (P1), ITSM, SRE y tecnología por Alexander Armentia." />
+    <link rel="canonical" href="https://alexanderarmentia.com/blog/" />
+    <link rel="alternate" type="application/rss+xml" title="Blog de Alexander Armentia" href="https://alexanderarmentia.com/blog/rss.xml">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Caveat:wght@400;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+
+    <!-- Style sheets -->
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/blog/blog.css" />
+    <meta name="theme-color" content="#0d0d14" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+
+<body>
+    <!-- OVERLAYS -->
+    <div class="noise-overlay"></div>
+    <div class="grid-overlay"></div>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- CURSOR -->
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+    <canvas class="cursor-trail" id="trailCanvas"></canvas>
+
+    <!-- BG CANVAS -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- NAV -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo" id="nav-logo">
+                <span class="logo-bracket">[</span>
+                <span class="logo-text" data-scramble="ALEX">ALEX</span>
+                <span class="logo-bracket">]</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="/#yo" class="nav-link"><span class="nl-num">01.</span> Yo</a></li>
+                <li><a href="/#skills" class="nav-link"><span class="nl-num">02.</span> Skills</a></li>
+                <li><a href="/#vida" class="nav-link"><span class="nl-num">03.</span> Historia</a></li>
+                <li><a href="/#gustos" class="nav-link"><span class="nl-num">04.</span> Intereses</a></li>
+                <li><a href="/blog/" class="nav-link"><span class="nl-num">05.</span> Blog</a></li>
+                <li><a href="/#contacto" class="nav-link"><span class="nl-num">06.</span> Contacto</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ========== BLOG LIST SECTION ========== -->
+    <section class="section blog-section" id="blog-list-section">
+        <div class="section-inner">
+            <div class="section-eyebrow">
+                <span class="mono">// 05</span> Bitácora Digital
+            </div>
+            <h1 class="section-title">Aprendizajes y Reflexiones</h1>
+            <p style="color: var(--tm); font-size: 1.1rem; max-width: 600px; margin-bottom: 3rem; margin-top: -2rem;" class="reveal-up">
+                Notas y reflexiones sobre resiliencia, gestión de incidentes críticos, automatizaciones y tecnología basada en experiencia práctica real.
+            </p>
+
+            <div class="gustos-grid" id="post-list" aria-live="polite">
+                <!-- Se inyectarán los posts dinámicamente -->
+                <div class="mono" style="color: var(--a);">Cargando bitácora...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-inner">
+            <span class="mono" style="font-size: 0.8rem; color: var(--td);">// alexander.armentia &middot; alexar69 &middot; madrid &middot; 2026 &middot; blog &nbsp;⚡</span>
+            <a href="/" class="back-top mono" style="font-size: 0.8rem; color: var(--a);">[inicio] &rarr;</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/blog/blog.js" defer></script>
+    <script src="/alx_v7.js" defer></script>
 </body>
+
 </html>
