@@ -1,67 +1,66 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
   <channel>
     <title>Blog de Alexander Armentia</title>
     <link>https://alexanderarmentia.com/blog/</link>
-    <description>Resiliencia, tecnología y liderazgo técnico</description>
+    <description>Resiliencia, tecnologia y liderazgo tecnico</description>
     <language>es-es</language>
-    <lastBuildDate>Thu, 28 May 2026 07:51:58 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2026 16:33:10 GMT</lastBuildDate>
     <item>
       <title>OpenClaw: Desarrollo agéntico en el workspace local</title>
-      <link>https://alexanderarmentia.com/blog/post.html?slug=openclaw-desarrollo-agntico-en-el-workspace-local</link>
-      <guid>https://alexanderarmentia.com/blog/post.html?slug=openclaw-desarrollo-agntico-en-el-workspace-local</guid>
+      <link>https://alexanderarmentia.com/blog/posts/openclaw-desarrollo-agntico-en-el-workspace-local.html</link>
+      <guid>https://alexanderarmentia.com/blog/posts/openclaw-desarrollo-agntico-en-el-workspace-local.html</guid>
       <pubDate>Thu, 28 May 2026 00:00:00 GMT</pubDate>
       <description>Cómo los agentes autónomos de IA integrados en el workspace redefinen la velocidad de desarrollo y la fiabilidad del código.</description>
     </item>
     <item>
       <title>ChatGPT en mayo de 2026: más contexto y utilidad real</title>
-      <link>https://alexanderarmentia.com/blog/post.html?slug=chatgpt-mayo-2026</link>
-      <guid>https://alexanderarmentia.com/blog/post.html?slug=chatgpt-mayo-2026</guid>
+      <link>https://alexanderarmentia.com/blog/posts/chatgpt-mayo-2026.html</link>
+      <guid>https://alexanderarmentia.com/blog/posts/chatgpt-mayo-2026.html</guid>
       <pubDate>Thu, 28 May 2026 00:00:00 GMT</pubDate>
-      <description>Mi lectura sobre las últimas mejoras de ChatGPT y su impacto en trabajo real.</description>
+      <description>Mi análisis detallado sobre las últimas mejoras de ChatGPT en mayo de 2026: mayor continuidad de contexto, el impacto del modelo GPT-5.5 Instant y su utilidad en la capa de ejecución de tareas complejas.</description>
     </item>
     <item>
       <title>Gemini en mayo de 2026: la etapa agentic acelera</title>
-      <link>https://alexanderarmentia.com/blog/post.html?slug=gemini-mayo-2026</link>
-      <guid>https://alexanderarmentia.com/blog/post.html?slug=gemini-mayo-2026</guid>
+      <link>https://alexanderarmentia.com/blog/posts/gemini-mayo-2026.html</link>
+      <guid>https://alexanderarmentia.com/blog/posts/gemini-mayo-2026.html</guid>
       <pubDate>Wed, 27 May 2026 00:00:00 GMT</pubDate>
-      <description>Análisis de la evolución de Gemini hacia un asistente más proactivo.</description>
+      <description>Revisión y pruebas reales de Gemini en flujos de trabajo diarios. Analizo su capacidad de síntesis, reducción de fricción operativa y evolución hacia un asistente proactivo y autónomo 24/7.</description>
     </item>
     <item>
       <title>Claude en 2026: más ejecución y expansión de producto</title>
-      <link>https://alexanderarmentia.com/blog/post.html?slug=claude-mayo-2026</link>
-      <guid>https://alexanderarmentia.com/blog/post.html?slug=claude-mayo-2026</guid>
+      <link>https://alexanderarmentia.com/blog/posts/claude-mayo-2026.html</link>
+      <guid>https://alexanderarmentia.com/blog/posts/claude-mayo-2026.html</guid>
       <pubDate>Tue, 26 May 2026 00:00:00 GMT</pubDate>
-      <description>Opinión sobre el rumbo de Claude y su foco en calidad operativa.</description>
+      <description>Mi visión profesional sobre Claude Opus 4.7 y Claude Design de Anthropic. Analizo su rendimiento técnico en código, creación visual de artefactos y el valor de la seguridad empresarial en 2026.</description>
     </item>
     <item>
       <title>Copilot en 2026: automatización real con gobernanza</title>
-      <link>https://alexanderarmentia.com/blog/post.html?slug=copilot-mayo-2026</link>
-      <guid>https://alexanderarmentia.com/blog/post.html?slug=copilot-mayo-2026</guid>
+      <link>https://alexanderarmentia.com/blog/posts/copilot-mayo-2026.html</link>
+      <guid>https://alexanderarmentia.com/blog/posts/copilot-mayo-2026.html</guid>
       <pubDate>Mon, 25 May 2026 00:00:00 GMT</pubDate>
-      <description>Por qué Copilot apunta a procesos reales más que al chat aislado.</description>
+      <description>Exploro la evolución de Microsoft Copilot Studio y sus agentes con capacidad de usar el ordenador ('computer-using agents'). Por qué la automatización real con gobernanza redefinirá el trabajo corporativo.</description>
     </item>
     <item>
       <title>Meta AI en 2026: distribución masiva como ventaja</title>
-      <link>https://alexanderarmentia.com/blog/post.html?slug=meta-ai-mayo-2026</link>
-      <guid>https://alexanderarmentia.com/blog/post.html?slug=meta-ai-mayo-2026</guid>
+      <link>https://alexanderarmentia.com/blog/posts/meta-ai-mayo-2026.html</link>
+      <guid>https://alexanderarmentia.com/blog/posts/meta-ai-mayo-2026.html</guid>
       <pubDate>Sun, 24 May 2026 00:00:00 GMT</pubDate>
-      <description>Lectura estratégica sobre Muse Spark y el despliegue en ecosistema Meta.</description>
+      <description>Análisis estratégico sobre Muse Spark de Meta AI. Cómo la integración en redes sociales y dispositivos como las gafas inteligentes crea una palanca de distribución masiva única frente a otros modelos.</description>
     </item>
     <item>
       <title>Mistral 3: apertura y rendimiento en producción</title>
-      <link>https://alexanderarmentia.com/blog/post.html?slug=mistral-mayo-2026</link>
-      <guid>https://alexanderarmentia.com/blog/post.html?slug=mistral-mayo-2026</guid>
+      <link>https://alexanderarmentia.com/blog/posts/mistral-mayo-2026.html</link>
+      <guid>https://alexanderarmentia.com/blog/posts/mistral-mayo-2026.html</guid>
       <pubDate>Sat, 23 May 2026 00:00:00 GMT</pubDate>
-      <description>Reflexión sobre la apuesta open de Mistral y su valor empresarial.</description>
+      <description>Reflexión sobre el lanzamiento de Mistral 3 y sus modelos abiertos (Apache 2.0). Analizo su valor para la soberanía tecnológica, control de costes y despliegue local en entornos de producción.</description>
     </item>
     <item>
       <title>Bienvenido al blog</title>
-      <link>https://alexanderarmentia.com/blog/post.html?slug=bienvenida-al-blog</link>
-      <guid>https://alexanderarmentia.com/blog/post.html?slug=bienvenida-al-blog</guid>
+      <link>https://alexanderarmentia.com/blog/posts/bienvenida-al-blog.html</link>
+      <guid>https://alexanderarmentia.com/blog/posts/bienvenida-al-blog.html</guid>
       <pubDate>Thu, 21 May 2026 00:00:00 GMT</pubDate>
-      <description>Arranco este espacio para compartir ideas sobre resiliencia, tecnología y aprendizajes reales.</description>
+      <description>Bienvenidos a mi bitácora profesional. Arranco este espacio digital para compartir aprendizajes prácticos sobre SRE, observabilidad, operaciones críticas bajo presión, resiliencia y liderazgo técnico.</description>
     </item>
   </channel>
 </rss>
-

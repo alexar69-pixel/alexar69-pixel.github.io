@@ -13,7 +13,7 @@
   {
     "slug": "chatgpt-mayo-2026",
     "title": "ChatGPT en mayo de 2026: más contexto y utilidad real",
-    "excerpt": "Mi lectura sobre las últimas mejoras de ChatGPT y su impacto en trabajo real.",
+    "excerpt": "Mi análisis detallado sobre las últimas mejoras de ChatGPT en mayo de 2026: mayor continuidad de contexto, el impacto del modelo GPT-5.5 Instant y su utilidad en la capa de ejecución de tareas complejas.",
     "date": "2026-05-28",
     "tags": [
       "chatgpt",
@@ -25,7 +25,7 @@
   {
     "slug": "gemini-mayo-2026",
     "title": "Gemini en mayo de 2026: la etapa agentic acelera",
-    "excerpt": "Análisis de la evolución de Gemini hacia un asistente más proactivo.",
+    "excerpt": "Revisión y pruebas reales de Gemini en flujos de trabajo diarios. Analizo su capacidad de síntesis, reducción de fricción operativa y evolución hacia un asistente proactivo y autónomo 24/7.",
     "date": "2026-05-27",
     "tags": [
       "gemini",
@@ -37,7 +37,7 @@
   {
     "slug": "claude-mayo-2026",
     "title": "Claude en 2026: más ejecución y expansión de producto",
-    "excerpt": "Opinión sobre el rumbo de Claude y su foco en calidad operativa.",
+    "excerpt": "Mi visión profesional sobre Claude Opus 4.7 y Claude Design de Anthropic. Analizo su rendimiento técnico en código, creación visual de artefactos y el valor de la seguridad empresarial en 2026.",
     "date": "2026-05-26",
     "tags": [
       "claude",
@@ -49,7 +49,7 @@
   {
     "slug": "copilot-mayo-2026",
     "title": "Copilot en 2026: automatización real con gobernanza",
-    "excerpt": "Por qué Copilot apunta a procesos reales más que al chat aislado.",
+    "excerpt": "Exploro la evolución de Microsoft Copilot Studio y sus agentes con capacidad de usar el ordenador ('computer-using agents'). Por qué la automatización real con gobernanza redefinirá el trabajo corporativo.",
     "date": "2026-05-25",
     "tags": [
       "copilot",
@@ -61,7 +61,7 @@
   {
     "slug": "meta-ai-mayo-2026",
     "title": "Meta AI en 2026: distribución masiva como ventaja",
-    "excerpt": "Lectura estratégica sobre Muse Spark y el despliegue en ecosistema Meta.",
+    "excerpt": "Análisis estratégico sobre Muse Spark de Meta AI. Cómo la integración en redes sociales y dispositivos como las gafas inteligentes crea una palanca de distribución masiva única frente a otros modelos.",
     "date": "2026-05-24",
     "tags": [
       "meta ai",
@@ -73,7 +73,7 @@
   {
     "slug": "mistral-mayo-2026",
     "title": "Mistral 3: apertura y rendimiento en producción",
-    "excerpt": "Reflexión sobre la apuesta open de Mistral y su valor empresarial.",
+    "excerpt": "Reflexión sobre el lanzamiento de Mistral 3 y sus modelos abiertos (Apache 2.0). Analizo su valor para la soberanía tecnológica, control de costes y despliegue local en entornos de producción.",
     "date": "2026-05-23",
     "tags": [
       "mistral",
@@ -85,7 +85,7 @@
   {
     "slug": "bienvenida-al-blog",
     "title": "Bienvenido al blog",
-    "excerpt": "Arranco este espacio para compartir ideas sobre resiliencia, tecnología y aprendizajes reales.",
+    "excerpt": "Bienvenidos a mi bitácora profesional. Arranco este espacio digital para compartir aprendizajes prácticos sobre SRE, observabilidad, operaciones críticas bajo presión, resiliencia y liderazgo técnico.",
     "date": "2026-05-21",
     "tags": [
       "resiliencia",

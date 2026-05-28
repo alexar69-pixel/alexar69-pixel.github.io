@@ -48,15 +48,18 @@ foreach ($post in $posts) {
     $dateObj = [DateTime]::Parse($post.date)
     $formattedDate = $dateObj.ToString("d 'de' MMMM 'de' yyyy", $fmt)
     
-    # Generar etiquetas Open Graph
+    # Generar etiquetas Open Graph y SEO
     $ogMeta = @"
     <meta name="description" content="$($post.excerpt)" />
+    <meta name="author" content="Alexander Armentia Bravo" />
     <link rel="canonical" href="https://alexanderarmentia.com/blog/posts/$slug.html" />
     <meta property="og:title" content="$($post.title)" />
     <meta property="og:description" content="$($post.excerpt)" />
     <meta property="og:image" content="$imageUrl" />
     <meta property="og:url" content="https://alexanderarmentia.com/blog/posts/$slug.html" />
     <meta property="og:type" content="article" />
+    <meta property="article:author" content="https://www.linkedin.com/in/alexar69/" />
+    <meta property="article:published_time" content="$($post.date)T00:00:00Z" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="$($post.title)" />
     <meta name="twitter:description" content="$($post.excerpt)" />
@@ -126,7 +129,39 @@ foreach ($post in $posts) {
 
     # Escribir el archivo final en UTF-8 sin BOM
     [System.IO.File]::WriteAllText($destFile, $html, $utf8)
-    Write-Output "Generado estático: $destFile"
+    Write-Output "Generado estatico: $destFile"
 }
+
+# Regenerar blog/rss.xml automaticamente para mantener sincronizados los extractos largos
+$rssPath = Join-Path $repo 'blog\rss.xml'
+$buildDate = (Get-Date).ToUniversalTime().ToString("r")
+
+$xmlItems = ""
+foreach ($p in $posts) {
+  $pDate = [DateTime]::Parse($p.date).ToString("r")
+  $xmlItems += "    <item>`n"
+  $xmlItems += "      <title>$($p.title)</title>`n"
+  $xmlItems += "      <link>https://alexanderarmentia.com/blog/posts/$($p.slug).html</link>`n"
+  $xmlItems += "      <guid>https://alexanderarmentia.com/blog/posts/$($p.slug).html</guid>`n"
+  $xmlItems += "      <pubDate>$pDate</pubDate>`n"
+  $xmlItems += "      <description>$($p.excerpt)</description>`n"
+  $xmlItems += "    </item>`n"
+}
+
+$rssContent = @"
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>Blog de Alexander Armentia</title>
+    <link>https://alexanderarmentia.com/blog/</link>
+    <description>Resiliencia, tecnologia y liderazgo tecnico</description>
+    <language>es-es</language>
+    <lastBuildDate>$buildDate</lastBuildDate>
+$xmlItems  </channel>
+</rss>
+"@
+
+[System.IO.File]::WriteAllText($rssPath, $rssContent, $utf8)
+Write-Output "RSS Feed actualizado: $rssPath"
 
 Write-Output "Compilacion de blog completada con exito"
