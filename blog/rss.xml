@@ -3,14 +3,56 @@
   <channel>
     <title>Blog de Alexander Armentia</title>
     <link>https://alexanderarmentia.com/blog/</link>
-    <description>Resiliencia, tecnolog├¡a y liderazgo t├®cnico</description>
+    <description>Resiliencia, tecnología y liderazgo técnico</description>
     <language>es-es</language>
-    <lastBuildDate>Thu, 28 May 2026 09:20:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2026 07:48:15 GMT</lastBuildDate>
+    <item>
+      <title>ChatGPT en mayo de 2026: mÃ¡s contexto y utilidad real</title>
+      <link>https://alexanderarmentia.com/blog/post.html?slug=chatgpt-mayo-2026</link>
+      <guid>https://alexanderarmentia.com/blog/post.html?slug=chatgpt-mayo-2026</guid>
+      <pubDate>Thu, 28 May 2026 00:00:00 GMT</pubDate>
+      <description>Mi lectura sobre las Ãºltimas mejoras de ChatGPT y su impacto en trabajo real.</description>
+    </item>
+    <item>
+      <title>Gemini en mayo de 2026: la etapa agentic acelera</title>
+      <link>https://alexanderarmentia.com/blog/post.html?slug=gemini-mayo-2026</link>
+      <guid>https://alexanderarmentia.com/blog/post.html?slug=gemini-mayo-2026</guid>
+      <pubDate>Wed, 27 May 2026 00:00:00 GMT</pubDate>
+      <description>AnÃ¡lisis de la evoluciÃ³n de Gemini hacia un asistente mÃ¡s proactivo.</description>
+    </item>
+    <item>
+      <title>Claude en 2026: mÃ¡s ejecuciÃ³n y expansiÃ³n de producto</title>
+      <link>https://alexanderarmentia.com/blog/post.html?slug=claude-mayo-2026</link>
+      <guid>https://alexanderarmentia.com/blog/post.html?slug=claude-mayo-2026</guid>
+      <pubDate>Tue, 26 May 2026 00:00:00 GMT</pubDate>
+      <description>OpiniÃ³n sobre el rumbo de Claude y su foco en calidad operativa.</description>
+    </item>
+    <item>
+      <title>Copilot en 2026: automatizaciÃ³n real con gobernanza</title>
+      <link>https://alexanderarmentia.com/blog/post.html?slug=copilot-mayo-2026</link>
+      <guid>https://alexanderarmentia.com/blog/post.html?slug=copilot-mayo-2026</guid>
+      <pubDate>Mon, 25 May 2026 00:00:00 GMT</pubDate>
+      <description>Por quÃ© Copilot apunta a procesos reales mÃ¡s que al chat aislado.</description>
+    </item>
+    <item>
+      <title>Meta AI en 2026: distribuciÃ³n masiva como ventaja</title>
+      <link>https://alexanderarmentia.com/blog/post.html?slug=meta-ai-mayo-2026</link>
+      <guid>https://alexanderarmentia.com/blog/post.html?slug=meta-ai-mayo-2026</guid>
+      <pubDate>Sun, 24 May 2026 00:00:00 GMT</pubDate>
+      <description>Lectura estratÃ©gica sobre Muse Spark y el despliegue en ecosistema Meta.</description>
+    </item>
+    <item>
+      <title>Mistral 3: apertura y rendimiento en producciÃ³n</title>
+      <link>https://alexanderarmentia.com/blog/post.html?slug=mistral-mayo-2026</link>
+      <guid>https://alexanderarmentia.com/blog/post.html?slug=mistral-mayo-2026</guid>
+      <pubDate>Sat, 23 May 2026 00:00:00 GMT</pubDate>
+      <description>ReflexiÃ³n sobre la apuesta open de Mistral y su valor empresarial.</description>
+    </item>
     <item>
       <title>Bienvenido al blog</title>
       <link>https://alexanderarmentia.com/blog/post.html?slug=bienvenida-al-blog</link>
       <guid>https://alexanderarmentia.com/blog/post.html?slug=bienvenida-al-blog</guid>
-      <pubDate>Thu, 28 May 2026 09:20:00 +0200</pubDate>
+      <pubDate>Thu, 21 May 2026 00:00:00 GMT</pubDate>
       <description>Arranco este espacio para compartir ideas sobre resiliencia, tecnologÃ­a y aprendizajes reales.</description>
     </item>
   </channel>
