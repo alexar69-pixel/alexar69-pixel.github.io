@@ -77,6 +77,27 @@
 
         .user-tag { background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.3); color: #c084fc; padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.78rem; font-weight: 700; }
         .stat-val { font-size: 2.8rem; font-weight: 800; color: var(--success); }
+        .brain-flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; width: 100%; margin-top: 0.8rem; }
+        .brain-step { position: relative; text-align: center; }
+        .brain-step:not(:last-child)::after { content: "➔"; position: absolute; top: 50%; right: -1.05rem; transform: translateY(-50%); color: var(--primary); font-size: 1.4rem; z-index: 2; }
+        .brain-icon { display: block; font-size: 2.2rem; margin-bottom: 0.5rem; }
+        .brain-core { margin-top: 1.2rem; padding: 1rem 1.4rem; border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 14px; background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(168, 85, 247, 0.14)); text-align: center; }
+        .brain-core strong { color: #fff; }
+
+        @media (max-width: 900px) {
+            .top-nav { height: 76px; padding: 0 1rem; gap: 1rem; }
+            .logo-title { font-size: 0.9rem; white-space: nowrap; }
+            .tabs-container { max-width: 62vw; }
+            .slide { padding: 6.5rem 1.25rem 6rem; justify-content: flex-start; overflow-y: auto; }
+            h1 { font-size: 2.3rem; }
+            h2 { font-size: 1.75rem; }
+            p { font-size: 0.98rem; }
+            .grid-2, .grid-3, .grid-4, .brain-flow { grid-template-columns: 1fr; }
+            .brain-step:not(:last-child)::after { content: "↓"; top: auto; right: 50%; bottom: -1.25rem; transform: translateX(50%); }
+            .bottom-nav { left: 1rem; right: 1rem; bottom: 0.75rem; gap: 0.6rem; }
+            .slide-counter { max-width: 45%; padding: 0.45rem 0.75rem; font-size: 0.72rem; }
+            .btn-secondary, .btn-action { padding: 0.6rem 0.85rem; font-size: 0.78rem; }
+        }
     </style>
 </head>
 <body>
@@ -103,12 +124,42 @@
                 </div>
                 <div class="card">
                     <h3>🔄 Procesamiento de Flujo</h3>
-                    <p>Filtro automático de datos sensibles, evaluación de reglas y verificación de evidencia en documentos de referencia.</p>
+                    <p>El Cerebro combina RAG + OKF para aplicar conocimiento autorizado, reglas y evidencia durante el flujo.</p>
                 </div>
                 <div class="card">
                     <h3>📤 Salidas y Acciones</h3>
                     <p>Envío de respuestas automáticas por correo, inserción en bases de datos o alertas a herramientas corporativas.</p>
                 </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Cerebro de Flentio -->
+        <div class="slide">
+            <div class="badge">🧠 Núcleo Interno</div>
+            <h2>Cerebro de Flentio — Conocimiento que se Convierte en Acción</h2>
+            <p>La capa interna que conecta el conocimiento empresarial gobernado con la creación y la ejecución de flujos de trabajo.</p>
+
+            <div class="brain-flow">
+                <div class="card brain-step">
+                    <span class="brain-icon">🔎</span>
+                    <h3>Comprender</h3>
+                    <p><strong>RAG</strong> recupera fragmentos autorizados y exige evidencia trazable antes de generar una respuesta.</p>
+                </div>
+                <div class="card brain-step">
+                    <span class="brain-icon">🧩</span>
+                    <h3>Diseñar</h3>
+                    <p><strong>OKF</strong> (Open Knowledge Format) organiza procedimientos, políticas y patrones reutilizables para crear flujos.</p>
+                </div>
+                <div class="card brain-step">
+                    <span class="brain-icon">⚙️</span>
+                    <h3>Ejecutar</h3>
+                    <p>El motor de flujos aplica nodos, reglas, controles y acciones, conservando trazabilidad durante la ejecución.</p>
+                </div>
+            </div>
+
+            <div class="brain-core">
+                <strong>RAG + OKF + Motor de Flujos</strong>
+                <p style="margin:0.35rem auto 0;">Flentio transforma conocimiento empresarial gobernado en flujos de trabajo ejecutables.</p>
             </div>
         </div>
 
@@ -441,7 +492,7 @@
 
     <!-- Bottom Controls & Nav -->
     <div class="bottom-nav">
-        <div class="slide-counter" id="slideCounter">Diapositiva 1 / 12</div>
+        <div class="slide-counter" id="slideCounter">Diapositiva 1 / 13</div>
         <div class="action-btns">
             <button class="btn-secondary" onclick="prevSlide()">◄ Anterior</button>
             <button class="btn-action" onclick="nextSlide()">Siguiente Diapositiva ➔</button>
@@ -450,9 +501,9 @@
 
     <script>
         const slideNames = [
-            "1. Visión", "2. Arquitectura Flujo", "3. Flujo Facturas", "4. Flujo Normativa", 
-            "5. Flujo Alertas", "6. Diseñador Copiloto", "7. Cómo Se Configura", "8. Entornos Trabajo", 
-            "9. Auditoría Flujos", "10. Capacidad Carga", "11. Calidad QA", "12. Demostración"
+            "1. Visión", "2. Cerebro", "3. Arquitectura Flujo", "4. Flujo Facturas", "5. Flujo Normativa",
+            "6. Flujo Alertas", "7. Diseñador Copiloto", "8. Cómo Se Configura", "9. Entornos Trabajo",
+            "10. Auditoría Flujos", "11. Capacidad Carga", "12. Calidad QA", "13. Demostración"
         ];
         
         let currentSlide = 0;
@@ -524,4 +575,3 @@
     </script>
 </body>
 </html>
-
