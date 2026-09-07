@@ -43,6 +43,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <!-- Presentación de Flentio -->
+  <url>
+    <loc>https://alexanderarmentia.com/flentio/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <!-- Blog -->
   <url>
     <loc>https://alexanderarmentia.com/blog/</loc>

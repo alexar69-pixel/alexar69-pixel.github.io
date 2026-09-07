@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flentio Platform v1.0.0 — Motor Visual de Flujos de Trabajo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #0b0f19;
+            --bg-card: rgba(23, 32, 51, 0.85);
+            --border-card: rgba(56, 189, 248, 0.25);
+            --primary: #38bdf8;
+            --primary-glow: rgba(56, 189, 248, 0.35);
+            --accent: #a855f7;
+            --success: #34d399;
+            --warning: #fbbf24;
+            --danger: #f87171;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: var(--bg-main); color: var(--text-main); overflow: hidden; width: 100vw; height: 100vh; }
+
+        /* Top Header Nav Tabs */
+        .top-nav { position: fixed; top: 0; left: 0; right: 0; height: 64px; background: rgba(11, 15, 25, 0.95); border-bottom: 1px solid var(--border-card); backdrop-filter: blur(16px); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; z-index: 200; }
+        .logo-title { font-weight: 800; font-size: 1.15rem; color: var(--primary); display: flex; align-items: center; gap: 0.6rem; font-family: 'Outfit', sans-serif; }
+        
+        .tabs-container { display: flex; gap: 0.4rem; overflow-x: auto; max-width: 72vw; scrollbar-width: none; }
+        .tabs-container::-webkit-scrollbar { display: none; }
+        .tab-btn { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: var(--text-muted); padding: 0.4rem 0.85rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer; white-space: nowrap; transition: 0.2s; }
+        .tab-btn:hover { background: rgba(56, 189, 248, 0.2); color: #fff; }
+        .tab-btn.active { background: linear-gradient(135deg, #38bdf8, #818cf8); color: #000; font-weight: 700; border-color: var(--primary); }
+
+        /* Slides Wrapper */
+        .slide-container { width: 100vw; height: 100vh; display: flex; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .slide { min-width: 100vw; height: 100vh; padding: 5.8rem 5.5rem 4rem 5.5rem; display: flex; flex-direction: column; justify-content: center; position: relative; background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.1) 0%, transparent 50%); }
+
+        /* Typography Friendly */
+        .badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1.1rem; background: rgba(56, 189, 248, 0.12); border: 1px solid var(--border-card); border-radius: 999px; color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; width: fit-content; margin-bottom: 0.8rem; }
+        h1 { font-size: 3.3rem; font-weight: 800; line-height: 1.1; margin-bottom: 1rem; font-family: 'Outfit', sans-serif; background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.8rem; color: #ffffff; font-family: 'Outfit', sans-serif; }
+        p { font-size: 1.12rem; color: var(--text-muted); line-height: 1.6; max-width: 950px; margin-bottom: 1.2rem; }
+
+        /* Grid Layouts */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem; width: 100%; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; width: 100%; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; width: 100%; }
+
+        /* Glassmorphism Friendly Cards */
+        .card { background: var(--bg-card); border: 1px solid var(--border-card); backdrop-filter: blur(16px); border-radius: 16px; padding: 1.6rem; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
+        .card:hover { border-color: var(--primary); transform: translateY(-4px); box-shadow: 0 14px 40px var(--primary-glow); }
+        .card h3 { font-size: 1.25rem; color: var(--primary); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.6rem; font-family: 'Outfit', sans-serif; }
+        .card p { font-size: 0.98rem; color: #cbd5e1; margin-bottom: 0.5rem; line-height: 1.5; }
+
+        /* Real UI Screenshot Mockup Window */
+        .ui-window { background: #0f172a; border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 14px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.6); width: 100%; }
+        .ui-bar { background: #1e293b; padding: 0.7rem 1.2rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .ui-dots { display: flex; gap: 0.45rem; }
+        .dot { width: 11px; height: 11px; border-radius: 50%; }
+        .dot-red { background: #f87171; }
+        .dot-yellow { background: #fbbf24; }
+        .dot-green { background: #34d399; }
+        .ui-url { font-size: 0.78rem; color: #94a3b8; font-family: 'JetBrains Mono', monospace; background: #090d16; padding: 0.2rem 0.8rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.08); }
+        .ui-content { padding: 1.4rem; background: #0b1120; min-height: 240px; }
+
+        /* Navigation Bar Bottom */
+        .bottom-nav { position: fixed; bottom: 1.5rem; left: 2rem; right: 2rem; display: flex; align-items: center; justify-content: space-between; z-index: 200; pointer-events: none; }
+        .bottom-nav * { pointer-events: auto; }
+        .slide-counter { background: var(--bg-card); border: 1px solid var(--border-card); padding: 0.5rem 1.3rem; border-radius: 999px; font-size: 0.9rem; font-weight: 600; color: var(--text-main); }
+        .action-btns { display: flex; gap: 0.8rem; }
+        .btn-action { background: linear-gradient(135deg, #38bdf8, #818cf8); color: #000; font-weight: 800; border: none; padding: 0.7rem 1.6rem; border-radius: 999px; cursor: pointer; font-size: 0.92rem; display: flex; align-items: center; gap: 0.5rem; transition: 0.2s; box-shadow: 0 0 24px var(--primary-glow); }
+        .btn-action:hover { transform: scale(1.04); filter: brightness(1.1); }
+        .btn-secondary { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--border-card); font-weight: 600; padding: 0.7rem 1.6rem; border-radius: 999px; cursor: pointer; font-size: 0.92rem; transition: 0.2s; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+        .user-tag { background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.3); color: #c084fc; padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.78rem; font-weight: 700; }
+        .stat-val { font-size: 2.8rem; font-weight: 800; color: var(--success); }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation Tabs -->
+    <div class="top-nav">
+        <div class="logo-title">✨ FLENTIO PLATFORM v1.0.0</div>
+        <div class="tabs-container" id="tabsContainer"></div>
+    </div>
+
+    <!-- Main Slides Container -->
+    <div class="slide-container" id="slideContainer">
+        
+        <!-- Slide 1: Visión Centrada en Flujos -->
+        <div class="slide">
+            <div class="badge">✨ Motor Visual de Flujos</div>
+            <h1>FLENTIO PLATFORM</h1>
+            <p>Orquestador de Flujos de Trabajo Sin Código que recibe entradas (correos, peticiones de datos, alertas) y procesa respuestas automáticas seguras mediante reglas y agentes de IA.</p>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <h3>📥 Entradas del Flujo</h3>
+                    <p>Correos electrónicos recibidos, peticiones Webhook, archivos adjuntos o consultas enviadas desde otras aplicaciones.</p>
+                </div>
+                <div class="card">
+                    <h3>🔄 Procesamiento de Flujo</h3>
+                    <p>Filtro automático de datos sensibles, evaluación de reglas y verificación de evidencia en documentos de referencia.</p>
+                </div>
+                <div class="card">
+                    <h3>📤 Salidas y Acciones</h3>
+                    <p>Envío de respuestas automáticas por correo, inserción en bases de datos o alertas a herramientas corporativas.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Anatomía de un Flujo en Flentio -->
+        <div class="slide">
+            <div class="badge">⚙️ Arquitectura de Flujo</div>
+            <h2>¿Cómo Funciona un Flujo de Trabajo en Flentio?</h2>
+            <p>A diferencia de un buscador manual, Flentio procesa la información en forma de <strong>cadena de ejecución visual</strong> desde una entrada hasta una acción final.</p>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Estructura del Flujo</h3>
+                    <p><strong>1. Nodo de Entrada (Trigger):</strong> Se activa al recibir una petición (ej. llega una consulta o factura por correo).</p>
+                    <p style="margin-top:0.5rem;"><strong>2. Nodo de Seguridad (DLP):</strong> Oculta automáticamente NIF, IBAN o tarjetas de la petición.</p>
+                    <p style="margin-top:0.5rem;"><strong>3. Nodo Agente de IA:</strong> Evalúa la solicitud consultando documentos de referencia con citas obligatorias <code>[E1]</code>.</p>
+                    <p style="margin-top:0.5rem;"><strong>4. Nodo de Acción (Salida):</strong> Genera la respuesta por correo o registra los datos en el sistema.</p>
+                </div>
+
+                <!-- Real App Screenshot UI Mockup: Visual Flow Anatomy -->
+                <div class="ui-window">
+                    <div class="ui-bar">
+                        <div class="ui-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                        <div class="ui-url">https://flentio.local/studio/flujo-ejecucion</div>
+                    </div>
+                    <div class="ui-content">
+                        <div style="background:#1e293b; padding:0.6rem; border-radius:8px; margin-bottom:0.5rem; border-left:4px solid #38bdf8;">
+                            <div style="font-size:0.75rem; color:#38bdf8; font-weight:bold;">📥 1. ENTRADA</div>
+                            <div style="font-size:0.8rem; color:#f8fafc;">Solicitud recibida por correo o API</div>
+                        </div>
+                        <div style="background:#1e293b; padding:0.6rem; border-radius:8px; margin-bottom:0.5rem; border-left:4px solid #a855f7;">
+                            <div style="font-size:0.75rem; color:#a855f7; font-weight:bold;">🛡️ 2. FILTRO DE PRIVACIDAD</div>
+                            <div style="font-size:0.8rem; color:#34d399;">Datos personales ocultados correctamente</div>
+                        </div>
+                        <div style="background:#1e293b; padding:0.6rem; border-radius:8px; margin-bottom:0.5rem; border-left:4px solid #fbbf24;">
+                            <div style="font-size:0.75rem; color:#fbbf24; font-weight:bold;">🤖 3. EVALUACIÓN Y EVIDENCIA</div>
+                            <div style="font-size:0.8rem; color:#cbd5e1;">Regla validada con cita [E1] de la normativa</div>
+                        </div>
+                        <div style="background:#0f172a; padding:0.6rem; border-radius:8px; border-left:4px solid #34d399; background:rgba(52,211,153,0.1);">
+                            <div style="font-size:0.78rem; color:#34d399; font-weight:bold;">📤 4. ACCIÓN DE SALIDA</div>
+                            <div style="font-size:0.75rem; color:#cbd5e1;">Respuesta enviada y registrada en 0,4s</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Flujo Real 1 — Procesamiento de Facturas -->
+        <div class="slide">
+            <div class="badge">💼 Flujo de Ejemplo 1</div>
+            <h2>Flujo de Recepción y Registro de Facturas</h2>
+            <p><strong>Entrada:</strong> Correo entrante con factura adjunta en PDF.</p>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h3><span class="user-tag">PROCESO: Administración y Finanzas</span></h3>
+                    <p>El flujo recibe el correo, extrae los datos de la factura, aplica la ocultación de IBAN por seguridad, valida si el importe cumple la política interna y guarda el registro directamente en la base de datos.</p>
+                    <p style="margin-top:0.6rem; color:#34d399; font-weight:bold;">✔ Resultado: Automatización completa de la entrada de facturas.</p>
+                </div>
+
+                <!-- Real App Screenshot UI Mockup: Invoice Workflow -->
+                <div class="ui-window">
+                    <div class="ui-bar">
+                        <div class="ui-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                        <div class="ui-url">https://flentio.local/studio/flujo-facturas</div>
+                    </div>
+                    <div class="ui-content">
+                        <div style="background:#1e293b; padding:0.6rem; border-radius:6px; margin-bottom:0.5rem; font-size:0.8rem; color:#38bdf8;">
+                            📩 <strong>Entrada:</strong> Factura_2026_08.pdf (4.500,00 €)
+                        </div>
+                        <div style="background:#1e293b; padding:0.6rem; border-radius:6px; margin-bottom:0.5rem; font-size:0.8rem; color:#34d399;">
+                            🛡️ <strong>Filtro DLP:</strong> IBAN ES91****1234 enmascarado
+                        </div>
+                        <div style="background:#0f172a; padding:0.6rem; border-radius:6px; border-left:3px solid #34d399; font-size:0.78rem; color:#cbd5e1;">
+                            ✔ <strong>Acción Salida:</strong> Factura guardada en la Base de Datos y confirmación enviada al proveedor.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Flujo Real 2 — Respuesta a Peticiones con Citas -->
+        <div class="slide">
+            <div class="badge">📜 Flujo de Ejemplo 2</div>
+            <h2>Flujo de Respuesta a Peticiones Normativas</h2>
+            <p><strong>Entrada:</strong> Petición de información de cliente o consulta técnica vía formulario o API.</p>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h3><span class="user-tag">PROCESO: Asesoría Legal y Cumplimiento</span></h3>
+                    <p>El flujo toma la consulta recibida, consulta los manuales autorizados de la empresa y genera la respuesta oficial incluyendo obligatoriamente la cita <code>[E1]</code> del documento.</p>
+                    <p style="margin-top:0.6rem; color:#34d399; font-weight:bold;">✔ Cero Invención: Si el documento de referencia no contiene la respuesta, el flujo notifica "Sin evidencia suficiente".</p>
+                </div>
+
+                <!-- Real App Screenshot UI Mockup: Normative Workflow -->
+                <div class="ui-window">
+                    <div class="ui-bar">
+                        <div class="ui-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                        <div class="ui-url">https://flentio.local/studio/flujo-normativa</div>
+                    </div>
+                    <div class="ui-content">
+                        <div style="background:#1e293b; padding:0.6rem; border-radius:6px; margin-bottom:0.5rem; font-size:0.8rem; color:#f8fafc;">
+                            📥 <strong>Entrada Consulta:</strong> "¿Plazo límite de transferencias SEPA inmediatas?"
+                        </div>
+                        <div style="background:#0f172a; padding:0.6rem; border-radius:6px; border:1px solid #34d399;">
+                            <span style="background:#34d399; color:#000; font-weight:800; font-size:0.7rem; padding:0.1rem 0.4rem; border-radius:4px;">Evidencia [E1]</span>
+                            <div style="color:#cbd5e1; font-size:0.78rem; margin-top:0.3rem;">"Plazo máximo de 10 segundos según la Normativa SEPA 2026 (Pág. 12)"</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Flujo Real 3 — Triaje y Respuesta a Alertas -->
+        <div class="slide">
+            <div class="badge">🛡️ Flujo de Ejemplo 3</div>
+            <h2>Flujo de Triaje de Alertas de Seguridad y Sistemas</h2>
+            <p><strong>Entrada:</strong> Notificación automática de evento enviada desde otra plataforma (ej. BMC Helix o SIEM).</p>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h3><span class="user-tag">PROCESO: Soporte Técnico y Operaciones</span></h3>
+                    <p>El flujo recibe la alerta técnica, el Agente SecOps evalúa el nivel de severidad basándose en el inventario de componentes y emite una recomendación de mitigación en un expediente inalterable.</p>
+                    <p style="margin-top:0.6rem; color:#38bdf8; font-weight:bold;">🛡️ Control Seguro: El flujo no realiza cambios destructivos sin reconfirmación humana.</p>
+                </div>
+
+                <!-- Real App Screenshot UI Mockup: Alert Workflow -->
+                <div class="ui-window">
+                    <div class="ui-bar">
+                        <div class="ui-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                        <div class="ui-url">https://flentio.local/studio/flujo-alertas</div>
+                    </div>
+                    <div class="ui-content">
+                        <div style="background:rgba(248,113,113,0.12); stroke:#f87171; border:1px solid #f87171; padding:0.6rem; border-radius:6px; margin-bottom:0.5rem; font-size:0.8rem; color:#f87171;">
+                            ⚠️ <strong>Entrada Alerta:</strong> Evento recibido desde BMC Helix (Intento de acceso masivo)
+                        </div>
+                        <div style="background:#0f172a; padding:0.6rem; border-radius:6px; border-left:3px solid #38bdf8; font-size:0.78rem; color:#cbd5e1;">
+                            📋 <strong>Resultado del Flujo:</strong> Diagnóstico generado • Notificación enviada al equipo de guardia.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Creador No-Code de Flujos (Agent Studio) -->
+        <div class="slide">
+            <div class="badge">🪄 Diseñador No-Code</div>
+            <h2>Agent Studio — Creación de Flujos Asistida por Copiloto</h2>
+            <p>Los responsables de negocio pueden crear sus propios flujos conversando en español sin depender de programación.</p>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Construcción en 1 Minuto</h3>
+                    <p>Escribe el objetivo de tu flujo (ej. <i>"Crea un flujo que reciba solicitudes de clientes, oculte datos personales y responda usando el manual de servicio"</i>).</p>
+                    <p style="margin-top:0.6rem; color:#34d399; font-weight:bold;">✨ El Copiloto conecta automáticamente los nodos de entrada, seguridad y acción.</p>
+                </div>
+
+                <!-- Real App Screenshot UI Mockup: Agent Studio Copilot -->
+                <div class="ui-window">
+                    <div class="ui-bar">
+                        <div class="ui-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                        <div class="ui-url">https://flentio.local/studio/agent-studio-copilot</div>
+                    </div>
+                    <div class="ui-content">
+                        <div style="background:#1e293b; padding:0.6rem; border-radius:6px; margin-bottom:0.5rem; color:#38bdf8; font-size:0.8rem;">
+                            💬 <strong>Solicitud:</strong> "Crea un flujo para gestionar reclamaciones de clientes por correo"
+                        </div>
+                        <div style="background:#0f172a; padding:0.6rem; border-radius:6px; border-left:3px solid #34d399; font-size:0.78rem; color:#cbd5e1;">
+                            ✨ <strong>Copiloto:</strong> ¡Flujo Construido! Entrada Correo ➔ Filtro de Datos ➔ Evaluación con Citas ➔ Notificación Salida.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Paso a Paso General de Uso -->
+        <div class="slide">
+            <div class="badge">🛠️ Guía de Uso</div>
+            <h2>¿Cómo Se Configura y Utiliza Flentio?</h2>
+            
+            <div class="grid-4">
+                <div class="card">
+                    <h3>1. Elegir Entrada</h3>
+                    <p>Define la señal de origen: correo, webhook de otra app o API.</p>
+                </div>
+                <div class="card">
+                    <h3>2. Conectar Bloques</h3>
+                    <p>Añade filtros de seguridad DLP y reglas con el diseñador visual o Copiloto.</p>
+                </div>
+                <div class="card">
+                    <h3>3. Probar en Preproducción</h3>
+                    <p>Valida el flujo con firma digital en el entorno seguro de pruebas.</p>
+                </div>
+                <div class="card">
+                    <h3>4. Publicar y Ejecutar</h3>
+                    <p>Activa el flujo para procesar peticiones en vivo 24/7.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Entornos de Trabajo (Desarrollo / Preproducción / Producción) -->
+        <div class="slide">
+            <div class="badge">🔄 Ciclo de Vida</div>
+            <h2>Entornos de Trabajo para Cambios Seguros</h2>
+            <p>Los flujos en Producción están congelados para impedir modificaciones accidentales en vivo.</p>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Control de Versiones Inmutables</h3>
+                    <p><strong>1. Desarrollo:</strong> Espacio de borrador (<code>v1.0.0-draft</code>) donde puedes hacer cambios con libertad.</p>
+                    <p style="margin-top:0.5rem;"><strong>2. Preproducción:</strong> Congela el flujo en una versión de pruebas (<code>v1.0.0-rc1</code>) firmada con hash SHA-256.</p>
+                    <p style="margin-top:0.5rem;"><strong>3. Producción Real:</strong> Versión congelada activa. Cualquier cambio requiere clonar un nuevo borrador a Desarrollo.</p>
+                </div>
+
+                <!-- Real App Screenshot UI Mockup: Environment Switcher -->
+                <div class="ui-window">
+                    <div class="ui-bar">
+                        <div class="ui-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                        <div class="ui-url">https://flentio.local/settings/environments</div>
+                    </div>
+                    <div class="ui-content">
+                        <div style="display:flex; justify-content:space-between; align-items:center; background:#1e293b; padding:0.6rem; border-radius:6px; margin-bottom:0.5rem;">
+                            <div><strong style="color:#34d399;">🟢 Desarrollo</strong> (Borrador Editable)</div>
+                            <span style="font-size:0.75rem; color:#94a3b8;">En edición</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; background:#1e293b; padding:0.6rem; border-radius:6px;">
+                            <div><strong style="color:#fbbf24;">🟡 Preproducción</strong> (Inmutable)</div>
+                            <span style="font-size:0.75rem; color:#fbbf24;">Firma SHA-256 OK</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Custodia e Inmutabilidad de Auditoría -->
+        <div class="slide">
+            <div class="badge">🔒 Custodia y Auditoría</div>
+            <h2>Auditoría Inalterable de Ejecuciones</h2>
+            <p>Cada ejecución de un flujo queda registrada en un historial inmutable antialteración.</p>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Trazabilidad Completa</h3>
+                    <p>La plataforma calcula la firma digital SHA-256 de cada documento y evento. Si se detecta cualquier intento de manipulación, el sistema inabilita el archivo y alerta a los administradores.</p>
+                </div>
+
+                <!-- Real App Screenshot UI Mockup: Audit Log -->
+                <div class="ui-window">
+                    <div class="ui-bar">
+                        <div class="ui-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                        <div class="ui-url">https://flentio.local/audit/worm-logs</div>
+                    </div>
+                    <div class="ui-content" style="font-family:'JetBrains Mono', monospace; font-size:0.78rem;">
+                        <div style="color:#34d399;">[2026-08-24 11:40] FLUJO EJECUTADO: Flujo_Facturas #8492 finalizado con éxito.</div>
+                        <div style="color:#38bdf8;">[2026-08-24 11:40] FIRMA DIGITAL SHA-256: Coincidencia 100%.</div>
+                        <div style="color:#94a3b8;">[2026-08-24 11:40] AUDITORÍA WORM: Evento guardado inalterable.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Capacidad y Escalabilidad -->
+        <div class="slide">
+            <div class="badge">⚡ Rendimiento</div>
+            <h2>Capacidad de Procesamiento Masivo</h2>
+            <p>Preparado para responder a miles de solicitudes simultáneas e integrarse con plataformas corporativas como BMC Helix.</p>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Rendimiento por Servidor</h3>
+                    <p><strong>👥 5.000 Usuarios Activos:</strong> Soporta hasta 5.000 usuarios al mismo tiempo sin ralentizarse (&lt; 80ms).</p>
+                    <p style="margin-top:0.5rem;"><strong>⚙️ 2.500 Procesos/seg:</strong> Procesa miles de correos, facturas y peticiones por segundo en paralelo.</p>
+                </div>
+
+                <!-- Real App Screenshot UI Mockup: Scalability Monitor -->
+                <div class="ui-window">
+                    <div class="ui-bar">
+                        <div class="ui-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                        <div class="ui-url">https://flentio.local/admin/metrics</div>
+                    </div>
+                    <div class="ui-content">
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-bottom:0.6rem;">
+                            <div style="background:#1e293b; padding:0.5rem; border-radius:6px;">
+                                <div style="font-size:0.7rem; color:#94a3b8;">Flujos en Ejecución</div>
+                                <div style="color:#34d399; font-weight:bold; font-size:0.85rem;">2.150 / segundo</div>
+                            </div>
+                            <div style="background:#1e293b; padding:0.5rem; border-radius:6px;">
+                                <div style="font-size:0.7rem; color:#94a3b8;">Estado de Integraciones</div>
+                                <div style="color:#38bdf8; font-weight:bold; font-size:0.85rem;">🟢 BMC Helix OK</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Garantía de Calidad y Pruebas -->
+        <div class="slide">
+            <div class="badge">✅ Calidad Garantizada</div>
+            <h2>Verificación Automática del Sistema</h2>
+            
+            <div class="grid-3" style="text-align: center;">
+                <div class="card">
+                    <div class="stat-val">336 / 336</div>
+                    <p style="margin-top:0.5rem;">Pruebas automáticas superadas con 100% de éxito en <code>npm test</code></p>
+                </div>
+                <div class="card">
+                    <div class="stat-val">100%</div>
+                    <p style="margin-top:0.5rem;">Privacidad y aislamiento de datos por empresa</p>
+                </div>
+                <div class="card">
+                    <div class="stat-val">0</div>
+                    <p style="margin-top:0.5rem;">Fugas de datos sensibles o claves privadas</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Demostración y Cierre -->
+        <div class="slide">
+            <div class="badge">🌟 Conclusión</div>
+            <h2>Flentio Platform v1.0.0 — Listo para Operar</h2>
+            <p>Una solución robusta, intuitiva y segura para orquestar flujos de trabajo sin código en su organización.</p>
+            
+            <div class="card" style="margin-top: 1rem; width: 100%;">
+                <h3>🚀 Demostración en Vivo</h3>
+                <p>Abra la consola y ejecute <code>./scripts/start-demo.ps1</code> para probar el Centro de Demostración en su navegador.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bottom Controls & Nav -->
+    <div class="bottom-nav">
+        <div class="slide-counter" id="slideCounter">Diapositiva 1 / 12</div>
+        <div class="action-btns">
+            <button class="btn-secondary" onclick="prevSlide()">◄ Anterior</button>
+            <button class="btn-action" onclick="nextSlide()">Siguiente Diapositiva ➔</button>
+        </div>
+    </div>
+
+    <script>
+        const slideNames = [
+            "1. Visión", "2. Arquitectura Flujo", "3. Flujo Facturas", "4. Flujo Normativa", 
+            "5. Flujo Alertas", "6. Diseñador Copiloto", "7. Cómo Se Configura", "8. Entornos Trabajo", 
+            "9. Auditoría Flujos", "10. Capacidad Carga", "11. Calidad QA", "12. Demostración"
+        ];
+        
+        let currentSlide = 0;
+        const totalSlides = slideNames.length;
+        const container = document.getElementById('slideContainer');
+        const slideCounter = document.getElementById('slideCounter');
+        const tabsContainer = document.getElementById('tabsContainer');
+
+        // Render Tabs
+        slideNames.forEach((name, index) => {
+            const btn = document.createElement('button');
+            btn.className = `tab-btn ${index === 0 ? 'active' : ''}`;
+            btn.textContent = name;
+            btn.onclick = () => goToSlide(index);
+            tabsContainer.appendChild(btn);
+        });
+
+        function updateSlide() {
+            container.style.transform = `translateX(-${currentSlide * 100}vw)`;
+            slideCounter.textContent = `Diapositiva ${currentSlide + 1} de ${totalSlides} — ${slideNames[currentSlide]}`;
+            
+            // Update active tab
+            document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
+                btn.classList.toggle('active', idx === currentSlide);
+                if (idx === currentSlide) {
+                    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
+            });
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlide();
+        }
+
+        function nextSlide() { 
+            if (currentSlide < totalSlides - 1) { 
+                currentSlide++; 
+            } else {
+                currentSlide = 0;
+            }
+            updateSlide(); 
+        }
+
+        function prevSlide() { 
+            if (currentSlide > 0) { 
+                currentSlide--; 
+            } else {
+                currentSlide = totalSlides - 1;
+            }
+            updateSlide(); 
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        // Mouse Wheel navigation
+        let lastScrollTime = 0;
+        document.addEventListener('wheel', (e) => {
+            const now = Date.now();
+            if (now - lastScrollTime < 600) return;
+            lastScrollTime = now;
+            if (e.deltaY > 0 || e.deltaX > 0) nextSlide();
+            if (e.deltaY < 0 || e.deltaX < 0) prevSlide();
+        });
+    </script>
+</body>
+</html>
+
