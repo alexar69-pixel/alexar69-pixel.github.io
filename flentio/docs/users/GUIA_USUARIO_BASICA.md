@@ -54,7 +54,7 @@ Flentio te permite, **sin escribir código**:
 ### Opción B — Desde una plantilla
 
 1. Pulsa **Manual** o explora la galería de **Plantillas**
-2. Filtra por categoría: *Monitoreo*, *IA*, *Google Workspace*, *Bancario*...
+2. Filtra por categoría: *Monitoreo*, *Bancario*, *Medical (Healthcare)*, *Corporativo*...
 3. Pulsa **Usar esta plantilla** — se abre en el editor listo para configurar
 
 ### Opción C — En blanco

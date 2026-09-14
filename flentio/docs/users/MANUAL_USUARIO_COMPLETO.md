@@ -15,19 +15,6 @@
 6. [Módulo 6: Agentes de IA y Base de Conocimiento RAG](#módulo-6-agentes-de-ia-y-base-de-conocimiento-rag)
 7. [Módulo 7: Centro de Investigaciones Operacionales e Incidentes](#módulo-7-centro-de-investigaciones-operacionales-e-incidentes)
 8. [Módulo 8: Cuadros de Mando y Estado Operativo](#módulo-8-cuadros-de-mando-y-estado-operativo)
-9. [Módulo 9: Guía de Resolución de Problemas y Buenas Prácticas](#módulo-9-guía-de-resolución-de-problemas-y-buenas-prácticas)
-
----
-
-## MÓDULO 1: VISIÓN GENERAL Y FILOSOFÍA DEL SISTEMA
-
-### 1.1 ¿Qué es Flentio Platform?
-**Flentio** es una plataforma no-code para la automatización inteligente de flujos de trabajo, consulta de conocimiento corporativo mediante Inteligencia Artificial (RAG) e investigación operacional orientada a entornos exigentes y bancarios.
-
-### 1.2 Principios Invariables
-1. **Sin Código Obligatorio (No-Code First)**: Toda la configuración, diseño de flujos, gestión de conectores y revisión de alertas se realiza mediante formularios visuales, interruptores y asistentes conversacionales en lenguaje natural.
-2. **Aislamiento Organizativo Total (Multi-Tenant RLS)**: La información de tu empresa u organización está estrictamente aislada. Ningún usuario de otra organización puede ver, consultar o inferir tus documentos o flujos.
-3. **Veracidad y Trazabilidad Real**: Flentio jamás inventa datos, métricas ni respuestas ficticias. Si un conector o credencial no está configurado, la interfaz mostrará explícitamente `NO_CONFIGURADO` o `SIN_DATOS` indicando los pasos para resolverlo.
 4. **Citas de Evidencia Obligatorias `[E#]`**: Cuando los Agentes de IA responden a consultas sobre documentos de tu empresa, siempre incluyen identificadores de cita legibles (ej. `[E1]`, `[E2]`) que te permiten ver exactamente de qué página y documento procede la información.
 
 ---
@@ -81,7 +68,7 @@ Flentio solicita únicamente `generative-language.retriever`, el alcance especí
 
 #### Opción 2: Desde una Plantilla Corporativa
 1. Haz clic en **Plantillas**.
-2. Filtra por categoría: *Bancario*, *Operaciones SRE*, *Google Workspace*, *Notificaciones*.
+2. Filtra por categoría: *Bancario*, *Medical (Healthcare)*, *Corporativo Neutro*, *Operaciones SRE*, *Notificaciones*.
 3. Pulsa **Usar Plantilla** para abrir el flujo listo para personalizar.
 
 #### Opción 3: Flujo en Blanco
