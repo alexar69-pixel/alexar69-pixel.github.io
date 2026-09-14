@@ -104,7 +104,7 @@ graph LR
 #### Operaciones en el Lienzo:
 - **Añadir Nodos**: Haz doble clic en cualquier zona vacía del lienzo para abrir el selector de nodos visual.
 - **Conectar Nodos**: Arrastra un conector desde la salida de un bloque (punto derecho) hasta la entrada del siguiente (punto izquierdo).
-- **Asistente de Variables `{{ }}`**: En los campos de configuración de un nodo, escribe `{{` para desplegar un menú contextual con los datos devueltos por nodos anteriores.
+- **Asistente de Variables `{% raw %}{{{% endraw %} }}`**: En los campos de configuración de un nodo, escribe `{% raw %}{{{% endraw %}` para desplegar un menú contextual con los datos devueltos por nodos anteriores.
 
 ---
 

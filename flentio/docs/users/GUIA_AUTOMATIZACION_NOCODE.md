@@ -11,7 +11,7 @@
 | **Flujo** (Workflow) | Secuencia de pasos que se ejecutan automáticamente | Recibir email → Clasificar con IA → Notificar por Slack |
 | **Nodo** | Un paso individual del flujo | "Enviar email", "Clasificar texto", "Consultar base de datos" |
 | **Trigger** | El evento que arranca el flujo | Un webhook, un cron, un email recibido, un clic manual |
-| **Variable de expresión** | Dato de un paso anterior que usas en el siguiente | `{{ $input.cuerpo_email }}` |
+| **Variable de expresión** | Dato de un paso anterior que usas en el siguiente | `{% raw %}{{{% endraw %} $input.cuerpo_email }}` |
 | **Credencial** | La autorización para conectarse a un servicio externo | Cuenta de Gmail, token de Slack — la configura el administrador |
 
 ---
@@ -54,14 +54,14 @@ Todos los flujos tienen:
 
 1. Doble clic → busca **"IA Ollama"** o **"IA Gemini"**
 2. En la configuración:
-   - **Prompt:** `Clasifica esta alerta como CRITICA, ADVERTENCIA o INFO: {{ $input.body.message }}`
+   - **Prompt:** `Clasifica esta alerta como CRITICA, ADVERTENCIA o INFO: {% raw %}{{{% endraw %} $input.body.message }}`
 3. Conecta: arrastra del punto derecho del Webhook al punto izquierdo del nodo IA
 
 ### Paso 4 — Añadir el Switch (enrutador)
 
 1. Doble clic → **Switch**
 2. Configuración:
-   - **Propiedad a evaluar:** `{{ $input.resultado }}`
+   - **Propiedad a evaluar:** `{% raw %}{{{% endraw %} $input.resultado }}`
    - **Regla:** si el valor es `CRITICA` → salida `true`
 3. Conecta el nodo IA al Switch
 
@@ -70,7 +70,7 @@ Todos los flujos tienen:
 1. Doble clic → **Slack Webhook**
 2. Configuración:
    - **URL de webhook Slack:** (se autocompleta si el administrador configuró la credencial)
-   - **Mensaje:** `🚨 Alerta CRÍTICA: {{ $input.body.message }}`
+   - **Mensaje:** `🚨 Alerta CRÍTICA: {% raw %}{{{% endraw %} $input.body.message }}`
 3. Conecta la salida **true** del Switch al nodo Slack
 
 ### Paso 6 — Validar y guardar
@@ -128,15 +128,15 @@ Todos los flujos tienen:
 
 ## Expresiones y variables
 
-Puedes referenciar datos de pasos anteriores usando la sintaxis `{{ $input.campo }}`:
+Puedes referenciar datos de pasos anteriores usando la sintaxis `{% raw %}{{{% endraw %} $input.campo }}`:
 
 ```
-{{ $input.body.message }}        ← El campo "message" del cuerpo del webhook
-{{ $input.resultado }}           ← La respuesta del nodo anterior
-{{ $input.ai_gemini.text }}      ← La respuesta del nodo IA Gemini
+{% raw %}{{{% endraw %} $input.body.message }}        ← El campo "message" del cuerpo del webhook
+{% raw %}{{{% endraw %} $input.resultado }}           ← La respuesta del nodo anterior
+{% raw %}{{{% endraw %} $input.ai_gemini.text }}      ← La respuesta del nodo IA Gemini
 ```
 
-El **asistente de variables** (botón `{{ }}` en cada campo de configuración) muestra los nodos disponibles con nombres legibles y te ayuda a construir la expresión sin conocer la sintaxis exacta.
+El **asistente de variables** (botón `{% raw %}{{{% endraw %} }}` en cada campo de configuración) muestra los nodos disponibles con nombres legibles y te ayuda a construir la expresión sin conocer la sintaxis exacta.
 
 ---
 

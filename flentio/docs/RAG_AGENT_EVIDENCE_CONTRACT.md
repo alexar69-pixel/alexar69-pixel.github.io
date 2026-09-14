@@ -45,7 +45,7 @@ Ejemplo de configuración persistida por el lienzo:
 
 ```json
 {
-  "query": "{{ $json.question }}",
+  "query": "{% raw %}{{{% endraw %} $json.question }}",
   "similarityLimit": 5,
   "category": "Normativa bancaria",
   "capturedAfter": "2026-01-01T00:00"

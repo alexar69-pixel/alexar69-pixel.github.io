@@ -93,7 +93,7 @@ El editor es un **lienzo visual** donde conectas nodos (bloques funcionales):
 
 1. **Haz clic** en cualquier nodo del lienzo — se abre el panel derecho de configuración
 2. Verás los **campos requeridos** claramente marcados. Los campos faltantes aparecen en un banner naranja en la parte superior del panel
-3. Usa el **asistente de variables** (`{{ }}`) para referenciar la salida de nodos anteriores — el asistente muestra los nodos disponibles con nombres legibles
+3. Usa el **asistente de variables** (`{% raw %}{{{% endraw %} }}`) para referenciar la salida de nodos anteriores — el asistente muestra los nodos disponibles con nombres legibles
 4. Cuando todos los campos estén completos, el nodo está listo
 
 ### Conectar nodos
