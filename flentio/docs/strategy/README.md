@@ -6,6 +6,8 @@ Este directorio conserva las fichas exigidas por `.agents/AGENTS.md`. Las fichas
 |---|---|---|---|
 | Ejecución no-code con evidencia gobernada | `NO_VALIDADA` | Validar problema y piloto antes de ampliar comercialmente | [Ficha](DIFFERENTIATION_GOVERNED_AGENT_EVIDENCE.md) |
 | Remediación gobernada de incidencias bancarias | `NO_VALIDADA` | Validar en observación, después sugerencia y finalmente una acción reversible | [Ficha](DIFFERENTIATION_GOVERNED_BANKING_REMEDIATION.md) |
+| RAG Multimodal Avanzado (Visión e Imágenes Médicas) | `NO_VALIDADA` | Validar precisión VLM on-premise antes de lanzar al sector Medical | [Ficha](DIFFERENTIATION_MULTIMODAL_RAG.md) |
+| Sistema Inmunitario de Infraestructura (Auto-Healing) | `NO_VALIDADA` | Validar en Sandbox con Human-in-the-Loop asíncrono | [Ficha](DIFFERENTIATION_AUTO_HEALING.md) |
 
 Plan de trabajo asociado: [entrevistas, puerta de problema y piloto medible](VALIDATION_PLAN_GOVERNED_AGENT_EVIDENCE.md).
 

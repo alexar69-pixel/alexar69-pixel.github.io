@@ -269,3 +269,5 @@ aparecer como operativas hasta disponer de conectores reales, dataset autorizado
 pruebas reproducibles, revisión humana y evidencias de seguridad. La visión se
 descartará si el banco obtiene el mismo control de sus herramientas actuales sin
 una capa adicional o si Flentio aumenta complejidad y MTTR.
+
+> **Nota Estratégica:** Esta visión técnica se ha traducido a una propuesta de diferenciación comercial estructurada. Ver: [Ficha de Diferenciación: Auto-Healing](DIFFERENTIATION_AUTO_HEALING.md).

@@ -91,7 +91,7 @@ graph LR
 #### Operaciones en el Lienzo:
 - **Añadir Nodos**: Haz doble clic en cualquier zona vacía del lienzo para abrir el selector de nodos visual.
 - **Conectar Nodos**: Arrastra un conector desde la salida de un bloque (punto derecho) hasta la entrada del siguiente (punto izquierdo).
-- **Asistente de Variables `{% raw %}{{{% endraw %} }}`**: En los campos de configuración de un nodo, escribe `{% raw %}{{{% endraw %}` para desplegar un menú contextual con los datos devueltos por nodos anteriores.
+- **Asistente de Variables `{{ }}`**: En los campos de configuración de un nodo, escribe `{{` para desplegar un menú contextual con los datos devueltos por nodos anteriores.
 
 ---
 
@@ -108,6 +108,8 @@ graph LR
 - **Evaluador de Conocimiento RAG**: Consulta la documentación corporativa y extrae evidencias trazables con citas `[E#]`.
 - **Selector Lógico (Switch)**: Divide el camino del flujo según condiciones de negocio (ej. por importe, prioridad o tipo de cliente).
 - **Filtro de Contenido**: Detiene la ejecución si los datos no cumplen ciertos criterios definidos.
+- **Visión IA (Próximamente)**: Extracción estructural de información a partir de diagramas y radiografías DICOM para inyectarlos al RAG.
+- **Remediación Autónoma (Próximamente)**: Interceptor lógico que emite scripts de auto-curación de infraestructura para su firma electrónica.
 
 ### 4.3 Bloques de Acción y Emisión
 - **Enviador Gmail / SMTP**: Envía correos formateados con soporte para archivos adjuntos.
