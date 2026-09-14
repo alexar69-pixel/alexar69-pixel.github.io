@@ -162,6 +162,46 @@
                 <p style="margin:0.35rem auto 0;">Flentio transforma conocimiento y reglas corporativas en flujos de trabajo hiper-resilientes.</p>
             </div>
         </div>
+
+        <!-- Slide 2: Anatomía de un Flujo en Flentio -->
+        <div class="slide">
+            <div class="badge">⚙️ Arquitectura de Flujo</div>
+            <h2>¿Cómo Funciona un Flujo de Trabajo en Flentio?</h2>
+            <p>A diferencia de un buscador manual, Flentio procesa la información en forma de <strong>cadena de ejecución visual</strong> desde una entrada hasta una acción final.</p>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Estructura del Flujo</h3>
+                    <p><strong>1. Nodo de Entrada (Trigger):</strong> Se activa al recibir una petición (ej. llega una consulta o factura por correo).</p>
+                    <p style="margin-top:0.5rem;"><strong>2. Nodo de Seguridad (DLP):</strong> Oculta automáticamente NIF, IBAN o tarjetas de la petición.</p>
+                    <p style="margin-top:0.5rem;"><strong>3. Nodo Agente de IA:</strong> Evalúa la solicitud consultando documentos de referencia con citas obligatorias <code>[E1]</code>.</p>
+                    <p style="margin-top:0.5rem;"><strong>4. Nodo de Acción (Salida):</strong> Genera la respuesta por correo o registra los datos en el sistema.</p>
+                </div>
+
+                <!-- Real App Screenshot UI Mockup: Visual Flow Anatomy -->
+                <div class="ui-window">
+                    <div class="ui-bar">
+                        <div class="ui-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                        <div class="ui-url">https://flentio.local/studio/flujo-ejecucion</div>
+                    </div>
+                    <div class="ui-content">
+                        <div style="background:#1e293b; padding:0.6rem; border-radius:8px; margin-bottom:0.5rem; border-left:4px solid #38bdf8;">
+                            <div style="font-size:0.75rem; color:#38bdf8; font-weight:bold;">📥 1. ENTRADA</div>
+                            <div style="font-size:0.8rem; color:#f8fafc;">Solicitud recibida por correo o API</div>
+                        </div>
+                        <div style="background:#1e293b; padding:0.6rem; border-radius:8px; margin-bottom:0.5rem; border-left:4px solid #a855f7;">
+                            <div style="font-size:0.75rem; color:#a855f7; font-weight:bold;">🛡️ 2. FILTRO DE PRIVACIDAD</div>
+                            <div style="font-size:0.8rem; color:#34d399;">Datos personales ocultados correctamente</div>
+                        </div>
+                        <div style="background:#1e293b; padding:0.6rem; border-radius:8px; margin-bottom:0.5rem; border-left:4px solid #fbbf24;">
+                            <div style="font-size:0.75rem; color:#fbbf24; font-weight:bold;">🤖 3. EVALUACIÓN Y EVIDENCIA</div>
+                            <div style="font-size:0.8rem; color:#cbd5e1;">Regla validada con cita [E1] de la normativa</div>
+                        </div>
+                        <div style="background:#0f172a; padding:0.6rem; border-radius:8px; border-left:4px solid #34d399; background:rgba(52,211,153,0.1);">
+                            <div style="font-size:0.78rem; color:#34d399; font-weight:bold;">📤 4. ACCIÓN DE SALIDA</div>
+                            <div style="font-size:0.75rem; color:#cbd5e1;">Respuesta enviada y registrada en 0,4s</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -231,9 +271,6 @@
                             📤 <strong>Salida (Veeva Vault):</strong> Paciente cualificado para Ensayo ONC-2026. Documento eTMF firmado y registrado.
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
                 </div>
             </div>
         </div>
