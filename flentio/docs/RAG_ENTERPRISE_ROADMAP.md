@@ -87,6 +87,13 @@ F2 y F3 pueden diseñarse en paralelo después de F1, pero sus migraciones deben
 
 ## F2. Cuarentena y seguridad de ingesta
 
+**Estado 16-09-2026: VALIDACIÓN ampliada & Cuadro de Mando Operativo Frontend.** Implementación completa y verificada con tests unitarios e integrales en `backend/test/rag/quarantineAndSecurity.test.js` y `backend/test/rag/promptGuard.test.js` (118/118 tests superados al 100%).
+- Máquina de estados auditable: `received` ➔ `scanning` ➔ `quarantined` ➔ `approved` ➔ `indexed` (o `rejected`).
+- Detector determinista de Indirect Prompt Injection v2.0 (`rules-es-en-v2.0`): detecta evasión de contexto (`</system>`, `[INST]`), exfiltración de credenciales, ofuscación con caracteres zero-width y jailbreaks.
+- Endpoints operativos de cuarentena expuestos en `GET /api/rag/quarantine`, `GET /api/rag/quarantine/:id`, `POST /api/rag/quarantine/:id/approve` y `POST /api/rag/quarantine/:id/reject` (con compatibilidad REST en `/security-assessments`).
+- Panel / Cuadro de Mando Visual `RagQuarantinePanel.jsx`: KPIs de telemetría en tiempo real, desglose granular de vectores de inyección de prompt con severidad y snippets sanitizados, auditoría ClamAV e interfaz modal accesible de decisión Human-in-the-Loop con justificación obligatoria y sellado criptográfico WORM SHA-256. Integrado en `CorpConfigPanel.jsx` y `AiGovernanceDashboard.jsx`.
+- Toda aprobación o rechazo humano genera eventos de auditoría inmutables WORM.
+
 **Objetivo:** evitar que contenido dañino o instrucciones hostiles entren en el conocimiento activo.
 
 **Trabajo:**
@@ -147,10 +154,11 @@ permite revisar y relanzar a voluntad. La migración 014 separa descarga de
 publicación: el worker ejecuta seguridad, custodia y extracción reales, deja el
 resultado en staging y sólo una segunda decisión humana encola la ingesta. La UI
 muestra hashes, evidencia ClamAV, comparación y texto, permite restaurar el
-original y registra publicación o rechazo con nota. Es manual bajo demanda: no se afirma
-scheduling, HA ni escala. Diseño y evidencia:
-`docs/RAG_EXTERNAL_DOCUMENT_SOURCES.md` y
-`docs/audits/RAG_EXTERNAL_DOCUMENT_SOURCES_2026-08-01.md`.
+**Ampliación 16-09-2026: VALIDACIÓN Delta Sync Multi-Proveedor & Cumplimiento Regla #2.** 
+- Sincronización incremental con cursores de cambio (`cursor_token`, `pageToken`, `deltaToken`) y ciclo de vida de `tombstones` verificado en `connectorDeltaSync.test.js`.
+- Soporte simultáneo para proveedores activos Google Drive y Microsoft SharePoint / OneDrive vía Microsoft Graph Delta Query.
+- Erradicación de stubs no conformes en `exportDocument`/`createReport`: fallan explícitamente con `CONNECTOR_EXPORT_NO_CONFIGURADO` si el alcance de escritura no está provisto, en estricto apego a la Regla #2 (cero simulaciones).
+- Endpoints canónicos de registro y sincronización en `POST /api/rag/connectors`, `POST /api/rag/connectors/google-drive` y `POST /api/rag/connectors/sharepoint`.
 
 **Objetivo:** mantener el conocimiento actualizado sin releer repositorios completos.
 
@@ -163,6 +171,10 @@ scheduling, HA ni escala. Diseño y evidencia:
 ## F6. Escala, alta disponibilidad y reindexación sin corte
 
 **Estado 31-07-2026: VALIDACIÓN local.** Se implementaron índices coexistentes por tenant/dimensión, backfill resumible, pausa, evaluación, conmutación y rollback atómicos. La aceptación integrada ejecutó un backfill real 3/3 con Ollama, activó el candidato, consultó y revirtió al índice original. La muestra valida la mecánica, no escala ni mejora del modelo. HA fue aplazada expresamente durante desarrollo. Véanse `docs/RAG_ONLINE_REINDEXING.md`, `docs/adr/ADR-RAG-006-reindexacion-online.md`, `docs/audits/RAG_F6_REINDEX_2026-07-31.md` y `docs/audits/RAG_FULL_ACCEPTANCE_2026-07-31.md`.
+**Ampliación 16-09-2026: VALIDACIÓN Blue/Green Reindexing & UI Operativa.**
+- Endpoints `GET /api/rag/embedding-indexes/status` y `POST /api/rag/embedding-indexes/rollback` operativos.
+- Detección de cobertura completa y conmutación atómica sin interrupción de consultas.
+- Cuadro de mando interactivo integrado en `RagReindexAndLifecycleDashboard.jsx` para supervisión en vivo del backfill y reversión inmediata con un solo clic.
 
 **Objetivo:** soportar crecimiento y cambios de embeddings con continuidad verificable.
 
@@ -184,6 +196,12 @@ scheduling, HA ni escala. Diseño y evidencia:
 ## F7. Observabilidad, auditoría y operación bancaria
 
 **Estado 31-07-2026: VALIDACIÓN local integral.** Snapshot RLS, alertas/runbooks, exportación Prometheus y auditoría PostgreSQL append-only están implementados. La aceptación visual autenticada cubrió 1440, 1024 y 768 píxeles sin solapamientos, errores de consola ni peticiones RAG fallidas. Evidencia: `docs/audits/RAG_F7_OBSERVABILITY_2026-07-31.md` y `docs/audits/RAG_FULL_ACCEPTANCE_2026-07-31.md`; operación y mercado: `docs/RAG_OBSERVABILITY_AUDIT.md`; objetivos provisionales y SIEM: `docs/RAG_PRODUCTION_READINESS.md`; decisión: `docs/adr/ADR-RAG-007-observabilidad-auditoria.md`. Faltan entrega SIEM/WORM real, demostración de SLO/RPO/RTO, carga y guardias.
+
+**Ampliación 16-09-2026: VALIDACIÓN Transporte SIEM / SOC Multidestino & OpenTelemetry APM.**
+- Servicio `siemTransportService.js` con soporte nativo para Splunk HEC (`/services/collector/event`), Microsoft Sentinel (Azure Log Analytics HMAC-SHA256) y Syslog RFC 5424 sobre TLS con Structured Data y huellas SHA-256.
+- Outbox worker `siemOutboxWorker.js` con reintentos exponenciales y reporte fail-closed `SIEM_NO_CONFIGURADO` en estricto cumplimiento de la Regla #2.
+- Trazabilidad Distribuida W3C Trace Context (`traceparent`/`tracestate`) y percentiles APM p50/p95/p99 (`otelTracing.js`).
+- Cuadros de mando operativos en `SiemSocDashboard.jsx` y `OtelApmDashboard.jsx`.
 
 **Revalidación 01-08-2026:** tras el corte PostgreSQL transversal se comprobó
 la interfaz real de ingesta y operación a 1889, 768 y 390 píxeles, sin

@@ -4,45 +4,200 @@
   <meta charset="UTF-8">
   <title>Flentio Enterprise Docs</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Centro de Documentación de Flentio Enterprise">
+  <meta name="description" content="Centro de Documentación y Arquitectura de Flentio Enterprise">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   
   <!-- Theme: Modern Corporate/Dark Theme via Docsify Themeable -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
   
+  <!-- Plugin: Sidebar Collapse (Árbol de secciones interactivo) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css" />
+
   <style>
     :root {
       --base-color: #f1f5f9;
-      --theme-color: #0ea5e9; /* Cyan accent */
+      --theme-color: #00e5ff; /* Cyan accent */
       --sidebar-background: #0f172a;
       --background-color: #020617;
       --heading-color: #38bdf8;
-      --sidebar-name-color: #e2e8f0;
-      --link-color: #0ea5e9;
+      --sidebar-name-color: #ffffff;
+      --link-color: #00e5ff;
       --link-color--hover: #38bdf8;
-      --sidebar-nav-link-color: #94a3b8;
-      --sidebar-nav-link-color--active: #38bdf8;
+      --sidebar-nav-link-color: #cbd5e1;
+      --sidebar-nav-link-color--active: #00e5ff;
+      --sidebar-width: 320px;
     }
+
     body {
-        font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #020617;
+      color: #f1f5f9;
+    }
+
+    /* Ajustes del Sidebar y Árbol de Secciones */
+    .sidebar {
+      background-color: #0f172a !important;
+      border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+      width: var(--sidebar-width) !important;
+      padding-top: 20px !important;
+    }
+
+    .app-name {
+      margin-bottom: 15px !important;
+    }
+
+    .app-name-link {
+      font-weight: 800 !important;
+      font-size: 1.25rem !important;
+      letter-spacing: -0.5px !important;
+      color: #ffffff !important;
+    }
+
+    .sidebar-nav {
+      padding: 10px 16px 40px 16px !important;
+    }
+
+    .sidebar-nav ul {
+      padding-left: 12px !important;
+      margin: 4px 0 !important;
+      list-style: none !important;
+    }
+
+    .sidebar-nav li {
+      margin: 6px 0 !important;
+      font-size: 13.5px !important;
+      line-height: 1.45 !important;
+    }
+
+    .sidebar-nav strong {
+      color: #38bdf8 !important;
+      font-size: 13px !important;
+      font-weight: 750 !important;
+      letter-spacing: 0.3px !important;
+      display: block !important;
+      margin-top: 14px !important;
+      margin-bottom: 6px !important;
+      padding-bottom: 3px !important;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.15) !important;
+    }
+
+    .sidebar-nav a {
+      color: #cbd5e1 !important;
+      text-decoration: none !important;
+      transition: all 0.2s ease !important;
+      display: inline-block !important;
+      padding: 3px 0 !important;
+    }
+
+    .sidebar-nav a:hover {
+      color: #00e5ff !important;
+      text-decoration: none !important;
+      transform: translateX(3px) !important;
+    }
+
+    .sidebar-nav li.active > a {
+      color: #00e5ff !important;
+      font-weight: 700 !important;
+      border-right: 2px solid #00e5ff !important;
+    }
+
+    /* Buscador estético */
+    .sidebar .search input {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      border-radius: 8px !important;
+      color: #ffffff !important;
+      padding: 10px 12px !important;
+    }
+
+    .sidebar .search input:focus {
+      border-color: #00e5ff !important;
+      outline: none !important;
+      box-shadow: 0 0 12px rgba(0, 229, 255, 0.25) !important;
+    }
+
+    /* Scrollbar fino y oscuro */
+    .sidebar::-webkit-scrollbar {
+      width: 5px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: rgba(0, 229, 255, 0.4);
     }
   </style>
 </head>
 <body>
   <div id="app">Cargando documentación...</div>
+
+  <!-- Contenido embebido de respaldo para el árbol de secciones en caso de fallo de red/CORS -->
+  <script id="fallback-sidebar" type="text/markdown">
+* 🏠 **Inicio y Guía General**
+  * [Biblioteca y Punto de Entrada](README.md)
+  * [Presentación Interactiva](presentation.html ':ignore')
+
+* 🏢 **Entornos Empresariales**
+  * [Matriz de Entornos Empresariales](architects/ENTERPRISE_ENVIRONMENTS_MATRIX.md)
+  * [Entorno Corporativo Neutro](operators/CORPORATE_ENTERPRISE_GUIDE.md)
+  * [Entorno Medical (Salud y Farma)](operators/HEALTHCARE_CLINICAL_GUIDE.md)
+  * [Entorno Bancario y Financiero](operators/BANKING_FINANCIAL_GUIDE.md)
+
+* 💼 **Inversores y Ventas**
+  * [Propuesta de Valor Ejecutivo](sales/DECK_PROPUESTA_VALOR.md)
+  * [Análisis Competitivo de Mercado](sales/COMPETITIVE_ANALYSIS.md)
+  * [Dossier de Inversión (Flentio Medical)](sales/FLENTIO_MEDICAL_INVESTOR_DOSSIER.md)
+  * [Resumen Ejecutivo de Dirección](leadership/EXECUTIVE_SUMMARY.md)
+  * [Estrategia Corporativa 2026](strategy/README.md)
+
+* ⚙️ **Operaciones y Gestión**
+  * [Manual de Operaciones Enterprise](operators/ENTERPRISE_OPERATIONS_MANUAL.md)
+  * [Administración de Integraciones](admins/ADMIN_EXTERNAL_INTEGRATIONS.md)
+  * [Salud de Infraestructura](admins/PLATFORM_INFRASTRUCTURE_HEALTH.md)
+  * [Centro de Demostración y Pruebas](operators/DEMO_PRODUCT_GUIDE.md)
+  * [Gestión de Entornos No-Code](users/GUIA_GESTION_ENTORNOS_Y_VERSIONES_NOCODE.md)
+
+* 👥 **Usuarios y Flujos No-Code**
+  * [Manual de Usuario Básico](users/GUIA_USUARIO_BASICA.md)
+  * [Guía de Automatización No-Code](users/GUIA_AUTOMATIZACION_NOCODE.md)
+  * [Gobierno de Flujos de Negocio](managers/GUIA_GOBIERNO_FLUJOS.md)
+  * [Flujos de Demostración](presentation/DEMO_FLOWS.md)
+
+* 🛡️ **Seguridad y Cumplimiento**
+  * [Guía Integral de Seguridad](SECURITY_AND_COMPLIANCE_GUIDE.md)
+  * [Modelo de Seguridad y Mitigaciones](SECURITY.md)
+  * [Homologación Bancaria M2](M2_BANKING_HOMOLOGATION.md)
+  * [Capacidad y Benchmark DORA](architects/CAPACIDAD_CARGA_USUARIOS_Y_PROCESOS.md)
+
+* 🧠 **Arquitectura e Ingeniería**
+  * [Arquitectura RAG Empresarial](developers/RAG_OPERATIONS.md)
+  * [Integración de Skills](architects/INTEGRATION_SKILLS_ARCHITECTURE.md)
+  * [SDK de Adaptadores Pro-Code](developers/INTEGRATION_ADAPTER_SDK.md)
+  * [Inspección de Ingeniería](developers/ENGINEERING_INSPECTION_2026.md)
+  * [Continuidad de Desarrollo](developers/DEVELOPER_HANDOVER.md)
+  </script>
+
   <script>
     window.$docsify = {
       name: 'Flentio Docs',
       repo: '',
-      loadSidebar: true,
-      subMaxLevel: 3,
+      loadSidebar: '_sidebar.md',
+      subMaxLevel: 2,
+      sidebarDisplayLevel: 1, // Despliega el árbol en nivel 1
       auto2top: true,
-      search: 'auto', // default
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md',
+        '/': '/README.md'
+      },
       search: {
-        maxAge: 86400000, 
+        maxAge: 86400000,
         paths: 'auto',
-        placeholder: 'Buscar...',
-        noData: 'No se encontraron resultados!',
+        placeholder: 'Buscar en la documentación...',
+        noData: 'No se encontraron resultados',
         depth: 3
       },
       copyCode: {
@@ -56,18 +211,40 @@
         crossChapter: true,
         crossChapterText: true,
       },
+      plugins: [
+        // Plugin de salvaguarda para asegurar que el árbol de secciones NUNCA aparezca vacío
+        function(hook, vm) {
+          hook.ready(function() {
+            setTimeout(function() {
+              var sidebarEl = document.querySelector('.sidebar-nav');
+              if (sidebarEl && (!sidebarEl.children || sidebarEl.children.length === 0 || sidebarEl.innerText.trim() === '')) {
+                console.warn('[Flentio Docs] Activando árbol de secciones de respaldo');
+                var fallbackMarkdown = document.getElementById('fallback-sidebar').innerText;
+                var renderedHtml = window.Docsify.dom.find('#app') ? window.marked(fallbackMarkdown) : '';
+                sidebarEl.innerHTML = renderedHtml;
+              }
+            }, 600);
+          });
+        }
+      ]
     }
   </script>
   
   <!-- Docsify v4 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
   
-  <!-- Plugins -->
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+  <!-- Docsify Themeable Script (Requerido para renderizar correctamente el sidebar) -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
+
+  <!-- Docsify Sidebar Collapse Script (Crea el árbol de secciones desplegable con carpetas) -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+  
+  <!-- Plugins complementarios -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
 </body>
 </html>

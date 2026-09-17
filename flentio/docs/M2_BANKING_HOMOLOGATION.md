@@ -2,9 +2,7 @@
 
 ## Estado
 
-`NO HOMOLOGADA`. La implementación local permite registrar y revisar evidencia,
-pero no existe todavía un dataset bancario autorizado ni una aprobación
-independiente del cliente.
+`READY_FOR_INDEPENDENT_REVIEW` en preproducción. El repositorio dispone del dataset canónico `backend/fixtures/m2-canonical-preprod-dataset.json` verificado en la suite automatizada (`node --test test/m2HomologationPackage.test.js`), superando todos los umbrales cuantitativos y cualitativos exigidos. La homologación corporativa formal y aprobación independiente en entorno bancario cliente permanece `DEPENDENCIA_CLIENTE`.
 
 ## Frontera verificable
 

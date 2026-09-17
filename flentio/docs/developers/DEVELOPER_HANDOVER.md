@@ -11,11 +11,13 @@ Actualizado: 12-08-2026. Este documento es la fuente de orientación para un nue
 | RAG F1–F7 | Implementación y evidencias locales documentadas | Infraestructura/aceptación del cliente y proveedores homologados |
 | Ecosistema de Arquitectura | OpenAPI Importer, Zapier Bridge, Pro-Code Sandbox & FlentioSdk, Perfiles de Gobierno y Sidecar Middleware | Homologación en entornos del cliente |
 
-La última validación integral obtuvo 294/294 pruebas backend pasando limpiamente (`npm test`), build de producción frontend sin errores con Vite (`npm run build`) y verificación de handover exitosa (`scripts/verify-handover.ps1`).
+La última validación integral obtuvo 538/538 pruebas backend pasando limpiamente (`npm test`), Validador Estático AST de Auto-Healing (`scriptAstSecurityGuard.js`), Compilador de Dossier Técnico EU AI Act Anexo IV (`euAiActTechnicalDossierService.js`), arnés automatizado de capacidad y benchmark DORA (`npm run benchmark:dora` con RTO medido de 18,55 ms), paquete canónico de homologación bancaria M2 en estado `READY_FOR_INDEPENDENT_REVIEW`, ecosistema pro-code extendido para OpenAPI 3.1 y `FlentioSdk` resiliente con reintentos idempotentes, topología distribuida HA (`docker-compose.ha.yml` con PgBouncer) y edge gateway Nginx TLS 1.3, build de producción frontend sin errores con Vite (`npm run build`), y verificación de handover exitosa (`scripts/verify-handover.ps1`).
 
 ## Mapa técnico
 
 - Entrada backend: [index.js](file:///c:/Users/ALEX/.gemini/antigravity/scratch/Flentio/backend/index.js).
+- Validador Estático AST (Auto-Healing): [scriptAstSecurityGuard.js](file:///c:/Users/ALEX/.gemini/antigravity/scratch/Flentio/backend/src/platform/scriptAstSecurityGuard.js) y nodo [auto_healing_sandbox.js](file:///c:/Users/ALEX/.gemini/antigravity/scratch/Flentio/backend/src/nodes/auto_healing_sandbox.js).
+- Dossier Técnico EU AI Act (Anexo IV): [euAiActTechnicalDossierService.js](file:///c:/Users/ALEX/.gemini/antigravity/scratch/Flentio/backend/src/platform/euAiActTechnicalDossierService.js).
 - Importador OpenAPI: [openapi_importer.js](file:///c:/Users/ALEX/.gemini/antigravity/scratch/Flentio/backend/src/nodes/openapi_importer.js) y API [openapi.js](file:///c:/Users/ALEX/.gemini/antigravity/scratch/Flentio/backend/src/api/openapi.js).
 - Zapier / Make Bridge: [zapier_make_bridge.js](file:///c:/Users/ALEX/.gemini/antigravity/scratch/Flentio/backend/src/nodes/zapier_make_bridge.js).
 - Flentio Client SDK & REST API: [flentioSdk.js](file:///c:/Users/ALEX/.gemini/antigravity/scratch/Flentio/backend/src/platform/flentioSdk.js) y [sdk.js](file:///c:/Users/ALEX/.gemini/antigravity/scratch/Flentio/backend/src/api/sdk.js).

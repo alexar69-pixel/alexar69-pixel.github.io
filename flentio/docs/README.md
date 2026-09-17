@@ -20,6 +20,18 @@ encuentra evidencia suficiente.
 | Ventas | [Propuesta de valor](sales/DECK_PROPUESTA_VALOR.md) | [Análisis competitivo](sales/COMPETITIVE_ANALYSIS.md) |
 | Dirección | [Resumen ejecutivo](leadership/EXECUTIVE_SUMMARY.md) | [Registro de riesgos](leadership/RISK_REGISTER.md) |
 
+## Entornos Empresariales y Sectores de Aplicación
+
+Flentio se despliega y adapta a **tres perfiles de entorno empresarial** según la exigencia operativa y regulatoria de la organización:
+
+| Entorno Empresarial | Perfil Técnico | Foco Operativo y Normativo | Guía Dedicada |
+|---|---|---|---|
+| 🏢 **Corporativo Neutro** | `CORPORATE_NEUTRAL` | Automatización transversal, RRHH, Compras, TI y Legal (RGPD, EU AI Act) | [Guía Operativa Corporativa](operators/CORPORATE_ENTERPRISE_GUIDE.md) |
+| 🏥 **Medical & Farma** | `HEALTHCARE_CLINICAL` | Ensayos clínicos, farmacovigilancia, EHR/EDC (HIPAA Safe Harbor, FDA 21 CFR 11) | [Guía Flentio Medical](operators/HEALTHCARE_CLINICAL_GUIDE.md) |
+| 🏦 **Bancario & Financiero** | `BANKING_ENTERPRISE` | Resiliencia DORA, AML/CFT, Doble aprobación M2 y Auditoría WORM | [Guía Operativa Bancaria](operators/BANKING_FINANCIAL_GUIDE.md) |
+
+- [Matriz de Entornos Empresariales](architects/ENTERPRISE_ENVIRONMENTS_MATRIX.md) — comparativa exhaustiva de salvaguardas, DLP, tiempos de retención y protocolos HITL entre los tres entornos.
+
 ## Seguridad y capacidad
 
 - [Guía integral de seguridad y cumplimiento](SECURITY_AND_COMPLIANCE_GUIDE.md)

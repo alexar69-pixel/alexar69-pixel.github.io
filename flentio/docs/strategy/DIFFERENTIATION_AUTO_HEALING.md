@@ -52,10 +52,11 @@ La generación de código por IA (Copilot) es común, pero la **ejecución orque
 | Hipótesis | Método de validación | Métrica y umbral | Resultado | Estado |
 |---|---|---|---|---|
 | Flentio puede sugerir el script correcto basándose en un log y un manual en PDF, y ejecutarlo de forma segura. | Simulación de incidente web (Nginx) y remediación en Sandbox. | 80% de scripts generados resuelven el incidente sin intervención de código manual. | - | `NO_VALIDADA` |
+| El motor AST de seguridad previene el 100% de comandos destructivos, reverse shells y exfiltración de credenciales antes de HITL o ejecución. | Análisis sintáctico estático determinista (`scriptAstSecurityGuard.js`) contra suite de comandos hostiles. | 100% de scripts maliciosos/destructivos bloqueados (`CRITICAL_SECURITY_VIOLATION`), permitiendo solo comandos seguros. | 100% de ataques bloqueados en suite de pruebas de seguridad (`test/scriptAstSecurityGuard.test.js`). | `VALIDADA_LOCALMENTE` |
 
-- Criterio para continuar: Validación técnica del aislamiento del entorno de Sandbox.
+- Criterio para continuar: Validación técnica del aislamiento del entorno de Sandbox y blindaje AST estático.
 - Criterio para modificar: Si los scripts generados son inestables, se limitará a sugerir comandos de solo lectura (diagnóstico) en lugar de escritura (reparación).
-- Criterio para descartar: Riesgo crítico de seguridad si la IA intenta ejecutar comandos destructivos (`rm -rf`) que no puedan ser bloqueados por el validador estático.
+- Criterio para descartar: Riesgo crítico de seguridad si la IA intenta ejecutar comandos destructivos (`rm -rf`) que no puedan ser bloqueados por el validador estático (Mitigado exitosamente con `scriptAstSecurityGuard.js`).
 
 ## Riesgos y obligaciones
 

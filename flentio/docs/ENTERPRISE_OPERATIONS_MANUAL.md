@@ -8,7 +8,7 @@ Referencias obligatorias antes de un despliegue:
 
 - [Seguridad de Flentio](SECURITY.md), incluidos los bloqueos de producción.
 - [Capacidad, carga y escalado](architects/CAPACIDAD_CARGA_USUARIOS_Y_PROCESOS.md),
-  cuyas cifras permanecen `NO_VALIDADA` hasta ejecutar benchmarks representativos.
+  con arnés reproducible de benchmark DORA y métricas empíricas documentadas.
 - [Flujos de la presentación pública](users/FLUJOS_PRESENTACION_FLENTIO.md), con
   sus entradas, trigger IMAP, extracción PDF, dependencias `NO_CONFIGURADO`,
   validación y promoción segura.

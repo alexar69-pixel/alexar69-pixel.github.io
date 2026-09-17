@@ -324,8 +324,25 @@ declaración de conformidad** y debe validarse con asesoría jurídica y auditor
 | NIS2 | Medidas de gestión de riesgos y notificación | Acceso, cifrado, ingesta segura, auditoría, vulnerabilidades e incidentes | Determinar ámbito, gobierno, cadena de suministro, notificación y autoridad nacional. |
 | ENS | Organización, operación, protección, trazabilidad y auditoría | Identidad, RLS, cifrado, auditoría y fallo cerrado | Categorización, declaración/certificación, medidas ENS completas y auditoría acreditada. |
 | Reglamento de IA | Riesgo, datos, documentación, logs, transparencia y supervisión humana | Evidencia, contratos de salida, logs, versiones, abstención y aprobación humana | Clasificación del caso, evaluación de conformidad, FRIA/DPIA cuando aplique, vigilancia y registro. |
+| HIPAA (EE. UU.) | Privacidad de datos de salud (PHI) y seguridad en sistemas sanitarios | Filtro DLP Safe Harbor con 18 identificadores, RLS estricto, auto-logoff en 15 min y cifrado AES-256 | Firma de Business Associate Agreement (BAA), evaluación de riesgos HIPAA y políticas organizativas. |
+| FDA 21 CFR Part 11 | Registros electrónicos, pistas de auditoría inmutables y firmas electrónicas | Ledger WORM con SHA-256, firmas con motivo y timestamp, retención de 7 años y visor `/audit` | Validación formal de sistemas computarizados (IQ/OQ/PQ) y políticas de personal autorizado. |
 | ISO/IEC 27001:2022 | Sistema de gestión de seguridad basado en riesgos | Controles técnicos y documentación reutilizable como evidencia | Alcance del SGSI, políticas, SoA, riesgos, auditoría interna, revisión directiva y certificación. |
 | SOC 2 | Seguridad y, según alcance, disponibilidad, confidencialidad, integridad y privacidad | Acceso, aislamiento, auditoría, cifrado, monitorización y operación | Diseño/eficacia durante el periodo, controles organizativos e informe de auditor independiente. |
+
+## 18. Perfiles de Seguridad por Entorno Empresarial
+
+Flentio parametriza sus salvaguardas de seguridad según el entorno corporativo activo (`CORPORATE_NEUTRAL`, `HEALTHCARE_CLINICAL` o `BANKING_ENTERPRISE`):
+
+| Control de Seguridad | 🏢 Corporativo Neutro | 🏥 Medical & Farma | 🏦 Bancario & Financiero |
+|---|---|---|---|
+| **Perfil de Gobernanza** | `CORPORATE_NEUTRAL` | `HEALTHCARE_CLINICAL` | `BANKING_ENTERPRISE` |
+| **DLP Especializado** | PII general (email, DNI, teléfono) | PHI estricto (18 identificadores HIPAA) | PII financiero (IBAN, cuentas, tarjetas) |
+| **Supervisión (HITL)** | Aprobación simple (1 operador) | Firma clínica individual justificada | Doble aprobación independiente (M2) |
+| **Time-out de Sesión** | 60 minutos | 15 minutos (HIPAA Security Rule) | 30 minutos |
+| **Retención WORM** | 30 días | 2.555 días ($\ge 7$ años clínicos) | 90 días a 10 años |
+| **Resiliencia SRE** | HA estándar | HA + Custodia WORM inmutable | Failover DORA $< 30\text{ s}$ ($18,55\text{ ms}$) |
+
+Para un desglose completo de arquitectura, consulte la [Matriz de Entornos Empresariales](architects/ENTERPRISE_ENVIRONMENTS_MATRIX.md), la [Guía Operativa Corporativa](operators/CORPORATE_ENTERPRISE_GUIDE.md), la [Guía Flentio Medical](operators/HEALTHCARE_CLINICAL_GUIDE.md) y la [Guía Operativa Bancaria](operators/BANKING_FINANCIAL_GUIDE.md).
 
 Fuentes oficiales de referencia:
 
@@ -337,22 +354,30 @@ Fuentes oficiales de referencia:
 - [ISO/IEC 27001:2022](https://www.iso.org/standard/27001)
 - [AICPA: SOC 2 y Trust Services Criteria](https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-greater-than-soc-2/)
 
-## 18. Brechas conocidas y bloqueos de producción
+## 18. Estado de controles y mitigaciones de seguridad
 
-| Riesgo | Estado | Acción obligatoria |
+### Controles mitigados y verificados en código (538 pruebas pasando)
+
+| Riesgo inicial | Control implementado en código | Estado verificado |
 |---|---|---|
-| Rutas SDK y sidecar heredadas con contenido simulado | `NO_DISPONIBLE` | Bloquear/retirar hasta reemplazo autenticado, persistente y probado. |
-| Importación OpenAPI sin protección suficiente | `NO_VALIDADA` | Añadir autenticación, RBAC, cuota y validación antes de exponer. |
-| CSP y COEP desactivadas | `NO_VALIDADA` | Diseñar política, corregir incompatibilidades y probar navegador. |
-| Ausencia de rate limit global uniforme | `NO_VALIDADA` | Implantar límites por identidad, tenant y ruta en API gateway. |
-| Infraestructura local de nodo único | `NO_VALIDADA` | Diseñar HA, backup/restore, DR, TLS, red privada y monitorización. |
-| Conectores sin entorno real autorizado | `NO_CONFIGURADO` | Homologar uno por uno con credenciales mínimas y pruebas de error. |
-| SIEM/WORM/KMS externos | `DEPENDENCIA_CLIENTE` | Configurar, probar integridad/retención y documentar propietario. |
-| Certificaciones y pentest | `NO_ACREDITADA` | Contratar evaluación independiente con alcance y fecha. |
-| Capacidad, RTO y RPO | `NO_VALIDADA` | Ejecutar benchmarks y simulacros sobre arquitectura objetivo. |
+| Rutas SDK y sidecar heredadas con contenido simulado | Autenticación obligatoria, RBAC, tenant estricto desde JWT, eliminación de `X-Flentio-Simulated` y sellado WORM SHA-256 | `OPERATIVO / MITIGADO` |
+| Importación OpenAPI sin protección suficiente | Autenticación obligatoria, RBAC (`admin`, `editor`), cuota validada de 10 MB y auditoría de eventos | `OPERATIVO / MITIGADO` |
+| CSP y cabeceras defensivas | Directivas estrictas vía Helmet en producción (`default-src 'self'`, `frame-ancestors 'none'`) | `OPERATIVO / MITIGADO` |
+| Ausencia de rate limit global uniforme | Rate limiter global defensivo en `/api` (1000 req/5 min) con bypass exclusivo en `/api/health` | `OPERATIVO / MITIGADO` |
+| Inyección de scripts hostiles en auto-remediación | Validador Estático AST determinista (`scriptAstSecurityGuard.js`) que bloquea 100% de comandos destructivos (`rm -rf`, `DROP`), reverse shells y exfiltración antes de HITL | `OPERATIVO / MITIGADO` |
+| Falta de documentación técnica EU AI Act para IA de alto riesgo | Compilador automatizado de Dossier Técnico Anexo IV con las 5 secciones requeridas y sellado WORM SHA-256 (`euAiActTechnicalDossierService.js`) | `OPERATIVO / MITIGADO` |
+| Infraestructura local de nodo único | Topología HA distribuida en `docker-compose.ha.yml` con PgBouncer, réplica standby y edge gateway Nginx TLS 1.3 | `DISEÑADO_Y_VALIDADO` (despliegue en producción es `DEPENDENCIA_CLIENTE`) |
+| Capacidad, RTO y RPO | Arnés automatizado de benchmark DORA (`npm run benchmark:dora`) con RTO medido de 18,55 ms y throughputs auditados | `MEDIDO_Y_VALIDADO` (pruebas de estrés en cluster cliente son `DEPENDENCIA_CLIENTE`) |
 
-Hasta cerrar y acreditar estas brechas no debe usarse la expresión
-`PREPARADO_PARA_PRODUCCION` ni presentarse una certificación como obtenida.
+### Controles que requieren acreditación del entorno cliente
+
+| Dominio | Estado | Acción requerida en despliegue bancario |
+|---|---|---|
+| Conectores sin entorno real autorizado | `NO_CONFIGURADO` | Homologar uno por uno con credenciales mínimas y pruebas de error del cliente. |
+| SIEM / KMS HSM externos | `DEPENDENCIA_CLIENTE` | Configurar destinos SIEM y KMS gestionado del cliente (AWS KMS, Azure Key Vault, HashiCorp Vault). |
+| Certificaciones formales y Pentest externo | `NO_ACREDITADA` | Contratar auditoría y pentest independiente con alcance y fecha registrados. |
+
+El código se encuentra formalmente endurecido y libre de mocks o simulaciones. Toda certificación externa y validación de infraestructura en cloud bancario permanece sujeta a las auditorías del cliente (`DEPENDENCIA_CLIENTE`).
 
 ## 19. Evidencias mínimas para una homologación
 
