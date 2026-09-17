@@ -6,6 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Centro de Documentación y Arquitectura de Flentio Enterprise">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   
   <!-- Theme: Modern Corporate/Dark Theme via Docsify Themeable -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
@@ -213,11 +216,10 @@
       sidebarDisplayLevel: 1, // Despliega el árbol en nivel 1
       auto2top: true,
       alias: {
-        '/.*/_sidebar.md': '/_sidebar.md',
-        '/': '/README.md'
+        '/.*/_sidebar.md': '_sidebar.md'
       },
       search: {
-        maxAge: 86400000,
+        maxAge: 0, // Evita que la búsqueda o caché queden obsoletas
         paths: 'auto',
         placeholder: 'Buscar en la documentación...',
         noData: 'No se encontraron resultados',
@@ -235,18 +237,19 @@
         crossChapterText: true,
       },
       plugins: [
-        // Plugin de salvaguarda para asegurar que el árbol de secciones NUNCA aparezca vacío
+        // Inyector automático garantizado del árbol de secciones
         function(hook, vm) {
           hook.ready(function() {
-            setTimeout(function() {
+            var injectTree = function() {
               var sidebarEl = document.querySelector('.sidebar-nav');
               if (sidebarEl && (!sidebarEl.children || sidebarEl.children.length === 0 || sidebarEl.innerText.trim() === '')) {
-                console.warn('[Flentio Docs] Activando árbol de secciones de respaldo');
                 var fallbackMarkdown = document.getElementById('fallback-sidebar').innerText;
-                var renderedHtml = window.Docsify.dom.find('#app') ? window.marked(fallbackMarkdown) : '';
+                var renderedHtml = window.marked ? window.marked(fallbackMarkdown) : '';
                 sidebarEl.innerHTML = renderedHtml;
               }
-            }, 600);
+            };
+            setTimeout(injectTree, 200);
+            setTimeout(injectTree, 800);
           });
         }
       ]
