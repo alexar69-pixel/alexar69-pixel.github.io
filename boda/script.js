@@ -127,6 +127,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const btnCopyIbanPage = document.getElementById('btn-copy-iban-page');
+    const ibanTextPage = document.getElementById('iban-text-page');
+    const copyToastPage = document.getElementById('copy-toast-page');
+
+    if (btnCopyIbanPage && ibanTextPage) {
+        btnCopyIbanPage.addEventListener('click', () => {
+            const cleanIban = ibanTextPage.textContent.replace(/\s+/g, '');
+            navigator.clipboard.writeText(cleanIban).then(() => {
+                if (copyToastPage) {
+                    copyToastPage.style.display = 'block';
+                    setTimeout(() => {
+                        copyToastPage.style.display = 'none';
+                    }, 2500);
+                }
+            }).catch(err => {
+                console.error('Error al copiar IBAN: ', err);
+            });
+        });
+    }
+
     // 6. Native Canvas Confetti Generator (Fiesta!)
     function launchConfetti() {
         const canvas = document.createElement('canvas');

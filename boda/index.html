@@ -30,15 +30,11 @@
             </button>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#historia">Nuestra Historia</a></li>
+                <li><a href="#regalos">🎁 IBAN & Bizum</a></li>
                 <li><a href="#programa">Programa</a></li>
-                <li><a href="#fotos">Fotos Invitados 📸</a></li>
-                <li><a href="#quiz">Quiz ❓</a></li>
-                <li><a href="#spotify">Spotify 🎵</a></li>
+                <li><a href="#detalles">Lugar</a></li>
+                <li><a href="#fotos">Fotos 📸</a></li>
                 <li><a href="#deseos">Deseos 💬</a></li>
-                <li><a href="#detalles">Detalles</a></li>
-                <li><a href="#alojamiento">Alojamiento</a></li>
-                <li><a href="#regalos">Regalos</a></li>
                 <li><a href="#rsvp" class="btn-rsvp-nav">¡Voy! 🎉</a></li>
             </ul>
         </div>
@@ -80,10 +76,11 @@
                 </div>
             </div>
 
-            <div class="hero-buttons fade-in delay-2">
-                <a href="#rsvp" id="btn-hero-rsvp" class="btn-primary">¡Confirma asistencia y a bailar! 💃</a>
-                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Maqui+%26+Alex&dates=20270626T180000Z/20270627T020000Z&details=Acomp%C3%A1%C3%B1anos+en+nuestro+gran+d%C3%ADa.+Centro+Nacional+de+Golf,+Madrid.&location=Centro+Nacional+de+Golf,+Calle+Arroyo+del+Monte+5,+28049+Madrid" target="_blank" rel="noopener noreferrer" class="btn-secondary">
-                    📅 Guardar la fecha
+            <div class="hero-buttons fade-in delay-2" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
+                <a href="#regalos" class="btn-secondary" style="padding: 12px 20px; font-size: 0.9rem; border-color: var(--accent-gold); color: var(--accent-gold); background: rgba(212, 175, 55, 0.1);">🎁 IBAN & Bizum</a>
+                <a href="#rsvp" id="btn-hero-rsvp" class="btn-primary" style="padding: 12px 20px; font-size: 0.9rem;">🎉 Confirmar Asistencia</a>
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Maqui+%26+Alex&dates=20270626T180000Z/20270627T020000Z&details=Acomp%C3%A1%C3%B1anos+en+nuestro+gran+d%C3%ADa.+Centro+Nacional+de+Golf,+Madrid.&location=Centro+Nacional+de+Golf,+Calle+Arroyo+del+Monte+5,+28049+Madrid" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 12px 20px; font-size: 0.9rem;">
+                    📅 Guardar fecha
                 </a>
             </div>
         </div>
@@ -182,90 +179,56 @@
         </div>
     </section>
 
-    <!-- Guests Photo Upload & Gallery Section -->
+    <!-- Regalos Section (IBAN & Bizum) -->
+    <section id="regalos" class="story-section section-alt">
+        <div class="container text-center">
+            <div class="party-tag fade-in">🎁 LUNA DE MIEL & REGALOS</div>
+            <h2 class="fade-in">IBAN & Bizum de los Novios ✈️</h2>
+            <div class="divider center fade-in"></div>
+            <p class="fade-in" style="max-width: 600px; margin: 0 auto 25px auto; color: var(--text-secondary);">
+                Tu presencia en la pista es nuestro mejor regalo. Si además quieres ayudarnos con nuestro viaje de novios, ¡te lo agradeceremos con el alma!
+            </p>
+            
+            <div class="cloud-banner-box fade-in" style="background: rgba(24, 24, 27, 0.85); border: 1px solid var(--accent-gold); border-radius: 20px; padding: 25px 20px; max-width: 620px; margin: 0 auto; backdrop-filter: blur(10px);">
+                <div class="bank-card" style="background: rgba(255,255,255,0.04); border-radius: 14px; padding: 18px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.08);">
+                    <div class="bank-label" style="font-size: 0.85rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700;">Número de Cuenta (IBAN)</div>
+                    <div class="bank-iban-wrapper" style="display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                        <span id="iban-text-page" class="bank-iban" style="font-family: monospace; font-size: 1.15rem; font-weight: 700; color: #fff; letter-spacing: 1px;">ES91 2100 0418 4502 0005 1234</span>
+                        <button id="btn-copy-iban-page" class="btn-copy" style="padding: 7px 16px; font-size: 0.85rem; background: var(--accent-gold); color: #000; border: none; font-weight: 700; border-radius: 50px; cursor: pointer;">📋 Copiar IBAN</button>
+                    </div>
+                    <span id="copy-toast-page" class="copy-toast" style="display:none; color: #10B981; font-size: 0.85rem; margin-top: 8px; font-weight: 600;">¡IBAN copiado al portapapeles! 🥳</span>
+                </div>
+
+                <div class="bank-card" style="background: rgba(255,255,255,0.04); border-radius: 14px; padding: 18px; border: 1px solid rgba(255,255,255,0.08);">
+                    <div class="bank-label" style="font-size: 0.85rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; font-weight: 700;">Bizum de los Novios</div>
+                    <div style="font-size: 1.25rem; font-weight: 700; color: #fff;">+34 612 345 678 <span style="font-size: 0.85rem; color: var(--accent-main); font-weight: 400; margin-left: 6px;">(Maqui & Alex)</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guests Photo & Video Upload Section (Resumido) -->
     <section id="fotos" class="story-section">
         <div class="container text-center">
-            <div class="party-tag fade-in">📸 ÁLBUM DE LOS INVITADOS & NUBE</div>
+            <div class="party-tag fade-in">📸 ÁLBUM DE LOS INVITADOS</div>
             <h2 class="fade-in">Fotos y Vídeos del Fiestón 📱☁️</h2>
             <div class="divider center fade-in"></div>
-            <p class="subtitle-section fade-in" style="max-width: 700px; margin: 0 auto 30px auto;">
-                ¡Queremos guardarlo todo! Puedes compartir tus fotos al instante en el muro web o subir tus fotos y vídeos en alta calidad a nuestra carpeta compartida de <strong>Google Drive</strong> sin límite de espacio.
+            <p class="subtitle-section fade-in" style="max-width: 600px; margin: 0 auto 20px auto; color: var(--text-secondary);">
+                ¡Sube tus fotos y vídeos al instante a nuestro Google Drive o compártelos en la web!
             </p>
 
-            <div class="cloud-banner-box fade-in" style="background: rgba(24, 24, 27, 0.7); border: 1px solid var(--accent-gold); border-radius: 20px; padding: 25px; max-width: 750px; margin: 0 auto 35px auto; backdrop-filter: blur(10px);">
-                <div style="font-size: 2.2rem; margin-bottom: 10px;">📁☁️</div>
-                <h3 style="color: var(--accent-gold); font-size: 1.3rem; margin-bottom: 10px;">Carpeta Compartida de Google Drive</h3>
-                <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 20px;">
-                    Para vídeos pesados y fotos en máxima resolución, sube todo directamente a nuestro álbum de Google Drive:
-                </p>
-                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                    <a href="https://drive.google.com/drive/folders/1F6XGTyXOsC2gkzGyc4vgpech0YUMIe31?usp=sharing" target="_blank" rel="noopener noreferrer" id="gdrive-link" class="btn-primary" style="background: linear-gradient(135deg, #1a73e8 0%, #1557b0 100%); text-decoration: none; border: none; display: inline-flex; align-items: center; gap: 8px;">
-                        📂 Abrir Google Drive de la Boda
-                    </a>
-                    <button id="btn-open-upload-modal" class="btn-primary">
-                        📸 Publicar en el Muro Web
-                    </button>
-                </div>
+            <div class="fade-in" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
+                <a href="https://drive.google.com/drive/folders/1F6XGTyXOsC2gkzGyc4vgpech0YUMIe31?usp=sharing" target="_blank" rel="noopener noreferrer" id="gdrive-link" class="btn-primary" style="background: linear-gradient(135deg, #1a73e8 0%, #1557b0 100%); text-decoration: none; border: none; padding: 12px 22px;">
+                    📂 Abrir Google Drive de la Boda
+                </a>
+                <button id="btn-open-upload-modal" class="btn-secondary" style="padding: 12px 22px; border-color: rgba(255,255,255,0.2);">
+                    📸 Publicar en la Web
+                </button>
             </div>
 
             <!-- Guest Uploaded Photos Grid -->
             <div class="polaroid-grid fade-in" id="guest-photos-grid">
                 <!-- Dynamically rendered guest photos -->
-            </div>
-
-            <div id="empty-photos-msg" class="empty-state-card fade-in" style="max-width: 500px; margin: 20px auto; padding: 30px; background: rgba(24,24,27,0.6); border-radius: 16px; border: 1px dashed rgba(255,255,255,0.2);">
-                <span style="font-size: 2.5rem; display: block; margin-bottom: 10px;">📸✨</span>
-                <h3 style="font-size: 1.2rem; margin-bottom: 8px;">¡Sé el primero en subir una foto!</h3>
-                <p style="color: var(--text-secondary); font-size: 0.9rem;">Pulsa el botón de arriba para publicar en la web o entra en nuestra nube para subir vídeos pesados.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Quiz Section -->
-    <section id="quiz" class="story-section section-alt">
-        <div class="container text-center">
-            <div class="party-tag fade-in">❓ DESAFÍO DE INVITADOS</div>
-            <h2 class="fade-in">¿Cuánto conoces a Maqui & Alex? 🧠</h2>
-            <div class="divider center fade-in"></div>
-            <p class="subtitle-section fade-in" style="margin-bottom: 30px;">Ponte a prueba respondiendo a este mini test de 3 preguntas</p>
-
-            <div class="quiz-container fade-in">
-                <div class="quiz-card" id="quiz-q1">
-                    <h3>1. ¿Dónde se conocieron Maqui & Alex?</h3>
-                    <div class="quiz-options">
-                        <button class="quiz-btn" data-correct="false">a) En una discoteca a las 4:00 AM 🕺</button>
-                        <button class="quiz-btn" data-correct="true">b) En un café en el centro de Madrid que se alargó por horas ☕</button>
-                        <button class="quiz-btn" data-correct="false">c) En un torneo de golf ⛳</button>
-                    </div>
-                    <div class="quiz-feedback"></div>
-                </div>
-
-                <div class="quiz-card" id="quiz-q2" style="display:none;">
-                    <h3>2. ¿Cuántos años llevan juntos?</h3>
-                    <div class="quiz-options">
-                        <button class="quiz-btn" data-correct="false">a) 3 años maravillosos</button>
-                        <button class="quiz-btn" data-correct="false">b) 5 años</button>
-                        <button class="quiz-btn" data-correct="true">c) 7 años increíbles de aventuras 🎂</button>
-                    </div>
-                    <div class="quiz-feedback"></div>
-                </div>
-
-                <div class="quiz-card" id="quiz-q3" style="display:none;">
-                    <h3>3. ¿Qué es IMPRESCINDIBLE en la boda?</h3>
-                    <div class="quiz-options">
-                        <button class="quiz-btn" data-correct="false">a) Silencio a medianoche 🤫</button>
-                        <button class="quiz-btn" data-correct="true">b) Temazos de Spotify, recena de burgers y barra libre 🍔🪩</button>
-                        <button class="quiz-btn" data-correct="false">c) Discursos de 2 horas 📜</button>
-                    </div>
-                    <div class="quiz-feedback"></div>
-                </div>
-
-                <div id="quiz-result" class="quiz-result-box" style="display:none;">
-                    <div class="result-icon">🏆</div>
-                    <h3>¡RESULTADO DE TU TEST!</h3>
-                    <p id="quiz-score-text">¡Enhorabuena! Has acertado 3/3 preguntas. ¡Eres un auténtico VIP de Maqui & Alex!</p>
-                    <button id="btn-quiz-retry" class="btn-secondary" style="margin-top: 15px;">🔄 Repetir Test</button>
-                </div>
             </div>
         </div>
     </section>
@@ -399,20 +362,6 @@
                     <h3>Metro</h3>
                     <p><strong>Mirasierra & Arroyofresno</strong><br>Metro Mirasierra / Paco de Lucía (L9) y Arroyofresno (L7).</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Regalos Section -->
-    <section id="regalos" class="story-section">
-        <div class="container text-center">
-            <h2 class="fade-in">Mesa de Regalos & Luna de Miel ✈️</h2>
-            <div class="divider center fade-in"></div>
-            <p class="fade-in" style="max-width: 600px; margin: 0 auto 30px auto; color: var(--text-secondary);">
-                El mejor regalo que nos puedes dar es venir a bailar y brindar con nosotros. Pero si quieres ayudarnos a pegarnos la Luna de Miel de nuestras vidas, ¡te lo agradeceremos con el alma!
-            </p>
-            <div class="fade-in">
-                <button id="btn-open-modal" class="btn-primary">🎁 Ver IBAN & Bizum de novios</button>
             </div>
         </div>
     </section>
