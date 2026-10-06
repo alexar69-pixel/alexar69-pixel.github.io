@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Boda | Macarena & Alexander</title>
+    <meta name="description" content="Página web de nuestra boda. Acompáñanos en este día tan especial.">
+    <!-- Prevent Search Engines from Indexing Private Wedding Page -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo-link">Maqui <span class="ampersand">&</span> Alex <span class="party-badge">🪩 THE PARTY</span></a>
+            <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú de navegación">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#historia">Nuestra Historia</a></li>
+                <li><a href="#programa">Programa</a></li>
+                <li><a href="#fotos">Fotos Invitados 📸</a></li>
+                <li><a href="#quiz">Quiz ❓</a></li>
+                <li><a href="#spotify">Spotify 🎵</a></li>
+                <li><a href="#deseos">Deseos 💬</a></li>
+                <li><a href="#detalles">Detalles</a></li>
+                <li><a href="#alojamiento">Alojamiento</a></li>
+                <li><a href="#regalos">Regalos</a></li>
+                <li><a href="#rsvp" class="btn-rsvp-nav">¡Voy! 🎉</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Floating Party Button -->
+    <button id="btn-party-toggle" class="floating-party-btn" title="¡Haz clic para celebrar!">
+        <span class="party-icon">🪩</span>
+        <span class="party-text">¡Modo Fiesta!</span>
+    </button>
+
+    <!-- Hero Section -->
+    <header id="inicio" class="hero">
+        <div class="hero-content">
+            <div class="party-tag fade-in">🎉 ¡NOS CASAMOS Y SE VIENE FIESTÓN! 🎉</div>
+            <h1 class="hero-title fade-in">Maqui <span class="ampersand">&</span> Alex</h1>
+            <p class="date fade-in delay-1">26 de Junio, 2027 • 20:00 h<br>Centro Nacional de Golf, Madrid</p>
+            
+            <!-- Countdown Timer -->
+            <div class="countdown-container visible">
+                <div class="countdown-box">
+                    <span id="cd-days" class="countdown-num">00</span>
+                    <span class="countdown-label">Días</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-box">
+                    <span id="cd-hours" class="countdown-num">00</span>
+                    <span class="countdown-label">Horas</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-box">
+                    <span id="cd-minutes" class="countdown-num">00</span>
+                    <span class="countdown-label">Min</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-box">
+                    <span id="cd-seconds" class="countdown-num">00</span>
+                    <span class="countdown-label">Seg</span>
+                </div>
+            </div>
+
+            <div class="hero-buttons fade-in delay-2">
+                <a href="#rsvp" id="btn-hero-rsvp" class="btn-primary">¡Confirma asistencia y a bailar! 💃</a>
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Maqui+%26+Alex&dates=20270626T180000Z/20270627T020000Z&details=Acomp%C3%A1%C3%B1anos+en+nuestro+gran+d%C3%ADa.+Centro+Nacional+de+Golf,+Madrid.&location=Centro+Nacional+de+Golf,+Calle+Arroyo+del+Monte+5,+28049+Madrid" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                    📅 Guardar la fecha
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Our Story Section -->
+    <section id="historia" class="story-section">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-image slide-in-left">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nuestra historia" />
+                </div>
+                <div class="story-text slide-in-right">
+                    <h2>Nuestra Historia</h2>
+                    <div class="divider"></div>
+                    <p>Todo empezó con un café que se alargó por horas. Desde aquel día en Madrid, hemos compartido viajes, risas, mudanzas y un sinfín de aventuras. Siete años después, estamos listos para celebrar nuestro amor... ¡y montar la mejor fiesta de nuestras vidas!</p>
+                    <p>Sin ceremonias largas ni protocolos aburridos: vamos directos a brindar, comer rico, bailar y pasarlo en grande con nuestra gente favorita desde las 20:00 h.</p>
+                </div>
+            </div>
+
+            <!-- Couple Fun Stats -->
+            <div class="stats-grid fade-in">
+                <div class="stat-card">
+                    <span class="stat-num">7</span>
+                    <span class="stat-desc">Años Juntos</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">+45</span>
+                    <span class="stat-desc">Viajes Compartidos</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">0</span>
+                    <span class="stat-desc">Protocolos 🚫</span>
+                </div>
+                <div class="stat-card highlight">
+                    <span class="stat-num">100%</span>
+                    <span class="stat-desc">¡Fiesta Total! 🪩</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Program Section -->
+    <section id="programa" class="story-section section-alt">
+        <div class="container text-center">
+            <h2 class="fade-in">Cronograma del Fiestón 🕺</h2>
+            <p class="subtitle-section fade-in">Sin ceremonia ni esperas: ¡directos al brindis y a la fiesta!</p>
+            <div class="divider center fade-in"></div>
+
+            <div class="timeline-container fade-in">
+                <div class="timeline-item">
+                    <div class="timeline-time">20:00 h</div>
+                    <div class="timeline-icon">🍸</div>
+                    <div class="timeline-content">
+                        <h3>Llegada & Cóctel de Bienvenida</h3>
+                        <p>Recepción de invitados en la terraza panorámica del Centro Nacional de Golf. ¡Primeras copas y reencuentros!</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">20:45 h</div>
+                    <div class="timeline-icon">🥂✨</div>
+                    <div class="timeline-content">
+                        <h3>Brindis de los Novios</h3>
+                        <p>Bienvenida triunfal de Maqui & Alex, gran brindis conjunto y foto de grupo para arrancar la noche por todo lo alto.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">21:15 h</div>
+                    <div class="timeline-icon">🥩🍷</div>
+                    <div class="timeline-content">
+                        <h3>Cena Cóctel Gourmet</h3>
+                        <p>Estaciones gastronómicas, cóctel cena en la terraza con vistas al campo de golf, buen vino y ambiente distendido.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item highlight-item">
+                    <div class="timeline-time">23:00 h</div>
+                    <div class="timeline-icon">🪩🔥</div>
+                    <div class="timeline-content">
+                        <h3>Apertura de Pista & Barra Libre</h3>
+                        <p>¡Luces, temazos de todos los tiempos, DJ y barra libre sin fin para quemar la pista de baile!</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">02:30 h</div>
+                    <div class="timeline-icon">🍔🍕</div>
+                    <div class="timeline-content">
+                        <h3>Recena de Medianoche</h3>
+                        <p>Hamburguesitas, churros y recena cargada de energía para seguir bailando hasta que el cuerpo aguante.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guests Photo Upload & Gallery Section -->
+    <section id="fotos" class="story-section">
+        <div class="container text-center">
+            <div class="party-tag fade-in">📸 ÁLBUM DE LOS INVITADOS & NUBE</div>
+            <h2 class="fade-in">Fotos y Vídeos del Fiestón 📱☁️</h2>
+            <div class="divider center fade-in"></div>
+            <p class="subtitle-section fade-in" style="max-width: 700px; margin: 0 auto 30px auto;">
+                ¡Queremos guardarlo todo! Puedes compartir tus fotos al instante en el muro web o subir tus fotos y vídeos en alta calidad a nuestro <strong>My Cloud Home</strong> personal sin límite de espacio.
+            </p>
+
+            <div class="cloud-banner-box fade-in" style="background: rgba(24, 24, 27, 0.7); border: 1px solid var(--accent-gold); border-radius: 20px; padding: 25px; max-width: 750px; margin: 0 auto 35px auto; backdrop-filter: blur(10px);">
+                <div style="font-size: 2.2rem; margin-bottom: 10px;">☁️💾</div>
+                <h3 style="color: var(--accent-gold); font-size: 1.3rem; margin-bottom: 10px;">Almacenamiento en Nube Personal (My Cloud Home)</h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 20px;">
+                    Para vídeos pesados y fotos en máxima resolución, sube todo directamente a nuestra carpeta compartida de My Cloud Home:
+                </p>
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://home.mycloud.com/" target="_blank" id="mycloud-link" class="btn-primary" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); text-decoration: none; border: none;">
+                        ☁️ Abrir Mi Carpeta Nube (My Cloud Home)
+                    </a>
+                    <button id="btn-open-upload-modal" class="btn-primary">
+                        📸 Publicar en el Muro Web
+                    </button>
+                </div>
+            </div>
+
+            <!-- Guest Uploaded Photos Grid -->
+            <div class="polaroid-grid fade-in" id="guest-photos-grid">
+                <!-- Dynamically rendered guest photos -->
+            </div>
+
+            <div id="empty-photos-msg" class="empty-state-card fade-in" style="max-width: 500px; margin: 20px auto; padding: 30px; background: rgba(24,24,27,0.6); border-radius: 16px; border: 1px dashed rgba(255,255,255,0.2);">
+                <span style="font-size: 2.5rem; display: block; margin-bottom: 10px;">📸✨</span>
+                <h3 style="font-size: 1.2rem; margin-bottom: 8px;">¡Sé el primero en subir una foto!</h3>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">Pulsa el botón de arriba para publicar en la web o entra en nuestra nube para subir vídeos pesados.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Quiz Section -->
+    <section id="quiz" class="story-section section-alt">
+        <div class="container text-center">
+            <div class="party-tag fade-in">❓ DESAFÍO DE INVITADOS</div>
+            <h2 class="fade-in">¿Cuánto conoces a Maqui & Alex? 🧠</h2>
+            <div class="divider center fade-in"></div>
+            <p class="subtitle-section fade-in" style="margin-bottom: 30px;">Ponte a prueba respondiendo a este mini test de 3 preguntas</p>
+
+            <div class="quiz-container fade-in">
+                <div class="quiz-card" id="quiz-q1">
+                    <h3>1. ¿Dónde se conocieron Maqui & Alex?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-btn" data-correct="false">a) En una discoteca a las 4:00 AM 🕺</button>
+                        <button class="quiz-btn" data-correct="true">b) En un café en el centro de Madrid que se alargó por horas ☕</button>
+                        <button class="quiz-btn" data-correct="false">c) En un torneo de golf ⛳</button>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-card" id="quiz-q2" style="display:none;">
+                    <h3>2. ¿Cuántos años llevan juntos?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-btn" data-correct="false">a) 3 años maravillosos</button>
+                        <button class="quiz-btn" data-correct="false">b) 5 años</button>
+                        <button class="quiz-btn" data-correct="true">c) 7 años increíbles de aventuras 🎂</button>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-card" id="quiz-q3" style="display:none;">
+                    <h3>3. ¿Qué es IMPRESCINDIBLE en la boda?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-btn" data-correct="false">a) Silencio a medianoche 🤫</button>
+                        <button class="quiz-btn" data-correct="true">b) Temazos de Spotify, recena de burgers y barra libre 🍔🪩</button>
+                        <button class="quiz-btn" data-correct="false">c) Discursos de 2 horas 📜</button>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div id="quiz-result" class="quiz-result-box" style="display:none;">
+                    <div class="result-icon">🏆</div>
+                    <h3>¡RESULTADO DE TU TEST!</h3>
+                    <p id="quiz-score-text">¡Enhorabuena! Has acertado 3/3 preguntas. ¡Eres un auténtico VIP de Maqui & Alex!</p>
+                    <button id="btn-quiz-retry" class="btn-secondary" style="margin-top: 15px;">🔄 Repetir Test</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spotify Section -->
+    <section id="spotify" class="story-section">
+        <div class="container text-center">
+            <div class="spotify-badge fade-in">🎵 SPOTIFY OFFICIAL PARTY PLAYLIST</div>
+            <h2 class="fade-in">La Playlist del Fiestón 🎧</h2>
+            <div class="divider center fade-in"></div>
+            <p class="fade-in spotify-desc" style="max-width: 650px; margin: 0 auto 35px auto; color: var(--text-secondary);">
+                Id calentando motores. Hemos preparado una lista de reproducción oficial con los temazos de todos los tiempos que van a hacer arder la pista de baile.
+            </p>
+
+            <div class="spotify-wrapper fade-in">
+                <div class="spotify-player-card">
+                    <iframe style="border-radius:16px" src="https://open.spotify.com/embed/playlist/3oS1D7Tx69TiMK3LWkte36?utm_source=generator&theme=0" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+
+                <div class="spotify-actions">
+                    <a href="https://open.spotify.com/playlist/3oS1D7Tx69TiMK3LWkte36?si=S3q4cP94R1m2ahnJSvHX8A" target="_blank" rel="noopener noreferrer" class="btn-spotify">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.376 0 0 5.376 0 12s5.376 12 12 12 12-5.376 12-12S18.624 0 12 0zm5.521 17.341c-.217.357-.681.469-1.038.25-2.839-1.735-6.413-2.128-10.627-1.164-.403.092-.807-.156-.899-.558-.093-.403.155-.807.558-.899 4.618-1.055 8.563-.6 11.756 1.349.357.217.469.681.25 1.022zm1.474-3.277c-.273.444-.856.587-1.3.314-3.248-1.996-8.2-2.576-12.043-1.41-.502.152-1.033-.133-1.185-.634-.152-.502.133-1.033.634-1.185 4.398-1.335 9.866-.688 13.58 1.6 444.273.587.856.314 1.301zm.126-3.416C15.228 8.441 8.8 8.227 5.12 9.345c-.611.186-1.257-.168-1.443-.778-.186-.61.168-1.256.778-1.442 4.228-1.284 11.319-1.032 15.867 1.666.55.326.732 1.037.406 1.587-.326.549-1.037.731-1.587.406z"/></svg>
+                        Abrir Playlist de la Boda en Spotify
+                    </a>
+                    <a href="#rsvp" class="btn-secondary">
+                        🎵 Pedir mi canción para la lista
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Guestbook (Libro de Visitas) Section -->
+    <section id="deseos" class="story-section section-alt">
+        <div class="container text-center">
+            <h2 class="fade-in">Libro de Visitas Digital 💬</h2>
+            <p class="subtitle-section fade-in">Déjales un mensaje con tus mejores deseos para el gran día</p>
+            <div class="divider center fade-in"></div>
+
+            <div class="guestbook-container fade-in">
+                <form id="guestbook-form" class="guestbook-form">
+                    <div class="form-row">
+                        <input type="text" id="gb-name" required placeholder="Tu nombre o apodo">
+                        <button type="submit" class="btn-primary">💬 Publicar Mensaje</button>
+                    </div>
+                    <textarea id="gb-message" rows="2" required placeholder="Escribe aquí tu mensaje, broma o deseo para los novios..."></textarea>
+                </form>
+
+                <div id="guestbook-wall" class="guestbook-wall">
+                    <!-- Sample Messages -->
+                    <div class="gb-card">
+                        <div class="gb-author">Carlos & Elena 🥂</div>
+                        <div class="gb-text">¡Contando los días para veros brindar y quemar la pista de baile! ¡Va a ser legendario!</div>
+                        <div class="gb-date">Hace unas horas</div>
+                    </div>
+                    <div class="gb-card">
+                        <div class="gb-author">Laura M. 💃</div>
+                        <div class="gb-text">¡Ya me he comprado los zapatos cómodos para la recena! Que viva el amor y el fiestón.</div>
+                        <div class="gb-date">Ayer</div>
+                    </div>
+                    <div class="gb-card">
+                        <div class="gb-author">Javi & Dani 🍻</div>
+                        <div class="gb-text">¡Preparados para darlo todo! Guardadnos una botella de buen vino.</div>
+                        <div class="gb-date">Hace 2 días</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Details Section -->
+    <section id="detalles" class="details-section">
+        <div class="container text-center">
+            <h2 class="fade-in">Cuándo y Dónde</h2>
+            <div class="divider center fade-in"></div>
+            
+            <div class="details-grid">
+                <div class="detail-card fade-in">
+                    <div class="icon">⛳</div>
+                    <h3>El Lugar</h3>
+                    <p><strong>Centro Nacional de Golf</strong></p>
+                    <p>Calle Arroyo del Monte, 5<br>28049 Madrid</p>
+                    <div class="card-links">
+                        <a href="https://maps.google.com/?q=Centro+Nacional+de+Golf,+Arroyo+del+Monte+5,+28049+Madrid" target="_blank" rel="noopener noreferrer" class="link-map">🗺️ Google Maps</a>
+                        <a href="https://www.centronacionalgolf.com/" target="_blank" rel="noopener noreferrer" class="link-map" style="margin-left: 10px;">🌐 Web del Club</a>
+                    </div>
+                </div>
+                
+                <div class="detail-card fade-in delay-1">
+                    <div class="icon">🥂</div>
+                    <h3>Horario & Fiesta</h3>
+                    <p><strong>20:00 Hrs (8:00 PM)</strong></p>
+                    <p>Directos a la terraza: cóctel cena, gran brindis y fiesta nocturna con barra libre al aire libre.</p>
+                    <a href="https://maps.google.com/?q=Centro+Nacional+de+Golf,+Arroyo+del+Monte+5,+28049+Madrid" target="_blank" rel="noopener noreferrer" class="link-map">🗺️ Ver mapa</a>
+                </div>
+                
+                <div class="detail-card fade-in delay-2">
+                    <div class="icon">👗</div>
+                    <h3>Dress Code</h3>
+                    <p><strong>Formal pero Fiestero ✨</strong></p>
+                    <p>Traje y vestido elegante... ¡pero trae calzado cómodo de recambio si vas a darlo todo en la pista!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alojamiento Section -->
+    <section id="alojamiento" class="details-section section-alt">
+        <div class="container text-center">
+            <h2 class="fade-in">Alojamiento y Transporte</h2>
+            <div class="divider center fade-in"></div>
+            <p class="fade-in" style="max-width: 700px; margin: 0 auto 40px auto; color: var(--text-secondary);">
+                El Centro Nacional de Golf está en la zona norte de Madrid (Mirasierra / Montecarmelo). ¡Queremos que vengas y vuelvas a casa cómodo y seguro!
+            </p>
+            
+            <div class="details-grid">
+                <div class="detail-card fade-in">
+                    <div class="icon">🏨</div>
+                    <h3>Hoteles Recomendados</h3>
+                    <p><strong>Zona Norte & Castellana</strong><br>Hoteles cercanos en Mirasierra, Plaza de Castilla y Paseo de la Castellana.</p>
+                </div>
+                
+                <div class="detail-card fade-in delay-1">
+                    <div class="icon">🚗</div>
+                    <h3>Parking & Taxi / VTC</h3>
+                    <p><strong>Parking Gratuito</strong><br>El club cuenta con parking amplio gratuito. Servicios de Uber/Cabify/Taxi llegan en 2 min.</p>
+                </div>
+                
+                <div class="detail-card fade-in delay-2">
+                    <div class="icon">🚇</div>
+                    <h3>Metro</h3>
+                    <p><strong>Mirasierra & Arroyofresno</strong><br>Metro Mirasierra / Paco de Lucía (L9) y Arroyofresno (L7).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Regalos Section -->
+    <section id="regalos" class="story-section">
+        <div class="container text-center">
+            <h2 class="fade-in">Mesa de Regalos & Luna de Miel ✈️</h2>
+            <div class="divider center fade-in"></div>
+            <p class="fade-in" style="max-width: 600px; margin: 0 auto 30px auto; color: var(--text-secondary);">
+                El mejor regalo que nos puedes dar es venir a bailar y brindar con nosotros. Pero si quieres ayudarnos a pegarnos la Luna de Miel de nuestras vidas, ¡te lo agradeceremos con el alma!
+            </p>
+            <div class="fade-in">
+                <button id="btn-open-modal" class="btn-primary">🎁 Ver IBAN & Bizum de novios</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="rsvp-section">
+        <div class="rsvp-container fade-in">
+            <h2>¡Confirma Asistencia! 🎉</h2>
+            <p>Por favor, dinos si contamos contigo antes del 15 de Mayo de 2027.</p>
+            
+            <form id="rsvp-form" class="rsvp-form">
+                <div class="form-group">
+                    <label for="name">Nombre completo</label>
+                    <input type="text" id="name" required placeholder="Ej: María García">
+                </div>
+                <div class="form-group">
+                    <label for="attendance">¿Asistirás al fiestón?</label>
+                    <select id="attendance" required>
+                        <option value="">Selecciona una opción...</option>
+                        <option value="yes">¡De cabeza! No me lo pierdo por nada 🔥</option>
+                        <option value="no">Lo siento, me será imposible ir 😢</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="plusone">¿Vienes con acompañante?</label>
+                    <select id="plusone">
+                        <option value="0">Voy solo/a (¡a conocer gente!)</option>
+                        <option value="1">+1 (1 Acompañante)</option>
+                        <option value="2">+2 o Familia</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="diet">Restricciones alimentarias / Alergias</label>
+                    <textarea id="diet" rows="2" placeholder="Alergias, intolenciancias, vegetariano, vegano..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="song">Pide tu temazo imprescindible para la pista 🎵</label>
+                    <input type="text" id="song" placeholder="Ej: Danza Kuduro, Tití me preguntó, Flying Free...">
+                </div>
+                <button type="submit" class="btn-primary full-width">🎉 ¡Enviar y que empiece la fiesta!</button>
+            </form>
+            <div id="rsvp-success" class="success-message" style="display:none;">
+                <div class="success-icon">🪩🎉</div>
+                <h3>¡CONFIRMADO CON ÉXITO!</h3>
+                <p>Tu respuesta ha sido guardada. ¡Prepara los zapatos de bailar porque la vamos a liar gordísima!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gifts Modal -->
+    <div id="modal-regalos" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" id="btn-close-modal" aria-label="Cerrar ventana">&times;</button>
+            <div class="modal-header">
+                <span class="modal-icon">🌴✈️🪩</span>
+                <h3>Luna de Miel & Regalos</h3>
+            </div>
+            <p class="modal-subtitle">Tu presencia en la pista es nuestro mejor regalo. Si además quieres ayudarnos con nuestro viaje de novios, aquí tienes los datos:</p>
+            
+            <div class="bank-card">
+                <div class="bank-label">Número de Cuenta (IBAN)</div>
+                <div class="bank-iban-wrapper">
+                    <span id="iban-text" class="bank-iban">ES91 2100 0418 4502 0005 1234</span>
+                    <button id="btn-copy-iban" class="btn-copy">📋 Copiar IBAN</button>
+                </div>
+                <span id="copy-toast" class="copy-toast">¡IBAN copiado al portapapeles! 🥳</span>
+            </div>
+
+            <div class="bank-card">
+                <div class="bank-label">Bizum de los Novios</div>
+                <div class="bank-iban-wrapper">
+                    <span class="bank-iban">+34 612 345 678</span>
+                    <span class="bizum-tag">Maqui & Alex</span>
+                </div>
+            </div>
+
+            <p class="modal-footer-note">¡Gracias infinitas por hacer este sueño realidad! ❤️</p>
+        </div>
+    </div>
+
+    <!-- Photo Upload Modal -->
+    <div id="modal-upload-foto" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" id="btn-close-upload-modal" aria-label="Cerrar ventana">&times;</button>
+            <div class="modal-header">
+                <span class="modal-icon">📸📱</span>
+                <h3>Subir Foto de la Boda</h3>
+            </div>
+            <p class="modal-subtitle">Comparte una foto de la fiesta con Maqui & Alex y todos los invitados.</p>
+
+            <form id="photo-upload-form" style="display: flex; flex-direction: column; gap: 16px;">
+                <div class="form-group">
+                    <label for="photo-author">Tu Nombre</label>
+                    <input type="text" id="photo-author" required placeholder="Ej: Carlos / Prima Elena">
+                </div>
+                <div class="form-group">
+                    <label for="photo-caption">Mensaje o Piropo (opcional)</label>
+                    <input type="text" id="photo-caption" placeholder="Ej: ¡Menudo bailoteo! 🕺🔥">
+                </div>
+                <div class="form-group">
+                    <label for="photo-file">Seleccionar Foto / Abrir Cámara del Móvil</label>
+                    <input type="file" id="photo-file" accept="image/*" capture="environment" required style="padding: 12px; background: rgba(255,255,255,0.05); border-radius: 12px; border: 1px dashed var(--accent-gold); width: 100%; color: var(--text-primary); cursor: pointer;">
+                </div>
+                <div id="photo-preview-container" style="display:none; text-align:center; margin-top: 10px;">
+                    <img id="photo-preview-img" style="max-height: 200px; max-width: 100%; border-radius: 12px; border: 2px solid var(--accent-gold); object-fit: cover;" alt="Vista previa">
+                </div>
+                <button type="submit" class="btn-primary full-width" style="margin-top: 10px;">🚀 Publicar Foto en el Álbum</button>
+            </form>
+            <div style="font-size: 0.8rem; color: var(--text-secondary); text-align: center; margin-top: 15px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1);">
+                💡 ¿Quieres subir vídeos pesados o fotos HD sin compresión? <br>
+                <a href="https://home.mycloud.com/" target="_blank" style="color: var(--accent-gold); text-decoration: underline; font-weight: 600;">Súbelos directamente a nuestra nube My Cloud Home ☁️</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Con todo el amor, Maqui <span>&</span> Alex</p>
+        <p class="footer-date">26 DE JUNIO, 2027 • CENTRO NACIONAL DE GOLF, MADRID 🪩</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
