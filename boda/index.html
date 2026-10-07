@@ -273,6 +273,9 @@
                 <button id="btn-open-upload-modal" class="btn-secondary" style="padding: 12px 22px; border-color: rgba(255,255,255,0.2);">
                     📸 Publicar en la Web
                 </button>
+                <button id="btn-open-photocall-modal" onclick="openPhotocallModalDirectly()" class="btn-secondary" style="padding: 12px 22px; border-color: var(--accent-gold); color: var(--accent-gold);">
+                    ✨ Photocall Digital
+                </button>
             </div>
 
             <!-- Misiones Fotográficas Bingo -->
@@ -450,10 +453,15 @@
                     <p><strong>Zona Norte & Castellana</strong><br>Hoteles cercanos en Mirasierra, Plaza de Castilla y Paseo de la Castellana.</p>
                 </div>
                 
-                <div class="detail-card fade-in delay-1">
-                    <div class="icon">🚗</div>
-                    <h3>Parking & Taxi / VTC</h3>
-                    <p><strong>Parking Gratuito</strong><br>El club cuenta con parking amplio gratuito. Servicios de Uber/Cabify/Taxi llegan en 2 min.</p>
+                <div class="detail-card fade-in delay-1" style="border: 1px solid var(--accent-gold);">
+                    <div class="icon">🚕</div>
+                    <h3>Taxi & VTC para la Vuelta</h3>
+                    <p><strong>Parking Gratuito & Taxis en 1-Tap</strong><br>El club dispone de parking gratuito. Servicios de vuelta a las 03:00 h:</p>
+                    <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px;">
+                        <a href="https://m.uber.com/ul/?action=setPickup&dropoff[formatted_address]=Centro%20Nacional%20de%20Golf%2C%20Madrid" target="_blank" rel="noopener noreferrer" style="background: #000; color: #fff; border: 1px solid rgba(255,255,255,0.3); padding: 6px 12px; border-radius: 50px; font-size: 0.8rem; text-decoration: none; font-weight: 600;">⬛ Uber</a>
+                        <a href="https://cabify.com/" target="_blank" rel="noopener noreferrer" style="background: #7145d6; color: #fff; padding: 6px 12px; border-radius: 50px; font-size: 0.8rem; text-decoration: none; font-weight: 600;">🟣 Cabify</a>
+                        <a href="tel:+34915478200" style="background: rgba(234, 179, 8, 0.2); border: 1px solid rgba(234, 179, 8, 0.5); color: #eab308; padding: 6px 12px; border-radius: 50px; font-size: 0.8rem; text-decoration: none; font-weight: 600;">🚖 Taxi (915 478 200)</a>
+                    </div>
                 </div>
                 
                 <div class="detail-card fade-in delay-2">
@@ -672,12 +680,140 @@
         </div>
     </div>
 
+    <!-- Photocall Digital Modal -->
+    <div id="modal-photocall" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content" style="max-width: 500px; padding: 25px; background: #141417; border: 2px solid var(--accent-gold); border-radius: 24px; color: #fff;">
+            <button class="modal-close" id="btn-close-photocall-modal" onclick="closePhotocallModalDirectly()" aria-label="Cerrar ventana">&times;</button>
+            <h3 style="font-family: var(--font-heading); text-align: center; margin-bottom: 5px; color: var(--accent-gold); font-size: 1.6rem;">📸 Photocall Digital Fiestero</h3>
+            <p style="text-align: center; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 20px;">Hazte un selfie o elige una foto para añadirle el marco oficial de <strong>Maqui & Alex 2027</strong></p>
+            
+            <div style="text-align: center; margin-bottom: 15px;">
+                <input type="file" id="photocall-input" accept="image/*" capture="user" style="display: none;" onchange="handlePhotocallImage(event)">
+                <button onclick="document.getElementById('photocall-input').click()" class="btn-primary" style="padding: 12px 24px; font-weight: 700; width: 100%; font-size: 0.95rem;">📸 Abrir Cámara del Móvil / Elegir Foto</button>
+            </div>
+
+            <div id="photocall-preview-wrap" style="display: none; text-align: center; margin-top: 15px;">
+                <canvas id="photocall-canvas" style="max-width: 100%; border-radius: 16px; border: 2px solid var(--accent-gold); box-shadow: 0 10px 30px rgba(0,0,0,0.6);"></canvas>
+                <div style="display: flex; gap: 10px; margin-top: 15px; justify-content: center; flex-wrap: wrap;">
+                    <button onclick="downloadPhotocallCanvas()" class="btn-primary" style="flex: 1; min-width: 140px; padding: 10px 14px; font-size: 0.85rem; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border: none;">📥 Descargar Foto</button>
+                    <a href="https://drive.google.com/drive/folders/1F6XGTyXOsC2gkzGyc4vgpech0YUMIe31?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="flex: 1; min-width: 140px; padding: 10px 14px; font-size: 0.85rem; text-align: center; text-decoration: none;">📁 Subir a Drive</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Party Mode Toggle Button -->
+    <button id="btn-party-toggle" onclick="togglePartyMode()" class="floating-party-toggle-btn" aria-label="Activar Modo Fiesta">
+        <span id="party-toggle-icon">🪩</span> <span id="party-toggle-text">Modo Fiesta</span>
+    </button>
+
     <footer>
         <p>Con todo el amor, Maqui <span>&</span> Alex</p>
         <p class="footer-date">26 DE JUNIO, 2027 • CENTRO NACIONAL DE GOLF, MADRID 🪩</p>
     </footer>
 
     <script>
+        function openPhotocallModalDirectly() {
+            var m = document.getElementById('modal-photocall');
+            if (m) {
+                m.classList.add('active');
+                m.setAttribute('aria-hidden', 'false');
+            }
+        }
+        function closePhotocallModalDirectly() {
+            var m = document.getElementById('modal-photocall');
+            if (m) {
+                m.classList.remove('active');
+                m.setAttribute('aria-hidden', 'true');
+            }
+        }
+
+        function togglePartyMode() {
+            document.body.classList.toggle('party-mode-active');
+            var icon = document.getElementById('party-toggle-icon');
+            var text = document.getElementById('party-toggle-text');
+            if (document.body.classList.contains('party-mode-active')) {
+                if (icon) icon.textContent = '✨';
+                if (text) text.textContent = 'Modo Relax';
+                if (typeof launchConfetti === 'function') launchConfetti();
+            } else {
+                if (icon) icon.textContent = '🪩';
+                if (text) text.textContent = 'Modo Fiesta';
+            }
+        }
+
+        function handlePhotocallImage(e) {
+            var file = e.target.files[0];
+            if (!file) return;
+
+            var reader = new FileReader();
+            reader.onload = function(evt) {
+                var img = new Image();
+                img.onload = function() {
+                    var canvas = document.getElementById('photocall-canvas');
+                    var wrap = document.getElementById('photocall-preview-wrap');
+                    if (!canvas || !wrap) return;
+
+                    canvas.width = 800;
+                    canvas.height = 1000;
+                    var ctx = canvas.getContext('2d');
+
+                    ctx.fillStyle = '#09090b';
+                    ctx.fillRect(0, 0, 800, 1000);
+
+                    var scale = Math.max(800 / img.width, 880 / img.height);
+                    var w = img.width * scale;
+                    var h = img.height * scale;
+                    var x = (800 - w) / 2;
+                    var y = (880 - h) / 2;
+
+                    ctx.drawImage(img, x, y, w, h);
+
+                    ctx.strokeStyle = '#d4af37';
+                    ctx.lineWidth = 16;
+                    ctx.strokeRect(8, 8, 784, 984);
+
+                    ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+                    ctx.lineWidth = 4;
+                    ctx.strokeRect(20, 20, 760, 960);
+
+                    var grad = ctx.createLinearGradient(0, 840, 0, 1000);
+                    grad.addColorStop(0, 'rgba(9, 9, 11, 0.7)');
+                    grad.addColorStop(1, '#09090b');
+                    ctx.fillStyle = grad;
+                    ctx.fillRect(0, 840, 800, 160);
+
+                    ctx.fillStyle = '#d4af37';
+                    ctx.font = 'bold 36px serif';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('MAQUI & ALEX • 26.06.2027', 400, 900);
+
+                    ctx.fillStyle = '#ffffff';
+                    ctx.font = 'bold 22px sans-serif';
+                    ctx.fillText('BODA FIESTA • CENTRO NACIONAL DE GOLF 🪩', 400, 945);
+
+                    wrap.style.display = 'block';
+                    if (typeof launchConfetti === 'function') launchConfetti();
+                };
+                img.src = evt.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function downloadPhotocallCanvas() {
+            var canvas = document.getElementById('photocall-canvas');
+            if (!canvas) return;
+            var image = canvas.toDataURL('image/png');
+            var link = document.createElement('a');
+            link.download = 'Selfie-Boda-Maqui-y-Alex.png';
+            link.href = image;
+            document.body.appendChild(link);
+            link.click();
+            setTimeout(function() {
+                if (link.parentNode) document.body.removeChild(link);
+            }, 100);
+        }
+
         function openVipModalDirectly() {
             var m = document.getElementById('modal-vip-pass');
             if (m) {

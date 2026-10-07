@@ -760,6 +760,52 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 100);
         });
     }
+
+    // 13. Photocall Modal Logic
+    const photocallModal = document.getElementById('modal-photocall');
+    const btnOpenPhotocallModal = document.getElementById('btn-open-photocall-modal');
+    const btnClosePhotocallModal = document.getElementById('btn-close-photocall-modal');
+
+    window.openPhotocallModalDirectly = function() {
+        if (photocallModal) {
+            photocallModal.classList.add('active');
+            photocallModal.setAttribute('aria-hidden', 'false');
+        }
+    };
+
+    window.closePhotocallModalDirectly = function() {
+        if (photocallModal) {
+            photocallModal.classList.remove('active');
+            photocallModal.setAttribute('aria-hidden', 'true');
+        }
+    };
+
+    if (btnOpenPhotocallModal) {
+        btnOpenPhotocallModal.addEventListener('click', window.openPhotocallModalDirectly);
+    }
+    if (btnClosePhotocallModal) {
+        btnClosePhotocallModal.addEventListener('click', window.closePhotocallModalDirectly);
+    }
+    if (photocallModal) {
+        photocallModal.addEventListener('click', (e) => {
+            if (e.target === photocallModal) window.closePhotocallModalDirectly();
+        });
+    }
+
+    // 14. Party Mode Toggle Function
+    window.togglePartyMode = function() {
+        document.body.classList.toggle('party-mode-active');
+        const icon = document.getElementById('party-toggle-icon');
+        const text = document.getElementById('party-toggle-text');
+        if (document.body.classList.contains('party-mode-active')) {
+            if (icon) icon.textContent = '✨';
+            if (text) text.textContent = 'Modo Relax';
+            if (typeof launchConfetti === 'function') launchConfetti();
+        } else {
+            if (icon) icon.textContent = '🪩';
+            if (text) text.textContent = 'Modo Fiesta';
+        }
+    };
 });
 
 
