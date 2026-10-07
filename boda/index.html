@@ -119,7 +119,7 @@
             </script>
 
             <div class="hero-buttons fade-in delay-2" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
-                <button id="btn-open-vip-modal" class="btn-primary" style="padding: 12px 20px; font-size: 0.9rem; background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); border: none; font-weight: 700; cursor: pointer;">🎟️ Mi Pase VIP Festival</button>
+                <button id="btn-open-vip-modal" onclick="openVipModalDirectly()" class="btn-primary" style="padding: 12px 20px; font-size: 0.9rem; background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); border: none; font-weight: 700; cursor: pointer;">🎟️ Mi Pase VIP Festival</button>
                 <a href="#regalos" class="btn-secondary" style="padding: 12px 20px; font-size: 0.9rem; border-color: var(--accent-gold); color: var(--accent-gold); background: rgba(212, 175, 55, 0.1);">🎁 IBAN & Bizum</a>
                 <a href="#rsvp" id="btn-hero-rsvp" class="btn-primary" style="padding: 12px 20px; font-size: 0.9rem;">🎉 Confirmar Asistencia</a>
                 <a href="https://api.whatsapp.com/send?text=%C2%A1Hola!%20%F0%9F%8E%89%20Aqu%C3%AD%20tienes%20toda%20la%20informaci%C3%B3n%20de%20nuestra%20Boda%20Fiesta%20de%20Maqui%20%26%20Alex:%20https://alexanderarmentia.com/boda" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 12px 20px; font-size: 0.9rem; background: rgba(37, 211, 102, 0.15); border-color: #25D366; color: #25D366;">
@@ -631,7 +631,7 @@
     <div id="modal-vip-pass" class="modal-overlay" aria-hidden="true">
         <div class="modal-content" style="max-width: 480px; padding: 0; background: transparent; border: none; box-shadow: none;">
             <div class="vip-ticket-card" style="background: linear-gradient(145deg, #18181b 0%, #09090b 100%); border: 2px solid var(--accent-gold); border-radius: 24px; padding: 30px 24px; color: #fff; text-align: center; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.8); overflow: hidden;">
-                <button class="modal-close" id="btn-close-vip-modal" aria-label="Cerrar ventana" style="top: 15px; right: 15px;">&times;</button>
+                <button class="modal-close" id="btn-close-vip-modal" onclick="closeVipModalDirectly()" aria-label="Cerrar ventana" style="top: 15px; right: 15px;">&times;</button>
                 
                 <div style="font-size: 0.75rem; letter-spacing: 3px; color: var(--accent-gold); text-transform: uppercase; font-weight: 700; margin-bottom: 6px;">OFFICIAL FESTIVAL PASS • MADRID 2027</div>
                 <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 4px;">MAQUI <span style="color: var(--accent-gold);">&</span> ALEX</h3>
@@ -669,6 +669,23 @@
         <p class="footer-date">26 DE JUNIO, 2027 • CENTRO NACIONAL DE GOLF, MADRID 🪩</p>
     </footer>
 
+    <script>
+        function openVipModalDirectly() {
+            var m = document.getElementById('modal-vip-pass');
+            if (m) {
+                m.classList.add('active');
+                m.setAttribute('aria-hidden', 'false');
+                if (typeof launchConfetti === 'function') launchConfetti();
+            }
+        }
+        function closeVipModalDirectly() {
+            var m = document.getElementById('modal-vip-pass');
+            if (m) {
+                m.classList.remove('active');
+                m.setAttribute('aria-hidden', 'true');
+            }
+        }
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
