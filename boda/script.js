@@ -575,6 +575,145 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    window.generateVipTicketImage = function() {
+        if (typeof generateVipTicketImage === 'function') {
+            // Function in inline script or defined globally
+        }
+        const guestNameInput = document.getElementById('vip-guest-name');
+        const guestName = (guestNameInput && guestNameInput.value.trim()) ? guestNameInput.value.trim() : 'INVITADO VIP';
+
+        const canvas = document.createElement('canvas');
+        canvas.width = 700;
+        canvas.height = 1050;
+        const ctx = canvas.getContext('2d');
+
+        const grad = ctx.createLinearGradient(0, 0, 700, 1050);
+        grad.addColorStop(0, '#1c1917');
+        grad.addColorStop(0.5, '#0c0a09');
+        grad.addColorStop(1, '#000000');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, 700, 1050);
+
+        ctx.strokeStyle = '#d4af37';
+        ctx.lineWidth = 6;
+        if (ctx.roundRect) {
+            ctx.beginPath();
+            ctx.roundRect(20, 20, 660, 1010, 32);
+            ctx.stroke();
+        } else {
+            ctx.strokeRect(20, 20, 660, 1010);
+        }
+
+        ctx.strokeStyle = 'rgba(212, 175, 55, 0.3)';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(35, 35, 630, 980);
+
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#d4af37';
+        ctx.font = 'bold 20px sans-serif';
+        ctx.fillText('OFFICIAL FESTIVAL PASS • MADRID 2027', 350, 90);
+
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 54px serif';
+        ctx.fillText('MAQUI & ALEX', 350, 165);
+
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+        ctx.font = '22px sans-serif';
+        ctx.fillText('BODA FIESTA • 26 JUNIO 2027 • 20:00 H', 350, 210);
+
+        ctx.strokeStyle = 'rgba(212, 175, 55, 0.4)';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(70, 245);
+        ctx.lineTo(630, 245);
+        ctx.stroke();
+
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+        ctx.fillRect(70, 275, 560, 190);
+        ctx.strokeStyle = 'rgba(212, 175, 55, 0.5)';
+        ctx.strokeRect(70, 275, 560, 190);
+
+        ctx.fillStyle = '#d4af37';
+        ctx.font = 'bold 18px sans-serif';
+        ctx.fillText('TITULAR VIP DEL PASE', 350, 315);
+
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 36px sans-serif';
+        ctx.fillText(guestName.toUpperCase(), 350, 370);
+
+        ctx.fillStyle = 'rgba(244, 63, 94, 0.3)';
+        ctx.fillRect(100, 400, 220, 42);
+        ctx.strokeStyle = '#f43f5e';
+        ctx.strokeRect(100, 400, 220, 42);
+        ctx.fillStyle = '#f43f5e';
+        ctx.font = 'bold 16px sans-serif';
+        ctx.fillText('ACCESO FULL VIP', 210, 427);
+
+        ctx.fillStyle = 'rgba(212, 175, 55, 0.3)';
+        ctx.fillRect(380, 400, 220, 42);
+        ctx.strokeStyle = '#d4af37';
+        ctx.strokeRect(380, 400, 220, 42);
+        ctx.fillStyle = '#d4af37';
+        ctx.font = 'bold 16px sans-serif';
+        ctx.fillText('BARRA LIBRE & RECENA', 490, 427);
+
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 24px sans-serif';
+        ctx.fillText('CENTRO NACIONAL DE GOLF', 350, 520);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+        ctx.font = '18px sans-serif';
+        ctx.fillText('Calle Arroyo del Monte, 5 • 28049 Madrid', 350, 555);
+
+        ctx.fillStyle = 'rgba(255,255,255,0.08)';
+        ctx.fillRect(70, 595, 560, 140);
+        ctx.fillStyle = '#d4af37';
+        ctx.font = 'bold 20px sans-serif';
+        ctx.fillText('LINE UP & HIGHLIGHTS', 350, 630);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '18px sans-serif';
+        ctx.fillText('20:00 H  • Cóctel Cena Gourmet & Brindis', 350, 665);
+        ctx.fillText('22:30 H  • DJ Session & Barra Libre en Terraza', 350, 695);
+        ctx.fillText('02:30 H  • Recena de Mini Hamburguesas & Churros', 350, 725);
+
+        ctx.fillStyle = '#ffffff';
+        const barWidths = [4, 2, 6, 2, 8, 3, 2, 5, 2, 8, 4, 2, 6, 3, 8, 2, 4, 6, 2, 5, 3, 7, 2, 4, 6, 3];
+        let startX = 130;
+        for (let i = 0; i < barWidths.length; i++) {
+            const w = barWidths[i] * 2.5;
+            if (i % 2 === 0) {
+                ctx.fillRect(startX, 780, w, 90);
+            }
+            startX += w + 4;
+        }
+
+        ctx.fillStyle = 'rgba(255,255,255,0.5)';
+        ctx.font = '16px monospace';
+        ctx.fillText('* MAQUI-ALEX-2027-VIP *', 350, 900);
+
+        ctx.fillStyle = '#d4af37';
+        ctx.font = '18px sans-serif';
+        ctx.fillText('¡NOS VEMOS EN LA PISTA DE BAILE! 🪩', 350, 980);
+
+        const image = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        const cleanFilenameName = guestName.replace(/[^a-zA-Z0-9]/g, '-');
+        link.download = `Pase-VIP-Boda-${cleanFilenameName}.png`;
+        link.href = image;
+        document.body.appendChild(link);
+        link.click();
+        setTimeout(() => {
+            if (link.parentNode) document.body.removeChild(link);
+        }, 100);
+    };
+
+    const btnDownloadPassImg = document.getElementById('btn-download-pass-img');
+    if (btnDownloadPassImg) {
+        btnDownloadPassImg.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.generateVipTicketImage();
+        });
+    }
+
     const btnVipAppleWallet = document.getElementById('btn-vip-apple-wallet');
     if (btnVipAppleWallet) {
         btnVipAppleWallet.addEventListener('click', (e) => {
