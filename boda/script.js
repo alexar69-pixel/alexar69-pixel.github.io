@@ -571,7 +571,47 @@ document.addEventListener('DOMContentLoaded', () => {
             if (btnDownloadIcs) btnDownloadIcs.click();
         });
     }
+
+    // 12. Ruleta Fiestera de Retos Logic
+    const btnSpinRoulette = document.getElementById('btn-spin-roulette');
+    const rouletteResult = document.getElementById('roulette-result');
+    const rouletteIcon = document.getElementById('roulette-icon');
+
+    const fiestaChallenges = [
+        { icon: '🎸', text: '¡Hacer un solo de guitarra invisible cuando suene la canción de rock de la noche!' },
+        { icon: '🥂', text: '¡Dar un gran brinco y brindar en la terraza con los novios!' },
+        { icon: '💃', text: '¡Sacar a bailar a la persona más animada que veas en la pista!' },
+        { icon: '🍔', text: '¡Ser el/la primero/a en la cola de las mini hamburguesas de la recena a las 02:30 h!' },
+        { icon: '🕶️', text: '¡Bailar al menos un temazo con gafas de sol puestas aunque sea de noche!' },
+        { icon: '🔊', text: '¡Cantar a pleno pulmón el estribillo de la siguiente canción que ponga el DJ!' },
+        { icon: '📸', text: '¡Hacer una foto divertida en grupo y subirla al instante a Google Drive!' },
+        { icon: '🍸', text: '¡Pedir tu cóctel favorito y brindar con todo el mundo por Maqui & Alex!' }
+    ];
+
+    if (btnSpinRoulette && rouletteResult && rouletteIcon) {
+        btnSpinRoulette.addEventListener('click', () => {
+            btnSpinRoulette.disabled = true;
+            let counter = 0;
+            const spinInterval = setInterval(() => {
+                const randomItem = fiestaChallenges[Math.floor(Math.random() * fiestaChallenges.length)];
+                rouletteIcon.textContent = randomItem.icon;
+                rouletteResult.textContent = 'Girando ruleta... 🎲';
+                rouletteIcon.style.transform = `rotate(${counter * 90}deg)`;
+                counter++;
+                if (counter > 12) {
+                    clearInterval(spinInterval);
+                    const finalChallenge = fiestaChallenges[Math.floor(Math.random() * fiestaChallenges.length)];
+                    rouletteIcon.textContent = finalChallenge.icon;
+                    rouletteIcon.style.transform = 'rotate(0deg)';
+                    rouletteResult.textContent = `🎯 TU RETO: "${finalChallenge.text}"`;
+                    btnSpinRoulette.disabled = false;
+                    launchConfetti();
+                }
+            }, 100);
+        });
+    }
 });
+
 
 
 
