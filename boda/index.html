@@ -128,7 +128,7 @@
                 <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Maqui+%26+Alex&dates=20270626T180000Z/20270627T020000Z&details=Acomp%C3%A1%C3%B1anos+en+nuestro+gran+d%C3%ADa.+Centro+Nacional+de+Golf,+Madrid.&location=Centro+Nacional+de+Golf,+Calle+Arroyo+del+Monte+5,+28049+Madrid" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 12px 20px; font-size: 0.9rem;">
                     📅 Google Calendar
                 </a>
-                <button id="btn-download-ics" class="btn-secondary" style="padding: 12px 20px; font-size: 0.9rem; cursor: pointer;">
+                <button id="btn-download-ics" onclick="downloadIcsFile()" class="btn-secondary" style="padding: 12px 20px; font-size: 0.9rem; cursor: pointer;">
                     🍏 Apple / Outlook (.ics)
                 </button>
             </div>
@@ -652,7 +652,7 @@
 
                 <!-- Wallet & Save Actions -->
                 <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
-                    <button id="btn-vip-apple-wallet" class="btn-secondary" style="padding: 8px 14px; font-size: 0.78rem; border-color: rgba(255,255,255,0.3); color: #fff; background: rgba(255,255,255,0.1); cursor: pointer;">
+                    <button id="btn-vip-apple-wallet" onclick="downloadIcsFile()" class="btn-secondary" style="padding: 8px 14px; font-size: 0.78rem; border-color: rgba(255,255,255,0.3); color: #fff; background: rgba(255,255,255,0.1); cursor: pointer;">
                         🍏 Apple Wallet / iCal
                     </button>
                     <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Maqui+%26+Alex&dates=20270626T180000Z/20270627T020000Z&details=Pase+VIP+Boda+Fiesta+de+Maqui+y+Alex.+Centro+Nacional+de+Golf,+Madrid.&location=Centro+Nacional+de+Golf,+Calle+Arroyo+del+Monte+5,+28049+Madrid" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 8px 14px; font-size: 0.78rem; border-color: rgba(255,255,255,0.3); color: #fff; background: rgba(255,255,255,0.1); text-decoration: none;">
@@ -684,6 +684,38 @@
                 m.classList.remove('active');
                 m.setAttribute('aria-hidden', 'true');
             }
+        }
+        function downloadIcsFile() {
+            var icsContent = [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'PRODID:-//Boda Maqui y Alex//ES',
+                'CALSCALE:GREGORIAN',
+                'METHOD:PUBLISH',
+                'BEGIN:VEVENT',
+                'SUMMARY:🎉 Boda Fiesta - Maqui & Alex',
+                'DESCRIPTION:¡Nos casamos y se viene fiestón! Cóctel cena gourmet, barra libre sin fin y recena en la terraza al aire libre del Centro Nacional de Golf.\\n\\nInfo web: https://alexanderarmentia.com/boda',
+                'LOCATION:Centro Nacional de Golf, Calle Arroyo del Monte 5, 28049 Madrid',
+                'DTSTART:20270626T180000Z',
+                'DTEND:20270627T020000Z',
+                'STATUS:CONFIRMED',
+                'END:VEVENT',
+                'END:VCALENDAR'
+            ].join('\r\n');
+
+            var blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8;' });
+            var link = document.createElement('a');
+            var url = window.URL.createObjectURL(blob);
+            link.href = url;
+            link.setAttribute('download', 'Boda-Maqui-y-Alex.ics');
+            document.body.appendChild(link);
+            link.click();
+            setTimeout(function() {
+                if (link.parentNode) {
+                    document.body.removeChild(link);
+                }
+                window.URL.revokeObjectURL(url);
+            }, 100);
         }
     </script>
     <script src="script.js"></script>

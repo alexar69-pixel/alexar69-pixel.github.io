@@ -508,34 +508,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 10. Apple Calendar / Outlook iCal Download (.ics)
+    window.downloadIcsFile = function() {
+        const icsContent = [
+            'BEGIN:VCALENDAR',
+            'VERSION:2.0',
+            'PRODID:-//Boda Maqui y Alex//ES',
+            'CALSCALE:GREGORIAN',
+            'METHOD:PUBLISH',
+            'BEGIN:VEVENT',
+            'SUMMARY:🎉 Boda Fiesta - Maqui & Alex',
+            'DESCRIPTION:¡Nos casamos y se viene fiestón! Cóctel cena gourmet, barra libre sin fin y recena en la terraza al aire libre del Centro Nacional de Golf.\\n\\nInfo web: https://alexanderarmentia.com/boda',
+            'LOCATION:Centro Nacional de Golf, Calle Arroyo del Monte 5, 28049 Madrid',
+            'DTSTART:20270626T180000Z',
+            'DTEND:20270627T020000Z',
+            'STATUS:CONFIRMED',
+            'END:VEVENT',
+            'END:VCALENDAR'
+        ].join('\r\n');
+
+        const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8;' });
+        const link = document.createElement('a');
+        const url = window.URL.createObjectURL(blob);
+        link.href = url;
+        link.setAttribute('download', 'Boda-Maqui-y-Alex.ics');
+        document.body.appendChild(link);
+        link.click();
+        setTimeout(() => {
+            if (link.parentNode) {
+                document.body.removeChild(link);
+            }
+            window.URL.revokeObjectURL(url);
+        }, 100);
+    };
+
     const btnDownloadIcs = document.getElementById('btn-download-ics');
     if (btnDownloadIcs) {
-        btnDownloadIcs.addEventListener('click', () => {
-            const icsContent = [
-                'BEGIN:VCALENDAR',
-                'VERSION:2.0',
-                'PRODID:-//Boda Maqui y Alex//ES',
-                'CALSCALE:GREGORIAN',
-                'METHOD:PUBLISH',
-                'BEGIN:VEVENT',
-                'SUMMARY:🎉 Boda Fiesta - Maqui & Alex',
-                'DESCRIPTION:¡Nos casamos y se viene fiestón! Cóctel cena gourmet, barra libre sin fin y recena en la terraza al aire libre del Centro Nacional de Golf.\\n\\nInfo web: https://alexanderarmentia.com/boda',
-                'LOCATION:Centro Nacional de Golf, Calle Arroyo del Monte 5, 28049 Madrid',
-                'DTSTART:20270626T180000Z',
-                'DTEND:20270627T020000Z',
-                'STATUS:CONFIRMED',
-                'END:VEVENT',
-                'END:VCALENDAR'
-            ].join('\r\n');
-
-            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8;' });
-            const link = document.createElement('a');
-            link.href = window.URL.createObjectURL(blob);
-            link.setAttribute('download', 'Boda-Maqui-y-Alex.ics');
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        });
+        btnDownloadIcs.addEventListener('click', window.downloadIcsFile);
     }
 
     // 11. VIP Pass Modal Logic
@@ -565,10 +573,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 vipModal.setAttribute('aria-hidden', 'true');
             }
         });
+    }
+
     const btnVipAppleWallet = document.getElementById('btn-vip-apple-wallet');
     if (btnVipAppleWallet) {
-        btnVipAppleWallet.addEventListener('click', () => {
-            if (btnDownloadIcs) btnDownloadIcs.click();
+        btnVipAppleWallet.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.downloadIcsFile();
         });
     }
 
