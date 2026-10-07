@@ -73,25 +73,50 @@
             <!-- Countdown Timer -->
             <div class="countdown-container visible">
                 <div class="countdown-box">
-                    <span id="cd-days" class="countdown-num">00</span>
+                    <span id="cd-days" class="countdown-num">--</span>
                     <span class="countdown-label">Días</span>
                 </div>
                 <div class="countdown-separator">:</div>
                 <div class="countdown-box">
-                    <span id="cd-hours" class="countdown-num">00</span>
+                    <span id="cd-hours" class="countdown-num">--</span>
                     <span class="countdown-label">Horas</span>
                 </div>
                 <div class="countdown-separator">:</div>
                 <div class="countdown-box">
-                    <span id="cd-minutes" class="countdown-num">00</span>
+                    <span id="cd-minutes" class="countdown-num">--</span>
                     <span class="countdown-label">Min</span>
                 </div>
                 <div class="countdown-separator">:</div>
                 <div class="countdown-box">
-                    <span id="cd-seconds" class="countdown-num">00</span>
+                    <span id="cd-seconds" class="countdown-num">--</span>
                     <span class="countdown-label">Seg</span>
                 </div>
             </div>
+            <script>
+                (function runFastCountdown() {
+                    var target = new Date(2027, 5, 26, 20, 0, 0).getTime();
+                    function tick() {
+                        var now = new Date().getTime();
+                        var diff = target - now;
+                        if (diff > 0) {
+                            var d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                            var h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                            var m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                            var s = Math.floor((diff % (1000 * 60)) / 1000);
+                            var elD = document.getElementById('cd-days');
+                            var elH = document.getElementById('cd-hours');
+                            var elM = document.getElementById('cd-minutes');
+                            var elS = document.getElementById('cd-seconds');
+                            if (elD) elD.textContent = String(d).padStart(2, '0');
+                            if (elH) elH.textContent = String(h).padStart(2, '0');
+                            if (elM) elM.textContent = String(m).padStart(2, '0');
+                            if (elS) elS.textContent = String(s).padStart(2, '0');
+                        }
+                    }
+                    tick();
+                    setInterval(tick, 1000);
+                })();
+            </script>
 
             <div class="hero-buttons fade-in delay-2" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
                 <button id="btn-open-vip-modal" class="btn-primary" style="padding: 12px 20px; font-size: 0.9rem; background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); border: none; font-weight: 700; cursor: pointer;">🎟️ Mi Pase VIP Festival</button>
