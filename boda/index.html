@@ -94,6 +94,7 @@
             </div>
 
             <div class="hero-buttons fade-in delay-2" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
+                <button id="btn-open-vip-modal" class="btn-primary" style="padding: 12px 20px; font-size: 0.9rem; background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); border: none; font-weight: 700; cursor: pointer;">🎟️ Mi Pase VIP Festival</button>
                 <a href="#regalos" class="btn-secondary" style="padding: 12px 20px; font-size: 0.9rem; border-color: var(--accent-gold); color: var(--accent-gold); background: rgba(212, 175, 55, 0.1);">🎁 IBAN & Bizum</a>
                 <a href="#rsvp" id="btn-hero-rsvp" class="btn-primary" style="padding: 12px 20px; font-size: 0.9rem;">🎉 Confirmar Asistencia</a>
                 <a href="https://api.whatsapp.com/send?text=%C2%A1Hola!%20%F0%9F%8E%89%20Aqu%C3%AD%20tienes%20toda%20la%20informaci%C3%B3n%20de%20nuestra%20Boda%20Fiesta%20de%20Maqui%20%26%20Alex:%20https://alexanderarmentia.com/boda" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 12px 20px; font-size: 0.9rem; background: rgba(37, 211, 102, 0.15); border-color: #25D366; color: #25D366;">
@@ -247,6 +248,25 @@
                 <button id="btn-open-upload-modal" class="btn-secondary" style="padding: 12px 22px; border-color: rgba(255,255,255,0.2);">
                     📸 Publicar en la Web
                 </button>
+            </div>
+
+            <!-- Misiones Fotográficas Bingo -->
+            <div class="photo-missions-box fade-in" style="background: rgba(24, 24, 27, 0.85); border: 1px dashed var(--accent-gold); border-radius: 16px; padding: 20px; max-width: 680px; margin: 10px auto 25px auto; text-align: left; backdrop-filter: blur(10px);">
+                <h4 style="color: var(--accent-gold); font-size: 0.95rem; margin-bottom: 12px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">🎯 Misiones Fotográficas para los Invitados</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; font-size: 0.85rem; color: var(--text-primary);">
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; background: rgba(255,255,255,0.04); padding: 9px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                        <input type="checkbox" class="mission-checkbox" style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> 🥂 Selfie brindando con los novios
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; background: rgba(255,255,255,0.04); padding: 9px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                        <input type="checkbox" class="mission-checkbox" style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> 💃 El bailoteo más loquísimo en la pista
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; background: rgba(255,255,255,0.04); padding: 9px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                        <input type="checkbox" class="mission-checkbox" style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> 🍔 Devorando la recena de medianoche
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; background: rgba(255,255,255,0.04); padding: 9px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                        <input type="checkbox" class="mission-checkbox" style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> 🕶️ Foto con gafas de sol o atrezzo
+                    </label>
+                </div>
             </div>
 
             <!-- Guest Uploaded Photos Grid -->
@@ -556,6 +576,32 @@
             <div style="font-size: 0.8rem; color: var(--text-secondary); text-align: center; margin-top: 15px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1);">
                 💡 ¿Quieres subir vídeos pesados o fotos HD sin compresión? <br>
                 <a href="https://drive.google.com/drive/folders/1F6XGTyXOsC2gkzGyc4vgpech0YUMIe31?usp=sharing" target="_blank" rel="noopener noreferrer" style="color: var(--accent-gold); text-decoration: underline; font-weight: 600;">Súbelos directamente a nuestra carpeta de Google Drive 📁</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIP Pass Festival Modal -->
+    <div id="modal-vip-pass" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content" style="max-width: 480px; padding: 0; background: transparent; border: none; box-shadow: none;">
+            <div class="vip-ticket-card" style="background: linear-gradient(145deg, #18181b 0%, #09090b 100%); border: 2px solid var(--accent-gold); border-radius: 24px; padding: 30px 24px; color: #fff; text-align: center; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.8); overflow: hidden;">
+                <button class="modal-close" id="btn-close-vip-modal" aria-label="Cerrar ventana" style="top: 15px; right: 15px;">&times;</button>
+                
+                <div style="font-size: 0.75rem; letter-spacing: 3px; color: var(--accent-gold); text-transform: uppercase; font-weight: 700; margin-bottom: 6px;">OFFICIAL FESTIVAL PASS • MADRID 2027</div>
+                <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 4px;">MAQUI <span style="color: var(--accent-gold);">&</span> ALEX</h3>
+                <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 20px;">BODA FIESTA • 26 JUNIO 2027 • 20:00 H</div>
+
+                <div style="background: rgba(255,255,255,0.05); border: 1px dashed rgba(255,255,255,0.2); border-radius: 16px; padding: 20px; margin-bottom: 20px;">
+                    <label for="vip-guest-name" style="font-size: 0.8rem; color: var(--accent-gold); display: block; margin-bottom: 8px; font-weight: 600; text-transform: uppercase;">Nombre del Titular VIP</label>
+                    <input type="text" id="vip-guest-name" placeholder="Escribe tu nombre..." style="width: 100%; text-align: center; font-size: 1.2rem; font-weight: 700; background: transparent; border: none; border-bottom: 2px solid var(--accent-gold); color: #fff; padding: 6px; outline: none;">
+                    
+                    <div style="display: flex; gap: 8px; justify-content: center; margin-top: 15px; flex-wrap: wrap;">
+                        <span style="background: rgba(244, 63, 94, 0.2); color: #f43f5e; border: 1px solid rgba(244, 63, 94, 0.4); padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 700;">ACCESO FULL VIP</span>
+                        <span style="background: rgba(212, 175, 55, 0.2); color: #d4af37; border: 1px solid rgba(212, 175, 55, 0.4); padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 700;">BARRA LIBRE & RECENA</span>
+                    </div>
+                </div>
+
+                <div style="font-family: monospace; font-size: 1.8rem; letter-spacing: 6px; color: rgba(255,255,255,0.6); margin-bottom: 12px;">||| | |||| | ||| ||||</div>
+                <div style="font-size: 0.75rem; color: var(--text-secondary);">CENTRO NACIONAL DE GOLF • MADRID</div>
             </div>
         </div>
     </div>

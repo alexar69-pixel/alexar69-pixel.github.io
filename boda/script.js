@@ -537,6 +537,36 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.removeChild(link);
         });
     }
+
+    // 11. VIP Pass Modal Logic
+    const vipModal = document.getElementById('modal-vip-pass');
+    const btnOpenVipModal = document.getElementById('btn-open-vip-modal');
+    const btnCloseVipModal = document.getElementById('btn-close-vip-modal');
+
+    if (btnOpenVipModal && vipModal) {
+        btnOpenVipModal.addEventListener('click', () => {
+            vipModal.classList.add('active');
+            vipModal.setAttribute('aria-hidden', 'false');
+            launchConfetti();
+        });
+    }
+
+    if (btnCloseVipModal && vipModal) {
+        btnCloseVipModal.addEventListener('click', () => {
+            vipModal.classList.remove('active');
+            vipModal.setAttribute('aria-hidden', 'true');
+        });
+    }
+
+    if (vipModal) {
+        vipModal.addEventListener('click', (e) => {
+            if (e.target === vipModal) {
+                vipModal.classList.remove('active');
+                vipModal.setAttribute('aria-hidden', 'true');
+            }
+        });
+    }
 });
+
 
 
