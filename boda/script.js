@@ -565,6 +565,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 vipModal.setAttribute('aria-hidden', 'true');
             }
         });
+    const btnVipAppleWallet = document.getElementById('btn-vip-apple-wallet');
+    if (btnVipAppleWallet) {
+        btnVipAppleWallet.addEventListener('click', () => {
+            if (btnDownloadIcs) btnDownloadIcs.click();
+        });
     }
 });
 
