@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <!-- Página principal -->
   <url>
@@ -53,55 +53,73 @@
   <!-- Blog -->
   <url>
     <loc>https://alexanderarmentia.com/blog/</loc>
-    <lastmod>2026-05-28</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://alexanderarmentia.com/blog/rss.xml</loc>
-    <lastmod>2026-05-28</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://alexanderarmentia.com/blog/post.html?slug=bienvenida-al-blog</loc>
-    <lastmod>2026-05-28</lastmod>
+    <loc>https://alexanderarmentia.com/blog/posts/adamuz-urda-kpis-seguridad-ave.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://alexanderarmentia.com/blog/posts/ia-y-resiliencia-en-sistemas-criticos-sre-2026.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alexanderarmentia.com/blog/posts/openclaw-desarrollo-agntico-en-el-workspace-local.html</loc>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://alexanderarmentia.com/blog/post.html?slug=chatgpt-mayo-2026</loc>
-    <lastmod>2026-05-28</lastmod>
+    <loc>https://alexanderarmentia.com/blog/posts/chatgpt-mayo-2026.html</loc>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://alexanderarmentia.com/blog/post.html?slug=gemini-mayo-2026</loc>
-    <lastmod>2026-05-28</lastmod>
+    <loc>https://alexanderarmentia.com/blog/posts/gemini-mayo-2026.html</loc>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://alexanderarmentia.com/blog/post.html?slug=claude-mayo-2026</loc>
-    <lastmod>2026-05-28</lastmod>
+    <loc>https://alexanderarmentia.com/blog/posts/claude-mayo-2026.html</loc>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://alexanderarmentia.com/blog/post.html?slug=copilot-mayo-2026</loc>
-    <lastmod>2026-05-28</lastmod>
+    <loc>https://alexanderarmentia.com/blog/posts/copilot-mayo-2026.html</loc>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://alexanderarmentia.com/blog/post.html?slug=meta-ai-mayo-2026</loc>
-    <lastmod>2026-05-28</lastmod>
+    <loc>https://alexanderarmentia.com/blog/posts/meta-ai-mayo-2026.html</loc>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://alexanderarmentia.com/blog/post.html?slug=mistral-mayo-2026</loc>
-    <lastmod>2026-05-28</lastmod>
+    <loc>https://alexanderarmentia.com/blog/posts/mistral-mayo-2026.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://alexanderarmentia.com/blog/posts/bienvenida-al-blog.html</loc>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

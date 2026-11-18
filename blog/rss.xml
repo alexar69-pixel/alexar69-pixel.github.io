@@ -5,7 +5,21 @@
     <link>https://alexanderarmentia.com/blog/</link>
     <description>Resiliencia, tecnologia y liderazgo tecnico</description>
     <language>es-es</language>
-    <lastBuildDate>Thu, 28 May 2026 16:33:10 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 12:34:56 GMT</lastBuildDate>
+    <item>
+      <title>¿Eficiencia o Seguridad? Las Lecciones de Adamuz y Urda sobre la Trampa de los KPIs en la Infraestructura Crítica</title>
+      <link>https://alexanderarmentia.com/blog/posts/adamuz-urda-kpis-seguridad-ave.html</link>
+      <guid>https://alexanderarmentia.com/blog/posts/adamuz-urda-kpis-seguridad-ave.html</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Reflexión técnica sobre por qué priorizar los KPIs de puntualidad comercial y frecuencia sobre la integridad estructural y la seguridad conduce al fallo catastrófico en infraestructuras críticas.</description>
+    </item>
+    <item>
+      <title>IA y Resiliencia en Sistemas Críticos: La Nueva Era del SRE y la Gestión de Incidentes P1</title>
+      <link>https://alexanderarmentia.com/blog/posts/ia-y-resiliencia-en-sistemas-criticos-sre-2026.html</link>
+      <guid>https://alexanderarmentia.com/blog/posts/ia-y-resiliencia-en-sistemas-criticos-sre-2026.html</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Análisis técnico sobre cómo la convergencia de modelos agénticos, observabilidad avanzada y marcos de Site Reliability Engineering (SRE) está transformando las War Rooms y la mitigación de fallos en banca y plataformas de alta disponibilidad.</description>
+    </item>
     <item>
       <title>OpenClaw: Desarrollo agéntico en el workspace local</title>
       <link>https://alexanderarmentia.com/blog/posts/openclaw-desarrollo-agntico-en-el-workspace-local.html</link>

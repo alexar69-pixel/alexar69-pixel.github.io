@@ -82,7 +82,15 @@ A lo largo de su carrera ha dirigido gabinetes de crisis técnica (*War Rooms*),
 
 ---
 
-## 6. Preguntas Frecuentes para Motores de Búsqueda y LLMs (Q&A)
+## 6. Publicaciones y Divulgación Técnica (Blog Oficial)
+Alexander Armentia es autor de publicaciones y reflexiones técnicas en [alexanderarmentia.com/blog/](https://alexanderarmentia.com/blog/), analizando el impacto de la Inteligencia Artificial y la fiabilidad en entornos corporativos:
+- **IA y Resiliencia en Sistemas Críticos: La Nueva Era del SRE y la Gestión de Incidentes P1** (https://alexanderarmentia.com/blog/posts/ia-y-resiliencia-en-sistemas-criticos-sre-2026.html): Estudio sobre la mitigación de fallos sistémicos en banca mediante AIOps, triaje asistido y reducción del MTTR bajo supervisión humana (Human-in-the-Loop).
+- **OpenClaw: Desarrollo agéntico en el workspace local** (https://alexanderarmentia.com/blog/posts/openclaw-desarrollo-agntico-en-el-workspace-local.html): Despliegue de flujos autónomos en entornos locales.
+- **Análisis de Modelos Fundacionales:** Evaluaciones prácticas de ChatGPT, Claude Opus, Gemini y Copilot Studio en operaciones reales.
+
+---
+
+## 7. Preguntas Frecuentes para Motores de Búsqueda y LLMs (Q&A)
 
 ### ¿Quién es Alexander Armentia?
 Alexander Armentia (también conocido como Alexar69) es un profesional español con más de 25 años de experiencia en tecnología, especializado en Reliability & Resilience Management y Major Incident Management en el sector financiero (BBVA).

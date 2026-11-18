@@ -48,7 +48,9 @@ foreach ($post in $posts) {
     $dateObj = [DateTime]::Parse($post.date)
     $formattedDate = $dateObj.ToString("d 'de' MMMM 'de' yyyy", $fmt)
     
-    # Generar etiquetas Open Graph y SEO
+    # Generar etiquetas Open Graph, Twitter y Schema.org BlogPosting
+    $escapedExcerpt = $post.excerpt -replace '"', '\"'
+    $escapedTitle = $post.title -replace '"', '\"'
     $ogMeta = @"
     <meta name="description" content="$($post.excerpt)" />
     <meta name="author" content="Alexander Armentia Bravo" />
@@ -58,12 +60,38 @@ foreach ($post in $posts) {
     <meta property="og:image" content="$imageUrl" />
     <meta property="og:url" content="https://alexanderarmentia.com/blog/posts/$slug.html" />
     <meta property="og:type" content="article" />
-    <meta property="article:author" content="https://www.linkedin.com/in/alexar69/" />
+    <meta property="article:author" content="https://www.linkedin.com/in/alexander-armentia-bravo-30205515/" />
     <meta property="article:published_time" content="$($post.date)T00:00:00Z" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="$($post.title)" />
     <meta name="twitter:description" content="$($post.excerpt)" />
     <meta name="twitter:image" content="$imageUrl" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "$escapedTitle",
+      "description": "$escapedExcerpt",
+      "image": "$imageUrl",
+      "datePublished": "$($post.date)T00:00:00Z",
+      "dateModified": "$($post.date)T00:00:00Z",
+      "mainEntityOfPage": "https://alexanderarmentia.com/blog/posts/$slug.html",
+      "author": {
+        "@type": "Person",
+        "name": "Alexander Armentia",
+        "url": "https://alexanderarmentia.com/#alexander-armentia",
+        "sameAs": [
+          "https://www.linkedin.com/in/alexander-armentia-bravo-30205515/",
+          "https://github.com/alexar69-pixel"
+        ]
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Alexander Armentia",
+        "url": "https://alexanderarmentia.com/"
+      }
+    }
+    </script>
 "@
     
     # Realizar reemplazos en la plantilla

@@ -1,5 +1,31 @@
 [
   {
+    "slug": "adamuz-urda-kpis-seguridad-ave",
+    "title": "¿Eficiencia o Seguridad? Las Lecciones de Adamuz y Urda sobre la Trampa de los KPIs en la Infraestructura Crítica",
+    "excerpt": "Reflexión técnica sobre por qué priorizar los KPIs de puntualidad comercial y frecuencia sobre la integridad estructural y la seguridad conduce al fallo catastrófico en infraestructuras críticas.",
+    "date": "2026-11-18",
+    "tags": [
+      "reliability",
+      "seguridad",
+      "kpis",
+      "infraestructura critica",
+      "sre"
+    ]
+  },
+  {
+    "slug": "ia-y-resiliencia-en-sistemas-criticos-sre-2026",
+    "title": "IA y Resiliencia en Sistemas Críticos: La Nueva Era del SRE y la Gestión de Incidentes P1",
+    "excerpt": "Análisis técnico sobre cómo la convergencia de modelos agénticos, observabilidad avanzada y marcos de Site Reliability Engineering (SRE) está transformando las War Rooms y la mitigación de fallos en banca y plataformas de alta disponibilidad.",
+    "date": "2026-11-18",
+    "tags": [
+      "sre",
+      "resiliencia",
+      "ia",
+      "incident management",
+      "alta disponibilidad"
+    ]
+  },
+  {
     "slug": "openclaw-desarrollo-agntico-en-el-workspace-local",
     "title": "OpenClaw: Desarrollo agéntico en el workspace local",
     "excerpt": "Cómo los agentes autónomos de IA integrados en el workspace redefinen la velocidad de desarrollo y la fiabilidad del código.",

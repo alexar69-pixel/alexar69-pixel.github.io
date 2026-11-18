@@ -1,0 +1,38 @@
+<p><img src="/blog/assets/adamuz-urda-kpis-seguridad-ave.png" alt="Reflexión sobre Reliability y Resiliencia en Alta Velocidad - Lecciones de Adamuz y Urda" loading="lazy" /></p>
+
+<p>Cuando saltaron las primeras alertas del accidente de <strong>Adamuz</strong> en enero de 2026, y cuando meses más tarde volvimos a revivir la pesadilla con el choque de <strong>Urda</strong>, sentí ese nudo en el estómago que todos los que gestionamos infraestructuras críticas conocemos demasiado bien. Es esa punzada que te avisa de que algo mucho más profundo que un simple fallo material acaba de romperse.</p>
+
+<p>Llevo más de 25 años lidiando con sistemas donde el error no está permitido. En una War Room bancaria, cuando un servicio crítico empieza a degradarse, el tiempo se mide en pulsaciones por minuto y en millones de transacciones en juego. Pero cuando la infraestructura transporta personas a trescientos kilómetros por hora, la responsabilidad adquiere una dimensión casi sagrada. Por eso, al seguir las investigaciones de ambos accidentes, no dejaba de hacerme la misma pregunta: <strong>¿cómo permitimos que la obsesión por los números nos haga perder de vista la propia supervivencia del sistema?</strong></p>
+
+<h2>Cuando el minutero se come el criterio técnico</h2>
+<p>Durante años hemos presumido en España de la puntualidad del AVE. El compromiso de devolución si el tren se retrasaba unos minutos era el orgullo de nuestra ingeniería. Pero los que trabajamos en fiabilidad sabemos que cualquier métrica, por noble que parezca, tiene una cara oscura cuando se convierte en el único dios al que rezar. Es la famosa <em>Ley de Goodhart</em>: en el instante en que un indicador se convierte en la meta, deja de ser útil y empieza a ser peligroso.</p>
+
+<p>Si a una organización le repites día tras día que el éxito es que ningún tren llegue cinco minutos tarde, creas sin darte cuenta una cultura del aguante. Bajar la velocidad para revisar una anomalía, espaciar convoyes o pedir una ventana nocturna más larga para sanear la vía empieza a verse como un estorbo comercial. Es una trampa sutil: nadie toma una decisión temeraria a propósito; simplemente se estiran los márgenes un milímetro cada día porque "ayer aguantó y no pasó nada". En fiabilidad lo llamamos <em>normalización de la desviación</em>, y es el prólogo de toda catástrofe.</p>
+
+<h2>Adamuz: La diferencia entre que algo no falle y saber qué hacer cuando falla</h2>
+<p>En el sector técnico solemos resumir nuestra disciplina en dos palabras que a veces se confunden: <strong>Reliability (Fiabilidad)</strong> y <strong>Resilience (Resiliencia)</strong>. No son lo mismo, y lo que ocurrió en Adamuz lo ilustra con una crudeza desgarradora.</p>
+
+<p>La <strong>Reliability</strong> consiste en diseñar y mantener las cosas para que no se rompan: que el carril soporte las toneladas por eje, que la soldadura no tenga fisuras, que el balasto drene bien y amortigüe el paso de los convoyes. En Adamuz, esa primera barrera falló. El acero cedió. Y lo más doloroso es que decenas de trenes habían pasado por ese mismo punto en las horas previas con pequeñas vibraciones y quejas que quedaron flotando en el aire como "señales débiles" a las que nadie supo o pudo prestar atención.</p>
+
+<p>Pero lo verdaderamente trágico vino después, cuando comprobamos que falló la <strong>Resiliencia</strong>. La resiliencia no es evitar que la pieza se rompa; es <strong>diseñar el entorno para que, cuando la pieza se rompa, el sistema no se derrumbe por completo</strong>. Si un tren descarrila, la resiliencia exige que el radio de impacto esté contenido: que existan márgenes de gálibo, sensores de invasión de vía contigua y frenados automáticos instantáneos que protejan al tren que viene de frente. En Adamuz, el descarrilamiento en una vía invadió la contraria y chocó de frente contra el Alvia. Falló la fiabilidad del carril, sí; pero la falta de resiliencia del sistema impidió contener el golpe.</p>
+
+<h2>Urda: El peligro de perder la capacidad de frenar a tiempo</h2>
+<p>Si Adamuz fue el síntoma de una infraestructura física fatigada y sin contención, el accidente de Urda en octubre nos puso delante de otro espejo igual de inquietante: el de los sistemas de protección y señalización.</p>
+
+<p>Que un tren se quede detenido en plena vía por una avería mecánica es algo que entra dentro de la normalidad operativa de cualquier transporte. Las máquinas fallan. Lo que jamás puede ocurrir en un sistema resiliente es que esa parada derive en una colisión por alcance por detrás. La premisa elemental de cualquier arquitectura crítica es lo que llamamos el <em>Fail-Safe</em> (seguridad por defecto): ante la duda o la pérdida de telemetría de un nodo, el sistema se cierra. Todo se detiene.</p>
+
+<p>En Urda vimos lo contrario a una degradación ordenada: vimos cómo la tensión por mantener la densidad del tráfico y la fluidez del corredor terminó quebrando las capas de redundancia que debían garantizar que dos trenes nunca, bajo ninguna circunstancia, compartieran el mismo cantón de vía.</p>
+
+<h2>El coraje de parar la línea</h2>
+<p>En las fábricas de alta precisión existe un mecanismo llamado <em>Andon</em>: cualquier operario, desde el recién incorporado hasta el veterano, tiene una cuerda que puede tirar para parar toda la fábrica si ve un tornillo mal alineado. Nadie le echa la bronca; al revés, se le da las gracias por salvar la reputación y la seguridad de la compañía.</p>
+
+<p>¿Tienen hoy nuestros maquinistas, jefes de circulación y técnicos de vía ese mismo respaldo cultural? ¿O pesa más el miedo al expediente y al titular de "caos en Atocha por retrasos"?</p>
+
+<p>En banca lo tenemos claro: si un despliegue informático emite una alerta extraña en el log durante la madrugada, hacemos un <em>rollback</em> en segundos. El negocio protestará porque la nueva funcionalidad saldrá una semana más tarde, pero el saldo de los clientes y las transferencias no corren peligro. Si somos capaces de aplicar esa disciplina espartana por dinero, ¿cómo no vamos a aplicarla cuando lo que viaja en cada vagón son familias, amigos e ilusiones?</p>
+
+<h2>Una lección que no podemos olvidar</h2>
+<p>Ni los mejores algoritmos de señalización, ni la inteligencia artificial aplicada al mantenimiento predictivo, ni los trenes más aerodinámicos van a protegernos si la cultura operativa premia el llegar en hora por encima del llegar seguros.</p>
+
+<p>La verdadera excelencia de una infraestructura no se demuestra batiendo récords de velocidad en un panel publicitario. Se demuestra en esos días grises en los que un sensor pita, un operario levanta la mano, el centro de control tiene la valentía de poner el semáforo en rojo y todos los trenes se quedan parados hasta que haya certeza absoluta de que el camino es seguro.</p>
+
+<p>Retrasar un viaje es una molestia que se olvida al día siguiente. Una tragedia como la de Adamuz o Urda dura para siempre. Pongamos los KPIs en su sitio: <strong>la puntualidad es un deseo; la resiliencia y la vida humana son el único e innegociable deber.</strong></p>
