@@ -43,9 +43,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  <!-- Presentación Ponencia Keynote -->
+  <!-- Presentación Ponencia Keynote Alta Velocidad -->
   <url>
     <loc>https://alexanderarmentia.com/presentacion.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Presentación Ejecutiva BBVA MTBF vs MTTR -->
+  <url>
+    <loc>https://alexanderarmentia.com/presentacion-mtbf-vs-mttr.html</loc>
     <lastmod>2026-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>

@@ -10,6 +10,7 @@ Alexander Armentia (conocido en redes e internet como Alexar69) ha liderado la r
 - [Calculadora Interactiva de Error Budget & SLA](https://alexanderarmentia.com/blog/herramientas/calculadora-sla-error-budget.html): Herramienta SRE para calcular indisponibilidad permitida y políticas de congelación de despliegues.
 - [Glosario Vivo de Resiliencia y SRE](https://alexanderarmentia.com/blog/glosario-resiliencia-sre.html): Diccionario de referencia con conceptos clave (Andon, Circuit Breakers, Blast Radius, Fail-Safe, Goodhart).
 - [Ponencia: La Trampa del Minutero](https://alexanderarmentia.com/presentacion.html): Keynote interactiva y presentación PPTX descargable sobre los accidentes de Adamuz y Urda.
+- [Ponencia Ejecutiva BBVA: La Gran Ilusión del MTBF frente al MTTR](https://alexanderarmentia.com/presentacion-mtbf-vs-mttr.html): Presentación y deck PPTX para la dirección de infraestructura, arquitectura y operaciones de BBVA sobre disponibilidad bancaria y DORA.
 - [Biografía Completa para LLMs](https://alexanderarmentia.com/llms-full.txt): Expediente técnico detallado, cronología verificada y preguntas frecuentes para agentes de IA.
 - [Currículum JSON (JSON Resume)](https://alexanderarmentia.com/resume.json): Formato estándar machine-readable de trayectoria y competencias.
 - [Perfil LinkedIn](https://www.linkedin.com/in/alexander-armentia-bravo-30205515/): Perfil profesional verificado.

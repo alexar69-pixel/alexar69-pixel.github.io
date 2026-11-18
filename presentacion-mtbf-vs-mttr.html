@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ponencia BBVA: La Gran Ilusión del MTBF frente al MTTR | Alexander Armentia</title>
+    <meta name="description" content="Presentación ejecutiva para la Dirección de Infraestructura, Arquitectura y Operaciones de BBVA: Rediseñando la resiliencia operativa en banca crítica mediante la reducción radical del MTTR.">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #060b14;
+            --card-bg: rgba(12, 21, 39, 0.92);
+            --card-border: rgba(34, 211, 238, 0.25);
+            --bbva-blue: #004481;
+            --cyan: #22d3ee;
+            --amber: #f97316;
+            --red: #ef4444;
+            --mint: #34d399;
+            --yellow: #fbbf24;
+            --t: #f8fafc;
+            --tm: #94a3b8;
+            --font: 'Space Grotesk', -apple-system, sans-serif;
+            --mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--t);
+            font-family: var(--font);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Top Bar */
+        .topbar {
+            background: rgba(8, 15, 28, 0.96);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.75rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+        }
+
+        .topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .logo-badge {
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            color: var(--cyan);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            background: rgba(34, 211, 238, 0.1);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            border: 1px solid rgba(34, 211, 238, 0.3);
+        }
+
+        .deck-title {
+            font-size: 0.95rem;
+            color: var(--tm);
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+            padding-left: 1rem;
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--t);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.45rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: var(--cyan);
+            color: #fff;
+        }
+
+        .btn-primary {
+            background: var(--bbva-blue);
+            color: #fff;
+            border-color: var(--cyan);
+        }
+
+        .btn-primary:hover {
+            background: #1464a5;
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.4);
+        }
+
+        /* Slide Stage */
+        .stage {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem 2rem;
+            background: radial-gradient(circle at 50% 30%, rgba(0, 68, 129, 0.12) 0%, transparent 75%);
+            overflow-y: auto;
+        }
+
+        .slide-container {
+            width: 100%;
+            max-width: 1240px;
+            min-height: 580px;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            backdrop-filter: blur(20px);
+            padding: 2.25rem 2.5rem;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.35s ease;
+        }
+
+        .slide-container.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-eyebrow {
+            font-family: var(--mono);
+            color: var(--cyan);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .slide-h1 {
+            font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 0.75rem;
+            color: #fff;
+        }
+
+        .slide-sub {
+            font-size: clamp(1rem, 1.4vw, 1.2rem);
+            color: var(--amber);
+            margin-bottom: 1.25rem;
+            line-height: 1.4;
+        }
+
+        .slide-split {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 1.75rem;
+            align-items: stretch;
+            margin-top: 0.5rem;
+        }
+
+        .slide-left-col {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .card-inner {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .card-inner.red-border { border-color: rgba(239, 68, 68, 0.4); }
+        .card-inner.cyan-border { border-color: rgba(34, 211, 238, 0.4); }
+        .card-inner.amber-border { border-color: rgba(249, 115, 22, 0.4); }
+        .card-inner.mint-border { border-color: rgba(52, 211, 153, 0.4); }
+
+        .card-title {
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .slide-diagram-box {
+            background: #080f1c;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .slide-diagram-img {
+            width: 100%;
+            height: auto;
+            max-height: 360px;
+            object-fit: contain;
+            border-radius: 8px;
+            display: block;
+            background: #000;
+        }
+
+        .slide-diagram-caption {
+            font-size: 0.82rem;
+            color: var(--tm);
+            line-height: 1.45;
+            padding-top: 0.6rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            margin-top: 0.5rem;
+        }
+
+        .slide-diagram-caption strong {
+            color: var(--t);
+        }
+
+        /* Bottom Controls */
+        .bottombar {
+            background: rgba(8, 15, 28, 0.96);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.75rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .counter {
+            font-family: var(--mono);
+            font-size: 0.9rem;
+            color: var(--tm);
+        }
+
+        .speaker-notes-toggle {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--cyan);
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* Speaker notes drawer */
+        .notes-drawer {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(950px, 94vw);
+            background: rgba(10, 18, 34, 0.98);
+            border: 1px solid var(--cyan);
+            border-radius: 12px;
+            padding: 1.25rem 1.75rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.85);
+            display: none;
+            z-index: 200;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: var(--t);
+        }
+
+        .notes-drawer.open {
+            display: block;
+        }
+
+        .notes-header {
+            font-family: var(--mono);
+            color: var(--cyan);
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @media (max-width: 950px) {
+            .slide-split { grid-template-columns: 1fr; }
+            .slide-container { padding: 1.5rem; min-height: auto; }
+            .stage { padding: 1rem; }
+            body { overflow: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+        <div class="topbar-left">
+            <span class="logo-badge">BBVA // SRE LEADERSHIP</span>
+            <span class="deck-title">La Gran Ilusión del MTBF frente al MTTR: Rediseñando la Resiliencia</span>
+        </div>
+        <div class="topbar-right">
+            <button class="speaker-notes-toggle" id="btnNotes">📝 Ver Guion de Ponente</button>
+            <a href="/presentacion-mtbf-vs-mttr-bbva.pptx" class="btn btn-primary" download>
+                ⬇ Descargar PowerPoint (.pptx)
+            </a>
+            <a href="/blog/posts/mttr-bancario-disponibilidad-gestion-incidencias-p1.html" class="btn">
+                📖 Leer Artículo
+            </a>
+        </div>
+    </div>
+
+    <!-- SLIDE STAGE -->
+    <div class="stage" id="stage">
+
+        <!-- SLIDE 1: PORTADA -->
+        <div class="slide-container active" data-slide="1" data-notes="GUION DE PONENTE: (Pausa de 3 segundos mirando al equipo directivo). Durante treinta años la banca ha vivido bajo una ilusión reconfortante: la promesa de que si compramos suficiente hierro redundante y firmamos soportes prémium, podemos conseguir que nuestros sistemas nunca fallen. Es el culto al MTBF. Vengo hoy aquí a deciros que en un banco hiperconectado como BBVA esa premisa está muerta. Perseguir el 'cero fallos' es hoy nuestro mayor multiplicador de riesgo. La verdadera excelencia operativa consiste en garantizar que nos levantamos en menos de ocho minutos antes de que el cliente o el regulador noten el tropiezo.">
+            <div class="slide-eyebrow">// BBVA · DIRECCIÓN DE INFRAESTRUCTURA, ARQUITECTURA Y OPERACIONES</div>
+            <h1 class="slide-h1" style="font-size: clamp(2rem, 3.8vw, 3.2rem);">LA GRAN ILUSIÓN DEL MTBF FRENTE AL MTTR</h1>
+            <div class="slide-sub">Por qué diseñar para el 'cero fallos' es una trampa y cómo la reducción del MTTR protege la banca crítica</div>
+            <div class="card-inner cyan-border" style="max-width: 700px;">
+                <p style="font-size: 1.05rem; line-height: 1.7;">
+                    <strong>Alexander Armentia</strong> (<em>Alexar69</em>)<br>
+                    <span style="color: var(--cyan);">Reliability &amp; Resilience Manager · BBVA</span><br>
+                    <span style="font-size: 0.9rem; color: var(--tm);">alexanderarmentia.com · Operaciones Críticas, SRE &amp; Gobierno DORA</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: ESPEJISMO CERO FALLOS -->
+        <div class="slide-container" data-slide="2" data-notes="GUION: Hace 25 años podíamos diseñar para MTBF porque controlábamos todo el stack: teníamos el host central en el búnker y sabíamos cuántos terminales se conectaban. Hoy, una simple transferencia Bizum atraviesa 14 saltos de red, microservicios en Kubernetes, pasarelas interbancarias y biometría. Matemáticamente, la probabilidad de que todos esos componentes funcionen al 100% todo el tiempo es cero. Si nuestra estrategia sigue siendo 'invertir para que nada rompa', nos estamos engañando. La pregunta directiva es: ¿cuánto tardamos en aislar el trozo roto para que el 99.9% del banco siga cobrando y pagando?">
+            <div class="slide-eyebrow">// 01. EL CAMBIO DE PARADIGMA</div>
+            <h1 class="slide-h1">El Espejismo del 'Cero Fallos'</h1>
+            <div class="slide-sub">De la predictibilidad del Mainframe a la entropía distribuida de 2026</div>
+            <div class="slide-split">
+                <div class="slide-left-col">
+                    <div class="card-inner amber-border">
+                        <div class="card-title" style="color: var(--amber);">La Certeza Matemática del Fallo</div>
+                        <p style="font-size: 0.92rem; color: var(--tm);">
+                            • <strong>1995:</strong> Mainframe monolítico cerrado, batches nocturnos y dependencias locales previsibles.<br><br>
+                            • <strong>2026:</strong> Ecosistema hiperconectado con miles de pods en clústeres híbridos, tokenización Visa/Mastercard, Bizum, SEPA Instant y millones de apps concurrentes.<br><br>
+                            • En un sistema de 10.000 componentes, la probabilidad de fallo simultáneo de al menos una pieza es del <strong>100%</strong>.
+                        </p>
+                    </div>
+                </div>
+                <div class="slide-left-col">
+                    <div class="card-inner red-border">
+                        <div class="card-title" style="color: var(--red);">El Peligro del Paradigma Legacy</div>
+                        <p style="font-size: 0.92rem; color: var(--tm);">
+                            • <strong>Fragilidad por falta de entrenamiento:</strong> Creer que nada va a caer impide ensayar los protocolos de mitigación rápida.<br><br>
+                            • <strong>La trampa del CAPEX redundante:</strong> Comprar réplicas idénticas pasivas no protege contra bugs lógicos, configuraciones corruptas o caídas en cascada.<br><br>
+                            • <strong>Conclusión:</strong> El fallo es inevitable; la parálisis operativa es opcional.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: LA PARADOJA DE LOS DOS BANCOS -->
+        <div class="slide-container" data-slide="3" data-notes="GUION: Miren la comparativa en pantalla. Es una pregunta que hago a menudo a los comités de riesgos: ¿Qué banco preferiríais gestionar? El Banco A tiene un dashboard publicitario precioso que dice 'cero caídas en doce meses'... hasta el fatídico viernes en que se le cae el autorizador y tarda cuatro horas en levantarlo. Pierde 50 millones de transacciones, abre el telediario y recibe una carta demoledora del BCE. El Banco B, en cambio, tiene la humildad de asumir que tropezará: salta el disyuntor en 30 segundos, el rollback se aplica en dos minutos y el cliente en la gasolinera apenas nota demora. 18 minutos de parada total al año frente a 270 minutos. Esa es la diferencia entre el humo del MTBF y la realidad del MTTR.">
+            <div class="slide-eyebrow">// 02. CASO PRÁCTICO COMPARATIVO</div>
+            <h1 class="slide-h1">La Paradoja de los Dos Bancos</h1>
+            <div class="slide-sub">¿Qué entidad presenta un riesgo operativo y regulatorio más letal?</div>
+            <div class="slide-split">
+                <div class="slide-left-col">
+                    <div class="card-inner cyan-border">
+                        <div class="card-title" style="color: var(--cyan);">El Dilema de Riesgo</div>
+                        <p style="font-size: 0.9rem; color: var(--tm);">
+                            • <strong>Banco A (Obsesión MTBF):</strong> 1 sola caída al año, pero tarda 4h 30m en levantarse. 270 minutos de corte total en Black Friday. Apertura en telediarios y multas DORA.<br><br>
+                            • <strong>Banco B (Maestría en MTTR):</strong> 6 micro-incidencias al año, pero cada una se mitiga en 3 minutos. 18 minutos acumulados en todo el año. Cero sanciones regulatorias.
+                        </p>
+                    </div>
+                </div>
+                <div class="slide-diagram-box">
+                    <img src="/blog/assets/presentation/bbva_mtbf_vs_mttr_paradoja.png" alt="Comparativa Banco A vs Banco B MTBF MTTR" class="slide-diagram-img">
+                    <div class="slide-diagram-caption">
+                        <strong>Veredicto DORA / BCE:</strong> El Banco B mantiene una disponibilidad real superior al 99.96% con un MTTR medio &lt; 3 minutos, blindando la reputación institucional.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: DISPONIBILIDAD REAL VS MARKETING -->
+        <div class="slide-container" data-slide="4" data-notes="GUION: Tenemos que ser implacables con nosotros mismos en esto: el informe que dice que tuvimos un 99.99% el mes pasado es a menudo una mentira reconfortante. Si medimos pings a la URL de bienvenida, todo está verde. Pero si un cliente intenta entrar a la app y la base de datos de saldos responde con error 500 silencioso, para ese cliente el banco está caído al 100%. En fiabilidad moderna medimos transacciones bancarias válidas completadas. Y los cuatro nueves solo permiten cuatro minutos de holgura al mes.">
+            <div class="slide-eyebrow">// 03. MEDICIÓN TRANSPARENTE</div>
+            <h1 class="slide-h1">Disponibilidad Real vs. Marketing</h1>
+            <div class="slide-sub">La mentira del ping al proxy frente al éxito transaccional de negocio</div>
+            <div class="slide-split">
+                <div class="slide-left-col">
+                    <div class="card-inner amber-border">
+                        <div class="card-title" style="color: var(--amber);">La Métrica que Importa</div>
+                        <p style="font-size: 0.9rem; color: var(--tm);">
+                            • <strong>Disponibilidad Sintética (Ciega):</strong> El proxy responde HTTP 200 en 10 ms, pero los pagos de Bizum fallan por debajo por bloqueo de base de datos.<br><br>
+                            • <strong>La Disciplina de los 4 Nueves (99.99%):</strong> Solo permite <strong>4 min y 19 seg de caída mensual</strong> en toda la plataforma.<br><br>
+                            • <strong>Tasa de Éxito Transaccional:</strong> <em>Good Business Transactions / Total Invocations</em>. Si el saldo no se actualiza, la disponibilidad es cero.
+                        </p>
+                    </div>
+                </div>
+                <div class="slide-diagram-box">
+                    <img src="/blog/assets/presentation/bbva_disponibilidad_real_vs_marketing.png" alt="Disponibilidad Real vs Marketing" class="slide-diagram-img">
+                    <div class="slide-diagram-caption">
+                        <strong>Transparencia Ejecutiva:</strong> De la complacencia de los dashboards verdes a la monitorización de transacciones reales de negocio.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: ANATOMÍA DEL MTTR < 8 MINUTOS -->
+        <div class="slide-container" data-slide="5" data-notes="GUION: Cuando un servicio P1 se degrada, cada segundo debe estar coreografiado. Primeros 90 segundos: la telemetría sintética detecta la desviación. Siguientes dos minutos: el Incident Commander acciona el disyuntor que impide que el microservicio enfermo tire abajo la base de datos de cuentas. Tres minutos siguientes: se ejecuta el rollback al release anterior. Son las 02:24 de la mañana; el servicio ha vuelto. Tiempo total: 6 minutos y medio. En mi guardia está prohibido depurar código a las tres de la madrugada: paramos la hemorragia primero; la biopsia se hace mañana en el laboratorio.">
+            <div class="slide-eyebrow">// 04. GESTIÓN OPERATIVA P1</div>
+            <h1 class="slide-h1">El Pipeline SRE del MTTR a &lt; 8 Minutos</h1>
+            <div class="slide-sub">Deconstrucción del ciclo de vida del incidente: 'Mitigar no es arreglar'</div>
+            <div class="slide-split">
+                <div class="slide-left-col">
+                    <div class="card-inner mint-border">
+                        <div class="card-title" style="color: var(--mint);">Los 4 Tiempos del Incidente P1</div>
+                        <p style="font-size: 0.88rem; color: var(--tm);">
+                            1. <strong>MTTD (&lt; 90s):</strong> Detección sintética ante caídas del 2% en volumen de pagos.<br>
+                            2. <strong>MTTI (&lt; 2m):</strong> Incident Commander activa Circuit Breakers y aísla el foco.<br>
+                            3. <strong>MTTR (&lt; 3m):</strong> Rollback incondicional o conmutación celular. Tráfico restaurado.<br>
+                            4. <strong>MTTA (Post-Incidente):</strong> Causa raíz y Blameless Post-Mortem en frío.
+                        </p>
+                    </div>
+                </div>
+                <div class="slide-diagram-box">
+                    <img src="/blog/assets/presentation/bbva_pipeline_mttr_8_minutos.png" alt="Pipeline de MTTR a menos de 8 minutos" class="slide-diagram-img">
+                    <div class="slide-diagram-caption">
+                        <strong>Regla de Mando:</strong> Prohibido intentar parches en caliente durante la madrugada. Mitigar es devolver el servicio; arreglar el bug es tarea del día siguiente.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: PATRONES DE ARQUITECTURA -->
+        <div class="slide-container" data-slide="6" data-notes="GUION: Reducir el MTTR no es una cuestión de que los ingenieros tecleen más rápido; es una propiedad del diseño de software. Primero: compartimentos estancos celulares. Como en los barcos: si entra agua en la bodega tres, cerramos la compuerta y el barco sigue navegando. Segundo: amortiguación con colas. El cliente en la tienda no debe ver un cartel de 'error bancario' porque un microservicio esté saturado. Encolamos la petición y la ejecutamos en dos minutos. Tercero: despliegues canarios obligatorios al 1% del tráfico. Si falla, el Circuit Breaker lo apaga solo.">
+            <div class="slide-eyebrow">// 05. INGENIERÍA DE RESILIENCIA</div>
+            <h1 class="slide-h1">Patrones de Arquitectura para Desplomar el MTTR</h1>
+            <div class="slide-sub">Tres decisiones de diseño que transforman la disponibilidad del banco</div>
+            <div class="slide-split" style="grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+                <div class="card-inner cyan-border">
+                    <div class="card-title" style="color: var(--cyan);">1. Arquitectura Celular</div>
+                    <p style="font-size: 0.88rem; color: var(--tm);">
+                        Compartimentos estancos (*Bulkheads*). Si una célula colapsa, solo afecta al 5% de los clientes; el 95% restante del banco sigue operando intacto.
+                    </p>
+                </div>
+                <div class="card-inner amber-border">
+                    <div class="card-title" style="color: var(--amber);">2. Colas Asíncronas</div>
+                    <p style="font-size: 0.88rem; color: var(--tm);">
+                        Encolado persistente en Kafka/RabbitMQ ante caídas transitorias de pasarelas. Las transacciones se procesan en segundo plano sin pérdida de saldo.
+                    </p>
+                </div>
+                <div class="card-inner mint-border">
+                    <div class="card-title" style="color: var(--mint);">3. Canary &amp; Breakers</div>
+                    <p style="font-size: 0.88rem; color: var(--tm);">
+                        Despliegue progresivo por anillos (1% &rarr; 5% &rarr; 25%). Si sube la tasa de error, el disyuntor corta y ejecuta rollback automático en 30 segundos.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: ERROR BUDGETS Y DORA -->
+        <div class="slide-container" data-slide="7" data-notes="GUION: Hablemos de gobernanza y regulación. El Error Budget resuelve la fricción histórica entre producto (que quiere correr) y operaciones (que quiere congelar). Mientras haya presupuesto verde, desarrollo corre todo lo que quiera. Pero si un incidente agota el margen mensual, el siguiente sprint se congela por completo para sanear la deuda técnica. Y esto ya no es negociable: con la directiva europea DORA en vigor, el regulador exige ver este mecanismo en funcionamiento. Tener un MTTR bajo y un control de Error Budget auditado es hoy nuestro mayor escudo legal frente al Banco de España y el BCE.">
+            <div class="slide-eyebrow">// 06. GOBERNANZA &amp; REGULACIÓN</div>
+            <h1 class="slide-h1">Error Budgets y la Directiva DORA</h1>
+            <div class="slide-sub">El árbitro matemático entre innovación y estabilidad obligatoria</div>
+            <div class="slide-split">
+                <div class="slide-left-col">
+                    <div class="card-inner cyan-border">
+                        <div class="card-title" style="color: var(--cyan);">El Contrato Social de SRE</div>
+                        <p style="font-size: 0.9rem; color: var(--tm);">
+                            • <strong>Presupuesto Verde:</strong> Vía libre para despliegues diarios y experimentación rápida de producto.<br><br>
+                            • <strong>Presupuesto Agotado:</strong> Congelación automática de nuevas características. El 100% del sprint se destina a resiliencia, mitigación de deuda técnica y amortiguación de fallos.
+                        </p>
+                    </div>
+                </div>
+                <div class="slide-left-col">
+                    <div class="card-inner amber-border">
+                        <div class="card-title" style="color: var(--amber);">El Imperativo Legal DORA</div>
+                        <p style="font-size: 0.9rem; color: var(--tm);">
+                            • <strong>Fin de la resiliencia de papel:</strong> DORA exige pruebas de estrés reales en vivo (*Threat-Led Penetration Testing*).<br><br>
+                            • <strong>Notificación inmediata:</strong> Plazos estrictos en horas al Banco de España; el MTTR auditado determina la gravedad de las sanciones.<br><br>
+                            • <strong>Auditoría de terceros:</strong> Exigencia de resiliencia demostrable a todos los proveedores cloud y SaaS.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 8: HOJA DE RUTA BBVA -->
+        <div class="slide-container" data-slide="8" data-notes="GUION: Quiero dejaros una propuesta pragmática con tres decisiones inmediatas para tomar en esta mesa. Primera: blindar el mando de incidentes. Cuando salte un P1, el Incident Commander manda. Los directores tienen su canal de comunicación formal con partes cada media hora. Segunda: cambiar las métricas de nuestros cuadros de mando. Dejemos de medir si el servidor contesta; midamos si los clientes están pudiendo pagar, con el objetivo de MTTR &lt; 8 minutos en todos los Tiers 1. Tercera: entrenar el fallo. Empecemos a romper cosas nosotros mismos los martes por la mañana con Chaos Engineering. Si un servicio no aguanta la caída de una zona en preproducción, no puede salir a la calle.">
+            <div class="slide-eyebrow">// 07. PLAN DE ACCIÓN TÁCTICO</div>
+            <h1 class="slide-h1">Hoja de Ruta para BBVA: Tres Decisiones Inaplazables</h1>
+            <div class="slide-sub">El compromiso conjunto de Infraestructura, Arquitectura y Operaciones</div>
+            <div class="card-inner mint-border" style="line-height: 1.8;">
+                <p style="font-size: 0.95rem; color: #fff;">
+                    <strong>1. Institucionalizar el Incident Command:</strong> Blindar el Canal Alfa técnico en War Rooms (máximo 5 voces) con autoridad delegada para rollbacks inmediatos sin aprobación de comités.<br><br>
+                    <strong>2. Vincular los SLOs al éxito transaccional de negocio:</strong> Sustituir pings por tasa de pagos reales completados, con el compromiso de <strong>MTTR medio &lt; 8 minutos</strong> en todos los Tiers 1.<br><br>
+                    <strong>3. Implementar Circuit Breakers y Chaos Testing programado:</strong> Ningún servicio pasa a producción sin disyuntores probados y simulacros de caos rutinarios en preproducción.
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 9: CONCLUSIÓN Y CIERRE -->
+        <div class="slide-container" data-slide="9" data-notes="GUION DE PONENTE: (Pausa final mirando a los directores). Compañeros: los sistemas complejos fallarán siempre. El software fallará, el hardware fallará, los proveedores cloud fallarán. Pero lo que define el liderazgo técnico de BBVA es la estatura de nuestra respuesta. Dejemos atrás la ilusión infantil del cero fallos. Abracemos la madurez de la resiliencia: aislemos el impacto, entrenemos a nuestros equipos y hagamos del MTTR nuestro mayor orgullo de ingeniería. Muchas gracias.">
+            <div class="slide-eyebrow">// 08. CONCLUSIÓN EJECUTIVA</div>
+            <h1 class="slide-h1" style="font-size: clamp(2rem, 3.2vw, 2.7rem); text-align: center; margin: 2rem 0; line-height: 1.3;">
+                "El prestigio y la solidez de una gran entidad financiera no se miden por la soberbia de proclamar que sus sistemas jamás fallarán,<br><br>
+                <span style="color: var(--cyan);">sino por la disciplina, arquitectura y humildad operativa para levantarse en cuestión de minutos antes de que sus clientes noten que ha tropezado."</span>
+            </h1>
+            <p style="text-align: center; color: var(--mint); font-family: var(--mono); font-size: 1.1rem; margin-top: 1rem;">
+                Alexander Armentia (Alexar69) · Reliability &amp; Resilience Manager · BBVA<br>
+                <span style="color: var(--tm); font-size: 0.95rem;">alexanderarmentia.com</span>
+            </p>
+        </div>
+
+    </div>
+
+    <!-- SPEAKER NOTES DRAWER -->
+    <div class="notes-drawer" id="notesDrawer">
+        <div class="notes-header">
+            <span>📝 GUION DE PONENTE PARA DIRECCIÓN BBVA</span>
+            <span id="notesSlideNum">SLIDE 1 / 9</span>
+        </div>
+        <div id="notesText">Cargando notas...</div>
+    </div>
+
+    <!-- BOTTOM BAR -->
+    <div class="bottombar">
+        <div class="counter" id="slideCounter">DIAPOSITIVA 1 / 9</div>
+        <div class="nav-controls">
+            <button class="btn" id="btnPrev">← Anterior</button>
+            <button class="btn btn-primary" id="btnNext">Siguiente →</button>
+            <button class="btn" id="btnFullscreen">⛶ Pantalla Completa</button>
+        </div>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide-container');
+        const counter = document.getElementById('slideCounter');
+        const notesDrawer = document.getElementById('notesDrawer');
+        const notesText = document.getElementById('notesText');
+        const notesSlideNum = document.getElementById('notesSlideNum');
+        const btnNotes = document.getElementById('btnNotes');
+        let current = 0;
+
+        function updateSlide(index) {
+            slides.forEach((s, i) => {
+                s.classList.toggle('active', i === index);
+            });
+            counter.textContent = `DIAPOSITIVA ${index + 1} / ${slides.length}`;
+            notesSlideNum.textContent = `SLIDE ${index + 1} / ${slides.length}`;
+            notesText.textContent = slides[index].getAttribute('data-notes') || 'Sin notas adicionales.';
+            current = index;
+        }
+
+        document.getElementById('btnNext').addEventListener('click', () => {
+            if (current < slides.length - 1) updateSlide(current + 1);
+        });
+
+        document.getElementById('btnPrev').addEventListener('click', () => {
+            if (current > 0) updateSlide(current - 1);
+        });
+
+        btnNotes.addEventListener('click', () => {
+            notesDrawer.classList.toggle('open');
+        });
+
+        document.getElementById('btnFullscreen').addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(() => {});
+            } else {
+                document.exitFullscreen();
+            }
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+                if (current < slides.length - 1) updateSlide(current + 1);
+            } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                if (current > 0) updateSlide(current - 1);
+            } else if (e.key.toLowerCase() === 's' || e.key.toLowerCase() === 'n') {
+                notesDrawer.classList.toggle('open');
+            }
+        });
+
+        updateSlide(0);
+    </script>
+</body>
+</html>
