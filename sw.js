@@ -1,9 +1,11 @@
-const CACHE_NAME = 'alexander-armentia-v7';
+const CACHE_NAME = 'alexander-armentia-v8';
 const ASSETS = [
   '/',
   '/index.html',
   '/style.css',
   '/alx_v7.js',
+  '/flentio/',
+  '/flentio/index.html',
   '/favicon.png',
   '/og-image.png',
   '/manifest.json'

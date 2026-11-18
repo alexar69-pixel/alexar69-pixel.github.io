@@ -605,11 +605,12 @@ document.querySelectorAll('.os-btn').forEach(btn => {
     else if (cmd === 'skills') {
       appendLine('> cat skills.txt', '');
       const resp = [
-        { t: 'Leyendo archivos de habilidades...', c: 'sys-msg', d: 500 },
-        { t: '=> SISTEMAS: Windows Server, Linux, Redes, Hardware, Virtualización', c: 'ai-msg', d: 200 },
+        { t: 'Leyendo base de datos de habilidades...', c: 'sys-msg', d: 500 },
+        { t: '=> RELIABILITY & SRE: Incident Management (P1), Observabilidad, Resiliencia de Sistemas', c: 'ai-msg', d: 200 },
+        { t: '=> INFRAESTRUCTURA: Linux, Windows Server, Virtualización, Redes Complejas', c: 'ai-msg', d: 200 },
         { t: '=> COMUNICACIÓN: Locución de radio, War Rooms, Presentaciones y Oratoria', c: 'ai-msg', d: 200 },
         { t: '=> GESTIÓN: Organización de grandes eventos (Campus Party, EventDay)', c: 'ai-msg', d: 200 },
-        { t: '=> EXTRA: Energía inagotable por cafeína/taurina (Red Bull)', c: 'ai-msg', d: 200 }
+        { t: '=> VALORES: Liderazgo en situaciones críticas, resiliencia bajo presión', c: 'ai-msg', d: 200 }
       ];
       typeLines(resp, 0, () => {
         osActions.style.opacity = '1';

@@ -2,6 +2,7 @@
 # Alexander Armentia · Reliability & Resilience Manager · Madrid
 
 User-agent: *
+Disallow: /boda/
 Allow: /
 
 # Explicit permission for major AI search engines, agents and scrapers
