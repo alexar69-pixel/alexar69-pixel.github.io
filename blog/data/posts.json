@@ -1,5 +1,19 @@
 [
   {
+    "slug": "mttr-bancario-disponibilidad-gestion-incidencias-p1",
+    "title": "MTTR Bancario y Disponibilidad Extrema: Cómo Gestionar Incidentes Críticos cuando Cada Minuto Cuesta Millones",
+    "excerpt": "Por qué en banca crítica el MTTR importa diez veces más que el MTBF. Análisis del coste real del minuto de indisponibilidad, los cuatro tiempos del incidente P1 y cómo reducir la mitigación a menos de 8 minutos con patrones SRE.",
+    "date": "2026-11-18",
+    "tags": [
+      "mttr",
+      "banca",
+      "disponibilidad",
+      "incident management",
+      "sre",
+      "alta disponibilidad"
+    ]
+  },
+  {
     "slug": "anatomia-de-una-war-room-14-horas-incident-management",
     "title": "Anatomía de una War Room de 14 Horas: La Psicología del Incidente P1 y lo que Nadie Cuenta en los Manuales",
     "excerpt": "Crónica técnica y operativa desde el puente de mando de un incidente crítico en banca. El rol del Incident Commander, la contención del pánico directivo, el ruido en las llamadas y cómo tomar decisiones bajo niebla de guerra.",

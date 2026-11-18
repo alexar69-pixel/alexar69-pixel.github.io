@@ -16,6 +16,7 @@ Alexander Armentia (conocido en redes e internet como Alexar69) ha liderado la r
 - [GitHub](https://github.com/alexar69-pixel): Repositorios y proyectos de código abierto.
 
 ## Publicaciones y Artículos Técnicos (Blog)
+- [MTTR Bancario y Disponibilidad Extrema: Cómo Gestionar Incidentes Críticos cuando Cada Minuto Cuesta Millones](https://alexanderarmentia.com/blog/posts/mttr-bancario-disponibilidad-gestion-incidencias-p1.html): Por qué en banca crítica el MTTR importa 10x más que el MTBF, los cuatro tiempos del incidente P1 y cómo reducir la mitigación a menos de 8 minutos con patrones SRE.
 - [Anatomía de una War Room de 14 Horas: La Psicología del Incidente P1](https://alexanderarmentia.com/blog/posts/anatomia-de-una-war-room-14-horas-incident-management.html): Cómo proteger el foco técnico del ruido directivo, gestión de la niebla de guerra y relevos obligatorios en crisis bancarias.
 - [La Trampa de la Monocultura Tecnológica: Del Caso CrowdStrike a la Fragilidad Cloud](https://alexanderarmentia.com/blog/posts/la-trampa-de-la-monocultura-del-caso-crowdstrike-a-la-fragilidad-cloud.html): Por qué la homogeneización crea radios de impacto planetarios y la necesidad de arquitecturas celulares y despliegues canario.
 - [¿Dejarías que un Agente de IA Ejecute un Rollback a las 3 de la Mañana?](https://alexanderarmentia.com/blog/posts/agentes-ia-en-produccion-remediacion-autonoma-sre.html): Los 4 niveles de autonomía agéntica en SRE y límites de remediación autónoma frente a la alucinación en producción.

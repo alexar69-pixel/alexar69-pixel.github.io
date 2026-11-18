@@ -334,3 +334,4 @@ if __name__ == "__main__":
     make_ai_sre_diagram()
     make_scorecard_diagram()
     print("All 4 hero diagrams generated successfully!")
+

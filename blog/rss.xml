@@ -5,7 +5,14 @@
     <link>https://alexanderarmentia.com/blog/</link>
     <description>Resiliencia, tecnologia y liderazgo tecnico</description>
     <language>es-es</language>
-    <lastBuildDate>Wed, 18 Nov 2026 14:10:19 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 14:34:42 GMT</lastBuildDate>
+    <item>
+      <title>MTTR Bancario y Disponibilidad Extrema: Cómo Gestionar Incidentes Críticos cuando Cada Minuto Cuesta Millones</title>
+      <link>https://alexanderarmentia.com/blog/posts/mttr-bancario-disponibilidad-gestion-incidencias-p1.html</link>
+      <guid>https://alexanderarmentia.com/blog/posts/mttr-bancario-disponibilidad-gestion-incidencias-p1.html</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Por qué en banca crítica el MTTR importa diez veces más que el MTBF. Análisis del coste real del minuto de indisponibilidad, los cuatro tiempos del incidente P1 y cómo reducir la mitigación a menos de 8 minutos con patrones SRE.</description>
+    </item>
     <item>
       <title>Anatomía de una War Room de 14 Horas: La Psicología del Incidente P1 y lo que Nadie Cuenta en los Manuales</title>
       <link>https://alexanderarmentia.com/blog/posts/anatomia-de-una-war-room-14-horas-incident-management.html</link>

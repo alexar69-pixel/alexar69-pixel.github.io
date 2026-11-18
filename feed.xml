@@ -13,6 +13,14 @@
   </author>
 
   <entry>
+    <title>MTTR Bancario y Disponibilidad Extrema: Cómo Gestionar Incidentes Críticos cuando Cada Minuto Cuesta Millones</title>
+    <link href="https://alexanderarmentia.com/blog/posts/mttr-bancario-disponibilidad-gestion-incidencias-p1.html" />
+    <id>https://alexanderarmentia.com/blog/posts/mttr-bancario-disponibilidad-gestion-incidencias-p1.html</id>
+    <updated>2026-11-18T15:30:00Z</updated>
+    <summary>Por qué en banca crítica el MTTR importa diez veces más que el MTBF. El coste real del minuto de indisponibilidad, los cuatro tiempos del incidente P1 y cómo reducir la mitigación a menos de 8 minutos con patrones SRE.</summary>
+  </entry>
+
+  <entry>
     <title>Anatomía de una War Room de 14 Horas: La Psicología del Incidente P1</title>
     <link href="https://alexanderarmentia.com/blog/posts/anatomia-de-una-war-room-14-horas-incident-management.html" />
     <id>https://alexanderarmentia.com/blog/posts/anatomia-de-una-war-room-14-horas-incident-management.html</id>
