@@ -5,7 +5,35 @@
     <link>https://alexanderarmentia.com/blog/</link>
     <description>Resiliencia, tecnologia y liderazgo tecnico</description>
     <language>es-es</language>
-    <lastBuildDate>Wed, 18 Nov 2026 12:34:56 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 14:10:19 GMT</lastBuildDate>
+    <item>
+      <title>Anatomía de una War Room de 14 Horas: La Psicología del Incidente P1 y lo que Nadie Cuenta en los Manuales</title>
+      <link>https://alexanderarmentia.com/blog/posts/anatomia-de-una-war-room-14-horas-incident-management.html</link>
+      <guid>https://alexanderarmentia.com/blog/posts/anatomia-de-una-war-room-14-horas-incident-management.html</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Crónica técnica y operativa desde el puente de mando de un incidente crítico en banca. El rol del Incident Commander, la contención del pánico directivo, el ruido en las llamadas y cómo tomar decisiones bajo niebla de guerra.</description>
+    </item>
+    <item>
+      <title>La Trampa de la Monocultura Tecnológica: Del Caso CrowdStrike a la Fragilidad Oculta de la Nube Única</title>
+      <link>https://alexanderarmentia.com/blog/posts/la-trampa-de-la-monocultura-del-caso-crowdstrike-a-la-fragilidad-cloud.html</link>
+      <guid>https://alexanderarmentia.com/blog/posts/la-trampa-de-la-monocultura-del-caso-crowdstrike-a-la-fragilidad-cloud.html</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Por qué la homogeneización de agentes, kernels y proveedores cloud crea un radio de impacto planetario. Canary deployments, diversidad arquitectónica y por qué la redundancia idéntica no es resiliencia.</description>
+    </item>
+    <item>
+      <title>¿Dejarías que un Agente de IA Ejecute un Rollback a las 3 de la Mañana? El Dilema del Human-in-the-Loop en SRE</title>
+      <link>https://alexanderarmentia.com/blog/posts/agentes-ia-en-produccion-remediacion-autonoma-sre.html</link>
+      <guid>https://alexanderarmentia.com/blog/posts/agentes-ia-en-produccion-remediacion-autonoma-sre.html</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>El límite entre la observabilidad predictiva y la acción destructiva en producción. Los 4 niveles de autonomía para agentes de IA en operaciones críticas y cómo acotar el riesgo con Circuit Breakers.</description>
+    </item>
+    <item>
+      <title>El Resilience Scorecard y la Plantilla Definitiva de Blameless Post-Mortem: Evalúa la Madurez de tu Infraestructura</title>
+      <link>https://alexanderarmentia.com/blog/posts/resilience-scorecard-plantilla-blameless-post-mortem.html</link>
+      <guid>https://alexanderarmentia.com/blog/posts/resilience-scorecard-plantilla-blameless-post-mortem.html</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Guía práctica para CTOs y líderes de operaciones: auditoría de 10 preguntas para diagnosticar la fragilidad de tus sistemas y una plantilla exhaustiva en Markdown para análisis causa-raíz sin culpabilización.</description>
+    </item>
     <item>
       <title>¿Eficiencia o Seguridad? Las Lecciones de Adamuz y Urda sobre la Trampa de los KPIs en la Infraestructura Crítica</title>
       <link>https://alexanderarmentia.com/blog/posts/adamuz-urda-kpis-seguridad-ave.html</link>

@@ -4,7 +4,7 @@
   <url>
     <loc>https://alexanderarmentia.com/</loc>
     <lastmod>2026-11-18</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://alexanderarmentia.com/" />
   </url>
@@ -43,6 +43,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <!-- Presentación Ponencia Keynote -->
+  <url>
+    <loc>https://alexanderarmentia.com/presentacion.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
   <!-- Presentación de Flentio -->
   <url>
     <loc>https://alexanderarmentia.com/flentio/</loc>
@@ -50,18 +57,58 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- Blog -->
+  <!-- Blog Hub -->
   <url>
     <loc>https://alexanderarmentia.com/blog/</loc>
     <lastmod>2026-11-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
+  <!-- RSS Feed -->
   <url>
     <loc>https://alexanderarmentia.com/blog/rss.xml</loc>
     <lastmod>2026-11-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
+  </url>
+  <!-- Herramienta: Calculadora Error Budget -->
+  <url>
+    <loc>https://alexanderarmentia.com/blog/herramientas/calculadora-sla-error-budget.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Glosario Vivo de Resiliencia -->
+  <url>
+    <loc>https://alexanderarmentia.com/blog/glosario-resiliencia-sre.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Artículos Nuevos -->
+  <url>
+    <loc>https://alexanderarmentia.com/blog/posts/anatomia-de-una-war-room-14-horas-incident-management.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://alexanderarmentia.com/blog/posts/la-trampa-de-la-monocultura-del-caso-crowdstrike-a-la-fragilidad-cloud.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://alexanderarmentia.com/blog/posts/agentes-ia-en-produccion-remediacion-autonoma-sre.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://alexanderarmentia.com/blog/posts/resilience-scorecard-plantilla-blameless-post-mortem.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://alexanderarmentia.com/blog/posts/adamuz-urda-kpis-seguridad-ave.html</loc>

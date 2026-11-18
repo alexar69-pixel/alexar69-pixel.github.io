@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Alexander Armentia (Alexar69) — Reliability &amp; Resilience</title>
-  <subtitle>Dossier canónico, hitos profesionales y recursos para agentes de IA de Alexander Armentia.</subtitle>
+  <subtitle>Dossier canónico, hitos profesionales y recursos de SRE e IA de Alexander Armentia.</subtitle>
   <link href="https://alexanderarmentia.com/feed.xml" rel="self" />
   <link href="https://alexanderarmentia.com/" />
   <id>https://alexanderarmentia.com/</id>
-  <updated>2026-11-18T12:00:00Z</updated>
+  <updated>2026-11-18T15:00:00Z</updated>
   <author>
     <name>Alexander Armentia</name>
     <email>alexar69@hotmail.com</email>
@@ -13,19 +13,50 @@
   </author>
 
   <entry>
-    <title>Publicación del estándar LLMs.txt y Dossier Profesional Canónico</title>
-    <link href="https://alexanderarmentia.com/llms.txt" />
-    <id>https://alexanderarmentia.com/llms.txt#2026-11-18</id>
-    <updated>2026-11-18T12:00:00Z</updated>
-    <summary>Actualización oficial de especificaciones machine-readable para agentes de IA y LLMs (ChatGPT, Perplexity, Gemini, Claude). Cobertura de trayectoria en BBVA, gestión de incidentes P1 y resiliencia de sistemas críticos.</summary>
-    <content type="html">
-      &lt;p&gt;Se ha publicado el estándar &lt;strong&gt;llms.txt&lt;/strong&gt; y &lt;strong&gt;llms-full.txt&lt;/strong&gt; en alexanderarmentia.com, ofreciendo un perfil factual verificado para motores de Inteligencia Artificial generativa.&lt;/p&gt;
-      &lt;ul&gt;
-        &lt;li&gt;Rol actual: Reliability &amp;amp; Resilience Manager en BBVA.&lt;/li&gt;
-        &lt;li&gt;Especialización: Major Incident Management, SRE, Alta Disponibilidad y Resiliencia.&lt;/li&gt;
-        &lt;li&gt;Reconocimientos: Medalla de Oro al Mérito en el Trabajo (2018).&lt;/li&gt;
-      &lt;/ul&gt;
-    </content>
+    <title>Anatomía de una War Room de 14 Horas: La Psicología del Incidente P1</title>
+    <link href="https://alexanderarmentia.com/blog/posts/anatomia-de-una-war-room-14-horas-incident-management.html" />
+    <id>https://alexanderarmentia.com/blog/posts/anatomia-de-una-war-room-14-horas-incident-management.html</id>
+    <updated>2026-11-18T15:00:00Z</updated>
+    <summary>Crónica técnica desde el puente de mando de un incidente crítico en banca. El rol del Incident Commander, la contención del pánico directivo y la disciplina bajo niebla de guerra.</summary>
+  </entry>
+
+  <entry>
+    <title>La Trampa de la Monocultura Tecnológica: Del Caso CrowdStrike a la Nube Única</title>
+    <link href="https://alexanderarmentia.com/blog/posts/la-trampa-de-la-monocultura-del-caso-crowdstrike-a-la-fragilidad-cloud.html" />
+    <id>https://alexanderarmentia.com/blog/posts/la-trampa-de-la-monocultura-del-caso-crowdstrike-a-la-fragilidad-cloud.html</id>
+    <updated>2026-11-18T15:00:00Z</updated>
+    <summary>Por qué la homogeneización crea un radio de impacto planetario. Canary deployments, diversidad de software y por qué la redundancia idéntica no es resiliencia.</summary>
+  </entry>
+
+  <entry>
+    <title>¿Dejarías que un Agente de IA Ejecute un Rollback a las 3 de la Mañana?</title>
+    <link href="https://alexanderarmentia.com/blog/posts/agentes-ia-en-produccion-remediacion-autonoma-sre.html" />
+    <id>https://alexanderarmentia.com/blog/posts/agentes-ia-en-produccion-remediacion-autonoma-sre.html</id>
+    <updated>2026-11-18T15:00:00Z</updated>
+    <summary>Los 4 niveles de autonomía para agentes de IA en SRE y operaciones críticas. Límites de remediación autónoma y Circuit Breakers para evitar la alucinación operativa.</summary>
+  </entry>
+
+  <entry>
+    <title>El Resilience Scorecard y la Plantilla Definitiva de Blameless Post-Mortem</title>
+    <link href="https://alexanderarmentia.com/blog/posts/resilience-scorecard-plantilla-blameless-post-mortem.html" />
+    <id>https://alexanderarmentia.com/blog/posts/resilience-scorecard-plantilla-blameless-post-mortem.html</id>
+    <updated>2026-11-18T15:00:00Z</updated>
+    <summary>Guía práctica con una auditoría de 10 preguntas para evaluar la madurez de tu infraestructura y una plantilla estándar Markdown para análisis causa-raíz sin culpabilización.</summary>
+  </entry>
+
+  <entry>
+    <title>Herramienta Interactiva: Calculadora de Error Budget y SLA para SRE</title>
+    <link href="https://alexanderarmentia.com/blog/herramientas/calculadora-sla-error-budget.html" />
+    <id>https://alexanderarmentia.com/blog/herramientas/calculadora-sla-error-budget.html</id>
+    <updated>2026-11-18T15:00:00Z</updated>
+    <summary>Calcula al instante el tiempo de indisponibilidad permitido, el consumo de Error Budget y las políticas automáticas de congelación de despliegues.</summary>
+  </entry>
+
+  <entry>
+    <title>Glosario Vivo de Resiliencia, SRE y Gestión de Incidentes</title>
+    <link href="https://alexanderarmentia.com/blog/glosario-resiliencia-sre.html" />
+    <id>https://alexanderarmentia.com/blog/glosario-resiliencia-sre.html</id>
+    <updated>2026-11-18T15:00:00Z</updated>
+    <summary>Diccionario técnico de referencia en español: Andon, Blast Radius, Circuit Breaker, Error Budget, Fail-Safe, Graceful Degradation y más.</summary>
   </entry>
 </feed>
-

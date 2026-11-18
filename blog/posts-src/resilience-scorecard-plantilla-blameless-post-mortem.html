@@ -1,0 +1,74 @@
+<p><img src="/blog/assets/resilience-scorecard-plantilla-blameless-post-mortem.png" alt="Los 5 pilares del Resilience Scorecard para evaluar la madurez de infraestructuras críticas" loading="lazy" /></p>
+
+<p>En la inmensa mayoría de las organizaciones tecnológicas, la resiliencia es tratada como una aspiración poética más que como una disciplina de ingeniería medible. Los comités de dirección presumen de "tolerancia a fallos" porque pagan la factura mensual de dos zonas de disponibilidad en AWS, hasta que un día una caída regional o una actualización defectuosa paraliza las operaciones durante doce horas y nadie sabe explicar por qué la redundancia no funcionó.</p>
+
+<p>Como Site Reliability Engineers y gestores de infraestructuras críticas, necesitamos herramientas tangibles que nos permitan responder con rigor a una pregunta elemental: <strong>¿es nuestro sistema verdaderamente resiliente o simplemente hemos tenido suerte los últimos seis meses?</strong></p>
+
+<p>En este artículo pongo a disposición de la comunidad dos recursos prácticos nacidos de más de 25 años en operaciones bancarias y sistemas de alta disponibilidad: el <strong>Resilience Scorecard (Auditoría de 10 Puntos)</strong> y la <strong>Plantilla Oficial de Blameless Post-Mortem</strong> lista para implementar en tus equipos de ingeniería.</p>
+
+<h2>Parte 1: El Resilience Scorecard (Auditoría de 10 Preguntas)</h2>
+<p>Evalúa cada pregunta de 1 a 5 puntos (1 = Inexistente, 5 = Automatizado y probado en producción periódicamente). Una puntuación inferior a 35 puntos indica una vulnerabilidad sistémica crítica ante el próximo incidente mayor:</p>
+
+<div class="card-inner cyan-border" style="margin: 1.5rem 0; padding: 1.5rem; background: rgba(34, 211, 238, 0.03);">
+    <h3 style="color: var(--cyan); margin-top: 0;">📋 CHECKLIST DE AUTOEVALUACIÓN SRE</h3>
+    <ol style="line-height: 1.8; font-size: 0.95rem; padding-left: 1.25rem;">
+        <li><strong>Contención de Blast Radius:</strong> ¿Puede caer por completo tu microservicio o componente más crítico sin arrastrar a los sistemas de pago o autenticación?</li>
+        <li><strong>Degradación Elegante (*Graceful Degradation*):</strong> Ante un fallo masivo de dependencias externas, ¿el sistema ofrece funcionalidad básica en modo lectura (*read-only*) en lugar de una pantalla de error 500?</li>
+        <li><strong>Principio Andon (*Stop the Line*):</strong> ¿Tiene cualquier desarrollador o ingeniero de guardia el respaldo institucional para frenar un despliegue sin pedir permiso comercial si detecta anomalías?</li>
+        <li><strong>Canary Deployments Obligatorios:</strong> ¿Todas las actualizaciones se despliegan progresivamente por anillos (1% -> 5% -> 25%) con freno automático ante incrementos de latencia?</li>
+        <li><strong>Circuit Breakers en APIs:</strong> ¿Están todas las llamadas remotas protegidas por disyuntores de software con tiempos de corte (*timeouts*) estrictos inferiores a 2 segundos?</li>
+        <li><strong>Gobernanza de Error Budgets:</strong> Si un servicio agota su margen de error mensual en el SLA, ¿se congelan automáticamente los despliegues de nuevas funcionalidades para priorizar estabilidad?</li>
+        <li><strong>Simulacros de Caos (*Chaos Engineering*):</strong> ¿Inyectáis fallos deliberados en entornos de preproducción o producción controlada al menos una vez al mes para validar la recuperación?</li>
+        <li><strong>Tolerancia a la Monocultura:</strong> Si tu proveedor cloud principal o tu agente de seguridad cae a nivel global, ¿posees una ruta de contingencia operativa documentada?</li>
+        <li><strong>Cultura Blameless Real:</strong> ¿En vuestros informes de incidencias está terminantemente prohibido señalar el "error humano" como la causa raíz del fallo?</li>
+        <li><strong>Revisión Periódica de Señales Débiles:</strong> ¿Existe una rutina semanal para auditar alertas menores, vibraciones o micro-reinicios que no llegaron a tirar el servicio?</li>
+    </ol>
+</div>
+
+<h2>Parte 2: La Plantilla Definitiva de Blameless Post-Mortem</h2>
+<p>Un análisis post-incidente no es un informe policial para depurar responsabilidades: es un documento de ingeniería para rediseñar los incentivos y las defensas del sistema. A continuación puedes copiar la plantilla estándar en formato Markdown que utilizamos tras cualquier incidente P1/P2:</p>
+
+<pre style="background: #090918; border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 1.25rem; overflow-x: auto; font-family: monospace; font-size: 0.85rem; color: var(--t); line-height: 1.5;"><code># [POST-MORTEM P1] - [Título Descriptivo del Incidente]
+
+## 1. Resumen Ejecutivo
+* **Fecha del Incidente:** AAAA-MM-DD
+* **Incident Commander:** [Nombre]
+* **Duración Total:** [X horas, Y minutos]
+* **Impacto al Negocio / Usuarios:** [Ej: 14.200 transacciones fallidas, 42 min de indisponibilidad]
+* **Severidad:** P1 (Crítica)
+* **Estado Final:** Mitigado y Estabilizado
+
+## 2. Cronología Minuto a Minuto (Horario UTC)
+* **02:14** - Disparo de alerta en Datadog: latencia p99 supera 4.000 ms.
+* **02:18** - Incident Commander declara P1 y abre la War Room técnica.
+* **02:35** - Primera hipótesis: fuga de conexiones en clúster PostgreSQL.
+* **03:10** - Hipótesis invalidada; telemetría apunta a timeout en microservicio de pagos v3.2.
+* **03:22** - Se ejecuta rollback incondicional a la versión v3.1.9.
+* **03:45** - Métricas normalizadas por debajo de 50 ms. Fin de la fase de mitigación.
+
+## 3. Análisis de Causa Raíz (Los 5 Porqués)
+* **¿Por qué falló el gateway?** Porque el pool de hilos del microservicio se agotó por completo.
+* **¿Por qué se agotó el pool?** Porque las llamadas hacia la pasarela bancaria externa quedaron en espera indefinida.
+* **¿Por qué quedaron en espera indefinida?** Porque la llamada HTTP carecía de un timeout configurado.
+* **¿Por qué carecía de timeout?** Porque la librería de cliente externa introducida en el sprint no tenía valores por defecto seguros.
+* **¿Por qué llegó a producción sin timeout?** Porque los tests de integración en el pipeline de CI/CD no simulaban caídas de latencia de terceros (falta de Chaos Testing).
+
+## 4. Qué Funcionó Bien
+* La alerta de PagerDuty despertó al ingeniero de guardia en menos de 4 minutos.
+* El Incident Commander aisló con éxito la sala técnica de las consultas directivas.
+* El procedimiento de rollback automatizado en Kubernetes funcionó sin fricciones.
+
+## 5. Qué Funcionó Mal y Dónde Tuvimos Suerte
+* Se perdieron 35 minutos investigando la base de datos por un dashboard mal etiquetado.
+* El canal de Slack corporativo sufrió saturación por usuarios no esenciales.
+* Tuvimos suerte de que el incidente ocurrió de madrugada con tráfico un 70% inferior al pico diurno.
+
+## 6. Plan de Acciones Correctivas (Jira / Tracker)
+* [ ] **AC-01 (Preventiva):** Configurar timeout obligatorio de 1.500 ms en todas las llamadas HTTP (Owner: @dev, Plazo: 3 días).
+* [ ] **AC-02 (Defensiva):** Implementar patrón Circuit Breaker con degradación elegante (Owner: @arch, Plazo: 2 semanas).
+* [ ] **AC-03 (Observabilidad):** Crear alerta específica para saturación de pool de hilos en CI (Owner: @sre, Plazo: 1 semana).</code></pre>
+
+<h2>El compromiso con la resiliencia</h2>
+<p>La diferencia entre una empresa que sobrevive a los fallos y otra que vive con el corazón en un puño no radica en su presupuesto en licencias de software, sino en su humildad para auditarse y en su disciplina para no dejar que un incidente se cierre sin haber cerrado antes la brecha arquitectónica que lo hizo posible.</p>
+
+<p>Adopta el Scorecard, normaliza el Blameless Post-Mortem y recuerda siempre que <strong>la mejor métrica de un equipo técnico no es cuántas veces no cae, sino con cuánta calma, rapidez y aprendizaje vuelve a levantarse</strong>.</p>

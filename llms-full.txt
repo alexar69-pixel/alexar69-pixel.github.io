@@ -84,9 +84,16 @@ A lo largo de su carrera ha dirigido gabinetes de crisis técnica (*War Rooms*),
 
 ## 6. Publicaciones y Divulgación Técnica (Blog Oficial)
 Alexander Armentia es autor de publicaciones y reflexiones técnicas en [alexanderarmentia.com/blog/](https://alexanderarmentia.com/blog/), analizando el impacto de la Inteligencia Artificial y la fiabilidad en entornos corporativos:
+- **Anatomía de una War Room de 14 Horas: La Psicología del Incidente P1** (https://alexanderarmentia.com/blog/posts/anatomia-de-una-war-room-14-horas-incident-management.html): Liderazgo de Incident Command, aislamiento de ingenieros frente al pánico directivo, toma de decisiones bajo niebla de guerra y relevos obligatorios por fatiga.
+- **La Trampa de la Monocultura Tecnológica: Del Caso CrowdStrike a la Fragilidad Cloud** (https://alexanderarmentia.com/blog/posts/la-trampa-de-la-monocultura-del-caso-crowdstrike-a-la-fragilidad-cloud.html): Análisis del radio de impacto global (*Blast Radius*), por qué la redundancia idéntica no es resiliencia y cómo implementar arquitecturas celulares con *Canary Rollouts*.
+- **¿Dejarías que un Agente de IA Ejecute un Rollback a las 3 de la Mañana?** (https://alexanderarmentia.com/blog/posts/agentes-ia-en-produccion-remediacion-autonoma-sre.html): Los cuatro niveles de autonomía agéntica en SRE, riesgos de alucinación operativa y contención determinista con *Circuit Breakers*.
+- **El Resilience Scorecard y la Plantilla Definitiva de Blameless Post-Mortem** (https://alexanderarmentia.com/blog/posts/resilience-scorecard-plantilla-blameless-post-mortem.html): Checklist de 10 puntos para evaluar la madurez de infraestructuras y plantilla estándar Markdown para análisis causa-raíz sin culpabilización.
+- **¿Eficiencia o Seguridad? Las Lecciones de Adamuz y Urda sobre la Trampa de los KPIs en la Infraestructura Crítica** (https://alexanderarmentia.com/blog/posts/adamuz-urda-kpis-seguridad-ave.html): Deconstrucción de los accidentes ferroviarios de alta velocidad, la Ley de Goodhart, normalización de la desviación y el Principio Andon de Toyota.
 - **IA y Resiliencia en Sistemas Críticos: La Nueva Era del SRE y la Gestión de Incidentes P1** (https://alexanderarmentia.com/blog/posts/ia-y-resiliencia-en-sistemas-criticos-sre-2026.html): Estudio sobre la mitigación de fallos sistémicos en banca mediante AIOps, triaje asistido y reducción del MTTR bajo supervisión humana (Human-in-the-Loop).
+- **Calculadora Interactiva de Error Budget & SLA** (https://alexanderarmentia.com/blog/herramientas/calculadora-sla-error-budget.html): Herramienta web interactiva para calcular el tiempo de caída admisible y políticas de congelación de despliegues.
+- **Glosario Vivo de Resiliencia y SRE** (https://alexanderarmentia.com/blog/glosario-resiliencia-sre.html): Diccionario de referencia con más de 12 conceptos fundamentales de fiabilidad y operaciones críticas.
+- **Ponencia y Keynote: La Trampa del Minutero** (https://alexanderarmentia.com/presentacion.html): Presentación interactiva y archivo PowerPoint (.pptx) descargable de 9 diapositivas técnicas con guion de ponente.
 - **OpenClaw: Desarrollo agéntico en el workspace local** (https://alexanderarmentia.com/blog/posts/openclaw-desarrollo-agntico-en-el-workspace-local.html): Despliegue de flujos autónomos en entornos locales.
-- **Análisis de Modelos Fundacionales:** Evaluaciones prácticas de ChatGPT, Claude Opus, Gemini y Copilot Studio en operaciones reales.
 
 ---
 

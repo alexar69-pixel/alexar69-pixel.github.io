@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es" prefix="og: https://ogp.me/ns#">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Error Budget y SLA para SRE | Alexander Armentia</title>
+    <meta name="description" content="Calculadora interactiva de disponibilidad, tiempo de indisponibilidad permitido (downtime) y Error Budget para ingenieros de SRE, DevOps y arquitectos de resiliencia." />
+    <meta name="author" content="Alexander Armentia Bravo" />
+    <link rel="canonical" href="https://alexanderarmentia.com/blog/herramientas/calculadora-sla-error-budget.html" />
+    <meta property="og:title" content="Calculadora Interactiva de Error Budget y SLA para SRE" />
+    <meta property="og:description" content="Calcula al instante el tiempo de indisponibilidad permitido, el consumo de tu Error Budget y las políticas automáticas de congelación de despliegues." />
+    <meta property="og:image" content="https://alexanderarmentia.com/blog/assets/resilience-scorecard-plantilla-blameless-post-mortem.png" />
+    <meta property="og:url" content="https://alexanderarmentia.com/blog/herramientas/calculadora-sla-error-budget.html" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Schema.org WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Calculadora de SLA y Error Budget SRE",
+      "url": "https://alexanderarmentia.com/blog/herramientas/calculadora-sla-error-budget.html",
+      "description": "Herramienta interactiva para calcular el presupuesto de error y tiempo de indisponibilidad según estándares de Google Site Reliability Engineering.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "All",
+      "author": {
+        "@type": "Person",
+        "name": "Alexander Armentia",
+        "url": "https://alexanderarmentia.com/#alexander-armentia"
+      }
+    }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+    <!-- Style sheets -->
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/blog/blog.css" />
+    <meta name="theme-color" content="#0d0d14" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <style>
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .calc-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1.75rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-label {
+            display: block;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.85rem;
+            color: var(--a, #22d3ee);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .form-select, .form-input {
+            width: 100%;
+            background: #090918;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .form-select:focus, .form-input:focus {
+            border-color: var(--a, #22d3ee);
+            box-shadow: 0 0 10px rgba(34, 211, 238, 0.2);
+        }
+        .metric-big {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.25rem;
+            font-family: var(--font-mono, monospace);
+        }
+        .metric-sub {
+            font-size: 0.85rem;
+            color: var(--tm, #9ca3af);
+            margin-bottom: 1.5rem;
+        }
+        .progress-bar-bg {
+            width: 100%;
+            height: 14px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 7px;
+            overflow: hidden;
+            margin: 1rem 0 0.5rem;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: #34d399;
+            transition: width 0.4s ease, background-color 0.4s ease;
+        }
+        .policy-badge {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-family: var(--font-mono, monospace);
+        }
+        .badge-green { background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid #34d399; }
+        .badge-amber { background: rgba(249, 115, 22, 0.15); color: #f97316; border: 1px solid #f97316; }
+        .badge-red { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid #ef4444; }
+
+        @media (max-width: 850px) {
+            .calc-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- OVERLAYS -->
+    <div class="noise-overlay"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- NAV -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo" id="nav-logo">
+                <span class="logo-bracket">[</span>
+                <span class="logo-text" data-scramble="ALEX">ALEX</span>
+                <span class="logo-bracket">]</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="/#yo" class="nav-link"><span class="nl-num">01.</span> Yo</a></li>
+                <li><a href="/#skills" class="nav-link"><span class="nl-num">02.</span> Skills</a></li>
+                <li><a href="/#vida" class="nav-link"><span class="nl-num">03.</span> Historia</a></li>
+                <li><a href="/#gustos" class="nav-link"><span class="nl-num">04.</span> Intereses</a></li>
+                <li><a href="/blog/" class="nav-link active"><span class="nl-num">05.</span> Blog</a></li>
+                <li><a href="/#contacto" class="nav-link"><span class="nl-num">06.</span> Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- CALCULATOR SECTION -->
+    <section class="section post-section">
+        <div class="section-inner" style="max-width: 1050px; margin: 0 auto; padding-top: 5rem;">
+            <a class="home mono" href="/blog/" style="color: var(--a); font-size: 0.8rem; display: inline-block; margin-bottom: 2rem;">&larr; [ volver_al_blog.sh ]</a>
+
+            <div class="glass-card post-card" style="padding: 2.5rem;">
+                <div class="terminal-bar" style="margin-bottom: 2rem;">
+                    <span class="term-dot td-red"></span>
+                    <span class="term-dot td-yellow"></span>
+                    <span class="term-dot td-green"></span>
+                    <code class="term-text"><span class="term-prefix">~</span>/herramientas/<span class="term-cmd">calculadora-error-budget-sre.sh</span></code>
+                </div>
+
+                <h1 style="color: #fff; font-weight: 800; font-size: clamp(2rem, 3.5vw, 2.7rem); line-height: 1.2; margin-bottom: 1rem;">
+                    Calculadora Interactiva de Error Budget &amp; SLA
+                </h1>
+                <p style="color: var(--tm, #9ca3af); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
+                    Herramienta de gobernanza operativa basada en los estándares de <em>Site Reliability Engineering</em> (Google SRE). Introduce tu acuerdo de nivel de servicio objetivo y el tiempo de caída para evaluar de inmediato si tu equipo puede continuar desplegando funcionalidades o debe congelar cambios para proteger la resiliencia.
+                </p>
+
+                <!-- INTERACTIVE CALCULATOR -->
+                <div class="calc-grid">
+                    <!-- Inputs Panel -->
+                    <div class="calc-panel">
+                        <h2 style="font-size: 1.15rem; color: #fff; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                            ⚙️ Parámetros del Servicio
+                        </h2>
+
+                        <div class="form-group">
+                            <label class="form-label" for="slaSelect">// 1. Objetivo de Disponibilidad (SLA / SLO)</label>
+                            <select id="slaSelect" class="form-select">
+                                <option value="99">99.0% - Dos Nueves (Infraestructura Estándar)</option>
+                                <option value="99.5">99.5% - Servicios Corporativos Internos</option>
+                                <option value="99.9" selected>99.9% - Tres Nueves (Estándar Web / SaaS)</option>
+                                <option value="99.95">99.95% - Plataformas de Comercio Electrónico</option>
+                                <option value="99.99">99.99% - Cuatro Nueves (Sistemas Bancarios Críticos)</option>
+                                <option value="99.999">99.999% - Cinco Nueves (Núcleo de Telecomunicaciones / Alta Velocidad)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="periodSelect">// 2. Ventana de Evaluación</label>
+                            <select id="periodSelect" class="form-select">
+                                <option value="1">Diario (24 horas)</option>
+                                <option value="7">Semanal (7 días)</option>
+                                <option value="30" selected>Mensual Móvil (30 días)</option>
+                                <option value="90">Trimestral (90 días)</option>
+                                <option value="365">Anual (365 días)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="downtimeMinutes">// 3. Tiempo de Caída Acumulado (Minutos)</label>
+                            <input type="number" id="downtimeMinutes" class="form-input" value="12" min="0" step="0.5">
+                            <span style="font-size: 0.8rem; color: var(--tm); display: block; margin-top: 0.35rem;">
+                                Indisponibilidad o degradación severa sufrida en esta ventana.
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Results Panel -->
+                    <div class="calc-panel">
+                        <h2 style="font-size: 1.15rem; color: #fff; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                            📊 Diagnóstico de Resiliencia
+                        </h2>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <div class="form-label">// Tiempo de Caída Máximo Permitido</div>
+                            <div class="metric-big" id="allowedDowntimeText">43.2 min</div>
+                            <div class="metric-sub" id="allowedDetailText">Para 99.9% en una ventana de 30 días</div>
+                        </div>
+
+                        <div>
+                            <div class="form-label">// Consumo del Error Budget</div>
+                            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                <span style="font-size: 1.5rem; font-weight: 700; color: #fff;" id="consumedPercentageText">27.8%</span>
+                                <span style="font-size: 0.85rem; color: var(--tm);" id="remainingText">Restante: 31.2 min (72.2%)</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" id="progressBarFill" style="width: 27.8%; background: #34d399;"></div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08);">
+                            <div id="policyBadge" class="policy-badge badge-green">ZONA SEGURA: DESPLIEGUES ACTIVOS</div>
+                            <p id="policyAdvice" style="font-size: 0.9rem; color: #fff; line-height: 1.5;">
+                                Tu servicio mantiene más del 50% de su presupuesto de error intacto. El equipo de desarrollo puede continuar liberando nuevas características y cambios con normalidad.
+                            </p>
+                        </div>
+
+                        <button id="btnCopyReport" class="btn btn-ghost" style="margin-top: 1rem; width: 100%; justify-content: center; font-size: 0.85rem;">
+                            📋 Copiar Resumen de Auditoría para Slack / Teams
+                        </button>
+                    </div>
+                </div>
+
+                <!-- EXPLANATORY GUIDE -->
+                <div style="margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem;">
+                    <h2 style="color: #fff; font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">
+                        ¿Cómo funciona la Política de Error Budgets en SRE?
+                    </h2>
+                    <p style="line-height: 1.7; color: var(--tm); margin-bottom: 1rem;">
+                        El <strong>Error Budget</strong> (presupuesto de riesgo) es el puente que une los intereses a menudo enfrentados de <em>Desarrollo</em> (que quiere desplegar rápido) y <em>Operaciones</em> (que quiere que nada se caiga). En lugar de perseguir el imposible 100% de disponibilidad, se acuerda un margen admisible de fallo:
+                    </p>
+                    <ul style="line-height: 1.8; color: var(--tm); padding-left: 1.5rem; margin-bottom: 1.5rem;">
+                        <li><strong style="color: #fff;">0% - 75% Consumido:</strong> Despliegues estándar y experimentación permitida.</li>
+                        <li><strong style="color: var(--amber);">75% - 99% Consumido:</strong> Solo se permiten cambios de bajo riesgo, con aprobación de SRE y despliegues canarios al 1%.</li>
+                        <li><strong style="color: var(--red);">100% o Más (Presupuesto Agotado):</strong> Se congela el despliegue de nuevas funcionalidades comerciales. Todo el esfuerzo del equipo pasa a ser refactorización, amortiguación de caídas, tests de resiliencia y corrección de deuda técnica.</li>
+                    </ul>
+                    <p style="line-height: 1.7; color: var(--tm);">
+                        Para profundizar en este marco, consulta nuestro artículo: <a href="/blog/posts/resilience-scorecard-plantilla-blameless-post-mortem.html" style="color: var(--a);">El Resilience Scorecard y la Plantilla de Blameless Post-Mortem &rarr;</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo" style="margin-top: 4rem;">
+        <div class="footer-inner">
+            <span class="mono" style="font-size: 0.8rem; color: var(--td, #6b7280);">// alexander.armentia &middot; alexar69 &middot; madrid &middot; 2026 &middot; herramientas SRE &nbsp;⚡</span>
+            <a href="/blog/" class="back-top mono" style="font-size: 0.8rem; color: var(--a);">&larr; [blog]</a>
+        </div>
+    </footer>
+
+    <script>
+        const slaSelect = document.getElementById('slaSelect');
+        const periodSelect = document.getElementById('periodSelect');
+        const downtimeMinutes = document.getElementById('downtimeMinutes');
+
+        const allowedDowntimeText = document.getElementById('allowedDowntimeText');
+        const allowedDetailText = document.getElementById('allowedDetailText');
+        const consumedPercentageText = document.getElementById('consumedPercentageText');
+        const remainingText = document.getElementById('remainingText');
+        const progressBarFill = document.getElementById('progressBarFill');
+        const policyBadge = document.getElementById('policyBadge');
+        const policyAdvice = document.getElementById('policyAdvice');
+        const btnCopyReport = document.getElementById('btnCopyReport');
+
+        function formatDuration(minutes) {
+            if (minutes < 1) {
+                const sec = Math.round(minutes * 60);
+                return `${sec} seg`;
+            } else if (minutes < 60) {
+                return `${minutes.toFixed(1)} min`;
+            } else if (minutes < 1440) {
+                const hours = (minutes / 60).toFixed(1);
+                return `${hours} horas (${Math.round(minutes)} min)`;
+            } else {
+                const days = (minutes / 1440).toFixed(1);
+                return `${days} días (${(minutes/60).toFixed(0)} horas)`;
+            }
+        }
+
+        function calculate() {
+            const sla = parseFloat(slaSelect.value);
+            const days = parseFloat(periodSelect.value);
+            const actualDowntime = parseFloat(downtimeMinutes.value) || 0;
+
+            const totalMinutesInPeriod = days * 24 * 60;
+            const allowedDowntimeMin = totalMinutesInPeriod * (1 - (sla / 100));
+
+            allowedDowntimeText.textContent = formatDuration(allowedDowntimeMin);
+            allowedDetailText.textContent = `Para ${sla}% en una ventana de ${days === 1 ? '24 horas' : days + ' días'}`;
+
+            const consumedPercent = (actualDowntime / allowedDowntimeMin) * 100;
+            const remainingMin = allowedDowntimeMin - actualDowntime;
+
+            consumedPercentageText.textContent = `${consumedPercent.toFixed(1)}%`;
+            
+            if (remainingMin >= 0) {
+                remainingText.textContent = `Restante: ${formatDuration(remainingMin)} (${(100 - consumedPercent).toFixed(1)}%)`;
+            } else {
+                remainingText.textContent = `Excedido por: ${formatDuration(Math.abs(remainingMin))}`;
+            }
+
+            const fillWidth = Math.min(Math.max(consumedPercent, 0), 100);
+            progressBarFill.style.width = `${fillWidth}%`;
+
+            if (consumedPercent < 75) {
+                progressBarFill.style.backgroundColor = '#34d399';
+                policyBadge.className = 'policy-badge badge-green';
+                policyBadge.textContent = 'ZONA SEGURA: DESPLIEGUES ACTIVOS';
+                policyAdvice.textContent = 'Tu servicio conserva holgura suficiente en su presupuesto de error. El equipo puede continuar liberando nuevas funcionalidades y experimentando sin restricciones.';
+            } else if (consumedPercent < 100) {
+                progressBarFill.style.backgroundColor = '#f97316';
+                policyBadge.className = 'policy-badge badge-amber';
+                policyBadge.textContent = 'ZONA DE ALERTA: CAMBIOS CONTROLADOS';
+                policyAdvice.textContent = 'Has consumido más del 75% del presupuesto de error. Se recomienda pausar despliegues mayores, restringir cambios a baja criticidad y verificar despliegues canarios al 1%.';
+            } else {
+                progressBarFill.style.backgroundColor = '#ef4444';
+                policyBadge.className = 'policy-badge badge-red';
+                policyBadge.textContent = 'CIRCUIT BREAKER: DESPLIEGUES CONGELADOS';
+                policyAdvice.textContent = 'Presupuesto de error totalmente agotado. Por protocolo SRE, se congelan despliegues de nuevas características. Todo el foco debe pasar a fiabilidad, tests de estrés y estabilización.';
+            }
+        }
+
+        slaSelect.addEventListener('change', calculate);
+        periodSelect.addEventListener('change', calculate);
+        downtimeMinutes.addEventListener('input', calculate);
+
+        btnCopyReport.addEventListener('click', () => {
+            const sla = slaSelect.value;
+            const days = periodSelect.value;
+            const dt = downtimeMinutes.value;
+            const allowed = allowedDowntimeText.textContent;
+            const consumed = consumedPercentageText.textContent;
+            const status = policyBadge.textContent;
+
+            const text = `📊 *Reporte de Error Budget SRE (alexanderarmentia.com)*\n` +
+                         `• SLA Objetivo: ${sla}%\n` +
+                         `• Ventana: ${days} días\n` +
+                         `• Downtime Máx Permitido: ${allowed}\n` +
+                         `• Downtime Consumido: ${dt} min (${consumed})\n` +
+                         `• Estado Operativo: ${status}`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                const prev = btnCopyReport.textContent;
+                btnCopyReport.textContent = '✅ ¡Copiado al portapapeles!';
+                setTimeout(() => { btnCopyReport.textContent = prev; }, 2500);
+            });
+        });
+
+        calculate();
+    </script>
+</body>
+</html>

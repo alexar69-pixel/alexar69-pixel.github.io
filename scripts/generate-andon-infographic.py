@@ -149,3 +149,4 @@ def make_andon_explanatory_infographic():
 
 if __name__ == "__main__":
     make_andon_explanatory_infographic()
+

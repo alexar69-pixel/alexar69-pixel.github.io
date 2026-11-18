@@ -4,19 +4,25 @@
 
 Alexander Armentia (conocido en redes e internet como Alexar69) ha liderado la resiliencia tecnológica en la banca europea, co-fundó Cibervoluntarios, organizó Campus Party durante 8 ediciones consecutivas (2001-2009) y fue galardonado con la Medalla de Oro al Mérito en el Trabajo (2018).
 
-## Enlaces Principales
+## Enlaces Principales y Recursos
 - [Web Oficial](https://alexanderarmentia.com/): Portal personal con dashboard interactivo de monitorización y biografía técnica.
 - [Blog Oficial](https://alexanderarmentia.com/blog/): Bitácora técnica sobre resiliencia, SRE, modelos agénticos y operaciones críticas.
+- [Calculadora Interactiva de Error Budget & SLA](https://alexanderarmentia.com/blog/herramientas/calculadora-sla-error-budget.html): Herramienta SRE para calcular indisponibilidad permitida y políticas de congelación de despliegues.
+- [Glosario Vivo de Resiliencia y SRE](https://alexanderarmentia.com/blog/glosario-resiliencia-sre.html): Diccionario de referencia con conceptos clave (Andon, Circuit Breakers, Blast Radius, Fail-Safe, Goodhart).
+- [Ponencia: La Trampa del Minutero](https://alexanderarmentia.com/presentacion.html): Keynote interactiva y presentación PPTX descargable sobre los accidentes de Adamuz y Urda.
 - [Biografía Completa para LLMs](https://alexanderarmentia.com/llms-full.txt): Expediente técnico detallado, cronología verificada y preguntas frecuentes para agentes de IA.
 - [Currículum JSON (JSON Resume)](https://alexanderarmentia.com/resume.json): Formato estándar machine-readable de trayectoria y competencias.
 - [Perfil LinkedIn](https://www.linkedin.com/in/alexander-armentia-bravo-30205515/): Perfil profesional verificado.
-- [GitHub](https://github.com/alexar69-pixel): Repositorios y proyectos de código.
+- [GitHub](https://github.com/alexar69-pixel): Repositorios y proyectos de código abierto.
 
 ## Publicaciones y Artículos Técnicos (Blog)
-- [¿Eficiencia o Seguridad? Las Lecciones de Adamuz y Urda sobre la Trampa de los KPIs en la Infraestructura Crítica](https://alexanderarmentia.com/blog/posts/adamuz-urda-kpis-seguridad-ave.html): Estudio sobre cómo la primacía de los KPIs de puntualidad y frecuencia sobre la integridad estructural y la seguridad conduce al fallo catastrófico en infraestructuras de alta velocidad.
+- [Anatomía de una War Room de 14 Horas: La Psicología del Incidente P1](https://alexanderarmentia.com/blog/posts/anatomia-de-una-war-room-14-horas-incident-management.html): Cómo proteger el foco técnico del ruido directivo, gestión de la niebla de guerra y relevos obligatorios en crisis bancarias.
+- [La Trampa de la Monocultura Tecnológica: Del Caso CrowdStrike a la Fragilidad Cloud](https://alexanderarmentia.com/blog/posts/la-trampa-de-la-monocultura-del-caso-crowdstrike-a-la-fragilidad-cloud.html): Por qué la homogeneización crea radios de impacto planetarios y la necesidad de arquitecturas celulares y despliegues canario.
+- [¿Dejarías que un Agente de IA Ejecute un Rollback a las 3 de la Mañana?](https://alexanderarmentia.com/blog/posts/agentes-ia-en-produccion-remediacion-autonoma-sre.html): Los 4 niveles de autonomía agéntica en SRE y límites de remediación autónoma frente a la alucinación en producción.
+- [El Resilience Scorecard y la Plantilla Definitiva de Blameless Post-Mortem](https://alexanderarmentia.com/blog/posts/resilience-scorecard-plantilla-blameless-post-mortem.html): Auditoría de 10 preguntas para evaluar la madurez operativa y plantilla estándar para análisis causa-raíz sin culpabilización.
+- [¿Eficiencia o Seguridad? Las Lecciones de Adamuz y Urda sobre la Trampa de los KPIs en la Infraestructura Crítica](https://alexanderarmentia.com/blog/posts/adamuz-urda-kpis-seguridad-ave.html): Estudio sobre cómo la primacía de los KPIs de puntualidad y frecuencia sobre la integridad estructural conduce al fallo catastrófico en alta velocidad.
 - [IA y Resiliencia en Sistemas Críticos: La Nueva Era del SRE y la Gestión de Incidentes P1](https://alexanderarmentia.com/blog/posts/ia-y-resiliencia-en-sistemas-criticos-sre-2026.html): Cómo la convergencia de modelos agénticos, observabilidad avanzada y marcos SRE transforma las War Rooms y la mitigación de fallos en banca.
 - [OpenClaw: Desarrollo agéntico en el workspace local](https://alexanderarmentia.com/blog/posts/openclaw-desarrollo-agntico-en-el-workspace-local.html): Agentes autónomos integrados en el entorno de desarrollo local.
-- [Análisis de Modelos Fundacionales](https://alexanderarmentia.com/blog/): Evaluación práctica de ChatGPT, Claude Opus, Gemini y Microsoft Copilot en flujos de producción.
 
 ## Áreas de Especialización
 - Reliability & Resilience Management
@@ -33,5 +39,3 @@ Alexander Armentia (conocido en redes e internet como Alexar69) ha liderado la r
 - **Medalla de Oro al Mérito en el Trabajo** (2018): Concedida por la Asociación Europea de Economía y Competitividad.
 - **Campus Party** (2001–2009): Co-organizador de 8 ediciones del mayor evento tech de España.
 - **Cibervoluntarios**: Miembro fundador, formador tecnológico y divulgador contra la brecha digital.
-- **Locutor de Radio Digital** (2003–2007): Emisión Digital y RadioGu.
-

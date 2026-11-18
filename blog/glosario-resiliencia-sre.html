@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es" prefix="og: https://ogp.me/ns#">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glosario Vivo de Resiliencia, SRE y Gestión de Incidentes | Alexander Armentia</title>
+    <meta name="description" content="Diccionario y glosario técnico de referencia en español sobre Site Reliability Engineering (SRE), resiliencia, tolerancia a fallos y gestión de incidentes críticos." />
+    <meta name="author" content="Alexander Armentia Bravo" />
+    <link rel="canonical" href="https://alexanderarmentia.com/blog/glosario-resiliencia-sre.html" />
+    <meta property="og:title" content="Glosario Vivo de Resiliencia, SRE e Incident Management" />
+    <meta property="og:description" content="Conceptos fundamentales explicados con rigor técnico: Andon, Blast Radius, Circuit Breaker, Error Budget, Fail-Safe, Graceful Degradation y más." />
+    <meta property="og:image" content="https://alexanderarmentia.com/blog/assets/resilience-scorecard-plantilla-blameless-post-mortem.png" />
+    <meta property="og:url" content="https://alexanderarmentia.com/blog/glosario-resiliencia-sre.html" />
+    <meta property="og:type" content="article" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Schema.org DefinedTermSet / FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "DefinedTermSet",
+      "name": "Glosario de Resiliencia y Site Reliability Engineering (SRE)",
+      "description": "Glosario de conceptos de resiliencia en infraestructuras críticas, banca y sistemas distribuidos por Alexander Armentia.",
+      "url": "https://alexanderarmentia.com/blog/glosario-resiliencia-sre.html",
+      "author": {
+        "@type": "Person",
+        "name": "Alexander Armentia",
+        "url": "https://alexanderarmentia.com/#alexander-armentia"
+      }
+    }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+    <!-- Style sheets -->
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/blog/blog.css" />
+    <meta name="theme-color" content="#0d0d14" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <style>
+        .glossary-search-box {
+            position: relative;
+            margin: 2rem 0;
+        }
+        .glossary-input {
+            width: 100%;
+            background: #090918;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 0.85rem 1.25rem;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            outline: none;
+            transition: all 0.2s;
+        }
+        .glossary-input:focus {
+            border-color: var(--a, #22d3ee);
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.25);
+        }
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .glossary-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.2s, border-color 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .glossary-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(34, 211, 238, 0.35);
+        }
+        .term-title {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.35rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .term-category {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.75rem;
+            color: var(--a, #22d3ee);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        .term-def {
+            color: var(--tm, #9ca3af);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .term-example {
+            font-size: 0.82rem;
+            color: #cbd5e1;
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 2px solid var(--a, #22d3ee);
+            padding: 0.5rem 0.75rem;
+            border-radius: 0 6px 6px 0;
+            line-height: 1.45;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- OVERLAYS -->
+    <div class="noise-overlay"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- NAV -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo" id="nav-logo">
+                <span class="logo-bracket">[</span>
+                <span class="logo-text" data-scramble="ALEX">ALEX</span>
+                <span class="logo-bracket">]</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="/#yo" class="nav-link"><span class="nl-num">01.</span> Yo</a></li>
+                <li><a href="/#skills" class="nav-link"><span class="nl-num">02.</span> Skills</a></li>
+                <li><a href="/#vida" class="nav-link"><span class="nl-num">03.</span> Historia</a></li>
+                <li><a href="/#gustos" class="nav-link"><span class="nl-num">04.</span> Intereses</a></li>
+                <li><a href="/blog/" class="nav-link active"><span class="nl-num">05.</span> Blog</a></li>
+                <li><a href="/#contacto" class="nav-link"><span class="nl-num">06.</span> Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- GLOSSARY SECTION -->
+    <section class="section post-section">
+        <div class="section-inner" style="max-width: 1100px; margin: 0 auto; padding-top: 5rem;">
+            <a class="home mono" href="/blog/" style="color: var(--a); font-size: 0.8rem; display: inline-block; margin-bottom: 2rem;">&larr; [ volver_al_blog.sh ]</a>
+
+            <div class="glass-card post-card" style="padding: 2.5rem;">
+                <div class="terminal-bar" style="margin-bottom: 2rem;">
+                    <span class="term-dot td-red"></span>
+                    <span class="term-dot td-yellow"></span>
+                    <span class="term-dot td-green"></span>
+                    <code class="term-text"><span class="term-prefix">~</span>/blog/<span class="term-cmd">glosario-resiliencia-sre.dict</span></code>
+                </div>
+
+                <h1 style="color: #fff; font-weight: 800; font-size: clamp(2rem, 3.5vw, 2.8rem); line-height: 1.15; margin-bottom: 1rem;">
+                    Glosario Vivo de Resiliencia &amp; SRE
+                </h1>
+                <p style="color: var(--tm, #9ca3af); font-size: 1.1rem; line-height: 1.6;">
+                    Compendio de conceptos fundamentales en ingeniería de fiabilidad de sitios (Site Reliability Engineering), gestión de crisis operativas y arquitectura de sistemas inquebrantables, documentados por Alexander Armentia tras más de 25 años en operaciones críticas.
+                </p>
+
+                <!-- Search Input -->
+                <div class="glossary-search-box">
+                    <input type="text" id="glossarySearch" class="glossary-input" placeholder="🔍 Filtrar término (ej: Andon, Circuit Breaker, Blast Radius, Goodhart...)" />
+                </div>
+
+                <!-- Terms Grid -->
+                <div class="glossary-grid" id="glossaryGrid">
+
+                    <!-- Term 1 -->
+                    <div class="glossary-card" data-term="andon cuerda stop the line toyota cultura">
+                        <div>
+                            <span class="term-category">// Cultura Operativa</span>
+                            <div class="term-title">Principio Andon (Stop the Line)</div>
+                            <div class="term-def">
+                                Práctica originada en el Sistema de Producción de Toyota donde cualquier trabajador tiene la autoridad y el deber incondicional de detener la línea de producción o el flujo de operaciones ante un defecto o sospecha de seguridad, sin temor a sanciones comerciales.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>Aplicación:</strong> Un maquinista de alta velocidad o un desarrollador detiene un despliegue ante una vibración anómala.
+                        </div>
+                    </div>
+
+                    <!-- Term 2 -->
+                    <div class="glossary-card" data-term="blast radius radio de impacto contencion aislamiento">
+                        <div>
+                            <span class="term-category">// Arquitectura Defensiva</span>
+                            <div class="term-title">Blast Radius (Radio de Impacto)</div>
+                            <div class="term-def">
+                                Alcance máximo del daño que un fallo en un componente, servicio o zona puede causar en el resto del ecosistema. El diseño resiliente busca aislar y minimizar matemáticamente este radio mediante células estancas.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>Aplicación:</strong> La caída total de la pasarela de pagos internacionales no afecta al inicio de sesión de los usuarios.
+                        </div>
+                    </div>
+
+                    <!-- Term 3 -->
+                    <div class="glossary-card" data-term="circuit breaker disyuntor corte timeout">
+                        <div>
+                            <span class="term-category">// Patrón Software</span>
+                            <div class="term-title">Circuit Breaker (Disyuntor)</div>
+                            <div class="term-def">
+                                Mecanismo automático que detecta fallos repetidos o latencia excesiva en un servicio remoto y "abre el circuito" en milisegundos, cortando peticiones directas para evitar saturar el núcleo del sistema y permitiendo una degradación ordenada.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>Aplicación:</strong> Si un servicio de cálculo de impuestos tarda más de 2s, se desvía temporalmente a un valor por defecto estimado.
+                        </div>
+                    </div>
+
+                    <!-- Term 4 -->
+                    <div class="glossary-card" data-term="error budget presupuesto riesgo sla slo">
+                        <div>
+                            <span class="term-category">// Gobernanza SRE</span>
+                            <div class="term-title">Error Budget (Presupuesto de Riesgo)</div>
+                            <div class="term-def">
+                                El margen permitido de indisponibilidad calculado como <code>100% - SLO</code>. Si un servicio tiene un SLA del 99.9%, dispone de un 0.1% de margen. Si se agota, los despliegues de producto se congelan para volcar todos los recursos en estabilidad.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>Aplicación:</strong> 43.2 minutos de caída permitida al mes para 99.9% de disponibilidad objetivo.
+                        </div>
+                    </div>
+
+                    <!-- Term 5 -->
+                    <div class="glossary-card" data-term="fail safe seguridad defecto parada cantones">
+                        <div>
+                            <span class="term-category">// Principio de Seguridad</span>
+                            <div class="term-title">Fail-Safe (Seguridad por Defecto)</div>
+                            <div class="term-def">
+                                Característica de diseño según la cual, ante una avería, corte de energía o pérdida de telemetría de un nodo, el sistema entra automáticamente en el estado más seguro posible (normalmente la parada total o el bloqueo preventivo).
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>Aplicación:</strong> Ante la pérdida de señal en un semáforo ferroviario, el cantón se bloquea en rojo para todos los trenes.
+                        </div>
+                    </div>
+
+                    <!-- Term 6 -->
+                    <div class="glossary-card" data-term="graceful degradation degradacion elegante tolerancia">
+                        <div>
+                            <span class="term-category">// Experiencia de Usuario</span>
+                            <div class="term-title">Graceful Degradation</div>
+                            <div class="term-def">
+                                Capacidad de una plataforma de mantener sus funciones esenciales operativas cuando parte de su infraestructura falla, sacrificando características secundarias en lugar de presentar un error catastrófico.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>Aplicación:</strong> Si el motor de recomendaciones cae, la web sigue permitiendo comprar y buscar productos.
+                        </div>
+                    </div>
+
+                    <!-- Term 7 -->
+                    <div class="glossary-card" data-term="goodhart ley kpis incentivos perversos">
+                        <div>
+                            <span class="term-category">// Teoría de Sistemas</span>
+                            <div class="term-title">Ley de Goodhart</div>
+                            <div class="term-def">
+                                *"Cuando una métrica se convierte en el objetivo, deja de ser una buena métrica"*. Ocurre cuando optimizar un indicador visible (ejemplo: puntualidad o velocidad de cierre de tickets) pervierte los incentivos y destruye la seguridad oculta del sistema.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>Aplicación:</strong> No frenar un tren con vibraciones anómalas para no penalizar la estadística comercial de llegada.
+                        </div>
+                    </div>
+
+                    <!-- Term 8 -->
+                    <div class="glossary-card" data-term="normalizacion desviacion vaughan challenger fatiga">
+                        <div>
+                            <span class="term-category">// Sociología de Desastres</span>
+                            <div class="term-title">Normalización de la Desviación</div>
+                            <div class="term-def">
+                                Proceso gradual en el que anomalías, lecturas fuera de tolerancia o fallos recurrentes se reclasifican como "normales" porque no provocaron una catástrofe inmediata, erosionando las barreras de seguridad hasta la rotura física.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>Aplicación:</strong> Tolerar microfisuras o reinicios esporádicos porque "ayer funcionó igual".
+                        </div>
+                    </div>
+
+                    <!-- Term 9 -->
+                    <div class="glossary-card" data-term="mtbf tiempo medio fallos fiabilidad">
+                        <div>
+                            <span class="term-category">// Métrica de Fiabilidad</span>
+                            <div class="term-title">MTBF (Mean Time Between Failures)</div>
+                            <div class="term-def">
+                                Tiempo medio transcurrido entre dos averías consecutivas de un sistema. Mide la <em>fiabilidad intrínseca</em> de los componentes para no romperse en condiciones normales.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>Aplicación:</strong> Horas medias de vuelo de una turbina o ciclo de vida útil del carril de acero.
+                        </div>
+                    </div>
+
+                    <!-- Term 10 -->
+                    <div class="glossary-card" data-term="mttr tiempo medio recuperacion resiliencia">
+                        <div>
+                            <span class="term-category">// Métrica de Resiliencia</span>
+                            <div class="term-title">MTTR (Mean Time to Recovery)</div>
+                            <div class="term-def">
+                                Tiempo medio necesario para diagnosticar, aislar y mitigar un incidente una vez que el fallo ya ha ocurrido. Es el indicador reina de la <em>resiliencia operativa</em>.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>Aplicación:</strong> Minutos que tarda una War Room en ejecutar un rollback y restaurar el servicio bancario.
+                        </div>
+                    </div>
+
+                    <!-- Term 11 -->
+                    <div class="glossary-card" data-term="canary despliegue canario anillos rollout">
+                        <div>
+                            <span class="term-category">// Despliegues Seguros</span>
+                            <div class="term-title">Canary Deployment (Despliegue Canario)</div>
+                            <div class="term-def">
+                                Técnica de liberación donde una nueva versión de software se entrega a un subconjunto minúsculo de usuarios o servidores (1% al 5%) antes de expandirse al resto de la flota, monitoreando métricas clave para frenar en caso de anomalía.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>Aplicación:</strong> Evita que un error de kernel se propague a 8 millones de máquinas a la vez.
+                        </div>
+                    </div>
+
+                    <!-- Term 12 -->
+                    <div class="glossary-card" data-term="blameless post-mortem autopsia sin culpa aprendizaje">
+                        <div>
+                            <span class="term-category">// Cultura de Aprendizaje</span>
+                            <div class="term-title">Blameless Post-Mortem</div>
+                            <div class="term-def">
+                                Análisis causa-raíz post-incidente que asume que todos los involucrados actuaron de buena fe con la información disponible. Se centra en auditar los agujeros del sistema y las herramientas, desterrando el castigo al operario.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>Aplicación:</strong> Preguntarse por qué el sistema carecía de confirmación previa antes de un borrado crítico.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo" style="margin-top: 4rem;">
+        <div class="footer-inner">
+            <span class="mono" style="font-size: 0.8rem; color: var(--td, #6b7280);">// alexander.armentia &middot; alexar69 &middot; madrid &middot; 2026 &middot; glosario de resiliencia &nbsp;⚡</span>
+            <a href="/blog/" class="back-top mono" style="font-size: 0.8rem; color: var(--a);">&larr; [blog]</a>
+        </div>
+    </footer>
+
+    <script>
+        const searchInput = document.getElementById('glossarySearch');
+        const cards = document.querySelectorAll('.glossary-card');
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            cards.forEach(card => {
+                const termText = card.getAttribute('data-term') || '';
+                const titleText = card.querySelector('.term-title').textContent.toLowerCase();
+                const defText = card.querySelector('.term-def').textContent.toLowerCase();
+                
+                if (!query || termText.includes(query) || titleText.includes(query) || defText.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

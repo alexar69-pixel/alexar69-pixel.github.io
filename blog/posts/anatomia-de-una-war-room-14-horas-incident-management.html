@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html lang="es" prefix="og: https://ogp.me/ns#">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anatomía de una War Room de 14 Horas: La Psicología del Incidente P1 y lo que Nadie Cuenta en los Manuales | Blog | Alexander Armentia</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Caveat:wght@400;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+
+    <!-- Style sheets -->
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/blog/blog.css" />
+    <meta name="theme-color" content="#0d0d14" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="description" content="Crónica técnica y operativa desde el puente de mando de un incidente crítico en banca. El rol del Incident Commander, la contención del pánico directivo, el ruido en las llamadas y cómo tomar decisiones bajo niebla de guerra." />
+    <meta name="author" content="Alexander Armentia Bravo" />
+    <link rel="canonical" href="https://alexanderarmentia.com/blog/posts/anatomia-de-una-war-room-14-horas-incident-management.html" />
+    <meta property="og:title" content="Anatomía de una War Room de 14 Horas: La Psicología del Incidente P1 y lo que Nadie Cuenta en los Manuales" />
+    <meta property="og:description" content="Crónica técnica y operativa desde el puente de mando de un incidente crítico en banca. El rol del Incident Commander, la contención del pánico directivo, el ruido en las llamadas y cómo tomar decisiones bajo niebla de guerra." />
+    <meta property="og:image" content="https://alexanderarmentia.com/blog/assets/anatomia-de-una-war-room-14-horas-incident-management.png" />
+    <meta property="og:url" content="https://alexanderarmentia.com/blog/posts/anatomia-de-una-war-room-14-horas-incident-management.html" />
+    <meta property="og:type" content="article" />
+    <meta property="article:author" content="https://www.linkedin.com/in/alexander-armentia-bravo-30205515/" />
+    <meta property="article:published_time" content="2026-11-18T00:00:00Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Anatomía de una War Room de 14 Horas: La Psicología del Incidente P1 y lo que Nadie Cuenta en los Manuales" />
+    <meta name="twitter:description" content="Crónica técnica y operativa desde el puente de mando de un incidente crítico en banca. El rol del Incident Commander, la contención del pánico directivo, el ruido en las llamadas y cómo tomar decisiones bajo niebla de guerra." />
+    <meta name="twitter:image" content="https://alexanderarmentia.com/blog/assets/anatomia-de-una-war-room-14-horas-incident-management.png" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Anatomía de una War Room de 14 Horas: La Psicología del Incidente P1 y lo que Nadie Cuenta en los Manuales",
+      "description": "Crónica técnica y operativa desde el puente de mando de un incidente crítico en banca. El rol del Incident Commander, la contención del pánico directivo, el ruido en las llamadas y cómo tomar decisiones bajo niebla de guerra.",
+      "image": "https://alexanderarmentia.com/blog/assets/anatomia-de-una-war-room-14-horas-incident-management.png",
+      "datePublished": "2026-11-18T00:00:00Z",
+      "dateModified": "2026-11-18T00:00:00Z",
+      "mainEntityOfPage": "https://alexanderarmentia.com/blog/posts/anatomia-de-una-war-room-14-horas-incident-management.html",
+      "author": {
+        "@type": "Person",
+        "name": "Alexander Armentia",
+        "url": "https://alexanderarmentia.com/#alexander-armentia",
+        "sameAs": [
+          "https://www.linkedin.com/in/alexander-armentia-bravo-30205515/",
+          "https://github.com/alexar69-pixel"
+        ]
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Alexander Armentia",
+        "url": "https://alexanderarmentia.com/"
+      }
+    }
+    </script>
+</head>
+
+<body>
+    <!-- OVERLAYS -->
+    <div class="noise-overlay"></div>
+    <div class="grid-overlay"></div>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- CURSOR -->
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+    <canvas class="cursor-trail" id="trailCanvas"></canvas>
+
+    <!-- BG CANVAS -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- NAV -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo" id="nav-logo">
+                <span class="logo-bracket">[</span>
+                <span class="logo-text" data-scramble="ALEX">ALEX</span>
+                <span class="logo-bracket">]</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="/#yo" class="nav-link"><span class="nl-num">01.</span> Yo</a></li>
+                <li><a href="/#skills" class="nav-link"><span class="nl-num">02.</span> Skills</a></li>
+                <li><a href="/#vida" class="nav-link"><span class="nl-num">03.</span> Historia</a></li>
+                <li><a href="/#gustos" class="nav-link"><span class="nl-num">04.</span> Intereses</a></li>
+                <li><a href="/blog/" class="nav-link"><span class="nl-num">05.</span> Blog</a></li>
+                <li><a href="/#contacto" class="nav-link"><span class="nl-num">06.</span> Contacto</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ========== POST SECTION ========== -->
+    <section class="section post-section" id="post-section">
+        <div class="section-inner">
+            <a class="home mono reveal-up" href="/blog/" style="color: var(--a); font-size: 0.8rem; display: inline-block; margin-bottom: 2rem;">&larr; [ volver_al_blog.sh ]</a>
+
+            <div class="glass-card post-card reveal-up">
+                <!-- Terminal Header -->
+                <div class="terminal-bar" style="margin-bottom: 2rem;">
+                    <span class="term-dot td-red"></span>
+                    <span class="term-dot td-yellow"></span>
+                    <span class="term-dot td-green"></span>
+                    <code class="term-text">
+                        <span class="term-prefix">~</span>/blog/posts/<span class='term-cmd' id='terminal-post-slug'>anatomia-de-una-war-room-14-horas-incident-management.md</span>
+                    </code>
+                </div>
+
+                <!-- Injected Article Content -->
+                <article id="post" class="post"><span class="mono" style="color: var(--a); font-size: 0.8rem; display: block; margin-bottom: 0.5rem;">// Publicado el 18 de noviembre de 2026</span>
+                    <h1 class="post-title" style="margin-top: 0.25rem; margin-bottom: 1.5rem; color: var(--t); font-weight: 800; font-size: clamp(1.8rem, 3.5vw, 2.8rem); line-height: 1.15;">Anatomía de una War Room de 14 Horas: La Psicología del Incidente P1 y lo que Nadie Cuenta en los Manuales</h1>
+                    <div class="content"><p><img src="/blog/assets/anatomia-de-una-war-room-14-horas-incident-management.png" alt="Anatomía de una War Room crítica de 14 horas y patrones de Incident Command" loading="lazy" /></p>
+
+<p>Son las dos y catorce de la madrugada de un martes. Tu teléfono no suena con el tono habitual de llamada: ruge con el patrón persistente e ineludible de PagerDuty. En la pantalla, un mensaje escueto pero letal: <em>"P1 - Gateway de Autorizaciones Bancarias en degradación masiva. Tasa de error 48% y subiendo. Tráfico internacional colapsado."</em></p>
+
+<p>Te levantas de la cama con el corazón a doscientas pulsaciones por minuto, te sientas frente al monitor y te conectas a la llamada de crisis. En ese instante exacto entras en la <strong>War Room</strong>. Y lo que ocurra durante las siguientes catorce horas no lo encontrarás en ningún temario de certificación ITIL ni en las diapositivas amables de una consultora. En una crisis de nivel 1, la tecnología es solo el 30% del problema; el 70% restante es psicología de combate, gestión de la niebla de guerra y disciplina de mando.</p>
+
+<p>Llevo más de un cuarto de siglo liderando puentes de mando en banca crítica y plataformas de alta disponibilidad. Si algo he aprendido tras cientos de madrugadas gestionando incidentes mayores, es que las War Rooms fracasan casi siempre por las mismas trampas humanas. Hoy quiero abrir la puerta de esa sala y compartir los patrones reales que salvan los sistemas cuando todo parece perdido.</p>
+
+<h2>1. La trampa del gallinero: Por qué 40 personas en una llamada garantizan el desastre</h2>
+<p>El error más común en una crisis corporativa es el "efecto llamada masiva". A los veinte minutos de declararse el P1, la sala de Teams o Zoom cuenta con 45 personas conectadas: ingenieros de redes, DBAs, desarrolladores, comerciales de guardia, responsables de producto y, por supuesto, cuatro directores generales.</p>
+
+<p>Todos hablan a la vez. Mientras el especialista de base de datos intenta analizar un bloqueo de tablas (*deadlock*), un directivo interrumpe con la pregunta fatídica: <em>"¿Pero esto cuándo va a estar? Tengo al comité de dirección pidiéndome una estimación cada cinco minutos."</em></p>
+
+<p>Esa interrupción rompe el hilo cognitivo del ingeniero. En neurociencia de operaciones sabemos que recuperar la concentración profunda tras una distrupción en una crisis lleva entre 15 y 20 minutos. Si permites que la dirección interrogue a tus técnicos en caliente, estás garantizando que el incidente dure el triple.</p>
+
+<div class="card-inner cyan-border" style="margin: 1.5rem 0; padding: 1.25rem; background: rgba(34, 211, 238, 0.05);">
+    <strong style="color: var(--cyan); display: block; margin-bottom: 0.5rem;">// LA REGLA DE ORO DEL INCIDENT COMMANDER:</strong>
+    <p style="margin: 0; font-size: 0.95rem;">Un buen Incident Commander es, ante todo, un escudo humano. Su misión principal no es teclear comandos en la consola, sino <strong>aislar acústica y psicológicamente al equipo de resolución</strong> de las presiones corporativas externas.</p>
+</div>
+
+<h2>2. La estructura de dos canales: Comando Técnico vs. Comité de Crisis</h2>
+<p>En organizaciones de alta madurez SRE aplicamos una segregación estricta de comunicaciones inspirada en los servicios de emergencias y bomberos:</p>
+<ul>
+    <li><strong>Canal Alfa (Técnico / Silencio operativo):</strong> Solo participan el Incident Commander (IC), el escriba técnico (*Scribe*) y los líderes de dominio estrictamente necesarios (máximo 5 personas con micrófono abierto). Nadie más habla a menos que sea interpelado. Las hipótesis se prueban de una en una, con método científico estricto.</li>
+    <li><strong>Canal Bravo (Gobernanza / Dirección y Negocio):</strong> Conducido por el Líder de Comunicación (*Communications Lead*). Los directivos y clientes reciben boletines de estado cada 30 minutos exactos con lenguaje desprovisto de tecnicismos: impacto actual, acciones de mitigación en curso y próxima hora de reporte.</li>
+</ul>
+
+<h2>3. La niebla de guerra y la maldición del 'Rollback' tardío</h2>
+<p>A las cuatro de la madrugada, tras dos horas de análisis, suele emerger la primera hipótesis: <em>"Creemos que fue el parche de microcódigo desplegado a medianoche"</em>. Aquí es donde se comete el segundo gran error: <strong>intentar arreglar en caliente el problema en lugar de volver de inmediato al último estado estable conocido</strong>.</p>
+
+<p>Los ingenieros, movidos por su orgullo técnico, quieren descifrar el bug. Pierden dos horas vitales compilando parches de emergencia que a menudo introducen nuevas variables desconocidas. En una War Room crítica, el objetivo jamás es descubrir la causa raíz a las cuatro de la mañana; el único e indiscutible objetivo es <strong>restaurar el servicio y contener el radio de impacto</strong>.</p>
+
+<p>Si tienes la menor duda y existe un procedimiento de <em>rollback</em> validado, ejecútalo sin pestañear. La causa raíz la investigaremos con un café a las once de la mañana con los logs preservados en frío.</p>
+
+<h2>4. La fatiga biológica: El relevo obligatorio de las seis horas</h2>
+<p>A partir de la sexta hora consecutiva de incidente, el córtex prefrontal del cerebro humano empieza a degradarse. Los reflejos caen en picado, la visión de túnel se apodera del equipo y la capacidad de evaluar riesgos complejos se reduce a niveles equivalentes a una intoxicación etílica leve.</p>
+
+<p>En muchas empresas se glorifica al héroe que lleva catorce horas sin comer ni dormir frente a la pantalla. Es una temeridad suicida. Los peores errores de comando —borrados accidentales de particiones, reinicios de nodos equivocados— ocurren casi siempre a partir de la octava hora de fatiga ininterrumpida.</p>
+
+<p>Un sistema de gestión de incidentes maduro exige <strong>rotaciones obligatorias de turno cada 6 horas</strong>. Si a las ocho de la mañana el incidente sigue abierto, entra un nuevo Incident Commander descansado, con ojos limpios y libre del agotamiento emocional del turno de noche.</p>
+
+<h2>5. El cierre: El Blameless Post-Mortem como escudo de confianza</h2>
+<p>A las cuatro de la tarde, catorce horas después del primer pitido de alarma, el tráfico comercial recupera el 100% de normalidad. El gateway estabiliza latencias por debajo de 40 milisegundos. La War Room se disuelve.</p>
+
+<p>Pero el trabajo no termina ahí. La verdadera prueba de fuego de una compañía empieza al día siguiente en la sala de autopsia técnica: el <strong>Blameless Post-Mortem</strong>. Si el informe concluye con <em>"el operario de guardia ejecutó el script equivocado"</em>, la organización habrá tirado a la basura una oportunidad de oro para aprender.</p>
+
+<p>La pregunta correcta jamás es quién se equivocó. La pregunta que salva vidas y negocios es: <strong>¿por qué nuestro sistema permitió que una sola persona tuviera la capacidad de tirar el gateway nacional con una sola instrucción sin una barrera automática que lo impidiera?</strong></p>
+
+<p>El error humano no es la causa raíz de los fallos; el error humano es el síntoma de una arquitectura que todavía no ha aprendido a ser resiliente.</p></div></article>
+
+                <!-- Sharing Panel -->
+                                <div class="share-panel">
+                    <span class="mono share-hdr">// compartir_articulo.sh</span>
+                    <div class="share-btns">
+                        <a id="share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Falexanderarmentia.com%2Fblog%2Fposts%2Fanatomia-de-una-war-room-14-horas-incident-management.html" class="btn btn-ghost mag-btn" target="_blank" rel="noopener">
+                            <span>LinkedIn</span>
+                        </a>
+                        <a id="share-twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Falexanderarmentia.com%2Fblog%2Fposts%2Fanatomia-de-una-war-room-14-horas-incident-management.html&text=Anatom%C3%ADa%20de%20una%20War%20Room%20de%2014%20Horas%3A%20La%20Psicolog%C3%ADa%20del%20Incidente%20P1%20y%20lo%20que%20Nadie%20Cuenta%20en%20los%20Manuales%20-%20por%20Alexander%20Armentia" class="btn btn-ghost mag-btn" target="_blank" rel="noopener">
+                            <span>Compartir en X</span>
+                        </a>
+                        <button id="share-copy" class="btn btn-ghost mag-btn" onclick="navigator.clipboard.writeText(window.location.href); document.getElementById('copy-btn-text').textContent='Copiar Enlace'; alert('Enlace copiado al portapapeles');">
+                            <span id="copy-btn-text">Copiar Enlace</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-inner">
+            <span class="mono" style="font-size: 0.8rem; color: var(--td);">// alexander.armentia &middot; alexar69 &middot; madrid &middot; 2026 &middot; blog &nbsp;⚡</span>
+            <a href="/blog/" class="back-top mono" style="font-size: 0.8rem; color: var(--a);">&larr; [blog]</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Script dinámico removido para renderizado estático nativo -->
+    <script src="/alx_v7.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html lang="es" prefix="og: https://ogp.me/ns#">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>El Resilience Scorecard y la Plantilla Definitiva de Blameless Post-Mortem: Evalúa la Madurez de tu Infraestructura | Blog | Alexander Armentia</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Caveat:wght@400;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+
+    <!-- Style sheets -->
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/blog/blog.css" />
+    <meta name="theme-color" content="#0d0d14" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="description" content="Guía práctica para CTOs y líderes de operaciones: auditoría de 10 preguntas para diagnosticar la fragilidad de tus sistemas y una plantilla exhaustiva en Markdown para análisis causa-raíz sin culpabilización." />
+    <meta name="author" content="Alexander Armentia Bravo" />
+    <link rel="canonical" href="https://alexanderarmentia.com/blog/posts/resilience-scorecard-plantilla-blameless-post-mortem.html" />
+    <meta property="og:title" content="El Resilience Scorecard y la Plantilla Definitiva de Blameless Post-Mortem: Evalúa la Madurez de tu Infraestructura" />
+    <meta property="og:description" content="Guía práctica para CTOs y líderes de operaciones: auditoría de 10 preguntas para diagnosticar la fragilidad de tus sistemas y una plantilla exhaustiva en Markdown para análisis causa-raíz sin culpabilización." />
+    <meta property="og:image" content="https://alexanderarmentia.com/blog/assets/resilience-scorecard-plantilla-blameless-post-mortem.png" />
+    <meta property="og:url" content="https://alexanderarmentia.com/blog/posts/resilience-scorecard-plantilla-blameless-post-mortem.html" />
+    <meta property="og:type" content="article" />
+    <meta property="article:author" content="https://www.linkedin.com/in/alexander-armentia-bravo-30205515/" />
+    <meta property="article:published_time" content="2026-11-18T00:00:00Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="El Resilience Scorecard y la Plantilla Definitiva de Blameless Post-Mortem: Evalúa la Madurez de tu Infraestructura" />
+    <meta name="twitter:description" content="Guía práctica para CTOs y líderes de operaciones: auditoría de 10 preguntas para diagnosticar la fragilidad de tus sistemas y una plantilla exhaustiva en Markdown para análisis causa-raíz sin culpabilización." />
+    <meta name="twitter:image" content="https://alexanderarmentia.com/blog/assets/resilience-scorecard-plantilla-blameless-post-mortem.png" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "El Resilience Scorecard y la Plantilla Definitiva de Blameless Post-Mortem: Evalúa la Madurez de tu Infraestructura",
+      "description": "Guía práctica para CTOs y líderes de operaciones: auditoría de 10 preguntas para diagnosticar la fragilidad de tus sistemas y una plantilla exhaustiva en Markdown para análisis causa-raíz sin culpabilización.",
+      "image": "https://alexanderarmentia.com/blog/assets/resilience-scorecard-plantilla-blameless-post-mortem.png",
+      "datePublished": "2026-11-18T00:00:00Z",
+      "dateModified": "2026-11-18T00:00:00Z",
+      "mainEntityOfPage": "https://alexanderarmentia.com/blog/posts/resilience-scorecard-plantilla-blameless-post-mortem.html",
+      "author": {
+        "@type": "Person",
+        "name": "Alexander Armentia",
+        "url": "https://alexanderarmentia.com/#alexander-armentia",
+        "sameAs": [
+          "https://www.linkedin.com/in/alexander-armentia-bravo-30205515/",
+          "https://github.com/alexar69-pixel"
+        ]
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Alexander Armentia",
+        "url": "https://alexanderarmentia.com/"
+      }
+    }
+    </script>
+</head>
+
+<body>
+    <!-- OVERLAYS -->
+    <div class="noise-overlay"></div>
+    <div class="grid-overlay"></div>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- CURSOR -->
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+    <canvas class="cursor-trail" id="trailCanvas"></canvas>
+
+    <!-- BG CANVAS -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- NAV -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo" id="nav-logo">
+                <span class="logo-bracket">[</span>
+                <span class="logo-text" data-scramble="ALEX">ALEX</span>
+                <span class="logo-bracket">]</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="/#yo" class="nav-link"><span class="nl-num">01.</span> Yo</a></li>
+                <li><a href="/#skills" class="nav-link"><span class="nl-num">02.</span> Skills</a></li>
+                <li><a href="/#vida" class="nav-link"><span class="nl-num">03.</span> Historia</a></li>
+                <li><a href="/#gustos" class="nav-link"><span class="nl-num">04.</span> Intereses</a></li>
+                <li><a href="/blog/" class="nav-link"><span class="nl-num">05.</span> Blog</a></li>
+                <li><a href="/#contacto" class="nav-link"><span class="nl-num">06.</span> Contacto</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ========== POST SECTION ========== -->
+    <section class="section post-section" id="post-section">
+        <div class="section-inner">
+            <a class="home mono reveal-up" href="/blog/" style="color: var(--a); font-size: 0.8rem; display: inline-block; margin-bottom: 2rem;">&larr; [ volver_al_blog.sh ]</a>
+
+            <div class="glass-card post-card reveal-up">
+                <!-- Terminal Header -->
+                <div class="terminal-bar" style="margin-bottom: 2rem;">
+                    <span class="term-dot td-red"></span>
+                    <span class="term-dot td-yellow"></span>
+                    <span class="term-dot td-green"></span>
+                    <code class="term-text">
+                        <span class="term-prefix">~</span>/blog/posts/<span class='term-cmd' id='terminal-post-slug'>resilience-scorecard-plantilla-blameless-post-mortem.md</span>
+                    </code>
+                </div>
+
+                <!-- Injected Article Content -->
+                <article id="post" class="post"><span class="mono" style="color: var(--a); font-size: 0.8rem; display: block; margin-bottom: 0.5rem;">// Publicado el 18 de noviembre de 2026</span>
+                    <h1 class="post-title" style="margin-top: 0.25rem; margin-bottom: 1.5rem; color: var(--t); font-weight: 800; font-size: clamp(1.8rem, 3.5vw, 2.8rem); line-height: 1.15;">El Resilience Scorecard y la Plantilla Definitiva de Blameless Post-Mortem: Evalúa la Madurez de tu Infraestructura</h1>
+                    <div class="content"><p><img src="/blog/assets/resilience-scorecard-plantilla-blameless-post-mortem.png" alt="Los 5 pilares del Resilience Scorecard para evaluar la madurez de infraestructuras críticas" loading="lazy" /></p>
+
+<p>En la inmensa mayoría de las organizaciones tecnológicas, la resiliencia es tratada como una aspiración poética más que como una disciplina de ingeniería medible. Los comités de dirección presumen de "tolerancia a fallos" porque pagan la factura mensual de dos zonas de disponibilidad en AWS, hasta que un día una caída regional o una actualización defectuosa paraliza las operaciones durante doce horas y nadie sabe explicar por qué la redundancia no funcionó.</p>
+
+<p>Como Site Reliability Engineers y gestores de infraestructuras críticas, necesitamos herramientas tangibles que nos permitan responder con rigor a una pregunta elemental: <strong>¿es nuestro sistema verdaderamente resiliente o simplemente hemos tenido suerte los últimos seis meses?</strong></p>
+
+<p>En este artículo pongo a disposición de la comunidad dos recursos prácticos nacidos de más de 25 años en operaciones bancarias y sistemas de alta disponibilidad: el <strong>Resilience Scorecard (Auditoría de 10 Puntos)</strong> y la <strong>Plantilla Oficial de Blameless Post-Mortem</strong> lista para implementar en tus equipos de ingeniería.</p>
+
+<h2>Parte 1: El Resilience Scorecard (Auditoría de 10 Preguntas)</h2>
+<p>Evalúa cada pregunta de 1 a 5 puntos (1 = Inexistente, 5 = Automatizado y probado en producción periódicamente). Una puntuación inferior a 35 puntos indica una vulnerabilidad sistémica crítica ante el próximo incidente mayor:</p>
+
+<div class="card-inner cyan-border" style="margin: 1.5rem 0; padding: 1.5rem; background: rgba(34, 211, 238, 0.03);">
+    <h3 style="color: var(--cyan); margin-top: 0;">📋 CHECKLIST DE AUTOEVALUACIÓN SRE</h3>
+    <ol style="line-height: 1.8; font-size: 0.95rem; padding-left: 1.25rem;">
+        <li><strong>Contención de Blast Radius:</strong> ¿Puede caer por completo tu microservicio o componente más crítico sin arrastrar a los sistemas de pago o autenticación?</li>
+        <li><strong>Degradación Elegante (*Graceful Degradation*):</strong> Ante un fallo masivo de dependencias externas, ¿el sistema ofrece funcionalidad básica en modo lectura (*read-only*) en lugar de una pantalla de error 500?</li>
+        <li><strong>Principio Andon (*Stop the Line*):</strong> ¿Tiene cualquier desarrollador o ingeniero de guardia el respaldo institucional para frenar un despliegue sin pedir permiso comercial si detecta anomalías?</li>
+        <li><strong>Canary Deployments Obligatorios:</strong> ¿Todas las actualizaciones se despliegan progresivamente por anillos (1% -> 5% -> 25%) con freno automático ante incrementos de latencia?</li>
+        <li><strong>Circuit Breakers en APIs:</strong> ¿Están todas las llamadas remotas protegidas por disyuntores de software con tiempos de corte (*timeouts*) estrictos inferiores a 2 segundos?</li>
+        <li><strong>Gobernanza de Error Budgets:</strong> Si un servicio agota su margen de error mensual en el SLA, ¿se congelan automáticamente los despliegues de nuevas funcionalidades para priorizar estabilidad?</li>
+        <li><strong>Simulacros de Caos (*Chaos Engineering*):</strong> ¿Inyectáis fallos deliberados en entornos de preproducción o producción controlada al menos una vez al mes para validar la recuperación?</li>
+        <li><strong>Tolerancia a la Monocultura:</strong> Si tu proveedor cloud principal o tu agente de seguridad cae a nivel global, ¿posees una ruta de contingencia operativa documentada?</li>
+        <li><strong>Cultura Blameless Real:</strong> ¿En vuestros informes de incidencias está terminantemente prohibido señalar el "error humano" como la causa raíz del fallo?</li>
+        <li><strong>Revisión Periódica de Señales Débiles:</strong> ¿Existe una rutina semanal para auditar alertas menores, vibraciones o micro-reinicios que no llegaron a tirar el servicio?</li>
+    </ol>
+</div>
+
+<h2>Parte 2: La Plantilla Definitiva de Blameless Post-Mortem</h2>
+<p>Un análisis post-incidente no es un informe policial para depurar responsabilidades: es un documento de ingeniería para rediseñar los incentivos y las defensas del sistema. A continuación puedes copiar la plantilla estándar en formato Markdown que utilizamos tras cualquier incidente P1/P2:</p>
+
+<pre style="background: #090918; border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 1.25rem; overflow-x: auto; font-family: monospace; font-size: 0.85rem; color: var(--t); line-height: 1.5;"><code># [POST-MORTEM P1] - [Título Descriptivo del Incidente]
+
+## 1. Resumen Ejecutivo
+* **Fecha del Incidente:** AAAA-MM-DD
+* **Incident Commander:** [Nombre]
+* **Duración Total:** [X horas, Y minutos]
+* **Impacto al Negocio / Usuarios:** [Ej: 14.200 transacciones fallidas, 42 min de indisponibilidad]
+* **Severidad:** P1 (Crítica)
+* **Estado Final:** Mitigado y Estabilizado
+
+## 2. Cronología Minuto a Minuto (Horario UTC)
+* **02:14** - Disparo de alerta en Datadog: latencia p99 supera 4.000 ms.
+* **02:18** - Incident Commander declara P1 y abre la War Room técnica.
+* **02:35** - Primera hipótesis: fuga de conexiones en clúster PostgreSQL.
+* **03:10** - Hipótesis invalidada; telemetría apunta a timeout en microservicio de pagos v3.2.
+* **03:22** - Se ejecuta rollback incondicional a la versión v3.1.9.
+* **03:45** - Métricas normalizadas por debajo de 50 ms. Fin de la fase de mitigación.
+
+## 3. Análisis de Causa Raíz (Los 5 Porqués)
+* **¿Por qué falló el gateway?** Porque el pool de hilos del microservicio se agotó por completo.
+* **¿Por qué se agotó el pool?** Porque las llamadas hacia la pasarela bancaria externa quedaron en espera indefinida.
+* **¿Por qué quedaron en espera indefinida?** Porque la llamada HTTP carecía de un timeout configurado.
+* **¿Por qué carecía de timeout?** Porque la librería de cliente externa introducida en el sprint no tenía valores por defecto seguros.
+* **¿Por qué llegó a producción sin timeout?** Porque los tests de integración en el pipeline de CI/CD no simulaban caídas de latencia de terceros (falta de Chaos Testing).
+
+## 4. Qué Funcionó Bien
+* La alerta de PagerDuty despertó al ingeniero de guardia en menos de 4 minutos.
+* El Incident Commander aisló con éxito la sala técnica de las consultas directivas.
+* El procedimiento de rollback automatizado en Kubernetes funcionó sin fricciones.
+
+## 5. Qué Funcionó Mal y Dónde Tuvimos Suerte
+* Se perdieron 35 minutos investigando la base de datos por un dashboard mal etiquetado.
+* El canal de Slack corporativo sufrió saturación por usuarios no esenciales.
+* Tuvimos suerte de que el incidente ocurrió de madrugada con tráfico un 70% inferior al pico diurno.
+
+## 6. Plan de Acciones Correctivas (Jira / Tracker)
+* [ ] **AC-01 (Preventiva):** Configurar timeout obligatorio de 1.500 ms en todas las llamadas HTTP (Owner: @dev, Plazo: 3 días).
+* [ ] **AC-02 (Defensiva):** Implementar patrón Circuit Breaker con degradación elegante (Owner: @arch, Plazo: 2 semanas).
+* [ ] **AC-03 (Observabilidad):** Crear alerta específica para saturación de pool de hilos en CI (Owner: @sre, Plazo: 1 semana).</code></pre>
+
+<h2>El compromiso con la resiliencia</h2>
+<p>La diferencia entre una empresa que sobrevive a los fallos y otra que vive con el corazón en un puño no radica en su presupuesto en licencias de software, sino en su humildad para auditarse y en su disciplina para no dejar que un incidente se cierre sin haber cerrado antes la brecha arquitectónica que lo hizo posible.</p>
+
+<p>Adopta el Scorecard, normaliza el Blameless Post-Mortem y recuerda siempre que <strong>la mejor métrica de un equipo técnico no es cuántas veces no cae, sino con cuánta calma, rapidez y aprendizaje vuelve a levantarse</strong>.</p></div></article>
+
+                <!-- Sharing Panel -->
+                                <div class="share-panel">
+                    <span class="mono share-hdr">// compartir_articulo.sh</span>
+                    <div class="share-btns">
+                        <a id="share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Falexanderarmentia.com%2Fblog%2Fposts%2Fresilience-scorecard-plantilla-blameless-post-mortem.html" class="btn btn-ghost mag-btn" target="_blank" rel="noopener">
+                            <span>LinkedIn</span>
+                        </a>
+                        <a id="share-twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Falexanderarmentia.com%2Fblog%2Fposts%2Fresilience-scorecard-plantilla-blameless-post-mortem.html&text=El%20Resilience%20Scorecard%20y%20la%20Plantilla%20Definitiva%20de%20Blameless%20Post-Mortem%3A%20Eval%C3%BAa%20la%20Madurez%20de%20tu%20Infraestructura%20-%20por%20Alexander%20Armentia" class="btn btn-ghost mag-btn" target="_blank" rel="noopener">
+                            <span>Compartir en X</span>
+                        </a>
+                        <button id="share-copy" class="btn btn-ghost mag-btn" onclick="navigator.clipboard.writeText(window.location.href); document.getElementById('copy-btn-text').textContent='Copiar Enlace'; alert('Enlace copiado al portapapeles');">
+                            <span id="copy-btn-text">Copiar Enlace</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-inner">
+            <span class="mono" style="font-size: 0.8rem; color: var(--td);">// alexander.armentia &middot; alexar69 &middot; madrid &middot; 2026 &middot; blog &nbsp;⚡</span>
+            <a href="/blog/" class="back-top mono" style="font-size: 0.8rem; color: var(--a);">&larr; [blog]</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Script dinámico removido para renderizado estático nativo -->
+    <script src="/alx_v7.js" defer></script>
+</body>
+
+</html>
