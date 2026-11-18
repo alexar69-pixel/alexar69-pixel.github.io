@@ -4,9 +4,43 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://alexanderarmentia.com/sitemap.xml
+# Explicit permission for major AI search engines, agents and scrapers
+User-agent: GPTBot
+Allow: /
 
-# Machine-Readable Resume
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Sitemaps & AI / LLM Feeds
+Sitemap: https://alexanderarmentia.com/sitemap.xml
+Feed: https://alexanderarmentia.com/feed.xml
+llms-txt: https://alexanderarmentia.com/llms.txt
+llms-full: https://alexanderarmentia.com/llms-full.txt
+
+# Machine-Readable Profiles
 Resume: https://alexanderarmentia.com/resume.json
-AI-Instructions: https://alexanderarmentia.com/ai.txt
+AI-Instructions: https://alexanderarmentia.com/llms.txt

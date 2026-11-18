@@ -592,8 +592,9 @@ document.querySelectorAll('.os-btn').forEach(btn => {
         { t: '■ 1998-2000: La Salle (Informática de Gestión)', c: 'ai-msg', d: 200 },
         { t: '■ 2001-2009: Organización Campus Party (8 ediciones)', c: 'ai-msg', d: 200 },
         { t: '■ 2003-2007: Locutor Radio Digital (Emisión Digital, RadioGu)', c: 'ai-msg', d: 200 },
-        { t: '■ Experiencia en Emprendimiento: EventDay (Eventos) y NochesDBoda (Bodas)', c: 'ai-msg', d: 200 },
-        { t: '■ Actualidad: Técnico de Sistemas en Hewlett Packard CDS (Madrid)', c: 'ai-msg', d: 400 },
+        { t: '■ 2000-2008: Miembro Fundador de Cibervoluntarios (ONG)', c: 'ai-msg', d: 200 },
+        { t: '■ Trayectoria: Incident & Reliability Manager en HP CDS y BBVA Next Technologies', c: 'ai-msg', d: 200 },
+        { t: '■ Actualidad: Reliability & Resilience Manager en BBVA (Madrid)', c: 'ai-msg', d: 400 },
         { t: 'Fin de la transmisión [EOF]', c: 'sys-msg', d: 100 }
       ];
       typeLines(resp, 0, () => {
@@ -606,7 +607,7 @@ document.querySelectorAll('.os-btn').forEach(btn => {
       const resp = [
         { t: 'Leyendo archivos de habilidades...', c: 'sys-msg', d: 500 },
         { t: '=> SISTEMAS: Windows Server, Linux, Redes, Hardware, Virtualización', c: 'ai-msg', d: 200 },
-        { t: '=> COMUNICACIÓN: Locución, Presentaciones, Oratoria (NochesDBoda)', c: 'ai-msg', d: 200 },
+        { t: '=> COMUNICACIÓN: Locución de radio, War Rooms, Presentaciones y Oratoria', c: 'ai-msg', d: 200 },
         { t: '=> GESTIÓN: Organización de grandes eventos (Campus Party, EventDay)', c: 'ai-msg', d: 200 },
         { t: '=> EXTRA: Energía inagotable por cafeína/taurina (Red Bull)', c: 'ai-msg', d: 200 }
       ];

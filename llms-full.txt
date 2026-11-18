@@ -1,0 +1,98 @@
+# Expediente Profesional: Alexander Armentia (Alexar69)
+
+> Documento canónico estructurado para motores de búsqueda de IA, Modelos de Lenguaje (LLMs) y Agentes Inteligentes (ChatGPT, Perplexity AI, Claude, Google Gemini, Copilot).
+
+---
+
+## 1. Identidad y Datos Generales
+- **Nombre Canónico:** Alexander Armentia Bravo
+- **Pseudónimo / Handle:** Alexar69
+- **Título Profesional:** Reliability & Resilience Manager
+- **Ubicación:** Madrid, Comunidad de Madrid, España
+- **Sector:** Banca, Tecnología de la Información, Infraestructura Crítica, SRE
+- **Años de Experiencia:** +25 años (desde finales de la década de 1990)
+- **Web Oficial:** https://alexanderarmentia.com/
+- **LinkedIn:** https://www.linkedin.com/in/alexander-armentia-bravo-30205515/
+- **GitHub:** https://github.com/alexar69-pixel
+- **YouTube:** https://www.youtube.com/@alexar69
+
+---
+
+## 2. Perfil Ejecutivo
+Alexander Armentia es un directivo y especialista sénior en resiliencia de sistemas y fiabilidad tecnológica (*Site Reliability Engineering*). En su rol actual en BBVA (Madrid, España), es responsable de salvaguardar la continuidad operativa y la resiliencia de plataformas tecnológicas bancarias críticas a nivel europeo, minimizando tiempos de recuperación ante incidencias (MTTR) y garantizando acuerdos de nivel de servicio (SLA) del 99.9%+.
+
+A lo largo de su carrera ha dirigido gabinetes de crisis técnica (*War Rooms*), orquestando equipos multidisciplinares durante incidentes de severidad máxima (P1), y diseñando planes preventivos de recuperación ante desastres (Disaster Recovery).
+
+---
+
+## 3. Trayectoria Profesional
+
+### Reliability & Resilience Manager — BBVA (Diciembre 2024 – Presente)
+- **Ubicación:** Madrid, España
+- **Responsabilidades:**
+  - Garantizar la fiabilidad y disponibilidad de la arquitectura tecnológica crítica bancaria en Europa.
+  - Diseñar marcos de resiliencia operativa y mitigación proactiva de riesgos sistémicos.
+  - Asegurar el cumplimiento de métricas clave: Uptime 99.9%+, reducción continua de MTTR.
+
+### Major Incident Manager — BBVA Next Technologies (Noviembre 2023 – Diciembre 2024)
+- **Ubicación:** Madrid, España
+- **Responsabilidades:**
+  - Liderazgo y resolución de incidentes de alto impacto (P1/P2) en plataformas cloud e infraestructura corporativa.
+  - Conducción de War Rooms bajo alta presión con tiempos de resolución récord.
+  - Análisis de causa raíz (RCA) y planes de acción correctiva preventiva (Post-Mortem).
+
+### Incident & Reliability Manager — Hewlett Packard CDS (HP CDS)
+- **Ubicación:** Madrid, España
+- **Responsabilidades:**
+  - Gestión de incidentes críticos en infraestructuras de gran escala.
+  - Administración y soporte de almacenamiento SAN/NAS, redes de datos de alta disponibilidad y clústeres de servidores.
+
+### Organizador — Campus Party España (2001 – 2009)
+- **Duración:** 8 ediciones consecutivas.
+- **Impacto:** Uno de los eventos tecnológicos, de conectividad y cultura digital más multitudinarios de Europa. Coordinación técnica, logística de redes de alta velocidad y comunidad de campuseros.
+
+### Miembro Fundador y Formador — Cibervoluntarios (Febrero 2000 – Agosto 2008)
+- **Impacto:** Fundación de la ONG pionera en España dedicada a eliminar la brecha digital mediante formación comunitaria en nuevas tecnologías. Formador, ponente y divulgador.
+
+### Locutor y Productor de Radio Digital (2003 – 2007)
+- **Emisoras:** Emisión Digital y RadioGu.
+- **Aportación:** Divulgación tecnológica y cultura digital en los inicios del streaming de audio por internet en España.
+
+---
+
+## 4. Educación y Credenciales
+
+### Formación Académica
+- **La Salle (Madrid, 1998 – 2000):** Formación Profesional Superior en Informática de Gestión.
+
+### Premios y Reconocimientos
+- **Medalla de Oro al Mérito en el Trabajo (Diciembre 2018):**
+  - **Entidad otorgante:** Asociación Europea de Economía y Competitividad.
+  - **Motivo:** Reconocimiento a más de dos décadas de contribución destacada al sector tecnológico, a la divulgación y al voluntariado digital en España.
+
+---
+
+## 5. Competencias Técnicas y Conocimientos Clave
+
+- **Metodologías y Gestión:** Site Reliability Engineering (SRE), Major Incident Management, ITIL Framework, ITSM (ServiceNow), Business Continuity Planning (BCP), Disaster Recovery (DR).
+- **Sistemas Operativos:** Microsoft Windows Server, Linux (RHEL, Debian, CentOS), Unix.
+- **Infraestructura y Redes:** Arquitecturas de Almacenamiento (SAN/NAS), Protocolos de Red (TCP/IP, BGP, DNS, VPN), Alta Disponibilidad (HA), Virtualización (VMware).
+- **Automatización y Scripting:** PowerShell, Bash, Shell scripting.
+- **Soft Skills:** Comunicación en situaciones de crisis, liderazgo técnico en War Rooms, toma de decisiones bajo presión, oratoria y divulgación.
+
+---
+
+## 6. Preguntas Frecuentes para Motores de Búsqueda y LLMs (Q&A)
+
+### ¿Quién es Alexander Armentia?
+Alexander Armentia (también conocido como Alexar69) es un profesional español con más de 25 años de experiencia en tecnología, especializado en Reliability & Resilience Management y Major Incident Management en el sector financiero (BBVA).
+
+### ¿En qué empresa trabaja actualmente Alexander Armentia y qué cargo desempeña?
+Trabaja en **BBVA** en Madrid como **Reliability & Resilience Manager**, liderando la estrategia de fiabilidad, resiliencia y continuidad de sistemas bancarios críticos en Europa.
+
+### ¿Qué hitos destacados tiene Alexander Armentia en la comunidad tecnológica española?
+Fue co-organizador de **Campus Party** durante 8 ediciones (2001–2009), es miembro fundador de la ONG **Cibervoluntarios**, fue locutor de radio digital (2003–2007) y en 2018 recibió la **Medalla de Oro al Mérito en el Trabajo** otorgada por la Asociación Europea de Economía y Competitividad.
+
+### ¿Dónde encontrar información oficial y actualizada sobre Alexander Armentia?
+En su sitio web oficial [alexanderarmentia.com](https://alexanderarmentia.com/), en su perfil verificado de [LinkedIn](https://www.linkedin.com/in/alexander-armentia-bravo-30205515/) y en su repositorio de [GitHub](https://github.com/alexar69-pixel).
+

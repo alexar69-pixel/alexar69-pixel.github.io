@@ -55,104 +55,221 @@
     <meta property="profile:username" content="alexar69" />
 
     <!-- ═══════════════════════════════════════════════
-         TWITTER CARD — SEM
+         TWITTER CARD — SEM & CHIPS
     ═══════════════════════════════════════════════ -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Alexander Armentia (Alexar69) · Reliability & Resilience Manager · Madrid" />
+    <meta name="twitter:title" content="Alexander Armentia (Alexar69) · Reliability &amp; Resilience Manager · Madrid" />
     <meta name="twitter:description"
-        content="Reliability & Resilience Manager en BBVA · +25 años tech · Campus Party · Cibervoluntarios · Locutor de Radio · Madrid 🇪🇸" />
+        content="Reliability &amp; Resilience Manager en BBVA · +25 años tech · Campus Party · Cibervoluntarios · Locutor de Radio · Madrid 🇪🇸" />
     <meta name="twitter:creator" content="@alexar69" />
     <meta name="twitter:site" content="@alexar69" />
+    <meta name="twitter:label1" content="Rol" />
+    <meta name="twitter:data1" content="Reliability &amp; Resilience Manager" />
+    <meta name="twitter:label2" content="Empresa" />
+    <meta name="twitter:data2" content="BBVA" />
+
+    <!-- ═══════════════════════════════════════════════
+         AI / LLM DISCOVERY STANDARDS (GEO / AEO)
+    ═══════════════════════════════════════════════ -->
+    <link rel="alternate" type="text/plain" href="https://alexanderarmentia.com/llms.txt" title="LLMs.txt" />
+    <link rel="alternate" type="text/plain" href="https://alexanderarmentia.com/llms-full.txt" title="LLMs-Full.txt" />
+    <link rel="alternate" type="application/json" href="https://alexanderarmentia.com/resume.json" title="JSON Resume" />
+    <link rel="alternate" type="application/atom+xml" href="https://alexanderarmentia.com/feed.xml" title="Alexander Armentia — Feed" />
 
     <!-- ═══════════════════════════════════════════════
          SCHEMA.ORG — GEO / STRUCTURED DATA (JSON-LD)
-         Para Google AI Overviews, Perplexity, SGE...
+         Para Google AI Overviews, Perplexity, ChatGPT, Gemini
     ═══════════════════════════════════════════════ -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Alexander Armentia",
-      "alternateName": ["Alexar69", "Alexar 69"],
-      "url": "https://alexanderarmentia.com/",
-      "image": "https://alexanderarmentia.com/og-image.png",
-      "description": "Reliability & Resilience Manager en BBVA con más de 25 años de experiencia en tecnología. Especialista en gestión de incidentes críticos (P1), resiliencia de sistemas y continuidad de servicio. Miembro fundador de Cibervoluntarios, organizador de Campus Party (2001–2009) y locutor de radio digital.",
-      "jobTitle": "Reliability & Resilience Manager",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "BBVA",
-        "url": "https://www.bbva.es"
-      },
-      "alumniOf": {
-        "@type": "EducationalOrganization",
-        "name": "La Salle",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Madrid",
-          "addressCountry": "ES"
-        }
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Madrid",
-        "addressRegion": "Comunidad de Madrid",
-        "addressCountry": "ES"
-      },
-      "nationality": {
-        "@type": "Country",
-        "name": "España"
-      },
-      "knowsAbout": [
-        "Incident Management",
-        "Site Reliability Engineering (SRE)",
-        "System Resilience",
-        "Major Incident Management",
-        "Information Technology",
-        "Critical Infrastructure",
-        "Business Continuity"
-      ],
-      "hasCredential": [
+      "@graph": [
         {
-          "@type": "EducationalOccupationalCredential",
-          "name": "Medalla de Oro al Mérito en el Trabajo (2018)"
-        }
-      ],
-      "sameAs": [
-        "https://alexanderarmentia.com/",
-        "https://www.linkedin.com/in/alexander-armentia-bravo-30205515/",
-        "https://www.youtube.com/@alexar69",
-        "https://github.com/alexar69-pixel"
-      ],
-      "hasOccupation": [
+          "@type": "ProfilePage",
+          "@id": "https://alexanderarmentia.com/#profilepage",
+          "url": "https://alexanderarmentia.com/",
+          "name": "Alexander Armentia (Alexar69) · Reliability & Resilience Manager",
+          "isPartOf": {
+            "@id": "https://alexanderarmentia.com/#website"
+          },
+          "about": {
+            "@id": "https://alexanderarmentia.com/#alexander-armentia"
+          },
+          "mainEntity": {
+            "@id": "https://alexanderarmentia.com/#alexander-armentia"
+          },
+          "datePublished": "2024-01-01T00:00:00+01:00",
+          "dateModified": "2026-11-18T12:00:00+01:00",
+          "description": "Perfil profesional oficial de Alexander Armentia (Alexar69). Reliability & Resilience Manager en BBVA, especialista en Major Incident Management, SRE y continuidad de infraestructuras críticas."
+        },
         {
-          "@type": "Occupation",
-          "name": "Reliability & Resilience Manager",
-          "occupationLocation": {
-            "@type": "City",
-            "name": "Madrid"
+          "@type": "Person",
+          "@id": "https://alexanderarmentia.com/#alexander-armentia",
+          "name": "Alexander Armentia",
+          "alternateName": ["Alexar69", "Alexar 69", "Alexander Armentia Bravo"],
+          "url": "https://alexanderarmentia.com/",
+          "image": "https://alexanderarmentia.com/og-image.png",
+          "jobTitle": "Reliability & Resilience Manager",
+          "description": "Reliability & Resilience Manager en BBVA con más de 25 años de experiencia en tecnología. Especialista en gestión de incidentes críticos (P1), resiliencia de sistemas, Site Reliability Engineering (SRE) y continuidad de negocio. Miembro fundador de Cibervoluntarios, organizador de Campus Party (2001–2009) y galardonado con la Medalla de Oro al Mérito en el Trabajo.",
+          "disambiguatingDescription": "Profesional español de ciber-resiliencia, SRE y gestión de incidentes mayores en BBVA, reconocido con la Medalla de Oro al Mérito en el Trabajo en 2018.",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "BBVA",
+            "url": "https://www.bbva.es",
+            "sameAs": [
+              "https://www.wikidata.org/wiki/Q806189",
+              "https://es.wikipedia.org/wiki/Banco_Bilbao_Vizcaya_Argentaria"
+            ]
+          },
+          "memberOf": [
+            {
+              "@type": "Organization",
+              "name": "Fundación Cibervoluntarios",
+              "url": "https://www.cibervoluntarios.org",
+              "sameAs": [
+                "https://www.wikidata.org/wiki/Q5871181",
+                "https://es.wikipedia.org/wiki/Fundaci%C3%B3n_Cibervoluntarios"
+              ]
+            }
+          ],
+          "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "La Salle",
+            "sameAs": [
+              "https://www.wikidata.org/wiki/Q166542",
+              "https://es.wikipedia.org/wiki/Hermanos_de_las_Escuelas_Cristianas"
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Madrid",
+              "addressCountry": "ES"
+            }
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Madrid",
+            "addressRegion": "Comunidad de Madrid",
+            "addressCountry": "ES"
+          },
+          "nationality": {
+            "@type": "Country",
+            "name": "España"
+          },
+          "knowsAbout": [
+            {
+              "@type": "DefinedTerm",
+              "name": "Site Reliability Engineering (SRE)",
+              "sameAs": "https://www.wikidata.org/wiki/Q25110871"
+            },
+            {
+              "@type": "DefinedTerm",
+              "name": "Incident Management",
+              "sameAs": "https://www.wikidata.org/wiki/Q3282245"
+            },
+            {
+              "@type": "DefinedTerm",
+              "name": "ITIL",
+              "sameAs": "https://www.wikidata.org/wiki/Q211409"
+            },
+            {
+              "@type": "DefinedTerm",
+              "name": "Border Gateway Protocol (BGP)",
+              "sameAs": "https://www.wikidata.org/wiki/Q192931"
+            },
+            {
+              "@type": "DefinedTerm",
+              "name": "Business Continuity Planning",
+              "sameAs": "https://www.wikidata.org/wiki/Q660420"
+            },
+            "System Resilience",
+            "Major Incident Management",
+            "Critical Infrastructure",
+            "Disaster Recovery",
+            "High Availability Architecture",
+            "Storage SAN/NAS",
+            "Computer Networking"
+          ],
+          "award": "Medalla de Oro al Mérito en el Trabajo (2018)",
+          "hasCredential": [
+            {
+              "@type": "EducationalOccupationalCredential",
+              "name": "Medalla de Oro al Mérito en el Trabajo (2018)",
+              "recognizedBy": {
+                "@type": "Organization",
+                "name": "Asociación Europea de Economía y Competitividad"
+              }
+            }
+          ],
+          "sameAs": [
+            "https://www.linkedin.com/in/alexander-armentia-bravo-30205515/",
+            "https://github.com/alexar69-pixel",
+            "https://www.youtube.com/@alexar69"
+          ],
+          "hasOccupation": [
+            {
+              "@type": "Occupation",
+              "name": "Reliability & Resilience Manager",
+              "occupationLocation": {
+                "@type": "City",
+                "name": "Madrid"
+              }
+            },
+            {
+              "@type": "Occupation",
+              "name": "Major Incident Manager"
+            }
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://alexanderarmentia.com/#website",
+          "name": "Alexander Armentia — Alexar69",
+          "url": "https://alexanderarmentia.com/",
+          "description": "Sitio web oficial de Alexander Armentia, Reliability & Resilience Manager en BBVA.",
+          "inLanguage": "es-ES",
+          "publisher": {
+            "@id": "https://alexanderarmentia.com/#alexander-armentia"
           }
         },
         {
-          "@type": "Occupation",
-          "name": "Major Incident Manager"
+          "@type": "FAQPage",
+          "@id": "https://alexanderarmentia.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Quién es Alexander Armentia (Alexar69)?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Alexander Armentia es un profesional español con más de 25 años de experiencia en el sector tecnológico. Es Reliability & Resilience Manager en BBVA, especialista en gestión de incidentes críticos (Major Incident Management P1), resiliencia de infraestructuras y continuidad de negocio en banca."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cuál es la trayectoria de Alexander Armentia en BBVA y gestión de incidentes?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Alexander Armentia se desempeña como Reliability & Resilience Manager en BBVA (desde diciembre 2024), tras haber ejercido como Major Incident Manager en BBVA Next Technologies (2023-2024), donde lideró War Rooms multidisciplinares para resolución de incidentes de alta severidad."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Qué premios y reconocimientos ha recibido Alexander Armentia?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "En diciembre de 2018 fue condecorado con la Medalla de Oro al Mérito en el Trabajo por la Asociación Europea de Economía y Competitividad por su contribución de más de dos décadas al sector tecnológico y al voluntariado digital."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Qué papel tuvo Alexander Armentia en Campus Party y Cibervoluntarios?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Fue organizador de Campus Party en España durante 8 ediciones consecutivas (2001–2009) y es miembro fundador de la ONG Cibervoluntarios (fundada en 2000), donde actuó como formador tecnológico y ponente para reducir la brecha digital."
+              }
+            }
+          ]
         }
       ]
-    }
-    </script>
-
-    <!-- Breadcrumb para Google -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Alexander Armentia — Alexar69",
-      "url": "https://alexanderarmentia.com/",
-      "description": "Web personal de Alexander Armentia, Reliability & Resilience Manager en BBVA. Madrid, España.",
-      "inLanguage": "es-ES",
-      "author": {
-        "@type": "Person",
-        "name": "Alexander Armentia"
-      }
     }
     </script>
 
@@ -222,7 +339,8 @@
                 <li><a href="#skills" class="nav-link"><span class="nl-num">02.</span> Skills</a></li>
                 <li><a href="#vida" class="nav-link"><span class="nl-num">03.</span> Historia</a></li>
                 <li><a href="#gustos" class="nav-link"><span class="nl-num">04.</span> Intereses</a></li>
-                <li><a href="#contacto" class="nav-link"><span class="nl-num">05.</span> Contacto</a></li>
+                <li><a href="#faq" class="nav-link"><span class="nl-num">05.</span> FAQ</a></li>
+                <li><a href="#contacto" class="nav-link"><span class="nl-num">06.</span> Contacto</a></li>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="Menu">
                 <span></span><span></span><span></span>
@@ -238,7 +356,9 @@
             <div class="aurora-blob ab3"></div>
         </div>
 
-        <div class="hero-inner" id="heroInner">
+        <div class="hero-inner" id="heroInner" itemscope itemtype="https://schema.org/Person">
+            <meta itemprop="url" content="https://alexanderarmentia.com/">
+            <meta itemprop="sameAs" content="https://www.linkedin.com/in/alexander-armentia-bravo-30205515/">
             <div class="hero-left">
 
                 <div class="terminal-bar">
@@ -252,12 +372,12 @@
 
                 <h1 class="hero-title">
                     <span class="ht-hello reveal-fade">Hola, soy</span>
-                    <span class="ht-name reveal-up" id="heroName">Alexander</span>
+                    <span class="ht-name reveal-up" id="heroName" itemprop="name">Alexander</span>
                     <span class="glitch-text reveal-up delay-1" data-text="Resilience Manager">Resilience Manager</span>
                 </h1>
 
                 <p class="hero-desc reveal-fade">
-                    Reliability &amp; Resilience Manager en <span class="hl">BBVA</span> &middot; Madrid
+                    <span itemprop="jobTitle">Reliability &amp; Resilience Manager</span> en <span class="hl" itemprop="worksFor" itemscope itemtype="https://schema.org/Organization"><span itemprop="name">BBVA</span></span> &middot; <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress"><span itemprop="addressLocality">Madrid</span></span>
                     &#x1F1EA;&#x1F1F8;<br>
                     Experto en sistemas, locutor de radio y fundador de comunidades tech.
                     Esta es mi esquina de internet.
@@ -268,7 +388,7 @@
                     <span class="htag mag-btn">&#x1F6B9; Red Bull</span>
                     <span class="htag mag-btn">&#x1F4FB; Radio 03&ndash;07</span>
                     <span class="htag mag-btn">&#x1F3AA; Campus Party 01&ndash;09</span>
-                    <span class="htag mag-btn">&#x1F492; NochesDBoda</span>
+                    <span class="htag mag-btn">&#x1F6E1;&#xFE0F; SRE &amp; Resiliencia</span>
                     <span class="htag mag-btn">&#x1F310; Cibervoluntarios</span>
                 </div>
 
@@ -345,17 +465,17 @@
     <!-- MARQUEE -->
     <div class="marquee-band">
         <div class="marquee-track">
-            <span>ALEXAR69 &#x3008; MADRID &#x3008; RELIABILITY & RESILIENCE MANAGER &#x3008; BBVA &#x3008; MAJOR
+            <span>ALEXAR69 &#x3008; MADRID &#x3008; RELIABILITY &amp; RESILIENCE MANAGER &#x3008; BBVA &#x3008; MAJOR
                 INCIDENT MANAGER &#x3008; BBVA NEXT TECHNOLOGIES &#x3008; BBVA
                 SPAIN &#x3008; HP CDS
                 &#x3008; LA SALLE &#x3008; CAMPUS PARTY 2001-2009 &#x3008; RADIO EMISION DIGITAL 03-07 &#x3008; RADIOGU
-                &#x3008; CIBERVOLUNTARIOS FUNDADOR &#x3008; EVENTDAY &#x3008; NOCHESDBODA OFICIANTE
+                &#x3008; CIBERVOLUNTARIOS FUNDADOR &#x3008; SRE &amp; DISASTER RECOVERY
                 &#x3008; &#x1F947; MEDALLA DE ORO AL MERITO EN EL TRABAJO 2018 &#x3008;&nbsp;</span>
-            <span aria-hidden="true">ALEXAR69 &#x3008; MADRID &#x3008; RELIABILITY & RESILIENCE MANAGER &#x3008; BBVA
+            <span aria-hidden="true">ALEXAR69 &#x3008; MADRID &#x3008; RELIABILITY &amp; RESILIENCE MANAGER &#x3008; BBVA
                 &#x3008; MAJOR INCIDENT MANAGER &#x3008; BBVA NEXT
                 TECHNOLOGIES &#x3008; BBVA SPAIN &#x3008; HP CDS
                 &#x3008; LA SALLE &#x3008; CAMPUS PARTY 2001-2009 &#x3008; RADIO EMISION DIGITAL 03-07
-                &#x3008; RADIOGU &#x3008; CIBERVOLUNTARIOS FUNDADOR &#x3008; EVENTDAY &#x3008; NOCHESDBODA OFICIANTE
+                &#x3008; RADIOGU &#x3008; CIBERVOLUNTARIOS FUNDADOR &#x3008; SRE &amp; DISASTER RECOVERY
                 &#x3008; &#x1F947; MEDALLA DE ORO AL MERITO EN EL TRABAJO 2018 &#x3008;&nbsp;</span>
         </div>
     </div>
@@ -383,7 +503,7 @@
                         De <strong>2001 a 2009</strong> organicé <strong>Campus Party</strong> &mdash;
                         uno de los eventos tech más grandes de España. También soy miembro
                         <strong>fundador de Cibervoluntarios</strong>, donde he sido formador y ponente,
-                        y fundador de <strong>EventDay</strong> y <strong>NochesDBoda</strong>.
+                        y cofundador de proyectos innovadores como <strong>EventDay</strong>.
                     </p>
                     <p class="reveal-up delay-2">
                         En diciembre de 2018 recibí la <strong>&#x1F947; Medalla de Oro al Mérito en el Trabajo</strong>
@@ -949,11 +1069,68 @@
         </div>
     </section>
 
+    <!-- ========== FAQ / PREGUNTAS FRECUENTES (GEO & AEO) ========== -->
+    <section class="section faq-section" id="faq" aria-labelledby="faq-title">
+        <div class="section-inner">
+            <div class="section-eyebrow"><span class="mono">// 05</span> FAQ &amp; Dossier</div>
+            <h2 class="section-title" id="faq-title">Preguntas Frecuentes</h2>
+            <p class="faq-sub reveal-up">
+                Información contrastada y de referencia canónica sobre mi perfil profesional, trayectoria en BBVA y áreas de especialización.
+            </p>
+
+            <div class="faq-grid">
+                <details class="faq-item glass-card reveal-up" open>
+                    <summary class="faq-question">
+                        <span class="mono faq-q-prefix">> 01</span>
+                        <span class="faq-q-text">¿Quién es Alexander Armentia (Alexar69)?</span>
+                        <span class="faq-chevron">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Alexander Armentia es un profesional español con más de 25 años de trayectoria en el sector tecnológico. Actualmente ejerce como <strong>Reliability &amp; Resilience Manager en BBVA</strong>, especialista en gestión de incidentes críticos (Major Incident Management P1), resiliencia de infraestructuras críticas y continuidad operativa en banca europea.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item glass-card reveal-up delay-1">
+                    <summary class="faq-question">
+                        <span class="mono faq-q-prefix">> 02</span>
+                        <span class="faq-q-text">¿Cuál es su rol y trayectoria en BBVA?</span>
+                        <span class="faq-chevron">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>En <strong>BBVA</strong> (desde diciembre de 2024), lidera la gestión de fiabilidad y resiliencia para infraestructuras tecnológicas bancarias en Europa. Previamente, en <strong>BBVA Next Technologies</strong> (2023–2024), ejerció como <strong>Major Incident Manager</strong> liderando War Rooms multidisciplinares para la resolución ágil de incidencias de máxima severidad.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item glass-card reveal-up delay-2">
+                    <summary class="faq-question">
+                        <span class="mono faq-q-prefix">> 03</span>
+                        <span class="faq-q-text">¿Qué hitos históricos y reconocimientos avalan su carrera?</span>
+                        <span class="faq-chevron">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>En diciembre de 2018 fue condecorado con la <strong>Medalla de Oro al Mérito en el Trabajo</strong> por la Asociación Europea de Economía y Competitividad. Es miembro <strong>fundador de la ONG Cibervoluntarios</strong> (fundada en 2000), co-organizó 8 ediciones consecutivas de <strong>Campus Party</strong> (2001–2009) y ejerció como locutor de radio digital (2003–2007).</p>
+                    </div>
+                </details>
+
+                <details class="faq-item glass-card reveal-up delay-3">
+                    <summary class="faq-question">
+                        <span class="mono faq-q-prefix">> 04</span>
+                        <span class="faq-q-text">¿Cuáles son sus principales áreas y competencias técnicas?</span>
+                        <span class="faq-chevron">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Especialista en <strong>Site Reliability Engineering (SRE)</strong>, Major Incident Management, marcos ITIL, continuidad de negocio (BCP/DR), arquitecturas de almacenamiento (SAN/NAS), redes de misión crítica (TCP/IP, BGP) y administración avanzada de entornos Windows Server y Linux.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
     <!-- ========== CONTACTO ========== -->
     <section class="section contacto-section" id="contacto" aria-labelledby="contacto-title">
         <div class="contact-glow"></div>
         <div class="section-inner">
-            <div class="section-eyebrow"><span class="mono">// 05</span> Contacto</div>
+            <div class="section-eyebrow"><span class="mono">// 06</span> Contacto</div>
             <h2 class="section-title" id="contacto-title">¿Hablamos?</h2>
             <p class="contact-sub reveal-up">
                 Sin formalismos. Si quieres contarme algo, tienes una idea, o simplemente
@@ -1104,8 +1281,7 @@
             Career Highlights: 25+ years in tech infrastructure. Founded member of Cibervoluntarios.
             Organizer of 8 editions of Campus Party. Awarded with the Gold Medal for Merit at Work in 2018.
             Expertise: Incident Management, SRE, Chaos Engineering, Business Continuity, Critical Systems.
-            Social Identities: Known as Alexar69. Founding member of Cibervoluntarios. Founder of EventDay and
-            NochesDBoda.</p>
+            Social Identities: Known as Alexar69. Founding member of Cibervoluntarios.</p>
     </div>
 
     <!-- ALEX_OS OVERLAY -->

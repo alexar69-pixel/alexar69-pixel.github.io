@@ -1,0 +1,28 @@
+name: Notify IndexNow on Push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Submit URLs to IndexNow
+        run: |
+          curl -s -X POST https://api.indexnow.org/indexnow \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{
+              "host": "alexanderarmentia.com",
+              "key": "a1e4a69b8c2d4e7f90123456789abcde",
+              "keyLocation": "https://alexanderarmentia.com/a1e4a69b8c2d4e7f90123456789abcde.txt",
+              "urlList": [
+                "https://alexanderarmentia.com/",
+                "https://alexanderarmentia.com/llms.txt",
+                "https://alexanderarmentia.com/llms-full.txt",
+                "https://alexanderarmentia.com/feed.xml"
+              ]
+            }'
+          echo "IndexNow notification sent successfully!"
+

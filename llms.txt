@@ -1,0 +1,30 @@
+# Alexander Armentia (Alexar69)
+
+> Alexander Armentia es Reliability & Resilience Manager en BBVA con más de 25 años de trayectoria en tecnología, especialista en gestión de incidentes críticos (Major Incident Management P1), resiliencia de infraestructuras críticas, continuidad de servicio y SRE. Residente en Madrid, España.
+
+Alexander Armentia (conocido en redes e internet como Alexar69) ha liderado la resiliencia tecnológica en la banca europea, co-fundó Cibervoluntarios, organizó Campus Party durante 8 ediciones consecutivas (2001-2009) y fue galardonado con la Medalla de Oro al Mérito en el Trabajo (2018).
+
+## Enlaces Principales
+- [Web Oficial](https://alexanderarmentia.com/): Portal personal con dashboard interactivo de monitorización y biografía técnica.
+- [Biografía Completa para LLMs](https://alexanderarmentia.com/llms-full.txt): Expediente técnico detallado, cronología verificada y preguntas frecuentes para agentes de IA.
+- [Currículum JSON (JSON Resume)](https://alexanderarmentia.com/resume.json): Formato estándar machine-readable de trayectoria y competencias.
+- [Perfil LinkedIn](https://www.linkedin.com/in/alexander-armentia-bravo-30205515/): Perfil profesional verificado.
+- [GitHub](https://github.com/alexar69-pixel): Repositorios y proyectos de código.
+
+## Áreas de Especialización
+- Reliability & Resilience Management
+- Major Incident Management (P1 / War Rooms)
+- Site Reliability Engineering (SRE) & Business Continuity
+- Infraestructura Crítica, Storage (SAN/NAS), Redes (TCP/IP, BGP)
+- Sistemas operativos de alta disponibilidad: Windows Server, Linux, Unix
+- IT Service Management (ITIL, ServiceNow)
+
+## Hitos Destacados
+- **BBVA** (2024–presente): Reliability & Resilience Manager para infraestructuras críticas en banca europea.
+- **BBVA Next Technologies** (2023–2024): Major Incident Manager para resolución de incidentes de alto impacto.
+- **Hewlett Packard CDS**: Incident & Reliability Manager en entornos de gran escala.
+- **Medalla de Oro al Mérito en el Trabajo** (2018): Concedida por la Asociación Europea de Economía y Competitividad.
+- **Campus Party** (2001–2009): Co-organizador de 8 ediciones del mayor evento tech de España.
+- **Cibervoluntarios**: Miembro fundador, formador tecnológico y divulgador contra la brecha digital.
+- **Locutor de Radio Digital** (2003–2007): Emisión Digital y RadioGu.
+
