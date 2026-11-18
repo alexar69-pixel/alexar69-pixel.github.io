@@ -3,52 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Trampa del Minutero · Ponencia de Alexander Armentia</title>
-    <meta name="description" content="Presentación y diapositivas de la ponencia 'La Trampa del Minutero: Reliability, Resiliencia y la Ilusión del 99.9% en Infraestructuras Críticas' por Alexander Armentia.">
-    <meta property="og:image" content="https://alexanderarmentia.com/blog/assets/adamuz-urda-kpis-seguridad-ave.png">
-    
-    <!-- Fonts -->
+    <title>Ponencia: Reliability, Resiliencia y la Trampa de los KPIs en Alta Velocidad | Alexander Armentia</title>
+    <meta name="description" content="Presentación interactiva y descargable para conferencia: Lecciones de los accidentes de Adamuz y Urda, Ley de Goodhart, Principio Andon de Toyota y patrones SRE.">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="/favicon.png">
-
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #06060f;
-            --card-bg: rgba(15, 15, 32, 0.85);
+            --card-bg: rgba(15, 15, 34, 0.88);
+            --card-border: rgba(34, 211, 238, 0.25);
             --cyan: #22d3ee;
             --amber: #f97316;
-            --mint: #34d399;
             --red: #ef4444;
+            --mint: #34d399;
+            --yellow: #fbbf24;
             --t: #f1f1f3;
             --tm: #9ca3af;
+            --font: 'Space Grotesk', -apple-system, sans-serif;
             --mono: 'JetBrains Mono', monospace;
-            --sans: 'Plus Jakarta Sans', sans-serif;
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            background: var(--bg);
+            background-color: var(--bg);
             color: var(--t);
-            font-family: var(--sans);
-            overflow: hidden;
-            height: 100vh;
+            font-family: var(--font);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
         }
 
-        /* Top control bar */
+        /* Top Bar */
         .topbar {
-            background: rgba(10, 10, 24, 0.9);
-            backdrop-filter: blur(12px);
+            background: rgba(10, 10, 24, 0.95);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 0.75rem 1.5rem;
+            padding: 0.75rem 2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -58,22 +55,22 @@
         .topbar-left {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.25rem;
         }
 
         .logo-badge {
             font-family: var(--mono);
             font-size: 0.85rem;
             color: var(--cyan);
-            border: 1px solid rgba(34, 211, 238, 0.3);
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
         }
 
         .deck-title {
-            font-weight: 700;
             font-size: 0.95rem;
-            color: var(--t);
+            color: var(--tm);
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+            padding-left: 1rem;
         }
 
         .topbar-right {
@@ -83,38 +80,37 @@
         }
 
         .btn {
-            font-family: var(--mono);
-            font-size: 0.8rem;
-            padding: 0.5rem 0.9rem;
-            border-radius: 6px;
-            cursor: pointer;
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--t);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.45rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
             text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
-            transition: all 0.2s ease;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--t);
+            gap: 0.5rem;
         }
 
         .btn:hover {
             background: rgba(255, 255, 255, 0.12);
             border-color: var(--cyan);
-            color: var(--cyan);
+            color: #fff;
         }
 
         .btn-primary {
-            background: var(--amber);
-            border-color: var(--amber);
-            color: #000;
-            font-weight: 700;
+            background: var(--cyan);
+            color: #06060f;
+            border-color: var(--cyan);
         }
 
         .btn-primary:hover {
-            background: #ea580c;
-            color: #fff;
-            border-color: #ea580c;
+            background: #38bdf8;
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.4);
+            color: #06060f;
         }
 
         /* Slide Stage */
@@ -124,24 +120,25 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
-            background: radial-gradient(circle at 50% 30%, rgba(34, 211, 238, 0.05) 0%, transparent 70%);
+            padding: 1.5rem 2rem;
+            background: radial-gradient(circle at 50% 30%, rgba(34, 211, 238, 0.04) 0%, transparent 70%);
+            overflow-y: auto;
         }
 
         .slide-container {
             width: 100%;
-            max-width: 1100px;
-            aspect-ratio: 16 / 9;
+            max-width: 1240px;
+            min-height: 580px;
             background: var(--card-bg);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
             backdrop-filter: blur(20px);
-            padding: 3rem;
+            padding: 2.25rem 2.5rem;
             display: none;
             flex-direction: column;
             justify-content: center;
             position: relative;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
             animation: fadeIn 0.35s ease;
         }
 
@@ -157,68 +154,94 @@
         .slide-eyebrow {
             font-family: var(--mono);
             color: var(--cyan);
-            font-size: 0.9rem;
-            margin-bottom: 0.75rem;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
             letter-spacing: 0.05em;
         }
 
         .slide-h1 {
-            font-size: clamp(2rem, 3.5vw, 3.2rem);
+            font-size: clamp(1.8rem, 2.8vw, 2.5rem);
             font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1rem;
+            line-height: 1.15;
+            margin-bottom: 0.75rem;
             color: #fff;
         }
 
         .slide-sub {
-            font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+            font-size: clamp(1rem, 1.4vw, 1.2rem);
             color: var(--amber);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             line-height: 1.4;
         }
 
-        .slide-body {
-            color: var(--tm);
-            font-size: 1.05rem;
-            line-height: 1.7;
-        }
-
-        .slide-body strong {
-            color: var(--t);
-        }
-
-        /* Grid layouts inside slides */
-        .grid-2 {
+        .slide-split {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-top: 1rem;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 1.75rem;
+            align-items: stretch;
+            margin-top: 0.5rem;
         }
 
-        .grid-3 {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+        .slide-left-col {
+            display: flex;
+            flex-direction: column;
             gap: 1rem;
-            margin-top: 1rem;
         }
 
         .card-inner {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 1.25rem;
+            line-height: 1.6;
         }
 
-        .card-inner.red-border { border-left: 4px solid var(--red); }
-        .card-inner.amber-border { border-left: 4px solid var(--amber); }
-        .card-inner.cyan-border { border-left: 4px solid var(--cyan); }
-        .card-inner.mint-border { border-left: 4px solid var(--mint); }
+        .card-inner.red-border { border-color: rgba(239, 68, 68, 0.4); }
+        .card-inner.cyan-border { border-color: rgba(34, 211, 238, 0.4); }
+        .card-inner.amber-border { border-color: rgba(249, 115, 22, 0.4); }
+        .card-inner.mint-border { border-color: rgba(52, 211, 153, 0.4); }
 
         .card-title {
+            font-family: var(--mono);
+            font-size: 0.85rem;
             font-weight: 700;
-            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             margin-bottom: 0.5rem;
-            color: #fff;
+        }
+
+        .slide-diagram-box {
+            background: #090918;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .slide-diagram-img {
+            width: 100%;
+            height: auto;
+            max-height: 360px;
+            object-fit: contain;
+            border-radius: 8px;
+            display: block;
+            background: #000;
+        }
+
+        .slide-diagram-caption {
+            font-size: 0.82rem;
+            color: var(--tm);
+            line-height: 1.45;
+            padding-top: 0.6rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            margin-top: 0.5rem;
+        }
+
+        .slide-diagram-caption strong {
+            color: var(--t);
         }
 
         /* Bottom Controls */
@@ -229,6 +252,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            z-index: 100;
         }
 
         .nav-controls {
@@ -257,15 +281,15 @@
             bottom: 60px;
             left: 50%;
             transform: translateX(-50%);
-            width: min(900px, 92vw);
+            width: min(950px, 94vw);
             background: rgba(15, 15, 30, 0.98);
             border: 1px solid var(--cyan);
             border-radius: 12px;
             padding: 1.25rem 1.75rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.85);
             display: none;
             z-index: 200;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             line-height: 1.6;
             color: var(--t);
         }
@@ -283,10 +307,10 @@
             justify-content: space-between;
         }
 
-        @media (max-width: 800px) {
-            .grid-2, .grid-3 { grid-template-columns: 1fr; }
-            .slide-container { padding: 1.5rem; aspect-ratio: auto; min-height: 480px; overflow-y: auto; }
-            .stage { padding: 1rem; overflow-y: auto; }
+        @media (max-width: 950px) {
+            .slide-split { grid-template-columns: 1fr; }
+            .slide-container { padding: 1.5rem; min-height: auto; }
+            .stage { padding: 1rem; }
             body { overflow: auto; }
         }
     </style>
@@ -313,144 +337,262 @@
     <!-- SLIDE STAGE -->
     <div class="stage" id="stage">
 
-        <!-- SLIDE 1 -->
-        <div class="slide-container active" data-slide="1" data-notes="GUION: (Pausa inicial de 3 segundos en silencio). Llevo más de 25 años gestionando sistemas donde el error no es una opción aceptable. En una War Room bancaria, cuando un servicio crítico empieza a degradarse, el tiempo se mide en pulsaciones por minuto y en millones de transacciones en juego. Pero cuando la infraestructura transporta personas a 300 km/h, la responsabilidad adquiere una dimensión sagrada. Al ver las noticias de Adamuz en enero de 2026 y luego Urda en octubre, sentí ese nudo en el estómago que todos los que operamos sistemas conocemos: la confirmación de que la obsesión moderna por los KPIs de eficiencia está matando la resiliencia.">
+        <!-- SLIDE 1: PORTADA -->
+        <div class="slide-container active" data-slide="1" data-notes="GUION: (Pausa inicial de 3 segundos en silencio antes de hablar). Llevo más de 25 años gestionando sistemas donde el error no es una opción aceptable. En una War Room bancaria, cuando un servicio crítico empieza a degradarse, el tiempo se mide en pulsaciones por minuto y en millones de transacciones en juego. Pero cuando la infraestructura transporta personas a 300 km/h, la responsabilidad adquiere una dimensión sagrada. Al ver las noticias de Adamuz en enero de 2026 y luego Urda en octubre, sentí ese nudo en el estómago que todos los que operamos sistemas conocemos: la confirmación de que la obsesión moderna por los KPIs de eficiencia está matando la resiliencia.">
             <div class="slide-eyebrow">// KEYNOTE · INFRAESTRUCTURA CRÍTICA &amp; SRE</div>
-            <h1 class="slide-h1">LA TRAMPA DEL MINUTERO</h1>
+            <h1 class="slide-h1" style="font-size: clamp(2.2rem, 4vw, 3.4rem);">LA TRAMPA DEL MINUTERO</h1>
             <div class="slide-sub">Reliability, Resiliencia y la Ilusión del 99.9% en Sistemas de Alta Velocidad</div>
-            <div class="slide-body">
-                <p><strong>Alexander Armentia</strong> (<em>Alexar69</em>)<br>
-                Reliability &amp; Resilience Manager · Más de 25 años en operaciones críticas y banca europea</p>
+            <div class="card-inner cyan-border" style="max-width: 650px;">
+                <p style="font-size: 1.05rem; line-height: 1.7;">
+                    <strong>Alexander Armentia</strong> (<em>Alexar69</em>)<br>
+                    <span style="color: var(--cyan);">Reliability &amp; Resilience Manager</span> · Más de 25 años en operaciones críticas y banca europea.<br>
+                    <span style="font-size: 0.9rem; color: var(--tm);">alexanderarmentia.com · linkedin.com/in/alexanderarmentia</span>
+                </p>
             </div>
         </div>
 
-        <!-- SLIDE 2 -->
+        <!-- SLIDE 2: GOODHART & NORMALIZACIÓN DE LA DESVIACIÓN -->
         <div class="slide-container" data-slide="2" data-notes="GUION: Durante tres décadas España presumió con orgullo del compromiso de puntualidad del AVE. Pero la Ley de Goodhart nos enseña que cuando dices a una organización que el único número que importa es llegar en hora, alteras todos los incentivos humanos. Parar a inspeccionar una vía se convierte en un 'estorbo comercial'. Nadie toma una decisión temeraria adrede; simplemente se normaliza la desviación milímetro a milímetro hasta la catástrofe.">
             <div class="slide-eyebrow">// 01. EL INCENTIVO PERVERSO</div>
-            <h1 class="slide-h1" style="font-size: 2rem;">"Cuando una métrica se convierte en el objetivo, deja de ser una buena métrica."</h1>
-            <div class="slide-sub" style="font-size: 1.1rem; color: var(--tm);">&mdash; Ley de Goodhart / Marilyn Strathern</div>
-            <div class="grid-2">
-                <div class="card-inner red-border">
-                    <div class="card-title" style="color: var(--red);">La Tiranía del Minutero Comercial</div>
-                    <p class="slide-body" style="font-size: 0.95rem;">• El éxito se mide exclusivamente por el % de puntualidad en destino.<br>• Penalización económica inmediata por retrasos.<br>• Se tiende a apurar la tolerancia física para no romper el minuto comercial.</p>
+            <h1 class="slide-h1">La Ley de Goodhart en Infraestructuras</h1>
+            <div class="slide-sub">"Cuando una métrica se convierte en el objetivo, deja de ser una buena métrica."</div>
+            <div class="slide-split">
+                <div class="slide-left-col">
+                    <div class="card-inner red-border">
+                        <div class="card-title" style="color: var(--red);">El Espejismo de la Eficiencia</div>
+                        <p style="font-size: 0.92rem; color: var(--tm);">
+                            • <strong>KPI comercial único:</strong> % Puntualidad en destino.<br>
+                            • <strong>Penalización económica directa:</strong> Indemnizar a viajeros castiga el retraso.<br>
+                            • <strong>Consecuencia:</strong> Se apuran márgenes de tolerancia física para no romper el minuto comercial.
+                        </p>
+                    </div>
+                    <div class="card-inner amber-border">
+                        <div class="card-title" style="color: var(--amber);">Normalización de la Desviación</div>
+                        <p style="font-size: 0.92rem; color: var(--tm);">
+                            • Concepto acuñado tras el desastre del Challenger (D. Vaughan).<br>
+                            • Una vibración anómala o fisura se detecta, pero como <em>"ayer no pasó nada"</em>, se reclasifica como tolerable.<br>
+                            • La curva de tensión crece en la sombra hasta la rotura.
+                        </p>
+                    </div>
                 </div>
-                <div class="card-inner cyan-border">
-                    <div class="card-title" style="color: var(--cyan);">Normalización de la Desviación</div>
-                    <p class="slide-body" style="font-size: 0.95rem;">• Concepto del transbordador Challenger (D. Vaughan).<br>• Se detecta una vibración atípica pero como "ayer no pasó nada", se tolera.<br>• Se repite el ciclo hasta que el material colapsa.</p>
+                <div class="slide-diagram-box">
+                    <img src="/blog/assets/presentation/slide2_goodhart_deviance.png" alt="Curva de Goodhart y Desviación" class="slide-diagram-img">
+                    <div class="slide-diagram-caption">
+                        <strong>Explicación del gráfico:</strong> El panel superior reporta "99.8% puntualidad" (ilusión verde), mientras la curva roja de fatiga acumulada supera silenciosamente el límite de seguridad.
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 3 -->
+        <!-- SLIDE 3: ADAMUZ VS URDA -->
         <div class="slide-container" data-slide="3" data-notes="GUION: Miremos los dos accidentes con ojos de arquitectos de sistemas. En Adamuz falló el material (la soldadura), pero lo devastador fue que no existió contención de impacto: el tren invadió la vía contraria sin freno de emergencia para el tren que venía de frente. En Urda es aún más claro: que un tren se pare es normal. Lo que jamás puede pasar en un sistema con resiliencia es que dos trenes compartan cantón y choquen por alcance. El estado por defecto ante el error siempre tiene que ser la parada absoluta.">
             <div class="slide-eyebrow">// 02. ANATOMÍA DEL COLAPSO</div>
-            <h1 class="slide-h1" style="font-size: 2.2rem;">Adamuz y Urda: Dos Caras del Mismo Problema</h1>
-            <div class="grid-2">
-                <div class="card-inner red-border">
-                    <div class="card-title" style="color: var(--red);">ADAMUZ (Enero 2026)</div>
-                    <p class="slide-body" style="font-size: 0.9rem;">
-                        <strong>1. Quiebra de Fiabilidad:</strong> Rotura de carril / soldadura y balasto fatigado.<br><br>
-                        <strong>2. Señales débiles ignoradas:</strong> Decenas de convoyes pasaron previamente con lecturas anómalas sin parar la circulación.<br><br>
-                        <strong>3. Quiebra de Contención (Blast Radius):</strong> La invasión de vía contraria no activó frenado automático en el tren Alvia frontal.
-                    </p>
+            <h1 class="slide-h1">Adamuz y Urda: Dos Caras del Mismo Problema</h1>
+            <div class="slide-sub">Fallo de fiabilidad material vs. colapso de la redundancia fail-safe</div>
+            <div class="slide-split">
+                <div class="slide-left-col">
+                    <div class="card-inner red-border">
+                        <div class="card-title" style="color: var(--red);">ADAMUZ (Enero 2026)</div>
+                        <p style="font-size: 0.9rem; color: var(--tm);">
+                            1. <strong>Quiebra de Fiabilidad:</strong> Rotura de carril/soldadura y asiento de balasto fatigado.<br>
+                            2. <strong>Ceguera a señales débiles:</strong> Decenas de convoyes notaron vibraciones sin que se detuviera la vía.<br>
+                            3. <strong>Blast Radius no contenido:</strong> El descarrilamiento invadió la vía contigua sin frenar al tren frontal.
+                        </p>
+                    </div>
+                    <div class="card-inner amber-border">
+                        <div class="card-title" style="color: var(--amber);">URDA (Octubre 2026)</div>
+                        <p style="font-size: 0.9rem; color: var(--tm);">
+                            1. <strong>Incidente nominal:</strong> Tren detenido por avería mecánica (suceso habitual).<br>
+                            2. <strong>Quiebra de Resiliencia:</strong> Ausencia de degradación ordenada (<em>Graceful Degradation</em>).<br>
+                            3. <strong>Quiebra del Fail-Safe:</strong> El sistema permitió que un segundo tren compartiera cantón e impactara por alcance.
+                        </p>
+                    </div>
                 </div>
-                <div class="card-inner amber-border">
-                    <div class="card-title" style="color: var(--amber);">URDA (Octubre 2026)</div>
-                    <p class="slide-body" style="font-size: 0.9rem;">
-                        <strong>1. Escenario Nominal Previsto:</strong> Un tren se detiene en vía por avería (suceso habitual).<br><br>
-                        <strong>2. Quiebra de Resiliencia:</strong> Ausencia de degradación ordenada (<em>Graceful Degradation</em>).<br><br>
-                        <strong>3. Quiebra del Principio Fail-Safe:</strong> Ante la pérdida de detección de un nodo, el sistema debe bloquear el cantón posterior de inmediato.
-                    </p>
+                <div class="slide-diagram-box">
+                    <img src="/blog/assets/presentation/slide3_adamuz_vs_urda.png" alt="Comparativa Técnica Adamuz vs Urda" class="slide-diagram-img">
+                    <div class="slide-diagram-caption">
+                        <strong>Diagrama técnico:</strong> Adamuz representa la rotura física y propagación lateral del fallo; Urda ilustra el fallo sistémico de señalización y redundancia de cantones.
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 4 -->
+        <!-- SLIDE 4: RELIABILITY VS RESILIENCIA -->
         <div class="slide-container" data-slide="4" data-notes="GUION: En los comités de dirección estas dos palabras se confunden a diario. Reliability es diseñar para que no se caiga. Es magnífico, pero es finito. Resiliencia es lo que pasa el segundo después de que la fiabilidad se rompe. La resiliencia no te promete que no habrá averías; te garantiza que la avería no costará vidas ni destruirá la organización.">
             <div class="slide-eyebrow">// 03. LA MATRIZ CONCEPTUAL</div>
-            <h1 class="slide-h1" style="font-size: 2.2rem;">Reliability vs. Resiliencia: La Frontera Vital</h1>
-            <div class="grid-2">
-                <div class="card-inner cyan-border">
-                    <div class="card-title" style="color: var(--cyan);">RELIABILITY (Fiabilidad)</div>
-                    <p class="slide-body" style="font-size: 0.95rem;">
-                        • <strong>Meta:</strong> Evitar que las cosas fallen.<br>
-                        • <strong>Métricas:</strong> MTBF, SLA, Uptime 99.9%.<br>
-                        • <strong>Foco:</strong> Mantenimiento preventivo, tolerancias de carga.<br>
-                        • <em>Límite:</em> En el mundo real, los materiales envejecen y el software falla. La fiabilidad siempre se romperá en algún momento.
-                    </p>
+            <h1 class="slide-h1">Reliability vs. Resiliencia: No Son Sinónimos</h1>
+            <div class="slide-sub">La diferencia vital entre evitar el fallo y sobrevivir a él</div>
+            <div class="slide-split">
+                <div class="slide-left-col">
+                    <div class="card-inner cyan-border">
+                        <div class="card-title" style="color: var(--cyan);">RELIABILITY (Fiabilidad)</div>
+                        <p style="font-size: 0.9rem; color: var(--tm);">
+                            • <strong>Objetivo:</strong> Que los componentes no se rompan.<br>
+                            • <strong>Métricas:</strong> MTBF, SLA, Uptime 99.9%.<br>
+                            • <strong>Límite físico:</strong> Todo material fatiga y todo software tiene bugs. La fiabilidad es finita.
+                        </p>
+                    </div>
+                    <div class="card-inner mint-border">
+                        <div class="card-title" style="color: var(--mint);">RESILIENCE (Resiliencia)</div>
+                        <p style="font-size: 0.9rem; color: var(--tm);">
+                            • <strong>Objetivo:</strong> Sobrevivir cuando el fallo ocurre.<br>
+                            • <strong>Métricas:</strong> MTTR y Contención de Blast Radius.<br>
+                            • <strong>Garantía:</strong> Es el cinturón que salva vidas cuando el carril rompe.
+                        </p>
+                    </div>
                 </div>
-                <div class="card-inner mint-border">
-                    <div class="card-title" style="color: var(--mint);">RESILIENCE (Resiliencia)</div>
-                    <p class="slide-body" style="font-size: 0.95rem;">
-                        • <strong>Meta:</strong> Qué hacemos cuando el fallo ocurre.<br>
-                        • <strong>Métricas:</strong> MTTR, capacidad de absorción de impacto.<br>
-                        • <strong>Foco:</strong> Blast Radius Containment, degradación controlada.<br>
-                        • <em>Garantía:</em> Diseñar el sistema para que, ante el fallo de un componente, el sistema jamás colapse en una catástrofe.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- SLIDE 5 -->
-        <div class="slide-container" data-slide="5" data-notes="GUION: Taiichi Ohno introdujo la cuerda Andon en Toyota. Parar la fábrica 10 minutos cuesta dinero; sacar coches con frenos defectuosos quiebra la empresa. ¿Respaldan nuestras organizaciones al técnico que levanta la mano? Si un empleado tiene miedo al titular de prensa sobre 'caos ferroviario', la cultura corporativa está rota.">
-            <div class="slide-eyebrow">// 04. CULTURA OPERATIVA</div>
-            <h1 class="slide-h1" style="font-size: 2.2rem;">El Principio Andon: "Stop the Line"</h1>
-            <div class="slide-sub">La autoridad indiscutible de detener la operación</div>
-            <div class="card-inner amber-border" style="padding: 1.5rem;">
-                <p class="slide-body" style="font-size: 1.05rem; color: #fff;">
-                    En Toyota, cualquier trabajador puede tirar de la cuerda roja y parar toda la factoría ante un defecto. Nadie recibe una bronca; se le agradece haber salvado la seguridad de la compañía.<br><br>
-                    <strong>LA PREGUNTA INCÓMODA:</strong><br>
-                    ¿Tiene hoy un maquinista o un técnico de vía la libertad de pulsar el botón de parada ante una anomalía leve, sin temor a penalizaciones por alterar el minutero comercial?<br><br>
-                    <span style="color: var(--amber);">Si la respuesta no es un rotundo SÍ, el sistema tiene una brecha de seguridad latente.</span>
-                </p>
-            </div>
-        </div>
-
-        <!-- SLIDE 6 -->
-        <div class="slide-container" data-slide="6" data-notes="GUION: En banca crítica si una pasarela falla hacemos rollback sin pestañear. Si somos capaces de aplicar Circuit Breakers y congelar despliegues por dinero, ¿cómo no lo vamos a hacer cuando lo que viaja son personas? La tecnología no sustituye la disciplina operativa.">
-            <div class="slide-eyebrow">// 05. TRANSFERENCIA DE CONOCIMIENTO</div>
-            <h1 class="slide-h1" style="font-size: 2.2rem;">Patrones SRE: De la Banca al Transporte</h1>
-            <div class="grid-3">
-                <div class="card-inner cyan-border">
-                    <div class="card-title" style="color: var(--cyan);">Circuit Breakers</div>
-                    <p class="slide-body" style="font-size: 0.85rem;">En banca: cortamos transacciones en milisegundos para aislar el núcleo. En transporte: el cantón debe bloquearse en cuanto se pierde telemetría.</p>
-                </div>
-                <div class="card-inner amber-border">
-                    <div class="card-title" style="color: var(--amber);">Error Budgets</div>
-                    <p class="slide-body" style="font-size: 0.85rem;">En SRE: consumir el margen de riesgo congela nuevas versiones. En ferrocarril: si la vía acumula avisos, se reducen velocidades.</p>
-                </div>
-                <div class="card-inner mint-border">
-                    <div class="card-title" style="color: var(--mint);">Blameless Culture</div>
-                    <p class="slide-body" style="font-size: 0.85rem;">Buscar culpables individuales en el eslabón humano no soluciona nada. Hay que auditar los incentivos de la gobernanza de KPIs.</p>
+                <div class="slide-diagram-box">
+                    <img src="/blog/assets/presentation/slide4_rel_vs_res.png" alt="Matriz Reliability vs Resiliencia" class="slide-diagram-img">
+                    <div class="slide-diagram-caption">
+                        <strong>La matriz de arquitectura:</strong> La fiabilidad optimiza el coste en días normales; la resiliencia previene el colapso catastrófico en el momento exacto de la quiebra.
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 7 -->
-        <div class="slide-container" data-slide="7" data-notes="GUION: No digo que la puntualidad no importe. Claro que importa. Pero la puntualidad tiene que ser la consecuencia de una infraestructura sana, no una máscara para tapar un sistema fatigado. Cambiemos los KPIs en los comités de dirección.">
-            <div class="slide-eyebrow">// 06. GOBERNANZA DE MÉTRICAS</div>
-            <h1 class="slide-h1" style="font-size: 2.2rem;">Reequilibrando el Cuadro de Mando</h1>
-            <div class="card-inner" style="padding: 1.5rem;">
-                <p class="slide-body" style="font-size: 1rem; line-height: 2;">
-                    ❌  <strong>% Puntualidad comercial en destino a cualquier precio</strong><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;👉  <span style="color: var(--mint); font-weight: 700;">✅ % Cumplimiento estricto de ventanas nocturnas de mantenimiento</span><br>
-                    ❌  <strong>Número de trenes por hora (Saturación máxima)</strong><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;👉  <span style="color: var(--mint); font-weight: 700;">✅ Margen de seguridad dinámico garantizado entre cantones</span><br>
-                    ❌  <strong>Coste mínimo de mantenimiento por kilómetro de vía</strong><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;👉  <span style="color: var(--mint); font-weight: 700;">✅ Tasa de resolución física de anomalías reportadas por sensores</span>
-                </p>
+        <!-- SLIDE 5: EL PRINCIPIO ANDON (CONCEPTO TOYOTA) -->
+        <div class="slide-container" data-slide="5" data-notes="GUION: Miren la imagen en pantalla. Representa uno de los mayores hitos en la historia de la ingeniería: el Principio Andon de Toyota. En Toyota, parar la línea no es un fracaso; es el acto supremo de responsabilidad. Si un operario detecta un tornillo que no entra suave, tira de la cuerda. La fábrica se para. ¿Por qué? Porque parar la fábrica 10 minutos cuesta unos miles de euros. Pero dejar salir coches con frenos defectuosos destruye vidas y arruina la empresa. En nuestra infraestructura ferroviaria necesitamos exactamente esta misma cultura: que ningún maquinista tema ser reprendido por parar el tren ante una vibración anómala.">
+            <div class="slide-eyebrow">// 04. CULTURA OPERATIVA // EL SISTEMA TOYOTA</div>
+            <h1 class="slide-h1">El Principio Andon: "Stop The Line"</h1>
+            <div class="slide-sub">La autoridad moral y técnica de detener la marcha ante la sospecha</div>
+            <div class="slide-split">
+                <div class="slide-left-col">
+                    <div class="card-inner amber-border">
+                        <div class="card-title" style="color: var(--amber);">La Cuerda Andon de Toyota</div>
+                        <p style="font-size: 0.92rem; color: var(--tm);">
+                            • En las plantas de alta fiabilidad de Toyota, cualquier trabajador tiene la autoridad y el deber de tirar de la cuerda Andon y detener la línea ante un defecto.<br><br>
+                            • <strong>Sin broncas ni represalias:</strong> El líder de equipo acude de inmediato para dar soporte y agradecer haber prevenido un fallo mayor.<br><br>
+                            • <strong>La regla de oro:</strong> Parar 10 minutos cuesta dinero. Sacar un coche defectuoso a la calle destruye vidas y quiebra la empresa.
+                        </p>
+                    </div>
+                    <div class="card-inner red-border">
+                        <div class="card-title" style="color: var(--red);">El Test Para el AVE</div>
+                        <p style="font-size: 0.9rem; color: #fff;">
+                            ¿Tienen hoy nuestros maquinistas o cuadrillas el respaldo institucional para parar un tren ante un bote extraño en vía, sin temor a ser interrogados por el coste del retraso?
+                        </p>
+                    </div>
+                </div>
+                <div class="slide-diagram-box">
+                    <img src="/blog/assets/presentation/toyota_andon_stop_the_line.jpg" alt="Ilustración Principio Andon Toyota Stop the Line" class="slide-diagram-img">
+                    <div class="slide-diagram-caption">
+                        <strong>Concepto visual:</strong> El operario activa la señal Andon con total seguridad psicológica; el panel ilumina la parada en rojo y activa el protocolo de auxilio inmediato.
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- SLIDE 8 -->
-        <div class="slide-container" data-slide="8" data-notes="GUION: (Pausa final. Mirada a la audiencia). Los sistemas complejos fallarán. La IA fallará. El metal se fatigará. Pero lo que está en nuestras manos es decidir qué tipo de profesionales queremos ser: gestores del minutero que cruzan los dedos esperando que la catástrofe no ocurra en su turno, o arquitectos de resiliencia que ponen la vida humana por encima de cualquier estadística. Llegar 10 minutos tarde es una anécdota. No volver jamás es una herida que no cicatriza. Muchas gracias.">
-            <div class="slide-eyebrow">// 07. CONCLUSIÓN</div>
-            <h1 class="slide-h1" style="font-size: 2.3rem; text-align: center; margin: 2rem 0; line-height: 1.3;">
+        <!-- SLIDE 6: PROTOCOLO ANDON & COMPARATIVA CULTURAL -->
+        <div class="slide-container" data-slide="6" data-notes="GUION: En este diagrama vemos las 4 etapas del protocolo Andon aplicadas a una línea de alta velocidad. Y debajo, la diferencia cultural determinante: En la cultura frágil, el empleado calla por miedo a la bronca o al titular de prensa. En la cultura Andon, la dirección premia parar. Parar media hora cuesta dinero; descarrilar cuesta vidas. Es hora de blindar este protocolo en los reglamentos de circulación.">
+            <div class="slide-eyebrow">// 05. FLUJO OPERATIVO ANDON</div>
+            <h1 class="slide-h1">Flujo de Respuesta Andon vs. Cultura del Miedo</h1>
+            <div class="slide-sub">De la señal débil a la resolución de causa raíz en 4 pasos</div>
+            <div class="slide-split">
+                <div class="slide-left-col">
+                    <div class="card-inner cyan-border">
+                        <div class="card-title" style="color: var(--cyan);">Las 4 Fases Inviolables</div>
+                        <p style="font-size: 0.9rem; color: var(--tm);">
+                            <strong>1. Detección temprana:</strong> Identificar la microvibración.<br>
+                            <strong>2. Parada preventiva:</strong> Interrumpir el flujo sin debate comercial previo.<br>
+                            <strong>3. Soporte al Gemba:</strong> Despliegue de cuadrilla al punto físico.<br>
+                            <strong>4. Causa raíz garantizada:</strong> Análisis de los 5 Porqués antes de reanudar el tráfico.
+                        </p>
+                    </div>
+                    <div class="card-inner mint-border">
+                        <div class="card-title" style="color: var(--mint);">Incentivo Corporativo</div>
+                        <p style="font-size: 0.9rem; color: var(--tm);">
+                            Premiar públicamente al técnico que levantó la mano. Convertir la parada preventiva en un indicador de excelencia operativa.
+                        </p>
+                    </div>
+                </div>
+                <div class="slide-diagram-box">
+                    <img src="/blog/assets/presentation/slide5_andon_protocol.png" alt="Infografía del Protocolo Andon y Comparativa" class="slide-diagram-img">
+                    <div class="slide-diagram-caption">
+                        <strong>Infografía de gobernanza:</strong> El contraste directo entre la cultura que silencia anomalías para salvar el minutero y la cultura Andon que detiene la vía para salvar vidas.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: CIRCUIT BREAKERS Y ERROR BUDGETS -->
+        <div class="slide-container" data-slide="7" data-notes="GUION: En banca crítica si una pasarela falla hacemos rollback sin pestañear. Si somos capaces de aplicar Circuit Breakers y congelar despliegues por dinero, ¿cómo no lo vamos a hacer cuando lo que viaja son personas? La tecnología no sustituye la disciplina operativa.">
+            <div class="slide-eyebrow">// 06. TRANSFERENCIA SRE</div>
+            <h1 class="slide-h1">Patrones de Resiliencia: De la Banca al Ferrocarril</h1>
+            <div class="slide-sub">Automatización de la seguridad y reducción del radio de impacto</div>
+            <div class="slide-split">
+                <div class="slide-left-col">
+                    <div class="card-inner cyan-border">
+                        <div class="card-title" style="color: var(--cyan);">Circuit Breakers</div>
+                        <p style="font-size: 0.88rem; color: var(--tm);">
+                            Disyuntor que corta el flujo ante picos de anomalías. Si se pierde telemetría en un cantón, parada automática sin negociación humana.
+                        </p>
+                    </div>
+                    <div class="card-inner amber-border">
+                        <div class="card-title" style="color: var(--amber);">Error Budgets</div>
+                        <p style="font-size: 0.88rem; color: var(--tm);">
+                            Si la vía acumula avisos en balasto o catenaria, se reduce velocidad y frecuencia hasta reponer margen de seguridad.
+                        </p>
+                    </div>
+                    <div class="card-inner mint-border">
+                        <div class="card-title" style="color: var(--mint);">Blameless Culture</div>
+                        <p style="font-size: 0.88rem; color: var(--tm);">
+                            Auditar el sistema y los incentivos perversos de gestión en lugar de buscar chivos expiatorios individuales.
+                        </p>
+                    </div>
+                </div>
+                <div class="slide-diagram-box">
+                    <img src="/blog/assets/presentation/slide6_circuit_breakers.png" alt="Diagrama de Circuit Breakers y Resiliencia" class="slide-diagram-img">
+                    <div class="slide-diagram-caption">
+                        <strong>Patrones de corte:</strong> Aislamiento automático de impacto (Blast Radius), contención de fallos en cascada y post-mortems sin culpa.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 8: REEQUILIBRANDO EL CUADRO DE MANDO -->
+        <div class="slide-container" data-slide="8" data-notes="GUION: No digo que la puntualidad no importe. Claro que importa. Pero la puntualidad tiene que ser la consecuencia de una infraestructura sana, no una máscara para tapar un sistema fatigado. Cambiemos los KPIs en los comités de dirección.">
+            <div class="slide-eyebrow">// 07. GOBERNANZA DE MÉTRICAS</div>
+            <h1 class="slide-h1">Reequilibrando el Cuadro de Mando Corporativo</h1>
+            <div class="slide-sub">Sustituir métricas de ilusión comercial por invariantes de resiliencia</div>
+            <div class="slide-split">
+                <div class="slide-left-col">
+                    <div class="card-inner red-border">
+                        <div class="card-title" style="color: var(--red);">Métricas Frágiles (Minutero)</div>
+                        <p style="font-size: 0.88rem; color: var(--tm);">
+                            ❌ % Puntualidad comercial a cualquier precio.<br>
+                            ❌ Saturación máxima de vía por hora.<br>
+                            ❌ Ahorro en ventanas de mantenimiento.<br>
+                            ❌ MTTR orientado a evitar indemnizaciones.
+                        </p>
+                    </div>
+                    <div class="card-inner mint-border">
+                        <div class="card-title" style="color: var(--mint);">Métricas Resilientes (Supervivencia)</div>
+                        <p style="font-size: 0.88rem; color: var(--tm);">
+                            ✅ 100% respeto a ventanas nocturnas de conservación.<br>
+                            ✅ Margen dinámico garantizado entre cantones.<br>
+                            ✅ Inspección física &lt; 2h ante señal débil.<br>
+                            ✅ Causa raíz probada antes de reabrir vía.
+                        </p>
+                    </div>
+                </div>
+                <div class="slide-diagram-box">
+                    <img src="/blog/assets/presentation/slide7_balance_kpis.png" alt="Balanza de KPIs de Resiliencia" class="slide-diagram-img">
+                    <div class="slide-diagram-caption">
+                        <strong>La balanza de directivos:</strong> La puntualidad no es el objetivo primario; la puntualidad es la consecuencia natural de una infraestructura sana.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 9: CONCLUSIÓN Y CIERRE -->
+        <div class="slide-container" data-slide="9" data-notes="GUION: (Pausa final. Mirada fija a la audiencia). Los sistemas complejos fallarán. La IA fallará. El metal se fatigará inevitablemente. Pero lo que define nuestra estatura como ingenieros y directivos es decidir qué sistema queremos construir: uno que prioriza el minutero comercial y reza para que la desgracia no toque en nuestro turno, o uno que tiene la valentía de parar para que todo el mundo regrese sano y salvo a casa. Llegar media hora tarde es una molestia pasajera. No volver jamás es una tragedia irreparable. Muchas gracias.">
+            <div class="slide-eyebrow">// 08. CONCLUSIÓN &amp; CIERRE</div>
+            <h1 class="slide-h1" style="font-size: clamp(2rem, 3.2vw, 2.7rem); text-align: center; margin: 2rem 0; line-height: 1.3;">
                 "El éxito de una infraestructura crítica no se mide por lo rápido que avanza cuando todo es favorable,<br><br>
                 <span style="color: var(--amber);">sino por su humildad y valentía para detenerse en seco cuando la seguridad está en duda."</span>
             </h1>
-            <p style="text-align: center; color: var(--tm); font-family: var(--mono); font-size: 0.95rem;">
-                Alexander Armentia · Reliability &amp; Resilience Manager · alexanderarmentia.com
+            <p style="text-align: center; color: var(--cyan); font-family: var(--mono); font-size: 1.1rem; margin-top: 1rem;">
+                Alexander Armentia (Alexar69) · Reliability &amp; Resilience Manager<br>
+                <span style="color: var(--tm); font-size: 0.95rem;">alexanderarmentia.com · Operaciones Críticas &amp; SRE</span>
             </p>
         </div>
 
@@ -460,14 +602,14 @@
     <div class="notes-drawer" id="notesDrawer">
         <div class="notes-header">
             <span>📝 GUION DE PONENTE (NOTAS DE DIAPOSITIVA)</span>
-            <span id="notesSlideNum">SLIDE 1 / 8</span>
+            <span id="notesSlideNum">SLIDE 1 / 9</span>
         </div>
         <div id="notesText">Cargando notas...</div>
     </div>
 
     <!-- BOTTOM BAR -->
     <div class="bottombar">
-        <div class="counter" id="slideCounter">DIAPOSITIVA 1 / 8</div>
+        <div class="counter" id="slideCounter">DIAPOSITIVA 1 / 9</div>
         <div class="nav-controls">
             <button class="btn" id="btnPrev">← Anterior</button>
             <button class="btn btn-primary" id="btnNext">Siguiente →</button>
