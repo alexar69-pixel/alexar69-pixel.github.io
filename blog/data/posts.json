@@ -1,5 +1,19 @@
 [
   {
+    "slug": "gamedays-chaos-engineering-simulacion-caidas-banca",
+    "title": "Juegos de Simulación de Caídas: De la Rueda de la Desgracia a los GameDays en Banca Crítica",
+    "excerpt": "Cómo los ejercicios de simulación de desastres (Chaos GameDays, Wheel of Misfortune y Tabletop Exercises) entrenan la memoria muscular de los equipos de guardia y reducen el MTTR bancario en más de un 40%.",
+    "date": "2026-11-18",
+    "tags": [
+      "chaos engineering",
+      "gameday",
+      "wheel of misfortune",
+      "sre",
+      "simulacion",
+      "resiliencia"
+    ]
+  },
+  {
     "slug": "mttr-bancario-disponibilidad-gestion-incidencias-p1",
     "title": "MTTR Bancario y Disponibilidad Extrema: Cómo Gestionar Incidentes Críticos cuando Cada Minuto Cuesta Millones",
     "excerpt": "Por qué en banca crítica el MTTR importa diez veces más que el MTBF. Análisis del coste real del minuto de indisponibilidad, los cuatro tiempos del incidente P1 y cómo reducir la mitigación a menos de 8 minutos con patrones SRE.",

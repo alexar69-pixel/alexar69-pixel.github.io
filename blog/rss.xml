@@ -5,7 +5,14 @@
     <link>https://alexanderarmentia.com/blog/</link>
     <description>Resiliencia, tecnologia y liderazgo tecnico</description>
     <language>es-es</language>
-    <lastBuildDate>Wed, 18 Nov 2026 15:24:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 15:53:30 GMT</lastBuildDate>
+    <item>
+      <title>Juegos de Simulación de Caídas: De la Rueda de la Desgracia a los GameDays en Banca Crítica</title>
+      <link>https://alexanderarmentia.com/blog/posts/gamedays-chaos-engineering-simulacion-caidas-banca.html</link>
+      <guid>https://alexanderarmentia.com/blog/posts/gamedays-chaos-engineering-simulacion-caidas-banca.html</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Cómo los ejercicios de simulación de desastres (Chaos GameDays, Wheel of Misfortune y Tabletop Exercises) entrenan la memoria muscular de los equipos de guardia y reducen el MTTR bancario en más de un 40%.</description>
+    </item>
     <item>
       <title>MTTR Bancario y Disponibilidad Extrema: Cómo Gestionar Incidentes Críticos cuando Cada Minuto Cuesta Millones</title>
       <link>https://alexanderarmentia.com/blog/posts/mttr-bancario-disponibilidad-gestion-incidencias-p1.html</link>

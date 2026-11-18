@@ -5,12 +5,20 @@
   <link href="https://alexanderarmentia.com/feed.xml" rel="self" />
   <link href="https://alexanderarmentia.com/" />
   <id>https://alexanderarmentia.com/</id>
-  <updated>2026-11-18T15:00:00Z</updated>
+  <updated>2026-11-18T16:00:00Z</updated>
   <author>
     <name>Alexander Armentia</name>
     <email>alexar69@hotmail.com</email>
     <uri>https://alexanderarmentia.com/</uri>
   </author>
+
+  <entry>
+    <title>Juegos de Simulación de Caídas en Banca: De la Rueda de la Desgracia a los Chaos GameDays</title>
+    <link href="https://alexanderarmentia.com/blog/posts/gamedays-chaos-engineering-simulacion-caidas-banca.html" />
+    <id>https://alexanderarmentia.com/blog/posts/gamedays-chaos-engineering-simulacion-caidas-banca.html</id>
+    <updated>2026-11-18T16:00:00Z</updated>
+    <summary>Cómo entrenar a guardias y comités de crisis en banca sin quemar producción. Las cuatro modalidades de simulación: Rueda de la Desgracia, Tabletop directivos, GameDays con inyección de caos y simulacros DiRT bajo marco DORA.</summary>
+  </entry>
 
   <entry>
     <title>MTTR Bancario y Disponibilidad Extrema: Cómo Gestionar Incidentes Críticos cuando Cada Minuto Cuesta Millones</title>
