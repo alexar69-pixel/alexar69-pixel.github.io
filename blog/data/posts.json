@@ -11,7 +11,8 @@
       "sre",
       "simulacion",
       "resiliencia"
-    ]
+    ],
+    "image": "/blog/assets/gamedays-chaos-engineering-simulacion-caidas-banca.png"
   },
   {
     "slug": "mttr-bancario-disponibilidad-gestion-incidencias-p1",
@@ -25,7 +26,8 @@
       "incident management",
       "sre",
       "alta disponibilidad"
-    ]
+    ],
+    "image": "/blog/assets/mttr-bancario-disponibilidad-gestion-incidencias-p1.png"
   },
   {
     "slug": "anatomia-de-una-war-room-14-horas-incident-management",
@@ -38,7 +40,8 @@
       "sre",
       "resiliencia",
       "operaciones criticas"
-    ]
+    ],
+    "image": "/blog/assets/anatomia-de-una-war-room-14-horas-incident-management.png"
   },
   {
     "slug": "la-trampa-de-la-monocultura-del-caso-crowdstrike-a-la-fragilidad-cloud",
@@ -51,7 +54,8 @@
       "crowdstrike",
       "cloud",
       "resiliencia"
-    ]
+    ],
+    "image": "/blog/assets/la-trampa-de-la-monocultura-del-caso-crowdstrike-a-la-fragilidad-cloud.png"
   },
   {
     "slug": "agentes-ia-en-produccion-remediacion-autonoma-sre",
@@ -64,7 +68,8 @@
       "sre",
       "remediacion autonoma",
       "circuit breaker"
-    ]
+    ],
+    "image": "/blog/assets/agentes-ia-en-produccion-remediacion-autonoma-sre.png"
   },
   {
     "slug": "resilience-scorecard-plantilla-blameless-post-mortem",
@@ -77,7 +82,8 @@
       "sre",
       "plantilla",
       "gobernanza"
-    ]
+    ],
+    "image": "/blog/assets/resilience-scorecard-plantilla-blameless-post-mortem.png"
   },
   {
     "slug": "adamuz-urda-kpis-seguridad-ave",
@@ -90,7 +96,8 @@
       "kpis",
       "infraestructura critica",
       "sre"
-    ]
+    ],
+    "image": "/blog/assets/adamuz-urda-kpis-seguridad-ave.png"
   },
   {
     "slug": "ia-y-resiliencia-en-sistemas-criticos-sre-2026",
@@ -103,7 +110,8 @@
       "ia",
       "incident management",
       "alta disponibilidad"
-    ]
+    ],
+    "image": "/blog/assets/ia-y-resiliencia-en-sistemas-criticos-sre-2026.png"
   },
   {
     "slug": "openclaw-desarrollo-agntico-en-el-workspace-local",
@@ -114,7 +122,8 @@
       "openclaw",
       "ia",
       "desarrollo"
-    ]
+    ],
+    "image": "/blog/assets/openclaw-infografia.jpg"
   },
   {
     "slug": "chatgpt-mayo-2026",
@@ -126,7 +135,8 @@
       "openai",
       "ia",
       "productividad"
-    ]
+    ],
+    "image": "/blog/assets/chatgpt-mayo-2026.png"
   },
   {
     "slug": "gemini-mayo-2026",
@@ -138,7 +148,8 @@
       "google",
       "ia",
       "agentes"
-    ]
+    ],
+    "image": "/blog/assets/gemini-mayo-2026.png"
   },
   {
     "slug": "claude-mayo-2026",
@@ -150,7 +161,8 @@
       "anthropic",
       "ia",
       "enterprise"
-    ]
+    ],
+    "image": "/blog/assets/claude-mayo-2026.png"
   },
   {
     "slug": "copilot-mayo-2026",
@@ -162,7 +174,8 @@
       "microsoft",
       "ia",
       "automatizacion"
-    ]
+    ],
+    "image": "/blog/assets/copilot-mayo-2026.png"
   },
   {
     "slug": "meta-ai-mayo-2026",
@@ -174,7 +187,8 @@
       "muse spark",
       "ia",
       "estrategia"
-    ]
+    ],
+    "image": "/blog/assets/meta-ai-mayo-2026.png"
   },
   {
     "slug": "mistral-mayo-2026",
@@ -186,7 +200,8 @@
       "open models",
       "ia",
       "innovacion"
-    ]
+    ],
+    "image": "/blog/assets/mistral-mayo-2026.png"
   },
   {
     "slug": "bienvenida-al-blog",
@@ -197,6 +212,7 @@
       "resiliencia",
       "tecnologia",
       "liderazgo"
-    ]
+    ],
+    "image": "/blog/assets/bienvenida-al-blog.png"
   }
 ]

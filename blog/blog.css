@@ -17,6 +17,73 @@
   }
 }
 
+/* Tarjeta del Blog con Imagen de Portada */
+.post-thumb-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  border-radius: var(--r);
+  text-decoration: none;
+  background: rgba(15, 16, 38, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s, box-shadow 0.3s;
+}
+
+.post-thumb-card:hover {
+  border-color: rgba(249, 115, 22, 0.4);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(249, 115, 22, 0.15);
+}
+
+.post-thumb-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
+  background: #030308;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.post-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+}
+
+.post-thumb-card:hover .post-thumb-img {
+  transform: scale(1.04);
+}
+
+.post-thumb-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.post-thumb-body h3 {
+  margin-top: 0.35rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--t);
+  line-height: 1.35;
+}
+
+.post-thumb-card:hover .post-thumb-body h3 {
+  color: #fff;
+}
+
+.post-thumb-body p {
+  font-size: 0.88rem;
+  color: var(--tm);
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+
 /* Contenedor del Post Individual */
 .post-card {
   max-width: 860px;

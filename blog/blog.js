@@ -17,15 +17,19 @@ async function loadPosts() {
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .map((post) => {
       const tags = (post.tags || []).map((t) => `<span>${t}</span>`).join('');
+      const imgUrl = post.image || (post.slug === 'openclaw-desarrollo-agntico-en-el-workspace-local' ? '/blog/assets/openclaw-infografia.jpg' : `/blog/assets/${encodeURIComponent(post.slug)}.png`);
       return `
-        <a class="gusto-card glass-card reveal-up tilt-card mag-btn" href="/blog/posts/${encodeURIComponent(post.slug)}.html">
+        <a class="post-thumb-card glass-card reveal-up tilt-card mag-btn" href="/blog/posts/${encodeURIComponent(post.slug)}.html">
           <div class="gc-glow"></div>
-          <div class="gc-emoji">📝</div>
-          <div class="gc-corner">// post</div>
-          <span class="mono" style="color: var(--a); font-size: 0.72rem; display: block; margin-bottom: 0.25rem;">// ${fmt.format(new Date(post.date))}</span>
-          <h3 style="margin-top: 0.25rem; margin-bottom: 0.5rem; font-size: 1.15rem; font-weight: 700; color: var(--t);">${post.title}</h3>
-          <p style="font-size: 0.88rem; color: var(--tm); line-height: 1.5; margin-bottom: 1rem;">${post.excerpt || ''}</p>
-          <div class="gc-tags">${tags}</div>
+          <div class="post-thumb-wrap">
+            <img class="post-thumb-img" src="${imgUrl}" alt="${post.title}" loading="lazy" />
+          </div>
+          <div class="post-thumb-body">
+            <span class="mono" style="color: var(--a); font-size: 0.72rem; display: block; margin-bottom: 0.25rem;">// ${fmt.format(new Date(post.date))}</span>
+            <h3>${post.title}</h3>
+            <p>${post.excerpt || ''}</p>
+            <div class="gc-tags">${tags}</div>
+          </div>
         </a>
       `;
     })
@@ -38,7 +42,7 @@ async function loadPosts() {
 function initializeDynamicEffects() {
   const list = document.getElementById('post-list');
   if (!list) return;
-  const cards = list.querySelectorAll('.gusto-card');
+  const cards = list.querySelectorAll('.post-thumb-card, .gusto-card');
   const ring = document.getElementById('cursorRing');
 
   cards.forEach(card => {
