@@ -96,7 +96,7 @@ def create_deck():
     p2.font.color.rgb = ACCENT_AMBER
 
     p3 = tf1.add_paragraph()
-    p3.text = "\nAlexander Armentia (Alexar69)\nReliability & Resilience Manager | +25 años en operaciones críticas"
+    p3.text = "\nAlexander Armentia\nReliability & Resilience Manager | +25 años en operaciones críticas"
     p3.font.size = Pt(15)
     p3.font.color.rgb = TEXT_MUTED
 
@@ -510,7 +510,7 @@ def create_deck():
 
     p2 = tf_cl.add_paragraph()
     p2.text = (
-        "\nAlexander Armentia (Alexar69)\n"
+        "\nAlexander Armentia\n"
         "Reliability & Resilience Manager | SRE & Critical Operations\n"
         "alexanderarmentia.com · linkedin.com/in/alexanderarmentia"
     )

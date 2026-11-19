@@ -89,7 +89,7 @@ def create_bbva_deck():
     p2.font.color.rgb = AMBER
 
     p3 = tf1.add_paragraph()
-    p3.text = "\nAlexander Armentia (Alexar69)\nReliability & Resilience Manager | +25 años en operaciones críticas y banca"
+    p3.text = "\nAlexander Armentia\nReliability & Resilience Manager | +25 años en operaciones críticas y banca"
     p3.font.size = Pt(14)
     p3.font.color.rgb = TEXT_MUTED
 
@@ -524,7 +524,7 @@ def create_bbva_deck():
 
     p2 = tf9.add_paragraph()
     p2.text = (
-        "\nAlexander Armentia (Alexar69)\n"
+        "\nAlexander Armentia\n"
         "Reliability & Resilience Manager · BBVA\n"
         "alexanderarmentia.com"
     )

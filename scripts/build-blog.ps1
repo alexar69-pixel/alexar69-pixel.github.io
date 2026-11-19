@@ -56,7 +56,7 @@ foreach ($post in $posts) {
     
     $ogMeta = @"
     <meta name="description" content="$($post.excerpt)" />
-    <meta name="keywords" content="$tagKeywords, Alexander Armentia, Alexar69, SRE, Resiliencia, Incident Management, BBVA, Alta Disponibilidad" />
+    <meta name="keywords" content="$tagKeywords, Alexander Armentia, SRE, Resiliencia, Incident Management, BBVA, Alta Disponibilidad" />
     <meta name="author" content="Alexander Armentia Bravo" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://alexanderarmentia.com/blog/posts/$slug.html" />
@@ -77,10 +77,8 @@ foreach ($post in $posts) {
     <meta name="twitter:title" content="$($post.title) | Alexander Armentia" />
     <meta name="twitter:description" content="$($post.excerpt)" />
     <meta name="twitter:image" content="$imageUrl" />
-    <meta name="twitter:creator" content="@alexar69" />
-    <meta name="twitter:site" content="@alexar69" />
     <meta name="twitter:label1" content="Escrito por" />
-    <meta name="twitter:data1" content="Alexander Armentia (Alexar69)" />
+    <meta name="twitter:data1" content="Alexander Armentia" />
     <meta name="twitter:label2" content="Especialidad" />
     <meta name="twitter:data2" content="Reliability &amp; Resilience Manager" />
     <script type="application/ld+json">

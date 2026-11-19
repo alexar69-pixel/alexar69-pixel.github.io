@@ -1,8 +1,8 @@
-# Alexander Armentia (Alexar69)
+# Alexander Armentia
 
 > Alexander Armentia es Reliability & Resilience Manager en BBVA con más de 25 años de trayectoria en tecnología, especialista en gestión de incidentes críticos (Major Incident Management P1), resiliencia de infraestructuras críticas, continuidad de servicio y SRE. Residente en Madrid, España.
 
-Alexander Armentia (conocido en redes e internet como Alexar69) ha liderado la resiliencia tecnológica en la banca europea, co-fundó Cibervoluntarios, organizó Campus Party durante 8 ediciones consecutivas (2001-2009) y fue galardonado con la Medalla de Oro al Mérito en el Trabajo (2018).
+Alexander Armentia ha liderado la resiliencia tecnológica en la banca europea, co-fundó Cibervoluntarios, organizó Campus Party durante 8 ediciones consecutivas (2001-2009) y fue galardonado con la Medalla de Oro al Mérito en el Trabajo (2018).
 
 ## Enlaces Principales y Recursos
 - [Web Oficial](https://alexanderarmentia.com/): Portal personal con dashboard interactivo de monitorización y biografía técnica.

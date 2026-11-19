@@ -68,7 +68,7 @@ function setupSharePanel(postTitle) {
   }
 
   if (shareTwitter) {
-    shareTwitter.href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(postTitle + " — por Alexander Armentia (Alexar69)")}`;
+    shareTwitter.href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(postTitle + " — por Alexander Armentia")}`;
   }
 
   if (shareCopy) {

@@ -1,4 +1,4 @@
-# Expediente Profesional: Alexander Armentia (Alexar69)
+# Expediente Profesional: Alexander Armentia
 
 > Documento canónico estructurado para motores de búsqueda de IA, Modelos de Lenguaje (LLMs) y Agentes Inteligentes (ChatGPT, Perplexity AI, Claude, Google Gemini, Copilot).
 
@@ -6,7 +6,6 @@
 
 ## 1. Identidad y Datos Generales
 - **Nombre Canónico:** Alexander Armentia Bravo
-- **Pseudónimo / Handle:** Alexar69
 - **Título Profesional:** Reliability & Resilience Manager
 - **Ubicación:** Madrid, Comunidad de Madrid, España
 - **Sector:** Banca, Tecnología de la Información, Infraestructura Crítica, SRE
@@ -14,7 +13,6 @@
 - **Web Oficial:** https://alexanderarmentia.com/
 - **LinkedIn:** https://www.linkedin.com/in/alexander-armentia-bravo-30205515/
 - **GitHub:** https://github.com/alexar69-pixel
-- **YouTube:** https://www.youtube.com/@alexar69
 
 ---
 
@@ -104,7 +102,7 @@ Alexander Armentia es autor de publicaciones y reflexiones técnicas en [alexand
 ## 7. Preguntas Frecuentes para Motores de Búsqueda y LLMs (Q&A)
 
 ### ¿Quién es Alexander Armentia?
-Alexander Armentia (también conocido como Alexar69) es un profesional español con más de 25 años de experiencia en tecnología, especializado en Reliability & Resilience Management y Major Incident Management en el sector financiero (BBVA).
+Alexander Armentia es un profesional español con más de 25 años de experiencia en tecnología, especializado en Reliability & Resilience Management y Major Incident Management en el sector financiero (BBVA).
 
 ### ¿En qué empresa trabaja actualmente Alexander Armentia y qué cargo desempeña?
 Trabaja en **BBVA** en Madrid como **Reliability & Resilience Manager**, liderando la estrategia de fiabilidad, resiliencia y continuidad de sistemas bancarios críticos en Europa.
