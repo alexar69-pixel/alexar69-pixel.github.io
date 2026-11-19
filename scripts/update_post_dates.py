@@ -29,3 +29,4 @@ with open("blog/data/posts.json", "w", encoding="utf-8") as f:
 print("Updated dates in blog/data/posts.json successfully. New order:")
 for p in posts:
     print(f"  {p['date']} -> {p['slug']}")
+
