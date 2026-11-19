@@ -19,15 +19,50 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "DefinedTermSet",
-      "name": "Glosario de Resiliencia y Site Reliability Engineering (SRE)",
-      "description": "Glosario de conceptos de resiliencia en infraestructuras críticas, banca y sistemas distribuidos por Alexander Armentia.",
-      "url": "https://alexanderarmentia.com/blog/glosario-resiliencia-sre.html",
-      "author": {
-        "@type": "Person",
-        "name": "Alexander Armentia",
-        "url": "https://alexanderarmentia.com/#alexander-armentia"
-      }
+      "@graph": [
+        {
+          "@type": "DefinedTermSet",
+          "@id": "https://alexanderarmentia.com/blog/glosario-resiliencia-sre.html#terms",
+          "name": "Glosario Vivo de Resiliencia, SRE y Operaciones Críticas",
+          "description": "Compendio de conceptos de fiabilidad, incidentes P1 y resiliencia en infraestructuras bancarias por Alexander Armentia.",
+          "url": "https://alexanderarmentia.com/blog/glosario-resiliencia-sre.html",
+          "inLanguage": "es",
+          "author": {
+            "@type": "Person",
+            "name": "Alexander Armentia",
+            "jobTitle": "Reliability & Resilience Manager",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "BBVA"
+            },
+            "url": "https://alexanderarmentia.com/#alexander-armentia"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://alexanderarmentia.com/blog/glosario-resiliencia-sre.html#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Inicio",
+              "item": "https://alexanderarmentia.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://alexanderarmentia.com/blog/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Glosario de Resiliencia",
+              "item": "https://alexanderarmentia.com/blog/glosario-resiliencia-sre.html"
+            }
+          ]
+        }
+      ]
     }
     </script>
 

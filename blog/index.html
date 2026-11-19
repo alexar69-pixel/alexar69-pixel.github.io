@@ -4,11 +4,73 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog · Alexander Armentia (Alexar69) · Resilience & Technology</title>
+    <title>Blog de Resiliencia, SRE y Operaciones Críticas · Alexander Armentia</title>
     <meta name="description"
-        content="Notas, aprendizajes prácticos sobre resiliencia, operaciones críticas (P1), ITSM, SRE y tecnología por Alexander Armentia." />
+        content="Artículos técnicos, análisis de incidentes mayores P1, arquitectura de alta disponibilidad, Chaos Engineering y SRE por Alexander Armentia (Reliability Manager en BBVA)." />
+    <meta name="keywords" content="SRE, Site Reliability Engineering, Resiliencia, Incident Management, Major Incident Manager, MTTR, MTBF, Chaos Engineering, BBVA, Alta Disponibilidad, Alexander Armentia, Alexar69" />
+    <meta name="author" content="Alexander Armentia" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://alexanderarmentia.com/blog/" />
-    <link rel="alternate" type="application/rss+xml" title="Blog de Alexander Armentia" href="https://alexanderarmentia.com/blog/rss.xml">
+    <link rel="alternate" type="application/rss+xml" title="Blog de Alexander Armentia — RSS" href="https://alexanderarmentia.com/blog/rss.xml">
+    <link rel="alternate" type="application/atom+xml" title="Alexander Armentia — Atom Feed" href="https://alexanderarmentia.com/feed.xml">
+
+    <!-- Open Graph / Redes Sociales -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Blog de Resiliencia, SRE y Operaciones Críticas · Alexander Armentia" />
+    <meta property="og:description" content="Artículos técnicos, análisis de caídas masivas (Microsoft 365, CrowdStrike), gestión de War Rooms y patrones de mitigación en banca e infraestructuras críticas." />
+    <meta property="og:url" content="https://alexanderarmentia.com/blog/" />
+    <meta property="og:image" content="https://alexanderarmentia.com/blog/assets/gamedays-chaos-engineering-simulacion-caidas-banca.png" />
+    <meta property="og:site_name" content="Alexander Armentia (Alexar69)" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Blog de Resiliencia, SRE y Operaciones Críticas · Alexander Armentia" />
+    <meta name="twitter:description" content="Artículos técnicos, análisis de incidentes P1 y patrones de alta disponibilidad por Alexander Armentia." />
+    <meta name="twitter:image" content="https://alexanderarmentia.com/blog/assets/gamedays-chaos-engineering-simulacion-caidas-banca.png" />
+    <meta name="twitter:creator" content="@alexar69" />
+
+    <!-- Schema.org Blog & CollectionPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Blog",
+          "@id": "https://alexanderarmentia.com/blog/#blog",
+          "name": "Blog de Resiliencia, SRE y Operaciones Críticas",
+          "url": "https://alexanderarmentia.com/blog/",
+          "description": "Bitácora técnica sobre gestión de incidentes P1, resiliencia bancaria, arquitecturas celulares y gobernanza SRE.",
+          "publisher": {
+            "@type": "Person",
+            "name": "Alexander Armentia",
+            "jobTitle": "Reliability & Resilience Manager",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "BBVA"
+            },
+            "url": "https://alexanderarmentia.com/#alexander-armentia"
+          },
+          "inLanguage": "es"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://alexanderarmentia.com/blog/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Inicio",
+              "item": "https://alexanderarmentia.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://alexanderarmentia.com/blog/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

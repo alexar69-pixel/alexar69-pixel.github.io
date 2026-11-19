@@ -1,4 +1,4 @@
-$ErrorActionPreference = 'Stop'
+﻿$ErrorActionPreference = 'Stop'
 
 $repo = Split-Path -Parent $PSScriptRoot
 $postsJsonPath = Join-Path $repo 'blog\data\posts.json'
@@ -51,45 +51,107 @@ foreach ($post in $posts) {
     # Generar etiquetas Open Graph, Twitter y Schema.org BlogPosting
     $escapedExcerpt = $post.excerpt -replace '"', '\"'
     $escapedTitle = $post.title -replace '"', '\"'
+    $tagKeywords = ($post.tags -join ', ')
+    $tagsJson = ($post.tags | ForEach-Object { "`"$_`"" }) -join ', '
+    
     $ogMeta = @"
     <meta name="description" content="$($post.excerpt)" />
+    <meta name="keywords" content="$tagKeywords, Alexander Armentia, Alexar69, SRE, Resiliencia, Incident Management, BBVA, Alta Disponibilidad" />
     <meta name="author" content="Alexander Armentia Bravo" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://alexanderarmentia.com/blog/posts/$slug.html" />
-    <meta property="og:title" content="$($post.title)" />
+    <meta property="og:title" content="$($post.title) | Alexander Armentia" />
     <meta property="og:description" content="$($post.excerpt)" />
     <meta property="og:image" content="$imageUrl" />
+    <meta property="og:image:width" content="1376" />
+    <meta property="og:image:height" content="768" />
+    <meta property="og:image:alt" content="$escapedTitle" />
     <meta property="og:url" content="https://alexanderarmentia.com/blog/posts/$slug.html" />
     <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Alexander Armentia — Resilience &amp; SRE" />
     <meta property="article:author" content="https://www.linkedin.com/in/alexander-armentia-bravo-30205515/" />
     <meta property="article:published_time" content="$($post.date)T00:00:00Z" />
+    <meta property="article:modified_time" content="$($post.date)T00:00:00Z" />
+    <meta property="article:section" content="Technology &amp; Resilience" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="$($post.title)" />
+    <meta name="twitter:title" content="$($post.title) | Alexander Armentia" />
     <meta name="twitter:description" content="$($post.excerpt)" />
     <meta name="twitter:image" content="$imageUrl" />
+    <meta name="twitter:creator" content="@alexar69" />
+    <meta name="twitter:site" content="@alexar69" />
+    <meta name="twitter:label1" content="Escrito por" />
+    <meta name="twitter:data1" content="Alexander Armentia (Alexar69)" />
+    <meta name="twitter:label2" content="Especialidad" />
+    <meta name="twitter:data2" content="Reliability &amp; Resilience Manager" />
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": "$escapedTitle",
-      "description": "$escapedExcerpt",
-      "image": "$imageUrl",
-      "datePublished": "$($post.date)T00:00:00Z",
-      "dateModified": "$($post.date)T00:00:00Z",
-      "mainEntityOfPage": "https://alexanderarmentia.com/blog/posts/$slug.html",
-      "author": {
-        "@type": "Person",
-        "name": "Alexander Armentia",
-        "url": "https://alexanderarmentia.com/#alexander-armentia",
-        "sameAs": [
-          "https://www.linkedin.com/in/alexander-armentia-bravo-30205515/",
-          "https://github.com/alexar69-pixel"
-        ]
-      },
-      "publisher": {
-        "@type": "Person",
-        "name": "Alexander Armentia",
-        "url": "https://alexanderarmentia.com/"
-      }
+      "@graph": [
+        {
+          "@type": "BlogPosting",
+          "@id": "https://alexanderarmentia.com/blog/posts/$slug.html#article",
+          "isPartOf": {
+            "@id": "https://alexanderarmentia.com/blog/#blog"
+          },
+          "headline": "$escapedTitle",
+          "description": "$escapedExcerpt",
+          "image": {
+            "@type": "ImageObject",
+            "url": "$imageUrl",
+            "width": 1376,
+            "height": 768
+          },
+          "datePublished": "$($post.date)T00:00:00Z",
+          "dateModified": "$($post.date)T00:00:00Z",
+          "mainEntityOfPage": "https://alexanderarmentia.com/blog/posts/$slug.html",
+          "keywords": [$tagsJson],
+          "inLanguage": "es",
+          "author": {
+            "@type": "Person",
+            "name": "Alexander Armentia",
+            "jobTitle": "Reliability & Resilience Manager",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "BBVA",
+              "url": "https://www.bbva.es"
+            },
+            "url": "https://alexanderarmentia.com/#alexander-armentia",
+            "sameAs": [
+              "https://www.linkedin.com/in/alexander-armentia-bravo-30205515/",
+              "https://github.com/alexar69-pixel"
+            ]
+          },
+          "publisher": {
+            "@type": "Person",
+            "name": "Alexander Armentia",
+            "url": "https://alexanderarmentia.com/"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://alexanderarmentia.com/blog/posts/$slug.html#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Inicio",
+              "item": "https://alexanderarmentia.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://alexanderarmentia.com/blog/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "$escapedTitle",
+              "item": "https://alexanderarmentia.com/blog/posts/$slug.html"
+            }
+          ]
+        }
+      ]
     }
     </script>
 "@
