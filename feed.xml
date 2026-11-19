@@ -5,12 +5,20 @@
   <link href="https://alexanderarmentia.com/feed.xml" rel="self" />
   <link href="https://alexanderarmentia.com/" />
   <id>https://alexanderarmentia.com/</id>
-  <updated>2026-11-19T13:30:00Z</updated>
+  <updated>2026-11-19T14:30:00Z</updated>
   <author>
     <name>Alexander Armentia</name>
     <email>alexar69@hotmail.com</email>
     <uri>https://alexanderarmentia.com/</uri>
   </author>
+
+  <entry>
+    <title>NGINX y el riesgo de apagar HTTP/2</title>
+    <link href="https://alexanderarmentia.com/blog/posts/nginx-riesgo-apagar-http2.html" />
+    <id>https://alexanderarmentia.com/blog/posts/nginx-riesgo-apagar-http2.html</id>
+    <updated>2026-11-19T14:30:00Z</updated>
+    <summary>Desactivas HTTP/2 para mitigar una vulnerabilidad en NGINX. La web sigue en verde. ¿Cómo sabes que el comercio que confirma sus cobros por API o gRPC sigue operando? Análisis sobre la resiliencia operativa y la toma de decisiones en crisis.</summary>
+  </entry>
 
   <entry>
     <title>Java4Shell. ¿Ya podemos cerrar la incidencia?</title>

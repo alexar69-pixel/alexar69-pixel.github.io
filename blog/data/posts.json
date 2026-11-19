@@ -1,5 +1,22 @@
 [
   {
+    "slug": "nginx-riesgo-apagar-http2",
+    "title": "NGINX y el riesgo de apagar HTTP/2",
+    "excerpt": "Desactivas HTTP/2 para mitigar una vulnerabilidad en NGINX. La web sigue en verde. ¿Cómo sabes que el comercio que confirma sus cobros por API o gRPC sigue operando? Análisis sobre la resiliencia operativa y la toma de decisiones en crisis.",
+    "date": "2026-11-19",
+    "tags": [
+      "nginx",
+      "http2",
+      "grpc",
+      "sre",
+      "resiliencia",
+      "incident management",
+      "ciberseguridad",
+      "alta disponibilidad"
+    ],
+    "image": "/blog/assets/nginx-riesgo-apagar-http2.png"
+  },
+  {
     "slug": "java4shell-vulnerabilidad-critica-memoria-ia",
     "title": "Java4Shell. ¿Ya podemos cerrar la incidencia?",
     "excerpt": "Imagina que coordinas la respuesta a Java4Shell en una entidad financiera. Todo está en verde y alguien pregunta si ya podemos cerrar la incidencia. Yo pediría una comprobación más: si arranca una réplica nueva, ¿qué versión de Java va a cargar?",

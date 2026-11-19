@@ -1,0 +1,77 @@
+<p><img src="/blog/assets/nginx-riesgo-apagar-http2.png" alt="NGINX y el riesgo de apagar HTTP/2" loading="lazy" /></p>
+
+<p style="font-size: 0.95rem; color: var(--tm); font-style: italic; margin-bottom: 1.75rem;">
+    Por <strong>Alexander Armentia Bravo</strong> &middot; 19 de noviembre de 2026
+</p>
+
+<p class="lead" style="font-size: 1.15rem; color: var(--t); font-weight: 500; line-height: 1.7; margin-bottom: 2rem;">
+    El 18 de noviembre, el proveedor de infraestructura Anexia comunicó que había desactivado temporalmente HTTP/2 en todos los servidores que gestionaba. Acababa de publicarse una alerta sobre NGINX y la medida reducía la exposición a dos de las vulnerabilidades mientras llegaban las correcciones para sus entornos. Desde la perspectiva de quien coordina una crisis, lo interesante es la pregunta que viene después:
+</p>
+
+<div class="card-inner amber-border" style="margin: 2rem 0; padding: 1.25rem; background: rgba(249, 115, 22, 0.05); border-left: 3px solid var(--a); border-radius: 0 var(--r) var(--r) 0;">
+    <strong style="color: var(--a); display: block; margin-bottom: 0.35rem;">// LA PREGUNTA TRAS EL CAMBIO DE PROTOCOLO:</strong>
+    <p style="margin: 0; font-size: 1.05rem; font-weight: 600; color: #fff;">¿Cómo compruebas que todos tus clientes siguen pudiendo operar tras cambiar el protocolo por el que entran?</p>
+</div>
+
+<p>Imaginemos una plataforma de pagos. Después del cambio, un operador abre la web, inicia sesión y consulta los últimos movimientos. Todo funciona. Mientras tanto, un comercio que utiliza la API para confirmar cobros empieza a acumular operaciones pendientes. Su integración usa gRPC nativo y necesita HTTP/2 en el punto de entrada que acabamos de modificar. La web y la API comparten infraestructura, pero la prueba que acabamos de pasar solo representa a uno de los dos clientes. Es un escenario hipotético que ilustra una dependencia real del protocolo.</p>
+
+<h2>Qué pasó en NGINX</h2>
+
+<p>NGINX recibe conexiones y, en muchas arquitecturas, las dirige a la aplicación que debe atenderlas. El 18 de noviembre, CERT-EU publicó un aviso sobre cinco vulnerabilidades en NGINX. Dos de ellas, <strong>CVE-2026-123007</strong> y <strong>CVE-2026-123633</strong>, afectaban al tratamiento de conexiones HTTP/2. En configuraciones vulnerables, un atacante remoto sin autenticar podía provocar corrupción de memoria y potencialmente ejecutar código con los permisos del proceso que atiende las peticiones. Los investigadores demostraron la explotación de la primera. En su aviso del día 18, CERT-EU indicaba que no se había comunicado explotación en entornos reales. La información consultada tampoco establece una caída generalizada ni un balance de clientes afectados.</p>
+
+<p>La respuesta avanzó a ritmos diferentes. Anexia optó por cambiar su configuración. El 19 de noviembre, Red Hat comunicaba que estaba acelerando la publicación de correcciones, y Amazon Linux ya había emitido un aviso para una de sus distribuciones. En una misma mañana, un responsable de incidentes podía tener un servicio listo para actualizar, otro con una mitigación temporal y un tercero pendiente de su proveedor. Los tres podían figurar en el inventario con la misma etiqueta: <em>«NGINX»</em>.</p>
+
+<div class="card-inner cyan-border" style="margin: 2rem 0; padding: 1.25rem; background: rgba(6, 182, 212, 0.05); border-left: 3px solid var(--cyan); border-radius: 0 var(--r) var(--r) 0;">
+    <strong style="color: var(--cyan); display: block; margin-bottom: 0.35rem;">// EL PELIGRO DE SIMPLIFICAR EL ESTADO DEL INCIDENTE:</strong>
+    <p style="margin: 0; font-size: 0.95rem; color: var(--t);">Desactivar HTTP/2 mitigaba <strong>dos de los cinco fallos</strong> analizados por CERT-EU. Los otros tres afectaban a determinadas configuraciones de HTTP/3, resolución de nombres y proxy de correo. Informar a dirección de que «NGINX está mitigado» habría ocultado qué parte del riesgo seguía pendiente de evaluar.</p>
+</div>
+
+<h2>La decisión que llevaría al comité de crisis</h2>
+
+<p>Antes de autorizar una desactivación general, pediría a Plataforma y a los responsables de negocio que identificaran <strong>dónde termina realmente HTTP/2 y quién depende de él en ese tramo</strong>. Puede que el cliente negocie el protocolo con un balanceador y que NGINX reciba la petición por otro protocolo. También puede que NGINX acepte directamente la conexión de una integración crítica. El nombre del dominio y un diagrama de arquitectura antiguo son evidencias pobres para decidir entre esos dos escenarios.</p>
+
+<p>En una entrada expuesta que admite HTTP/1.1, probaría la mitigación sobre una fracción del tráfico. Mediría operaciones completadas, latencia y conexiones simultáneas antes de ampliarla. En una entrada que atiende gRPC nativo, priorizaría el despliegue de una instancia corregida o el traslado a una ruta ya protegida. La prueba de aceptación sería una llamada desde un cliente representativo, con una respuesta válida de la aplicación. Abrir la portada web seguiría siendo útil para verificar la portada.</p>
+
+<p>Si hubiera que sacrificar temporalmente una integración para contener una exposición urgente, esa decisión debería llegar a quien responde del servicio. El parte tendría que indicar qué clientes perderían qué capacidad, durante cuánto tiempo se acepta esa situación y cómo se recuperarían las operaciones pendientes. Seguridad puede explicar el riesgo de mantener la entrada abierta. Operaciones puede estimar el efecto de cerrarla. El responsable de la crisis necesita ambas respuestas para decidir y comunicar.</p>
+
+<h2>El fallo que puede quedarse fuera del cuadro de mando</h2>
+
+<p>Volvamos al comercio que confirma cobros. Si la conexión falla antes de que la petición llegue a la aplicación, su equipo puede estar viendo menos solicitudes y una tasa de éxito normal entre las que sí recibe. Desde dentro, el servicio parece incluso más desahogado. Desde fuera, el comercio ha dejado de operar.</p>
+
+<p>Por eso pediría ver tres datos juntos durante el cambio:</p>
+
+<div style="overflow-x: auto; margin: 2rem 0;">
+    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.92rem; background: rgba(15, 16, 38, 0.6); border-radius: var(--r); overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.08);">
+        <thead>
+            <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.04);">
+                <th style="padding: 1rem; color: var(--a); font-family: var(--mono); font-size: 0.8rem; width: 30%;">MÉTRICA EN PARALELO</th>
+                <th style="padding: 1rem; color: #fff; font-weight: 700;">OBJETIVO DE CONTROL DURANTE EL CAMBIO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.06);">
+                <td style="padding: 1rem; font-weight: 600; color: #fff;">1. Intentos de inicio del cliente</td>
+                <td style="padding: 1rem; color: var(--tm);">Cuántas operaciones intenta iniciar un cliente representativo en el origen.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.06);">
+                <td style="padding: 1rem; font-weight: 600; color: #fff;">2. Peticiones que llegan al servicio</td>
+                <td style="padding: 1rem; color: var(--tm);">Cuántas solicitudes superan el proxy perimetral NGINX y tocan la capa de aplicación.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.06);">
+                <td style="padding: 1rem; font-weight: 600; color: #fff;">3. Operaciones completadas con éxito</td>
+                <td style="padding: 1rem; color: var(--tm);">Cuántas transacciones terminan con el resultado esperado y confirmación emitida.</td>
+            </tr>
+            <tr>
+                <td style="padding: 1rem; font-weight: 600; color: #fff;">+ Antigüedad del pendiente más antiguo</td>
+                <td style="padding: 1rem; color: var(--tm);">Para una plataforma de pagos: un promedio de latencia puede recuperarse enseguida mientras un comercio sigue esperando la respuesta para cuadrar su caja.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p>Cerraría la crisis cuando los puntos de entrada expuestos tengan una corrección o mitigación comprobada, los recorridos críticos funcionen con sus clientes reales o representativos y las operaciones pendientes estén conciliadas. Seguridad revisaría también los reinicios anómalos de los procesos de NGINX junto con otras evidencias. CERT-EU advierte que una caída aislada del proceso tiene valor limitado para determinar si se consiguió ejecutar código.</p>
+
+<div class="card-inner amber-border" style="margin: 2rem 0; padding: 1.25rem; background: rgba(249, 115, 22, 0.05); border-left: 3px solid var(--a); border-radius: 0 var(--r) var(--r) 0;">
+    <strong style="color: var(--a); display: block; margin-bottom: 0.35rem;">// PREGUNTA PARA EL PRÓXIMO SIMULACRO:</strong>
+    <p style="margin: 0; font-size: 1.05rem; font-weight: 600; color: #fff;">Si mañana desactivamos HTTP/2 en nuestra entrada principal, ¿qué cliente sería el primero en enterarse y qué alerta nos avisaría antes de que tuviera que llamarnos?</p>
+</div>
