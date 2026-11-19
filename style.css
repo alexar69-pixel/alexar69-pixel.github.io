@@ -51,20 +51,20 @@ body {
   background: var(--bg);
   color: var(--t);
   overflow-x: hidden;
-  cursor: none;
   line-height: 1.7;
 }
 
 a {
   text-decoration: none;
-  color: inherit
+  color: inherit;
+  cursor: pointer;
 }
 
 button {
   font-family: inherit;
-  cursor: none;
+  cursor: pointer;
   background: none;
-  border: none
+  border: none;
 }
 
 ul {
@@ -127,50 +127,11 @@ ul {
   opacity: .55;
 }
 
-/* ─── TRAIL CANVAS ─── */
-.cursor-trail {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9997;
-}
-
-/* ─── CURSOR ─── */
-.cursor-ring {
-  position: fixed;
-  width: 38px;
-  height: 38px;
-  border: 1.5px solid var(--a);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width .2s, height .2s, border-color .2s, background .2s;
-  mix-blend-mode: exclusion;
-}
-
+/* ─── CURSOR NATIVO LIMPIO (DESACTIVADO CURSOR FLOTANTE) ─── */
+.cursor-trail,
+.cursor-ring,
 .cursor-dot {
-  position: fixed;
-  width: 5px;
-  height: 5px;
-  background: var(--a);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-}
-
-.cursor-ring.hover {
-  width: 60px;
-  height: 60px;
-  background: rgba(249, 115, 22, .08);
-  border-color: var(--cyan);
-}
-
-.cursor-ring.click {
-  width: 24px;
-  height: 24px;
-  background: rgba(249, 115, 22, .25);
+  display: none !important;
 }
 
 /* ─── PARALLAX LAYERS ─── */

@@ -11,62 +11,9 @@ if ('serviceWorker' in navigator) {
 }
 
 // ══════════════════════════════════════════════════
-//  CURSOR — ring + dot + trail canvas
+//  CURSOR NATIVO — Cursor flotante y trail desactivados
 // ══════════════════════════════════════════════════
-const ring = document.getElementById('cursorRing');
-const dot = document.getElementById('cursorDot');
-const trailCanvas = document.getElementById('trailCanvas');
-const tCtx = trailCanvas.getContext('2d');
-
-let mx = -300, my = -300, rx = -300, ry = -300;
-let trailPts = [];
-
-function resizeTrail() {
-  trailCanvas.width = window.innerWidth;
-  trailCanvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resizeTrail, { passive: true });
-resizeTrail();
-
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  dot.style.left = mx + 'px';
-  dot.style.top = my + 'px';
-  trailPts.push({ x: mx, y: my, life: 1 });
-  if (trailPts.length > 28) trailPts.shift();
-});
-document.addEventListener('mousedown', () => ring.classList.add('click'));
-document.addEventListener('mouseup', () => ring.classList.remove('click'));
-
-(function animCursor() {
-  rx += (mx - rx) * 0.1;
-  ry += (my - ry) * 0.1;
-  ring.style.left = rx + 'px';
-  ring.style.top = ry + 'px';
-
-  // Trail
-  tCtx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
-  trailPts = trailPts.map(p => ({ ...p, life: p.life - 0.045 })).filter(p => p.life > 0);
-  for (let i = 1; i < trailPts.length; i++) {
-    const p = trailPts[i];
-    const pp = trailPts[i - 1];
-    tCtx.beginPath();
-    tCtx.moveTo(pp.x, pp.y);
-    tCtx.lineTo(p.x, p.y);
-    tCtx.strokeStyle = `rgba(249,115,22,${p.life * 0.35})`;
-    tCtx.lineWidth = p.life * 3;
-    tCtx.lineCap = 'round';
-    tCtx.stroke();
-  }
-  requestAnimationFrame(animCursor);
-})();
-
-// Hover states
-document.querySelectorAll('a, button, .htag, .gusto-card, .tl-card, .cw-item, .vibe-bar, .fbadge, .hologram-card')
-  .forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('hover'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
-  });
+// (Usando el puntero estándar del sistema operativo para una experiencia corporativa limpia y precisa)
 
 // ══════════════════════════════════════════════════
 //  SCROLL PROGRESS BAR
