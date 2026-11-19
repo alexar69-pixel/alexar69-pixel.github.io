@@ -164,7 +164,7 @@
 
                 <!-- Search Input -->
                 <div class="glossary-search-box">
-                    <input type="text" id="glossarySearch" class="glossary-input" placeholder="🔍 Filtrar término (ej: Andon, Circuit Breaker, Blast Radius, Goodhart...)" />
+                    <input type="text" id="glossarySearch" class="glossary-input" placeholder="🔍 Buscar término callejero o técnico (ej: viernes, botón rojo, lobo, autobús, andon, niebla...)" />
                 </div>
 
                 <!-- Terms Grid -->
@@ -335,6 +335,174 @@
                         </div>
                         <div class="term-example">
                             <strong>Aplicación:</strong> Preguntarse por qué el sistema carecía de confirmación previa antes de un borrado crítico.
+                        </div>
+                    </div>
+
+                    <!-- Term 13: Despliegue en Viernes -->
+                    <div class="glossary-card" data-term="despliegue en viernes read only friday cambio pase produccion fin de semana">
+                        <div>
+                            <span class="term-category">// Regla Callejera de Guardia</span>
+                            <div class="term-title">Despliegue en Viernes (Read-Only Friday)</div>
+                            <div class="term-def">
+                                La regla de oro no escrita de cualquier equipo que hace guardias: no se tocan configuraciones sensibles ni se suben versiones a producción a última hora de la tarde antes de un fin de semana salvo emergencia vital. La fatiga del equipo y la ausencia de personal de soporte multiplican el impacto de cualquier fallo tonto.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>En cristiano:</strong> "Si funciona y no arde, no lo toques un viernes a las 17:00 h si quieres cenar con tu familia."
+                        </div>
+                    </div>
+
+                    <!-- Term 14: Botón Rojo / Rollback -->
+                    <div class="glossary-card" data-term="boton rojo rollback vuelta atras desastre revertir marcha atras">
+                        <div>
+                            <span class="term-category">// Mitigación Inmediata</span>
+                            <div class="term-title">El Botón Rojo (Rollback de Emergencia)</div>
+                            <div class="term-def">
+                                Mecanismo ensayado para volver exactamente a la versión anterior estable con una sola orden y en menos de 2 minutos. En plena crisis no se debaten parches ni se corrigen líneas de código en caliente: se pulsa el botón rojo, se recupera el servicio y ya se investigará con calma el lunes.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>En cristiano:</strong> "Primero apaga el fuego y devuelve el dinero a los clientes; luego ya buscaremos la cerilla."
+                        </div>
+                    </div>
+
+                    <!-- Term 15: Niebla de Guerra -->
+                    <div class="glossary-card" data-term="niebla de guerra confusion panico crisis sintomas ruido">
+                        <div>
+                            <span class="term-category">// Psicología de Crisis</span>
+                            <div class="term-title">Niebla de Guerra (Incident Fog)</div>
+                            <div class="term-def">
+                                La confusión mental extrema que sufren los equipos durante los primeros 20 minutos de una caída grave: saltan 300 alarmas simultáneas, la mitad de los datos son contradictorios y nadie sabe con certeza qué se ha roto. Exige disciplina de mando para no dar palos de ciego.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>En cristiano:</strong> Cuando el coche echa humo, el salpicadero pita y cuatro personas te gritan a la vez direcciones distintas.
+                        </div>
+                    </div>
+
+                    <!-- Term 16: Fatiga de Alertas -->
+                    <div class="glossary-card" data-term="fatiga de alertas spam ruido falso positivo acostumbramiento">
+                        <div>
+                            <span class="term-category">// Operación Diaria</span>
+                            <div class="term-title">Fatiga de Alertas (El Cuento del Lobo)</div>
+                            <div class="term-def">
+                                Cuando un sistema envía decenas de notificaciones o correos de aviso al día que no requieren ninguna acción real. Los operadores se acostumbran a ignorarlas o silenciarlas, hasta que el día que salta la alerta del desastre real, nadie le hace caso.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>En cristiano:</strong> Si la alarma de tu casa suena todos los días por el gato del vecino, el día que entren a robar no llamarás a la policía.
+                        </div>
+                    </div>
+
+                    <!-- Term 17: Factores de Autobús -->
+                    <div class="glossary-card" data-term="factor autobus bus factor silo conocimiento heroe imprescindible">
+                        <div>
+                            <span class="term-category">// Gestión de Equipos</span>
+                            <div class="term-title">Factor Autobús (Bus Factor)</div>
+                            <div class="term-def">
+                                Número de personas clave de tu equipo que tendrían que ser "atropelladas por un autobús" (o irse de vacaciones sin cobertura) para que el servicio colapse por completo porque nadie más sabe cómo funciona una pieza crítica o dónde están las claves.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>En cristiano:</strong> Si solo Manolo sabe reiniciar la base de datos de transferencias, tu banco tiene un factor autobús de 1 y un peligro mortal.
+                        </div>
+                    </div>
+
+                    <!-- Term 18: Modo Degradado -->
+                    <div class="glossary-card" data-term="modo degradado cojo a medio gas plan b contingencia">
+                        <div>
+                            <span class="term-category">// Supervivencia Operativa</span>
+                            <div class="term-title">Modo Degradado (Funcionar a Medio Gas)</div>
+                            <div class="term-def">
+                                La capacidad de un sistema de seguir vivo prestando solo lo esencial cuando algo gordo se ha roto. Es preferible que una aplicación bancaria funcione lenta o sin mostrar avatares ni gráficos de gastos a que muestre una pantalla en blanco de error total.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>En cristiano:</strong> Llegar a casa en tercera marcha porque se rompió la caja de cambios es infinitamente mejor que quedarse tirado en el arcén.
+                        </div>
+                    </div>
+
+                    <!-- Term 19: Rueda de la Desgracia -->
+                    <div class="glossary-card" data-term="rueda de la desgracia wheel of misfortune gameday simulacro entrenamiento">
+                        <div>
+                            <span class="term-category">// Entrenamiento de Guardias</span>
+                            <div class="term-title">La Rueda de la Desgracia</div>
+                            <div class="term-def">
+                                Juego de rol técnico semanal donde los ingenieros simulan averías reales del pasado en una pizarra o entorno de pruebas. Permite cometer errores, aprender a usar los mandos de emergencia y perder el pánico a la consola sin arriesgar un solo euro de clientes.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>En cristiano:</strong> El simulador de vuelo para que los pilotos practiquen aterrizajes con un motor apagado antes de llevar pasajeros.
+                        </div>
+                    </div>
+
+                    <!-- Term 20: Runbook / Playbook -->
+                    <div class="glossary-card" data-term="runbook playbook chuleta manual de instrucciones procedimiento guia">
+                        <div>
+                            <span class="term-category">// Herramientas de Guardia</span>
+                            <div class="term-title">Runbook (La Chuleta de Emergencia)</div>
+                            <div class="term-def">
+                                Guía paso a paso, clara, directa y sin palabrería académica, que le dice al guardia de las 3 de la madrugada exactamente qué comandos teclear o qué botón pulsar ante una alerta concreta, sin tener que ponerse a filosofar medio dormido.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>En cristiano:</strong> La lista de emergencia plastificada que tienen los pilotos en cabina con los 4 pasos exactos si se incendia la cabina.
+                        </div>
+                    </div>
+
+                    <!-- Term 21: Mando de Incidentes -->
+                    <div class="glossary-card" data-term="incident commander arbitro war room escudo capitan bombero">
+                        <div>
+                            <span class="term-category">// Liderazgo de Crisis</span>
+                            <div class="term-title">Incident Commander (El Árbitro de la War Room)</div>
+                            <div class="term-def">
+                                La persona que dirige la crisis pero no toca el teclado. Su único trabajo es mantener el orden, asignar tareas claras de uno en uno, decidir qué hipótesis se prueba y, sobre todo, poner un muro impenetrable para que los directores nerviosos no distraigan a los técnicos que están arreglando la avería.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>En cristiano:</strong> El jefe de bomberos que se queda fuera del edificio ardiendo coordinando las mangueras para que nadie muera dentro.
+                        </div>
+                    </div>
+
+                    <!-- Term 22: Interruptor de Apagado Rápido -->
+                    <div class="glossary-card" data-term="kill switch feature flag interruptor palanca apagar modulo">
+                        <div>
+                            <span class="term-category">// Control de Daños</span>
+                            <div class="term-title">Kill Switch (La Palanca de Desconexión)</div>
+                            <div class="term-def">
+                                Un interruptor configurable que permite apagar instantáneamente una funcionalidad defectuosa (ej: las promociones de Black Friday o un validador de DNI) sin necesidad de volver a desplegar código ni reiniciar los servidores centrales.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>En cristiano:</strong> Tirar del cable de la tostadora si empieza a salir humo antes de que salten los plomos de toda la casa.
+                        </div>
+                    </div>
+
+                    <!-- Term 23: Efecto Cascada -->
+                    <div class="glossary-card" data-term="efecto cascada domino saturacion colapso retries reintentos">
+                        <div>
+                            <span class="term-category">// Patología de Sistemas</span>
+                            <div class="term-title">Efecto Cascada (Efecto Dominó)</div>
+                            <div class="term-def">
+                                Lo que ocurre cuando un fallo pequeño en un componente secundario satura a los que están a su alrededor (por reintentos automáticos descontrolados), provocando la caída encadenada de toda la infraestructura como fichas de dominó.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>En cristiano:</strong> Un atasco en una salida de la M-30 que acaba colapsando los túneles y paralizando el tráfico de toda la ciudad.
+                        </div>
+                    </div>
+
+                    <!-- Term 24: Relevo de Guardia -->
+                    <div class="glossary-card" data-term="relevo de guardia handover fatiga cansancio cerebro frito relevos">
+                        <div>
+                            <span class="term-category">// Salud y Rendimiento</span>
+                            <div class="term-title">Relevo Obligatorio por Fatiga</div>
+                            <div class="term-def">
+                                Norma estricta que exige que ningún ingeniero pase más de 6 u 8 horas seguidas en una War Room de máxima tensión. Después de ese tiempo, el cerebro deja de razonar, comete fallos infantiles y empeora la avería. Relevar no es debilidad; es autoprotección del servicio.
+                            </div>
+                        </div>
+                        <div class="term-example">
+                            <strong>En cristiano:</strong> Ningún cirujano opera a corazón abierto tras 14 horas sin dormir. En sistemas críticos con millones en juego, tampoco.
                         </div>
                     </div>
 
