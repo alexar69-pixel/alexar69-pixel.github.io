@@ -5,7 +5,14 @@
     <link>https://alexanderarmentia.com/blog/</link>
     <description>Resiliencia, tecnologia y liderazgo tecnico</description>
     <language>es-es</language>
-    <lastBuildDate>Thu, 19 Nov 2026 13:14:03 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2026 13:30:32 GMT</lastBuildDate>
+    <item>
+      <title>Java4Shell: Autopsia Técnica de la Vulnerabilidad de Memoria Descubierta por IA tras 12 Años Oculta</title>
+      <link>https://alexanderarmentia.com/blog/posts/java4shell-vulnerabilidad-critica-memoria-ia.html</link>
+      <guid>https://alexanderarmentia.com/blog/posts/java4shell-vulnerabilidad-critica-memoria-ia.html</guid>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Análisis SRE sobre Java4Shell, el fallo crítico en la JVM que pone en jaque al 90% de las grandes corporaciones y bancos mundiales. Por qué la IA destapa lo que los humanos no vieron en 12 años y cómo parchear 5.000 servidores en caliente sin romper la producción.</description>
+    </item>
     <item>
       <title>La caída de Microsoft 365: cuando el failover propaga el fallo</title>
       <link>https://alexanderarmentia.com/blog/posts/caida-microsoft-365-failover-cascada.html</link>

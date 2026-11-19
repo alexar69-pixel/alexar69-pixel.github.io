@@ -5,12 +5,20 @@
   <link href="https://alexanderarmentia.com/feed.xml" rel="self" />
   <link href="https://alexanderarmentia.com/" />
   <id>https://alexanderarmentia.com/</id>
-  <updated>2026-11-19T09:00:00Z</updated>
+  <updated>2026-11-19T13:30:00Z</updated>
   <author>
     <name>Alexander Armentia</name>
     <email>alexar69@hotmail.com</email>
     <uri>https://alexanderarmentia.com/</uri>
   </author>
+
+  <entry>
+    <title>Java4Shell: Autopsia Técnica de la Vulnerabilidad de Memoria Descubierta por IA tras 12 Años Oculta</title>
+    <link href="https://alexanderarmentia.com/blog/posts/java4shell-vulnerabilidad-critica-memoria-ia.html" />
+    <id>https://alexanderarmentia.com/blog/posts/java4shell-vulnerabilidad-critica-memoria-ia.html</id>
+    <updated>2026-11-19T13:30:00Z</updated>
+    <summary>Análisis SRE sobre Java4Shell, el fallo crítico en la JVM que pone en jaque al 90% de las grandes corporaciones y bancos mundiales. Por qué la IA destapa lo que los humanos no vieron en 12 años y cómo parchear 5.000 servidores en caliente sin romper la producción.</summary>
+  </entry>
 
   <entry>
     <title>La caída de Microsoft 365: cuando el failover propaga el fallo</title>
