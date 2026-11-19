@@ -1,17 +1,17 @@
 [
   {
     "slug": "java4shell-vulnerabilidad-critica-memoria-ia",
-    "title": "Java4Shell: Autopsia Técnica de la Vulnerabilidad de Memoria Descubierta por IA tras 12 Años Oculta",
-    "excerpt": "Análisis SRE sobre Java4Shell, el fallo crítico en la JVM que pone en jaque al 90% de las grandes corporaciones y bancos mundiales. Por qué la IA destapa lo que los humanos no vieron en 12 años y cómo parchear 5.000 servidores en caliente sin romper la producción.",
+    "title": "Java4Shell. ¿Ya podemos cerrar la incidencia?",
+    "excerpt": "Imagina que coordinas la respuesta a Java4Shell en una entidad financiera. Todo está en verde y alguien pregunta si ya podemos cerrar la incidencia. Yo pediría una comprobación más: si arranca una réplica nueva, ¿qué versión de Java va a cargar?",
     "date": "2026-11-19",
     "tags": [
       "java",
       "jvm",
       "ciberseguridad",
       "java4shell",
-      "ia",
       "sre",
       "resiliencia",
+      "incident management",
       "banca"
     ],
     "image": "/blog/assets/java4shell-vulnerabilidad-critica-memoria-ia.png"

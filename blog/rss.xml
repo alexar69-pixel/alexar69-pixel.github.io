@@ -5,13 +5,13 @@
     <link>https://alexanderarmentia.com/blog/</link>
     <description>Resiliencia, tecnologia y liderazgo tecnico</description>
     <language>es-es</language>
-    <lastBuildDate>Thu, 19 Nov 2026 13:30:32 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2026 13:35:11 GMT</lastBuildDate>
     <item>
-      <title>Java4Shell: Autopsia Técnica de la Vulnerabilidad de Memoria Descubierta por IA tras 12 Años Oculta</title>
+      <title>Java4Shell. ¿Ya podemos cerrar la incidencia?</title>
       <link>https://alexanderarmentia.com/blog/posts/java4shell-vulnerabilidad-critica-memoria-ia.html</link>
       <guid>https://alexanderarmentia.com/blog/posts/java4shell-vulnerabilidad-critica-memoria-ia.html</guid>
       <pubDate>Thu, 19 Nov 2026 00:00:00 GMT</pubDate>
-      <description>Análisis SRE sobre Java4Shell, el fallo crítico en la JVM que pone en jaque al 90% de las grandes corporaciones y bancos mundiales. Por qué la IA destapa lo que los humanos no vieron en 12 años y cómo parchear 5.000 servidores en caliente sin romper la producción.</description>
+      <description>Imagina que coordinas la respuesta a Java4Shell en una entidad financiera. Todo está en verde y alguien pregunta si ya podemos cerrar la incidencia. Yo pediría una comprobación más: si arranca una réplica nueva, ¿qué versión de Java va a cargar?</description>
     </item>
     <item>
       <title>La caída de Microsoft 365: cuando el failover propaga el fallo</title>
