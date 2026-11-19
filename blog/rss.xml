@@ -5,7 +5,14 @@
     <link>https://alexanderarmentia.com/blog/</link>
     <description>Resiliencia, tecnologia y liderazgo tecnico</description>
     <language>es-es</language>
-    <lastBuildDate>Thu, 19 Nov 2026 08:01:48 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2026 08:15:40 GMT</lastBuildDate>
+    <item>
+      <title>La caída de Microsoft 365: cuando el failover propaga el fallo</title>
+      <link>https://alexanderarmentia.com/blog/posts/caida-microsoft-365-failover-cascada.html</link>
+      <guid>https://alexanderarmentia.com/blog/posts/caida-microsoft-365-failover-cascada.html</guid>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Análisis técnico desde Reliability sobre la interrupción de Microsoft 365 del 12 y 13 de noviembre. Qué ocurre cuando el mecanismo diseñado para salvar el servicio satura la pasarela y expande la cascada sistémica.</description>
+    </item>
     <item>
       <title>Juegos de Simulación de Caídas: De la Rueda de la Desgracia a los GameDays en Banca Crítica</title>
       <link>https://alexanderarmentia.com/blog/posts/gamedays-chaos-engineering-simulacion-caidas-banca.html</link>
