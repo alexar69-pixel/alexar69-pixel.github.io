@@ -16,15 +16,23 @@
     <title>Juegos de Simulación de Caídas en Banca: De la Rueda de la Desgracia a los Chaos GameDays</title>
     <link href="https://alexanderarmentia.com/blog/posts/gamedays-chaos-engineering-simulacion-caidas-banca.html" />
     <id>https://alexanderarmentia.com/blog/posts/gamedays-chaos-engineering-simulacion-caidas-banca.html</id>
-    <updated>2026-11-18T16:00:00Z</updated>
+    <updated>2026-11-17T10:00:00Z</updated>
     <summary>Cómo entrenar a guardias y comités de crisis en banca sin quemar producción. Las cuatro modalidades de simulación: Rueda de la Desgracia, Tabletop directivos, GameDays con inyección de caos y simulacros DiRT bajo marco DORA.</summary>
+  </entry>
+
+  <entry>
+    <title>¿Eficiencia o Seguridad? Las Lecciones de Adamuz y Urda sobre la Trampa de los KPIs en la Infraestructura Crítica</title>
+    <link href="https://alexanderarmentia.com/blog/posts/adamuz-urda-kpis-seguridad-ave.html" />
+    <id>https://alexanderarmentia.com/blog/posts/adamuz-urda-kpis-seguridad-ave.html</id>
+    <updated>2026-11-10T09:00:00Z</updated>
+    <summary>Reflexión técnica sobre por qué priorizar los KPIs de puntualidad comercial y frecuencia sobre la integridad estructural y la seguridad conduce al fallo catastrófico en infraestructuras críticas.</summary>
   </entry>
 
   <entry>
     <title>MTTR Bancario y Disponibilidad Extrema: Cómo Gestionar Incidentes Críticos cuando Cada Minuto Cuesta Millones</title>
     <link href="https://alexanderarmentia.com/blog/posts/mttr-bancario-disponibilidad-gestion-incidencias-p1.html" />
     <id>https://alexanderarmentia.com/blog/posts/mttr-bancario-disponibilidad-gestion-incidencias-p1.html</id>
-    <updated>2026-11-18T15:30:00Z</updated>
+    <updated>2026-10-28T09:00:00Z</updated>
     <summary>Por qué en banca crítica el MTTR importa diez veces más que el MTBF. El coste real del minuto de indisponibilidad, los cuatro tiempos del incidente P1 y cómo reducir la mitigación a menos de 8 minutos con patrones SRE.</summary>
   </entry>
 
@@ -32,7 +40,7 @@
     <title>Anatomía de una War Room de 14 Horas: La Psicología del Incidente P1</title>
     <link href="https://alexanderarmentia.com/blog/posts/anatomia-de-una-war-room-14-horas-incident-management.html" />
     <id>https://alexanderarmentia.com/blog/posts/anatomia-de-una-war-room-14-horas-incident-management.html</id>
-    <updated>2026-11-18T15:00:00Z</updated>
+    <updated>2026-10-14T09:00:00Z</updated>
     <summary>Crónica técnica desde el puente de mando de un incidente crítico en banca. El rol del Incident Commander, la contención del pánico directivo y la disciplina bajo niebla de guerra.</summary>
   </entry>
 
@@ -40,7 +48,7 @@
     <title>La Trampa de la Monocultura Tecnológica: Del Caso CrowdStrike a la Nube Única</title>
     <link href="https://alexanderarmentia.com/blog/posts/la-trampa-de-la-monocultura-del-caso-crowdstrike-a-la-fragilidad-cloud.html" />
     <id>https://alexanderarmentia.com/blog/posts/la-trampa-de-la-monocultura-del-caso-crowdstrike-a-la-fragilidad-cloud.html</id>
-    <updated>2026-11-18T15:00:00Z</updated>
+    <updated>2026-09-22T09:00:00Z</updated>
     <summary>Por qué la homogeneización crea un radio de impacto planetario. Canary deployments, diversidad de software y por qué la redundancia idéntica no es resiliencia.</summary>
   </entry>
 
@@ -48,7 +56,7 @@
     <title>¿Dejarías que un Agente de IA Ejecute un Rollback a las 3 de la Mañana?</title>
     <link href="https://alexanderarmentia.com/blog/posts/agentes-ia-en-produccion-remediacion-autonoma-sre.html" />
     <id>https://alexanderarmentia.com/blog/posts/agentes-ia-en-produccion-remediacion-autonoma-sre.html</id>
-    <updated>2026-11-18T15:00:00Z</updated>
+    <updated>2026-08-26T09:00:00Z</updated>
     <summary>Los 4 niveles de autonomía para agentes de IA en SRE y operaciones críticas. Límites de remediación autónoma y Circuit Breakers para evitar la alucinación operativa.</summary>
   </entry>
 
@@ -56,8 +64,16 @@
     <title>El Resilience Scorecard y la Plantilla Definitiva de Blameless Post-Mortem</title>
     <link href="https://alexanderarmentia.com/blog/posts/resilience-scorecard-plantilla-blameless-post-mortem.html" />
     <id>https://alexanderarmentia.com/blog/posts/resilience-scorecard-plantilla-blameless-post-mortem.html</id>
-    <updated>2026-11-18T15:00:00Z</updated>
+    <updated>2026-07-29T09:00:00Z</updated>
     <summary>Guía práctica con una auditoría de 10 preguntas para evaluar la madurez de tu infraestructura y una plantilla estándar Markdown para análisis causa-raíz sin culpabilización.</summary>
+  </entry>
+
+  <entry>
+    <title>IA y Resiliencia en Sistemas Críticos: La Nueva Era del SRE y la Gestión de Incidentes P1</title>
+    <link href="https://alexanderarmentia.com/blog/posts/ia-y-resiliencia-en-sistemas-criticos-sre-2026.html" />
+    <id>https://alexanderarmentia.com/blog/posts/ia-y-resiliencia-en-sistemas-criticos-sre-2026.html</id>
+    <updated>2026-06-18T09:00:00Z</updated>
+    <summary>Cómo la convergencia de modelos agénticos, observabilidad avanzada y marcos SRE transforma las War Rooms y la mitigación de fallos en banca.</summary>
   </entry>
 
   <entry>

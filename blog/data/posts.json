@@ -3,7 +3,7 @@
     "slug": "gamedays-chaos-engineering-simulacion-caidas-banca",
     "title": "Juegos de Simulación de Caídas: De la Rueda de la Desgracia a los GameDays en Banca Crítica",
     "excerpt": "Cómo los ejercicios de simulación de desastres (Chaos GameDays, Wheel of Misfortune y Tabletop Exercises) entrenan la memoria muscular de los equipos de guardia y reducen el MTTR bancario en más de un 40%.",
-    "date": "2026-11-18",
+    "date": "2026-11-17",
     "tags": [
       "chaos engineering",
       "gameday",
@@ -15,10 +15,24 @@
     "image": "/blog/assets/gamedays-chaos-engineering-simulacion-caidas-banca.png"
   },
   {
+    "slug": "adamuz-urda-kpis-seguridad-ave",
+    "title": "¿Eficiencia o Seguridad? Las Lecciones de Adamuz y Urda sobre la Trampa de los KPIs en la Infraestructura Crítica",
+    "excerpt": "Reflexión técnica sobre por qué priorizar los KPIs de puntualidad comercial y frecuencia sobre la integridad estructural y la seguridad conduce al fallo catastrófico en infraestructuras críticas.",
+    "date": "2026-11-10",
+    "tags": [
+      "reliability",
+      "seguridad",
+      "kpis",
+      "infraestructura critica",
+      "sre"
+    ],
+    "image": "/blog/assets/adamuz-urda-kpis-seguridad-ave.png"
+  },
+  {
     "slug": "mttr-bancario-disponibilidad-gestion-incidencias-p1",
     "title": "MTTR Bancario y Disponibilidad Extrema: Cómo Gestionar Incidentes Críticos cuando Cada Minuto Cuesta Millones",
     "excerpt": "Por qué en banca crítica el MTTR importa diez veces más que el MTBF. Análisis del coste real del minuto de indisponibilidad, los cuatro tiempos del incidente P1 y cómo reducir la mitigación a menos de 8 minutos con patrones SRE.",
-    "date": "2026-11-18",
+    "date": "2026-10-28",
     "tags": [
       "mttr",
       "banca",
@@ -33,7 +47,7 @@
     "slug": "anatomia-de-una-war-room-14-horas-incident-management",
     "title": "Anatomía de una War Room de 14 Horas: La Psicología del Incidente P1 y lo que Nadie Cuenta en los Manuales",
     "excerpt": "Crónica técnica y operativa desde el puente de mando de un incidente crítico en banca. El rol del Incident Commander, la contención del pánico directivo, el ruido en las llamadas y cómo tomar decisiones bajo niebla de guerra.",
-    "date": "2026-11-18",
+    "date": "2026-10-14",
     "tags": [
       "incident management",
       "war room",
@@ -47,7 +61,7 @@
     "slug": "la-trampa-de-la-monocultura-del-caso-crowdstrike-a-la-fragilidad-cloud",
     "title": "La Trampa de la Monocultura Tecnológica: Del Caso CrowdStrike a la Fragilidad Oculta de la Nube Única",
     "excerpt": "Por qué la homogeneización de agentes, kernels y proveedores cloud crea un radio de impacto planetario. Canary deployments, diversidad arquitectónica y por qué la redundancia idéntica no es resiliencia.",
-    "date": "2026-11-18",
+    "date": "2026-09-22",
     "tags": [
       "blast radius",
       "monocultura",
@@ -61,7 +75,7 @@
     "slug": "agentes-ia-en-produccion-remediacion-autonoma-sre",
     "title": "¿Dejarías que un Agente de IA Ejecute un Rollback a las 3 de la Mañana? El Dilema del Human-in-the-Loop en SRE",
     "excerpt": "El límite entre la observabilidad predictiva y la acción destructiva en producción. Los 4 niveles de autonomía para agentes de IA en operaciones críticas y cómo acotar el riesgo con Circuit Breakers.",
-    "date": "2026-11-18",
+    "date": "2026-08-26",
     "tags": [
       "ia",
       "agentes",
@@ -75,7 +89,7 @@
     "slug": "resilience-scorecard-plantilla-blameless-post-mortem",
     "title": "El Resilience Scorecard y la Plantilla Definitiva de Blameless Post-Mortem: Evalúa la Madurez de tu Infraestructura",
     "excerpt": "Guía práctica para CTOs y líderes de operaciones: auditoría de 10 preguntas para diagnosticar la fragilidad de tus sistemas y una plantilla exhaustiva en Markdown para análisis causa-raíz sin culpabilización.",
-    "date": "2026-11-18",
+    "date": "2026-07-29",
     "tags": [
       "scorecard",
       "blameless post-mortem",
@@ -86,24 +100,10 @@
     "image": "/blog/assets/resilience-scorecard-plantilla-blameless-post-mortem.png"
   },
   {
-    "slug": "adamuz-urda-kpis-seguridad-ave",
-    "title": "¿Eficiencia o Seguridad? Las Lecciones de Adamuz y Urda sobre la Trampa de los KPIs en la Infraestructura Crítica",
-    "excerpt": "Reflexión técnica sobre por qué priorizar los KPIs de puntualidad comercial y frecuencia sobre la integridad estructural y la seguridad conduce al fallo catastrófico en infraestructuras críticas.",
-    "date": "2026-11-18",
-    "tags": [
-      "reliability",
-      "seguridad",
-      "kpis",
-      "infraestructura critica",
-      "sre"
-    ],
-    "image": "/blog/assets/adamuz-urda-kpis-seguridad-ave.png"
-  },
-  {
     "slug": "ia-y-resiliencia-en-sistemas-criticos-sre-2026",
     "title": "IA y Resiliencia en Sistemas Críticos: La Nueva Era del SRE y la Gestión de Incidentes P1",
     "excerpt": "Análisis técnico sobre cómo la convergencia de modelos agénticos, observabilidad avanzada y marcos de Site Reliability Engineering (SRE) está transformando las War Rooms y la mitigación de fallos en banca y plataformas de alta disponibilidad.",
-    "date": "2026-11-18",
+    "date": "2026-06-18",
     "tags": [
       "sre",
       "resiliencia",

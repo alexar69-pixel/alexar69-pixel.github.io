@@ -33,3 +33,4 @@ for p in posts:
     print(f"[{slug}]")
     print(f"  First img in post content: {first_img}")
     print(f"  Asset on disk: {asset_status}")
+
