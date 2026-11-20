@@ -1,5 +1,22 @@
 [
   {
+    "slug": "el-poder-del-incident-manager-war-room-liderazgo",
+    "title": "El Verdadero Poder del Incident Manager: Por Qué sin Autoridad de Mando no Hay Resiliencia",
+    "excerpt": "Son las 3 de la madrugada y el servicio bancario crítico ha caído. En la War Room hay 35 personas discutiendo. En ese instante, la tecnología pasa a un segundo plano: el valor del Incident Manager, sus poderes frente a jerarquías y protocolos, y por qué el respaldo de dirección decide si el servicio tarda minutos u horas en revivir.",
+    "date": "2026-11-20",
+    "tags": [
+      "incident management",
+      "war room",
+      "incident commander",
+      "sre",
+      "resiliencia",
+      "liderazgo",
+      "banca",
+      "alta disponibilidad"
+    ],
+    "image": "/blog/assets/el-poder-del-incident-manager-war-room-liderazgo.png"
+  },
+  {
     "slug": "nginx-riesgo-apagar-http2",
     "title": "NGINX y el riesgo de apagar HTTP/2",
     "excerpt": "Desactivas HTTP/2 para mitigar una vulnerabilidad en NGINX. La web sigue en verde. ¿Cómo sabes que el comercio que confirma sus cobros por API o gRPC sigue operando? Análisis sobre la resiliencia operativa y la toma de decisiones en crisis.",
