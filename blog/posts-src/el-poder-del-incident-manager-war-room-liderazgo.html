@@ -75,7 +75,32 @@
 
 <p>El respaldo de la dirección no se demuestra con palabras en una presentación anual; se demuestra cuando un C-Level entra en la War Room, pregunta al Incident Manager: <em>«¿Qué necesitas de mí para desbloquear el camino?»</em>, escucha la respuesta, acata el canal de comunicación establecido y abandona la sala técnica para dejar trabajar a los equipos.</p>
 
-<h2>4. Los tres pilares de un Incident Commander de élite</h2>
+<h2>4. Las tres dimensiones del perfil: Plataforma, negocio y termómetro social</h2>
+
+<p>Existe el mito de que un buen Incident Manager debe haber sido el administrador de sistemas más veterano o el programador que memoriza cada línea de código. La realidad en infraestructuras a gran escala es muy distinta. El perfil de un Incident Commander de referencia se define por el dominio equilibrado de tres dimensiones:</p>
+
+<h3>A. Comprensión macro de la arquitectura y sus herramientas (sin necesidad de teclear comandos)</h3>
+<p>El Incident Manager no necesita conocer la sintaxis exacta de un comando de red, los flags de configuración de un kernel Linux o la instrucción exacta para drenar un clúster en Kubernetes. Su valor no reside en teclear en la consola; para eso están los especialistas técnicos.</p>
+<p>Su fortaleza radica en <strong>conocer la cartografía completa del sistema</strong>: sabe qué piezas dialogan entre sí, cómo fluye una petición desde el CDN perimetral hasta el mainframe o la base de datos distribuida, qué capacidades tienen las herramientas de observabilidad (APM, trazas distribuidas, métricas de red) y qué contramedidas son técnicamente viables. Sabe qué preguntar a cada especialista, interpreta al vuelo si una hipótesis contradice la topología y valida si el plan propuesto tiene sentido antes de autorizarlo.</p>
+
+<h3>B. Visión financiera, regulatoria y de impacto en negocio</h3>
+<p>Para un ingeniero, una saturación en un pool de conexiones es un problema de concurrencia. Para el Incident Manager, esa misma saturación representa <strong>miles de transacciones interrumpidas, millones de euros en riesgo y una potencial notificación regulatoria bajo el marco DORA</strong>.</p>
+<p>El IM traduce la telemetría técnica en el lenguaje de los comités de dirección y operaciones. Comprende qué proceso de negocio está sufriendo, qué servicios secundarios pueden sacrificarse temporalmente mediante degradación elegante (*graceful degradation*) para salvar el flujo de facturación principal, y qué implicaciones contractuales (SLA) o normativas acarrea cada minuto de indisponibilidad.</p>
+
+<h3>C. El termómetro social: Entender la psicología de la calle y el impacto reputacional</h3>
+<p>Las incidencias técnicas no suceden en un laboratorio aséptico; ocurren en el mundo real, con clientes reales expuestos a dinámicas sociales y emocionales extremas. El Incident Manager debe poseer un fino instinto para calibrar cómo el momento exterior amplifica exponencialmente el impacto reputacional:</p>
+
+<ul>
+    <li><strong>El concierto multitudinario y el colapso de pagos:</strong> Una pasarela de autorización bancaria que sufre microcortes un martes cualquiera puede pasar desapercibida. Pero si esa misma lentitud ocurre a las 10:00 de la mañana, en el instante exacto en que se abre la preventa masiva de entradas para la gira de <em>Rosalía</em>, el problema deja de ser técnico: se convierte en un <em>Trending Topic</em> en redes sociales en siete minutos, en cientos de miles de usuarios frustrados acusando a la entidad en TikTok y Twitter/X, y en los medios digitales abriendo con la noticia. El IM debe anticipar ese tsunami social, blindar los canales de atención al cliente y coordinar con el gabinete de comunicación antes de que la crisis se vuelva incontrolable.</li>
+    <li><strong>El debut en bolsa y el pánico en la plataforma de trading:</strong> Si la aplicación de inversión o brokerage sufre una degradación durante una jornada ordinaria, los usuarios esperan. Pero si la plataforma se congela durante la campana de apertura en Wall Street en plena salida a bolsa (IPO) de <em>Anthropic</em>, el escenario es crítico: miles de inversores atrapados sin poder ejecutar compras u órdenes de <em>stop-loss</em> mientras los precios oscilan frenéticamente. El impacto aquí no es solo reputacional: deriva en reclamaciones millonarias, investigaciones inmediatas de los reguladores bursátiles (CNMV, SEC) y una fractura de confianza institucional que puede costar años reconstruir.</li>
+</ul>
+
+<div class="card-inner amber-border" style="margin: 2rem 0; padding: 1.25rem; background: rgba(249, 115, 22, 0.05); border-left: 3px solid var(--a); border-radius: 0 var(--r) var(--r) 0;">
+    <strong style="color: var(--a); display: block; margin-bottom: 0.35rem;">// LA SENSIBILIDAD DEL COMANDANTE:</strong>
+    <p style="margin: 0; font-size: 0.95rem; color: var(--t);">El Incident Manager no mide la gravedad únicamente por los códigos de error HTTP en Grafana. La mide por el termómetro de la calle. Es esa capacidad de conectar un hilo bloqueado en una base de datos con la reacción emocional y social de un millón de personas lo que le permite calibrar la verdadera urgencia y ordenar acciones contundentes.</p>
+</div>
+
+<h2>5. Los pilares de un Incident Commander de élite</h2>
 
 <p>A lo largo de más de dos décadas gestionando infraestructuras críticas y liderando comités de crisis en el sector financiero, he aprendido que los mejores Incident Managers no son necesariamente los que más líneas de código recuerdan, sino los que dominan tres disciplinas críticas:</p>
 

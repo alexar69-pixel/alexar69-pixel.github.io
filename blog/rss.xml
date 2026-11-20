@@ -5,13 +5,13 @@
     <link>https://alexanderarmentia.com/blog/</link>
     <description>Resiliencia, tecnologia y liderazgo tecnico</description>
     <language>es-es</language>
-    <lastBuildDate>Fri, 20 Nov 2026 11:15:01 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 11:22:23 GMT</lastBuildDate>
     <item>
       <title>El Verdadero Poder del Incident Manager: Por Qué sin Autoridad de Mando no Hay Resiliencia</title>
       <link>https://alexanderarmentia.com/blog/posts/el-poder-del-incident-manager-war-room-liderazgo.html</link>
       <guid>https://alexanderarmentia.com/blog/posts/el-poder-del-incident-manager-war-room-liderazgo.html</guid>
       <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-      <description>Son las 3 de la madrugada y el servicio bancario crítico ha caído. En la War Room hay 35 personas discutiendo. En ese instante, la tecnología pasa a un segundo plano: el valor del Incident Manager, sus poderes frente a jerarquías y protocolos, y por qué el respaldo de dirección decide si el servicio tarda minutos u horas en revivir.</description>
+      <description>Son las 3 de la madrugada y el servicio bancario crítico ha caído. En la War Room hay 35 personas discutiendo. En ese instante, la tecnología pasa a un segundo plano: el valor del Incident Manager, sus poderes frente a jerarquías, el dominio de plataforma y negocio, y la lectura del termómetro social ante crisis de alto impacto reputacional.</description>
     </item>
     <item>
       <title>NGINX y el riesgo de apagar HTTP/2</title>
