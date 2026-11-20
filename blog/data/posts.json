@@ -5,14 +5,17 @@
     "excerpt": "Son las 3 de la madrugada y el servicio bancario crítico ha caído. En la War Room hay 35 personas discutiendo. En ese instante, la tecnología pasa a un segundo plano: el valor del Incident Manager, sus poderes frente a jerarquías, el dominio de plataforma y negocio, y la lectura del termómetro social ante crisis de alto impacto reputacional.",
     "date": "2026-11-20",
     "tags": [
+      "incident commander",
       "incident management",
       "war room",
-      "incident commander",
       "sre",
-      "resiliencia",
-      "liderazgo",
-      "banca",
-      "alta disponibilidad"
+      "dora",
+      "resiliencia operativa",
+      "gestion de crisis",
+      "alta disponibilidad",
+      "mttr",
+      "blameless post-mortem",
+      "banca"
     ],
     "image": "/blog/assets/el-poder-del-incident-manager-war-room-liderazgo.png"
   },

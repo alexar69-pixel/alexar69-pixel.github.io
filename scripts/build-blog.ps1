@@ -1,4 +1,4 @@
-$ErrorActionPreference = 'Stop'
+﻿$ErrorActionPreference = 'Stop'
 
 $repo = Split-Path -Parent $PSScriptRoot
 $postsJsonPath = Join-Path $repo 'blog\data\posts.json'
@@ -48,6 +48,51 @@ foreach ($post in $posts) {
     $dateObj = [DateTime]::Parse($post.date)
     $formattedDate = $dateObj.ToString("d 'de' MMMM 'de' yyyy", $fmt)
     
+    # FAQ Schema opcional para artículos con Q&A rico
+    $faqSchema = ""
+    if ($slug -eq "el-poder-del-incident-manager-war-room-liderazgo") {
+        $faqSchema = @'
+        ,{
+          "@type": "FAQPage",
+          "@id": "https://alexanderarmentia.com/blog/posts/el-poder-del-incident-manager-war-room-liderazgo.html#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Qué diferencia a un Incident Commander de un gestor de tickets ITIL ordinario?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Un gestor de tickets tradicional se limita a registrar eventos y actualizar campos. Un Incident Commander lidera activamente la resolución técnica: impone orden táctico en la War Room, aplica timeboxing a las hipótesis, protege el foco cognitivo de los ingenieros aislando el ruido directivo y toma decisiones críticas de mitigación para minimizar el MTTR."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Por qué el Incident Manager debe tener supremacía operativa sobre directores de área?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Durante una caída crítica P1, una War Room no puede funcionar como una asamblea parlamentaria. El Incident Manager ostenta mando único delegado por el C-Level: nadie, independientemente de su rango en el organigrama, puede ordenar cambios en producción sin su visto bueno explícito."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Qué exige el marco regulatorio DORA sobre la gestión de incidentes mayores en banca?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "El reglamento europeo DORA (Digital Operational Resilience Act) exige a las entidades financieras y proveedores de servicios TIC protocolos rigurosos de clasificación, reporte inmediato a autoridades supervisoras (BCE, EBA) y planes de continuidad demostrables. El Incident Manager es la figura clave que garantiza que los tiempos de mitigación y las evidencias de auditoría cumplan con los estándares regulatorios exigidos."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Qué es un Emergency CAB y por qué debe autorizarlo el Incident Manager?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "El Emergency Change Advisory Board es el mecanismo de aprobación ultrarrápido para cambios en caliente, despliegues de parches de seguridad o conmutaciones de tráfico durante una emergencia. En lugar de convocar comités burocráticos, el Incident Manager tiene la prerrogativa legal y corporativa de autorizar la acción en segundos."
+              }
+            }
+          ]
+        }
+'@
+    }
+
     # Generar etiquetas Open Graph, Twitter y Schema.org BlogPosting
     $escapedExcerpt = $post.excerpt -replace '"', '\"'
     $escapedTitle = $post.title -replace '"', '\"'
@@ -148,7 +193,7 @@ foreach ($post in $posts) {
               "item": "https://alexanderarmentia.com/blog/posts/$slug.html"
             }
           ]
-        }
+        }$faqSchema
       ]
     }
     </script>

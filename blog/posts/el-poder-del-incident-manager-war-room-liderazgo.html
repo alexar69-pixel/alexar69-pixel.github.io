@@ -19,7 +19,7 @@
     <meta name="theme-color" content="#0d0d14" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="description" content="Son las 3 de la madrugada y el servicio bancario crítico ha caído. En la War Room hay 35 personas discutiendo. En ese instante, la tecnología pasa a un segundo plano: el valor del Incident Manager, sus poderes frente a jerarquías, el dominio de plataforma y negocio, y la lectura del termómetro social ante crisis de alto impacto reputacional." />
-    <meta name="keywords" content="incident management, war room, incident commander, sre, resiliencia, liderazgo, banca, alta disponibilidad, Alexander Armentia, SRE, Resiliencia, Incident Management, BBVA, Alta Disponibilidad" />
+    <meta name="keywords" content="incident commander, incident management, war room, sre, dora, resiliencia operativa, gestion de crisis, alta disponibilidad, mttr, blameless post-mortem, banca, Alexander Armentia, SRE, Resiliencia, Incident Management, BBVA, Alta Disponibilidad" />
     <meta name="author" content="Alexander Armentia Bravo" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://alexanderarmentia.com/blog/posts/el-poder-del-incident-manager-war-room-liderazgo.html" />
@@ -65,7 +65,7 @@
           "datePublished": "2026-11-20T00:00:00Z",
           "dateModified": "2026-11-20T00:00:00Z",
           "mainEntityOfPage": "https://alexanderarmentia.com/blog/posts/el-poder-del-incident-manager-war-room-liderazgo.html",
-          "keywords": ["incident management", "war room", "incident commander", "sre", "resiliencia", "liderazgo", "banca", "alta disponibilidad"],
+          "keywords": ["incident commander", "incident management", "war room", "sre", "dora", "resiliencia operativa", "gestion de crisis", "alta disponibilidad", "mttr", "blameless post-mortem", "banca"],
           "inLanguage": "es",
           "author": {
             "@type": "Person",
@@ -109,6 +109,43 @@
               "position": 3,
               "name": "El Verdadero Poder del Incident Manager: Por Qué sin Autoridad de Mando no Hay Resiliencia",
               "item": "https://alexanderarmentia.com/blog/posts/el-poder-del-incident-manager-war-room-liderazgo.html"
+            }
+          ]
+        }        ,{
+          "@type": "FAQPage",
+          "@id": "https://alexanderarmentia.com/blog/posts/el-poder-del-incident-manager-war-room-liderazgo.html#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Qué diferencia a un Incident Commander de un gestor de tickets ITIL ordinario?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Un gestor de tickets tradicional se limita a registrar eventos y actualizar campos. Un Incident Commander lidera activamente la resolución técnica: impone orden táctico en la War Room, aplica timeboxing a las hipótesis, protege el foco cognitivo de los ingenieros aislando el ruido directivo y toma decisiones críticas de mitigación para minimizar el MTTR."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Por qué el Incident Manager debe tener supremacía operativa sobre directores de área?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Durante una caída crítica P1, una War Room no puede funcionar como una asamblea parlamentaria. El Incident Manager ostenta mando único delegado por el C-Level: nadie, independientemente de su rango en el organigrama, puede ordenar cambios en producción sin su visto bueno explícito."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Qué exige el marco regulatorio DORA sobre la gestión de incidentes mayores en banca?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "El reglamento europeo DORA (Digital Operational Resilience Act) exige a las entidades financieras y proveedores de servicios TIC protocolos rigurosos de clasificación, reporte inmediato a autoridades supervisoras (BCE, EBA) y planes de continuidad demostrables. El Incident Manager es la figura clave que garantiza que los tiempos de mitigación y las evidencias de auditoría cumplan con los estándares regulatorios exigidos."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Qué es un Emergency CAB y por qué debe autorizarlo el Incident Manager?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "El Emergency Change Advisory Board es el mecanismo de aprobación ultrarrápido para cambios en caliente, despliegues de parches de seguridad o conmutaciones de tráfico durante una emergencia. En lugar de convocar comités burocráticos, el Incident Manager tiene la prerrogativa legal y corporativa de autorizar la acción en segundos."
+              }
             }
           ]
         }
@@ -288,6 +325,31 @@
     <strong style="color: var(--cyan); display: block; margin-bottom: 0.35rem;">// CONCLUSIÓN:</strong>
     <p style="margin: 0; font-size: 0.98rem; color: var(--t);">Las arquitecturas distribuidas, la nube híbrida y los algoritmos son extraordinarios en días tranquilos. Pero cuando el desastre llega —y siempre llega—, la resiliencia de una gran compañía no reside en sus servidores: reside en la autoridad, el método y la templanza de la persona a la que le has confiado el timón de la tormenta.</p>
 </div>
+
+<!-- ==================== FAQ SCHEMA & GEO SEO ==================== -->
+<section class="faq-section" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+    <h2 style="font-size: 1.4rem; color: #fff; margin-bottom: 1.5rem;">Preguntas Clave sobre Incident Management y Resiliencia Operativa</h2>
+
+    <div style="margin-bottom: 1.5rem;">
+        <h3 style="font-size: 1.1rem; color: var(--a); margin-bottom: 0.5rem;">¿Qué diferencia a un Incident Commander de un gestor de tickets ITIL ordinario?</h3>
+        <p style="color: var(--tm); font-size: 0.95rem; line-height: 1.6;">Un gestor de tickets tradicional se limita a registrar eventos, actualizar campos en ServiceNow y redactar actas. Un <strong>Incident Commander (Major Incident Manager)</strong> lidera activamente la resolución técnica: impone orden táctico en la War Room, aplica <em>timeboxing</em> a las hipótesis, protege el foco cognitivo de los ingenieros aislando el ruido directivo y toma decisiones críticas de mitigación bajo incertidumbre para minimizar el MTTR.</p>
+    </div>
+
+    <div style="margin-bottom: 1.5rem;">
+        <h3 style="font-size: 1.1rem; color: var(--a); margin-bottom: 0.5rem;">¿Por qué el Incident Manager debe tener supremacía operativa sobre directores de área?</h3>
+        <p style="color: var(--tm); font-size: 0.95rem; line-height: 1.6;">Durante una caída crítica P1, una War Room no puede funcionar como una asamblea parlamentaria. La toma de decisiones consensuada entre múltiples departamentos genera retrasos que cuestan millones. El Incident Manager ostenta mando único delegado por el C-Level (CIO/CTO): nadie, independientemente de su rango en el organigrama, puede ordenar cambios en producción sin su visto bueno explícito.</p>
+    </div>
+
+    <div style="margin-bottom: 1.5rem;">
+        <h3 style="font-size: 1.1rem; color: var(--a); margin-bottom: 0.5rem;">¿Qué exige el marco regulatorio DORA sobre la gestión de incidentes mayores en banca?</h3>
+        <p style="color: var(--tm); font-size: 0.95rem; line-height: 1.6;">El reglamento europeo <strong>DORA (Digital Operational Resilience Act)</strong> exige a las entidades financieras y proveedores de servicios TIC protocolos rigurosos de clasificación, reporte inmediato a autoridades supervisoras (BCE, EBA) y planes de continuidad demostrables. El Incident Manager es la figura clave que garantiza que los tiempos de mitigación, la contención del radio de impacto (*blast radius*) y las evidencias de auditoría cumplan con los estándares regulatorios exigidos.</p>
+    </div>
+
+    <div style="margin-bottom: 1.5rem;">
+        <h3 style="font-size: 1.1rem; color: var(--a); margin-bottom: 0.5rem;">¿Qué es un Emergency CAB y por qué debe autorizarlo el Incident Manager?</h3>
+        <p style="color: var(--tm); font-size: 0.95rem; line-height: 1.6;">El <em>Emergency Change Advisory Board</em> es el mecanismo de aprobación ultrarrápido para cambios en caliente, despliegues de parches de seguridad o conmutaciones de tráfico durante una emergencia. En lugar de convocar comités burocráticos, el Incident Manager tiene la prerrogativa legal y corporativa de autorizar la acción en segundos, registrando la trazabilidad formal a posteriori.</p>
+    </div>
+</section>
 </div></article>
 
                 <!-- Sharing Panel -->
